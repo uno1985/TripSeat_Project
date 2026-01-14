@@ -197,6 +197,21 @@ npm run deploy
 - 一般開發成員 不得 使用此指令
 - 注意：npm run deploy 只會更新 gh-pages，不會影響 main 或 dev。
 
+### **語意化分類（推薦！）**
+
+- `feat:` 新功能
+- `fix:` 修 bug
+- `refactor:` 重構
+- `docs:` 文件/註解
+- `style:` 格式排版
+- `chore:` 雜項（升級依賴、調整建置設定）
+
+```bash
+feat: 完成場域選擇頁 UI 初稿
+fix: 修正登入頁密碼驗證邏輯
+refactor: 抽離 header 為共用元件
+docs: 補充專案啟動流程說明
+
 ## 🛠️ Getting Started
 
 Please refer to [06-backend-guide.md](docs/06-backend-guide.md) to start the Mock API.
