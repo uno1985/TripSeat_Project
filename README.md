@@ -150,6 +150,20 @@ npm install
 - 依照 package-lock.json
 - 自動產生 node_modules
 
+### 同時啟動前後端 (安裝 concurrently)
+在根目錄的 package.json 中，建議安裝 concurrently 套件，這樣一個指令就能同時跑 Vite 和 json-server
+```
+npm install concurrently --save-dev
+```
+修改 package.json 中的 scripts：
+```
+"scripts": {
+  "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+  "dev:frontend": "vite",
+  "dev:backend": "json-server --watch backend/db.json --port 3001"
+}
+```
+
 ### 啟動開發環境
 ```bash
 npm run dev
