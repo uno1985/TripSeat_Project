@@ -1,0 +1,156 @@
+openapi: 3.0.0
+info:
+  title: TripSeat 共享旅程 API
+  description: |
+
+  version: 1.1.0
+
+paths:
+  # --- 註冊 API ---
+  /register:
+    post:
+      tags:
+        - Authentication
+      summary: 使用者註冊
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '200':
+          description: 註冊成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterResponse'
+        '400':
+          description: 格式錯誤或帳號已存在
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                email_exists:
+                  summary: 帳號已存在
+                  value:
+                    success: false
+                    message: "此 Email 已被註冊"
+                invalid_format:
+                  summary: 格式錯誤
+                  value:
+                    success: false
+                    message: "Email 格式不正確或密碼長度不足"
+                missing_fields:
+                  summary: 欄位缺失
+                  value:
+                    success: false
+                    message: "Email或密碼為必填"
+
+  # --- 登入 API ---
+  /login:
+    post:
+      tags:
+        - Authentication
+      summary: 使用者登入
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: 登入成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: 認證失敗 (帳號或密碼錯誤)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_credentials:
+                  summary: 帳號或密碼錯誤
+                  value:
+                    success: false
+                    message: "帳號或密碼填寫錯誤"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+          format: uuid
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        email:
+          type: string
+          format: email
+          example: "example@gmail.com"
+        nickname:
+          type: string
+          example: "UNO"
+    # --- 註冊 ---
+    RegisterRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+          example: "example@gmail.com"
+        password:
+          type: string
+          minLength: 7
+          example: "AAbbcc12345678"
+
+    RegisterResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "註冊成功"
+        user:
+          $ref: '#/components/schemas/User'
+    # --- 登入 ---
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          example: "example@gmail.com"
+        password:
+          type: string
+          example: "AAbbcc12345678"
+
+    LoginResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: JWT 驗證授權碼
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI..."
+        expired:
+          type: number
+          description: Token 到期時間 (Unix Timestamp)
+          example: 1736236772
+        user:
+          $ref: '#/components/schemas/User'
+
+    # --- 預設 ---
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: "錯誤原因說明"
