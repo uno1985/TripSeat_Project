@@ -62,14 +62,18 @@ tripSeat/
 ```bash
 git checkout main
 git pull origin main
+git checkout dev
+git pull origin dev
+git branch -b feature/uno
+git checkout -b feature/uno
 ```
 說明：本步驟僅供了解主線狀態，實際開發請以 dev 為基準。
 
-### 2️⃣ 合併完當週，首次開發請重新開設新分支
+### 2️⃣ 合併完當週，請重新開設新分支
 ```bash
 git checkout dev
 git pull origin dev
-git branch -d feature/uno #首次建立無須執行，主要後續重置時使用
+git branch -d feature/uno
 git checkout -b feature/uno
 git push -u origin feature/uno
 ```
@@ -145,6 +149,20 @@ npm install
 - 讀取 package.json
 - 依照 package-lock.json
 - 自動產生 node_modules
+
+### 同時啟動前後端 (安裝 concurrently)
+在根目錄的 package.json 中，建議安裝 concurrently 套件，這樣一個指令就能同時跑 Vite 和 json-server
+```
+npm install concurrently --save-dev
+```
+修改 package.json 中的 scripts：
+```
+"scripts": {
+  "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+  "dev:frontend": "vite",
+  "dev:backend": "json-server --watch backend/db.json --port 3001"
+}
+```
 
 ### 啟動開發環境
 ```bash
