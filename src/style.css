@@ -1,0 +1,57 @@
+:root {
+  --color-primary-100: #fffaf3;
+  --color-primary-200: #fff2e0;
+  --color-primary-400: #ffe1b4;
+  --color-primary-600: #ffcc7f;
+  --color-primary-800: #ffb74c;
+  --color-primary-1000: #e78f0c;
+
+  --color-gray-white: #fff;
+  --color-gray-100: #f2f2f2;
+  --color-gray-200: #d4d4d4;
+  --color-gray-400: #939393;
+  --color-gray-600: #5b5b5b;
+  --color-gray-800: #333333;
+  --color-gray-1000: #212121;
+
+  --color-status-success: #4fcf7c;
+  --color-status-danger: #ff6b6b;
+}
+
+/* Navber */
+.navbar {
+  background-color: var(--color-status-success);
+}
+/* Footer */
+.footer {
+  height: 400px; /* 規劃用 */
+  background-color: var(--color-gray-white);
+  text-align: center;
+}
+
+/* Home */
+
+.heroSection {
+  height: 400px; /* 規劃用 */
+  background-color: var(--color-gray-white);
+}
+.searchSection {
+  height: 300px; /* 規劃用 */
+  background-color: var(--color-primary-200);
+}
+.introSection {
+  height: 400px; /* 規劃用 */
+  background-color: var();
+}
+.hotTripSection {
+  height: 400px; /* 規劃用 */
+  background-color: var(--color-primary-600);
+}
+.thoughtsSection {
+  height: 400px; /* 規劃用 */
+  background-color: var();
+}
+.reviewsSection {
+  height: 400px; /* 規劃用 */
+  background-color: var(--color-gray-400);
+}
