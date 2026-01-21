@@ -6,11 +6,10 @@ import Router from './router'
 
 function App() {
   return (
-    <div className='App'>
+    <div className="container-fluid px-0">
       <Navbar />
-      <main className="container">
+
         <Router />
-      </main>
 
       <Footer />
 
