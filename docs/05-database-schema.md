@@ -6,9 +6,10 @@
 
 | 欄位 | 說明 | 備註 |
 | :--- | :--- | :--- |
-| id | 使用者唯一 ID (UUID) | PK (Primary Key) |
+| uid | 使用者唯一 ID (UUID) | PK (Primary Key) |
 | role | visitor / member / admin | |
 | name | 顯示名稱 | |
+| nike_name | 顯示名稱 | |
 | email | 電子信箱 | Unique Index |
 | email_verified | 布林值 (Email 驗證狀態) | |
 | password | 密碼 (json-server-auth) | |
