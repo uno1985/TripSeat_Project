@@ -48,7 +48,7 @@
   /* 定義字距變數 */
   --trip-letter-spacing-normal: 0;      /* 預設值 */
   --trip-letter-spacing-4: 0.04em; /* 對應 Figma 4% */
-  --trip-letter-spacing-5: 0.05em; /* 對應 Figma 5%) */
+  --trip-letter-spacing-5: 0.05em; /* 對應 Figma 5% */
   --trip-letter-spacing-6: 0.06em; /* 對應 Figma 6%*/
   --trip-letter-spacing-7: 0.07em; /* 對應 Figma 7%*/
   --trip-letter-spacing-9: 0.09em; /* 對應 Figma 9%*/
@@ -75,6 +75,51 @@
   
     --trip-font-label-size: 12px;
   }
+}
+/* 文字系列 - 主色*/
+.trip-text-primary-100{
+  color: var(--trip-color-primary-100);
+}
+.trip-text-primary-200{
+  color: var(--trip-color-primary-200);
+}
+.trip-text-primary-400{
+  color: var(--trip-color-primary-400);
+}
+.trip-text-primary-600{
+  color: var(--trip-color-primary-600);
+}
+.trip-text-primary-800{
+  color: var(--trip-color-primary-800);
+}
+.trip-text-primary-1000{
+  color: var(--trip-color-primary-1000);
+}
+/* 文字系列 - 灰色*/
+.trip-text-gray-100{
+  color: var(--trip-color-gray-100);
+}
+.trip-text-gray-200{
+  color: var(--trip-color-gray-200);
+}
+.trip-text-gray-400{
+  color: var(--trip-color-gray-400);
+}
+.trip-text-gray-600{
+  color: var(--trip-color-gray-600);
+}
+.trip-text-gray-800{
+  color: var(--trip-color-gray-800);
+}
+.trip-text-gray-1000{
+  color: var(--trip-color-gray-1000);
+}
+/* 背景底色 */
+.trip-bg-primary-100{
+  background-color: var(--trip-color-primary-100);
+}
+.trip-bg-primary-200{
+  background-color: var(--trip-color-primary-200);
 }
 /* 標題系列 - 加粗且行高較緊湊 (120%) */
 .h1 { 

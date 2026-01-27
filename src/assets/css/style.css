@@ -5,6 +5,7 @@ body{
   line-height: var(--trip-line-height-tight); 
   font-size: var(--trip-font-text-l-size); 
   letter-spacing: var(--trip-letter-spacing-10);
+  color: var(--trip-color-gray-800);
 }
 
 /* Navber */
@@ -25,7 +26,7 @@ body{
 .heroSection {
   /* height: 400px; */
   background-color: var(--trip-color-white);
-  background-image: url('assets/big-cloud.svg'), url('assets/small-cloud.svg');
+  background-image: url('./../images/big-cloud.svg'), url('./../images/small-cloud.svg');
   background-repeat: no-repeat, no-repeat;
   background-position: right 50px top 50px, left 150px top 100px;
   transform: scaleX(1), scaleX(-1);
@@ -44,7 +45,7 @@ body{
 }
 .big-cloud1 {
   background-color: var(--trip-color-white);
-  background-image: url('assets/big-cloud.svg');
+  background-image: url('./../images/big-cloud.svg');
   background-size: cover;
   transform: scaleX(-1);
   position: absolute;
@@ -62,16 +63,76 @@ body{
   height: 400px; /* 規劃用 */
   background-color: var();
 }
-.hotTripSection {
-  height: 400px; /* 規劃用 */
-  background-color: var(--trip-color-primary-600);
-}
+
+
+/* 旅遊心得 start*/
 .thoughtsSection {
-  height: 400px; /* 規劃用 */
-  background-color: var();
+  height: auto;
+  background-color: var(--trip-color-gray-100);
+  padding: 100px 0;
 }
+/* 旅遊心得 end*/
+
 .reviewsSection {
   height: 400px; /* 規劃用 */
   background-color: var(--trip-color-gray-400);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Balloon-Bear */
+.bear{
+  position: fixed;
+  z-index: 999;
+  top: 45%;
+  left: 10px;
+  animation: bearMove 3s infinite alternate;
+  img{
+    width: 100px;
+  }
+}
+@keyframes bearMove {
+  0% {
+    transform: translateX(0);
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateX(20px);
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateX(0);
+    transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .bear{
+    position: fixed;
+    z-index: 999;
+    top: 75%;
+    left: 10px;
+  }
+}

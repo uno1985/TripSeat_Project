@@ -1,10 +1,11 @@
+import '../../assets/css/thoughtsSection.css'
 function ThoughtsSection() {
     return (
         <div className="thoughtsSection">
-            這是旅遊心得區塊
+            <div className="container">
+            </div>
         </div>
-
-
-    )
+    );
 }
-export default ThoughtsSection
+
+export default ThoughtsSection;
