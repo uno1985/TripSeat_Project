@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Router from './router'
-import bearImage from './assets/bear.png';
+import Router from './Router'
+import bearImage from './assets/images/bear.png';
 
 
 function App() {

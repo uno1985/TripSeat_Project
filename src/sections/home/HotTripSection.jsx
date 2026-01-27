@@ -1,9 +1,10 @@
-import triprow01 from '../../assets/triprow01.png'
-import triprow02 from '../../assets/triprow02.png'
-import triprow03 from '../../assets/triprow03.png'
-import triprow04 from '../../assets/triprow04.png'
-import triprow05 from '../../assets/triprow05.png'
-import triprow06 from '../../assets/triprow06.png'
+import '../../assets/css/hotTripSection.css'
+import triprow01 from '../../assets/images/triprow01.png'
+import triprow02 from '../../assets/images/triprow02.png'
+import triprow03 from '../../assets/images/triprow03.png'
+import triprow04 from '../../assets/images/triprow04.png'
+import triprow05 from '../../assets/images/triprow05.png'
+import triprow06 from '../../assets/images/triprow06.png'
 function HotTripSection() {
     return (
         <div className="hotTripSection">
