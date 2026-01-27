@@ -48,7 +48,7 @@
   /* 定義字距變數 */
   --trip-letter-spacing-normal: 0;      /* 預設值 */
   --trip-letter-spacing-4: 0.04em; /* 對應 Figma 4% */
-  --trip-letter-spacing-5: 0.05em; /* 對應 Figma 5%) */
+  --trip-letter-spacing-5: 0.05em; /* 對應 Figma 5% */
   --trip-letter-spacing-6: 0.06em; /* 對應 Figma 6%*/
   --trip-letter-spacing-7: 0.07em; /* 對應 Figma 7%*/
   --trip-letter-spacing-9: 0.09em; /* 對應 Figma 9%*/
