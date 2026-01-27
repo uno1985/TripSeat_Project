@@ -63,8 +63,8 @@ body{
   background-color: var();
 }
 .hotTripSection {
-  height: 400px; /* 規劃用 */
-  background-color: var(--trip-color-primary-600);
+  height: 972px;
+  background: url('assets/mapBg.png') no-repeat center/cover;
 }
 .thoughtsSection {
   height: 400px; /* 規劃用 */
@@ -75,3 +75,48 @@ body{
   background-color: var(--trip-color-gray-400);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Balloon-Bear */
+.bear{
+  position: fixed;
+  z-index: 999;
+  top: 45%;
+  left: 10px;
+  animation: bearMove 3s infinite alternate;
+  img{
+    width: 100px;
+  }
+}
+@keyframes bearMove {
+  0% {
+    transform: translateX(0);
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateX(20px);
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateX(0);
+    transform: translateY(0);
+  }
+}
