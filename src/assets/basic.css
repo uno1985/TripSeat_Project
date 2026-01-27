@@ -77,41 +77,41 @@
   }
 }
 /* 文字系列 - 主色*/
-.trip-primary-100{
+.trip-text-primary-100{
   color: var(--trip-color-primary-100);
 }
-.trip-primary-200{
+.trip-text-primary-200{
   color: var(--trip-color-primary-200);
 }
-.trip-primary-400{
+.trip-text-primary-400{
   color: var(--trip-color-primary-400);
 }
-.trip-primary-600{
+.trip-text-primary-600{
   color: var(--trip-color-primary-600);
 }
-.trip-primary-800{
+.trip-text-primary-800{
   color: var(--trip-color-primary-800);
 }
-.trip-primary-1000{
+.trip-text-primary-1000{
   color: var(--trip-color-primary-1000);
 }
 /* 文字系列 - 灰色*/
-.trip-gray-100{
+.trip-text-gray-100{
   color: var(--trip-color-gray-100);
 }
-.trip-gray-200{
+.trip-text-gray-200{
   color: var(--trip-color-gray-200);
 }
-.trip-gray-400{
+.trip-text-gray-400{
   color: var(--trip-color-gray-400);
 }
-.trip-gray-600{
+.trip-text-gray-600{
   color: var(--trip-color-gray-600);
 }
-.trip-gray-800{
+.trip-text-gray-800{
   color: var(--trip-color-gray-800);
 }
-.trip-gray-1000{
+.trip-text-gray-1000{
   color: var(--trip-color-gray-1000);
 }
 /* 標題系列 - 加粗且行高較緊湊 (120%) */
