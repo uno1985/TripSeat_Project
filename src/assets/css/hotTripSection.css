@@ -1,7 +1,7 @@
 /* 熱門開團 start*/
 .hotTripSection {
   height: 972px;
-  background: var(--trip-color-primary-100) url('assets/images/mapBg.png') no-repeat center center;
+  background: var(--trip-color-primary-100) url('./../images/mapBg.png') no-repeat center center;
   padding-top: 84px;
   h2{
     text-align: center;
@@ -13,7 +13,7 @@
   @media (max-width: 1024px) {
     .hotTripSection {
       height: auto;
-      background: var(--trip-color-primary-100) url('assets/images/mapBg.png') no-repeat center center;
+      background: var(--trip-color-primary-100) url('./../images/mapBg.png') no-repeat center center;
       padding-bottom: 40px;
       padding-top: 100px;
     }

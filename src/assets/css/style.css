@@ -26,7 +26,7 @@ body{
 .heroSection {
   /* height: 400px; */
   background-color: var(--trip-color-white);
-  background-image: url('assets/images/big-cloud.svg'), url('assets/images/small-cloud.svg');
+  background-image: url('./../images/big-cloud.svg'), url('./../images/small-cloud.svg');
   background-repeat: no-repeat, no-repeat;
   background-position: right 50px top 50px, left 150px top 100px;
   transform: scaleX(1), scaleX(-1);
@@ -45,7 +45,7 @@ body{
 }
 .big-cloud1 {
   background-color: var(--trip-color-white);
-  background-image: url('assets/images/big-cloud.svg');
+  background-image: url('./../images/big-cloud.svg');
   background-size: cover;
   transform: scaleX(-1);
   position: absolute;
