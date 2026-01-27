@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+:root {
+  /* Primary Color */
+  --trip-color-primary-100: #FFFAF3;
+  --trip-color-primary-200: #FFF2E0;
+  --trip-color-primary-400: #FFE1B4;
+  --trip-color-primary-600: #FFCC7F;
+  --trip-color-primary-800: #FFB74C;
+  --trip-color-primary-1000: #E78F0C;
+
+  /* Gray Scale */
+  --trip-color-white: #FFFFFF;
+  --trip-color-gray-100: #F2F2F2;
+  --trip-color-gray-200: #D4D4D4;
+  --trip-color-gray-400: #939393;
+  --trip-color-gray-600: #5B5B5B;
+  --trip-color-gray-800: #333333;
+  --trip-color-gray-1000: #212121;
+
+  /* Status */
+  --trip-color-status-success: #4FCF7C;
+  --trip-color-status-danger: #FF6B6B;
+
+
+  /* --- Typography (Base Settings) --- */
+  --trip-font-family: "Noto Sans TC", sans-serif;
+  --trip-font-weight-bold: 700;
+  --trip-font-weight-regular: 400;
+  --trip-line-height-tight: 1.2; /* 120% */
+  --trip-line-height-normal: 1.5; /* 150% */
+
+  /* Desktop Typography (Default) */
+  --trip-font-h1-size: 64px;
+  --trip-font-h2-size: 32px;
+  --trip-font-h3-size: 28px;
+  --trip-font-h4-size: 24px;
+  --trip-font-h5-size: 20px;
+  
+  --trip-font-title-btn-l-size: 20px;
+  --trip-font-title-btn-m-size: 16px;
+  --trip-font-title-btn-s-size: 14px;
+  
+  --trip-font-text-l-size: 20px;
+  --trip-font-text-m-size: 16px;
+  --trip-font-text-s-size: 14px;
+  
+  --trip-font-label-size: 12px;
+  /* 定義字距變數 */
+  --trip-letter-spacing-normal: 0;      /* 預設值 */
+  --trip-letter-spacing-4: 0.04em; /* 對應 Figma 4% */
+  --trip-letter-spacing-5: 0.05em; /* 對應 Figma 5% */
+  --trip-letter-spacing-6: 0.06em; /* 對應 Figma 6%*/
+  --trip-letter-spacing-7: 0.07em; /* 對應 Figma 7%*/
+  --trip-letter-spacing-9: 0.09em; /* 對應 Figma 9%*/
+  --trip-letter-spacing-10: 0.1em; /* 對應 Figma 10%*/
+  --trip-letter-spacing-11: 0.11em; /* 對應 Figma 11%*/
+  
+}
+/* --- Mobile Typography (Overrides) --- */
+@media (max-width: 768px) {
+  :root {
+    --trip-font-h1-size: 36px;
+    --trip-font-h2-size: 28px;
+    --trip-font-h3-size: 24px;
+    --trip-font-h4-size: 20px;
+    --trip-font-h5-size: 18px;
+    
+    --trip-font-title-btn-l-size: 16px;
+    --trip-font-title-btn-m-size: 14px;
+    
+    --trip-font-text-l-size: 16px;
+    --trip-font-text-m-size: 14px;
+    /* Text S 在 Mobile 規範中未標註，通常沿用 Desktop 或設為 12px */
+    --trip-font-text-s-size: 12px; 
+  
+    --trip-font-label-size: 12px;
+  }
+}
+/* 文字系列 - 主色*/
+.trip-text-primary-100{
+  color: var(--trip-color-primary-100);
+}
+.trip-text-primary-200{
+  color: var(--trip-color-primary-200);
+}
+.trip-text-primary-400{
+  color: var(--trip-color-primary-400);
+}
+.trip-text-primary-600{
+  color: var(--trip-color-primary-600);
+}
+.trip-text-primary-800{
+  color: var(--trip-color-primary-800);
+}
+.trip-text-primary-1000{
+  color: var(--trip-color-primary-1000);
+}
+/* 文字系列 - 灰色*/
+.trip-text-gray-100{
+  color: var(--trip-color-gray-100);
+}
+.trip-text-gray-200{
+  color: var(--trip-color-gray-200);
+}
+.trip-text-gray-400{
+  color: var(--trip-color-gray-400);
+}
+.trip-text-gray-600{
+  color: var(--trip-color-gray-600);
+}
+.trip-text-gray-800{
+  color: var(--trip-color-gray-800);
+}
+.trip-text-gray-1000{
+  color: var(--trip-color-gray-1000);
+}
+/* 標題系列 - 加粗且行高較緊湊 (120%) */
+.h1 { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight); 
+  font-size: var(--trip-font-h1-size); 
+  letter-spacing: var(--trip-letter-spacing-6);
+}
+.h2 { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight); 
+  font-size: var(--trip-font-h2-size);
+  letter-spacing: var(--trip-letter-spacing-5); 
+}
+.h3 { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight); 
+  font-size: var(--trip-font-h3-size);
+  letter-spacing: var(--trip-letter-spacing-4);
+}
+.h4 { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight); 
+  font-size: var(--trip-font-h4-size);
+  letter-spacing: var(--trip-letter-spacing-4);
+}
+.h5 { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight); 
+  font-size: var(--trip-font-h5-size); 
+  letter-spacing: var(--trip-letter-spacing-10);
+}
+
+/* 內文系列 - 常規權重且行高較鬆散 (150%) */
+.trip-text-l { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-regular); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-text-l-size);
+  letter-spacing: var(--trip-letter-spacing-11);
+}
+.trip-text-m { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-regular); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-text-m-size); 
+  letter-spacing: var(--trip-letter-spacing-9);
+}
+.trip-text-s { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-regular); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-text-s-size);
+  letter-spacing: var(--trip-letter-spacing-7);
+}
+
+/* 標籤 - 加粗且字體最小 */
+.trip-label { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-label-size); 
+}
+
+/* 按鈕系列 - 加粗且行高較鬆散 (150%) */
+.trip-btn-l { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-title-btn-l-size);
+  letter-spacing: var(--trip-letter-spacing-10);
+  padding: 10px 40px;
+  border-radius: 2rem;
+}
+.trip-btn-m { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-title-btn-m-size);
+  letter-spacing: var(--trip-letter-spacing-9);
+  padding: 10px 32px;
+  border-radius: 1.5rem;
+}
+.trip-btn-s { 
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-normal); 
+  font-size: var(--trip-font-title-btn-s-size);
+  letter-spacing: var(--trip-letter-spacing-9);
+  padding: 6px 24px;
+  border-radius: 1.2rem;
+  border-width: 3px;
+}
+.trip-btn-primary {
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+  border-color: var(--trip-color-primary-800);
+  &:hover {
+    color: var(--trip-color-white);
+    background-color: var(--trip-color-primary-1000);
+    border-color: var(--trip-color-primary-1000);
+  }
+  &:focus {
+    color: var(--trip-color-white);
+    background-color: var(--trip-color-primary-800);
+    border-color: var(--trip-color-primary-200);
+  }
+  &:disabled {
+    color: var(--trip-color-gray-400);
+    background-color: var(--trip-color-gray-200);
+    border-color: var(--trip-color-gray-200);
+  }
+}
+
+.trip-btn-outline-primary {
+  color: var(--trip-color-primary-800);
+  background-color: transparent;
+  border-width: 2px;
+  border-color: var(--trip-color-primary-800);
+  &:hover {
+    color: var(--trip-color-primary-800);
+    background-color: var(--trip-color-primary-100);
+    border-color: var(--trip-color-primary-800);
+  }
+  &:focus {
+    border-color: var(--trip-color-primary-200);
+  }
+  &:disabled {
+    color: var(--trip-color-gray-200);
+    background-color: var(--trip-color-gray-100);
+    border-color: var(--trip-color-gray-200);
+  }
+}
+/* 連結 */
+.link-l{
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight);
+  font-size: var(--trip-font-text-l-size);
+  letter-spacing: var(--trip-letter-spacing-10);
+  text-decoration: none;
+  color: var(--trip-color--gray-800);
+  padding: 8px 12px;
+  &:hover {
+    color: var(--trip-color-primary-800);
+  }
+  &:focus {
+    color: var(--trip-color-gray-800);
+    border: 1px dashed var(--trip-color-primary-400);
+  }
+  &.disabled {
+    color: var(--trip-color-gray-200);
+  }
+}
+.link-m{
+  font-family: var(--trip-font-family); 
+  font-weight: var(--trip-font-weight-bold); 
+  line-height: var(--trip-line-height-tight);
+  font-size: var(--trip-font-text-m-size);
+  letter-spacing: var(--trip-letter-spacing-10);
+  text-decoration: none;
+  color: var(--trip-color--gray-800);
+  padding: 8px 12px;
+  &:hover {
+    color: var(--trip-color-primary-800);
+  }
+  &:focus {
+    color: var(--trip-color-gray-800);
+    border: 1px dashed var(--trip-color-primary-400);
+  }
+  &.disabled {
+    color: var(--trip-color-gray-200);
+  }
+}
+.link-underline{
+  color: var(--trip-color-primary-1000);
+  text-decoration: underline;
+  text-decoration-color: var(--trip-color-primary-1000)!important;
+}
