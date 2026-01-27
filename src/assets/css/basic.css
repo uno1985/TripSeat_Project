@@ -114,6 +114,13 @@
 .trip-text-gray-1000{
   color: var(--trip-color-gray-1000);
 }
+/* 背景底色 */
+.trip-bg-primary-100{
+  background-color: var(--trip-color-primary-100);
+}
+.trip-bg-primary-200{
+  background-color: var(--trip-color-primary-200);
+}
 /* 標題系列 - 加粗且行高較緊湊 (120%) */
 .h1 { 
   font-family: var(--trip-font-family); 
