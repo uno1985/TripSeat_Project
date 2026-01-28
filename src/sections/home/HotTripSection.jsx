@@ -10,7 +10,7 @@ import triprow06 from '../../assets/images/triprow06.png'
 function HotTripSection() {
     return (
         <div className="hotTripSection">
-            <div className="container">
+            <div className="container-xl">
                 <div className="main">
                     <div className="row">
                         {/* 左側：熱門開團 */}
