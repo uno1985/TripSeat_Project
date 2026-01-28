@@ -1,0 +1,38 @@
+.introSection {
+    background-color: var(--trip-color-gray-100);
+    padding: 100px 0px;
+    overflow: hidden;
+
+    .intro-container {
+        max-width: 1296px;
+    }
+
+    .bigCloud {
+        right: -50px;
+        bottom: 156px;
+    }
+
+    .smallCloud {
+        top: 232px;
+        left: 125px;
+    }
+}
+
+.introCard {
+    .stepImg-box {
+        width: 39%;
+    }
+
+    .mainImg-box {
+        width: 85%;
+        padding: 24px 0px;
+    }
+}
+
+.introCard:nth-child(even) {
+    padding-top: 60px;
+}
+
+/* * {
+    outline: 1px solid black
+} */
