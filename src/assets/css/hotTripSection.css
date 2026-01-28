@@ -10,18 +10,19 @@
     background: #fff;
   }
 }
-  @media (max-width: 1024px) {
-    .hotTripSection {
-      height: auto;
-      background: var(--trip-color-primary-100) url('./../images/mapBg.png') no-repeat center center;
-      padding-bottom: 40px;
-      padding-top: 100px;
-    }
+@media (max-width: 1024px) {
+  .hotTripSection {
+    height: auto;
+    background: var(--trip-color-primary-100) url('./../images/mapBg.png') no-repeat center center;
+    padding-bottom: 40px;
+    padding-top: 100px;
   }
+}
 .tripRow{
   border-radius: 16px;
   padding: 40px 28px;
   .h4{
+    max-width: 95%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow:hidden;
@@ -37,6 +38,9 @@
     border-radius: 8px;
   }
 }
+.icon-location{
+  margin: 2px 0 0 1px;
+}
 .lastSeat{
   background-color: #FFF2E0;
   color: #E78F0C;
@@ -46,5 +50,16 @@
 .more-btn{
   margin-top: 48px;
   margin-bottom: 100px;
+}
+.desktop-show{
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+.mobile-show{
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+  }
 }
 /* 熱門開團 end*/
