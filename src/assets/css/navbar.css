@@ -1,0 +1,49 @@
+.navbar {
+  padding: 20px 0;
+  background-color: var(--trip-color-white);
+}
+
+.navbar-collapse {
+  flex-grow: 1;
+  display: flex;
+}
+.trip-logo {
+  width: 258px;
+  height: 34px;
+}
+
+.trip-nav-inner {
+  max-width: 1296px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+.trip-menu {
+  gap: 32px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+}
+/* .trip-nav-spacer {
+  width: 240px;
+  flex-shrink: 0;
+  justify-content: flex-start;
+} */
+/* .trip-nav-right {
+  flex-shrink: 0;
+  justify-content: flex-end;
+} */
+
+/* 手機版啟用 */
+@media (max-width: 1024px) {
+  .navbar {
+    background: #fff;
+    padding: 20px 16px;
+    min-height: 64px;
+  }
+  .trip-logo img {
+    content: url("../images/smail-logo.svg");
+    width: 41px;
+  }
+}
