@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Router from './router'
-
+import Router from './Router'
+import bearImage from './assets/images/bear.png';
 
 
 function App() {
@@ -12,7 +12,9 @@ function App() {
         <Router />
 
       <Footer />
-
+      <div className="bear">
+        <img src={bearImage} alt="氣球小熊"/>
+      </div>
     </div>
   )
 }

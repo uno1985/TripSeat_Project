@@ -6,7 +6,8 @@ import ReviewsSection from "../sections/home/ReviewsSection"
 import SearchSection from "../sections/home/SearchSection"
 import ThoughtsSection from "../sections/home/ThoughtsSection"
 
-function Home() {
+
+const Home = () => {
     return (
         <>
             <HeroSection />
@@ -15,6 +16,7 @@ function Home() {
             <HotTripSection />
             <ThoughtsSection />
             <ReviewsSection />
+
         </>
 
     )

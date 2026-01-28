@@ -6,7 +6,7 @@ function HeroSection() {
                 <div className="main d-flex flex-row">
                     <h1 className="h1 slogan">不知道去哪裡？</h1>
                     <div className="slogan-pic">
-                        <img src="https://cdn.wwads.cn/creatives/U3n343DCMimUvbTZX1xnbYkOoPlTBBVBjzP4bqjf.jpg" alt="" srcset="" />
+                        <img src="https://cdn.wwads.cn/creatives/U3n343DCMimUvbTZX1xnbYkOoPlTBBVBjzP4bqjf.jpg" alt="" />
                     </div>
                 </div>
             </div>
