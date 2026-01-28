@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+@import './searchSection.css';
+@import './introSection.css';
+
 body{
   font-family: var(--trip-font-family); 
   font-weight: var(--trip-font-weight-bold); 
@@ -55,14 +58,7 @@ body{
   right: 50px;
 }
 
-.searchSection {
-  height: 300px; /* 規劃用 */
-  background-color: var(--trip-color-primary-200);
-}
-.introSection {
-  height: 400px; /* 規劃用 */
-  background-color: var();
-}
+
 
 
 /* 旅遊心得 start*/
