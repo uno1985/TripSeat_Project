@@ -7,10 +7,6 @@
   flex-grow: 1;
   display: flex;
 }
-.trip-logo {
-  width: 258px;
-  height: 34px;
-}
 
 .trip-nav-inner {
   max-width: 1296px;
@@ -25,25 +21,53 @@
   list-style: none;
   margin: 0;
 }
-/* .trip-nav-spacer {
-  width: 240px;
-  flex-shrink: 0;
-  justify-content: flex-start;
-} */
-/* .trip-nav-right {
-  flex-shrink: 0;
-  justify-content: flex-end;
-} */
 
-/* 手機版啟用 */
-@media (max-width: 1024px) {
+.navbar-toggler {
+  border: none;
+  box-shadow: noneCSS;
+}
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  box-shadow: none;
+  outline: none;
+}
+
+@media (max-width: 768px) {
   .navbar {
-    background: #fff;
     padding: 20px 16px;
     min-height: 64px;
   }
-  .trip-logo img {
+  .navbar-brand img {
     content: url("../images/smail-logo.svg");
     width: 41px;
+  }
+
+  .navbar-btn {
+    width: 100%;
+  }
+
+  .navbar-collapse {
+    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-nav {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    width: 100%;
+    padding: 8px 0;
+    align-items: center;
   }
 }
