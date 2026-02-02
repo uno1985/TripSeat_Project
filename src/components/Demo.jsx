@@ -1,6 +1,11 @@
+const currentStatus = import.meta.env.VITE_STATUS;
+
+
 function Demo() {
     return (
         <div className="Demo mt-4 text-center">
+
+            <p>ENV連線狀態：<strong>{currentStatus}</strong></p>
             <p>快速公版樣式查找區</p>
 
             <div className="title">

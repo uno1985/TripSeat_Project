@@ -2,12 +2,11 @@ import Layout from "../layout/Layout"
 import MeLayout from "../layout/MeLayout"
 import About from "../pages/About"
 import Home from "../pages/Home"
+import Login from "../pages/Login"
 import MeIndex from "../pages/me/MeIndex"
 import NotFound from "../pages/NotFound"
 import Thoughts from "../pages/Thoughts"
 import TripsSearch from "../pages/TripsSearch"
-
-
 
 
 const routes = [
@@ -35,6 +34,12 @@ const routes = [
                 element: <About />
 
             },
+            {
+                path: '/login',
+                element: <Login />
+
+            },
+
             {
                 path: '/me',
                 element: <MeLayout />,
