@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
-@import './searchSection.css';
-@import './introSection.css';
 
 body{
   font-family: var(--trip-font-family); 

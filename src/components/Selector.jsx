@@ -15,13 +15,13 @@ function Selector({
     return (
         <>
         <select
-            class={`form-select ${className}`}
+            className={`form-select ${className}`}
             aria-label=""
             value={defaultValue}
             onChange={onChange}>
             {
                 placeholder
-                ? <option selected>{placeholder}</option>
+                ? <option value={placeholder} key={"placeholder"}>{placeholder}</option>
                 : null
             }
             {
