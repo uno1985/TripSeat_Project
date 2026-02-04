@@ -70,10 +70,7 @@ function Navbar() {
         loginModalRef.current.show();
         closeNavbar();
 
-                        </li>
-                        {
-                            isLogin ? (<li className="nav-item mx-2">
-                                <Link to='/member' className="nav-link text-dark fw-bold" onClick={() => closeNavbar()}>會員中心</Link>
+    };
 
     if (loading) return null;
 
@@ -112,7 +109,7 @@ function Navbar() {
                             {isLogin && (
                                 <>
                                     <li className="d-lg-none">
-                                        <Link className="nav-link trip-text-l" to="/me" onClick={() => closeNavbar()}>我的會員中心</Link>
+                                        <Link className="nav-link trip-text-l" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link>
                                     </li>
                                     <li className="d-lg-none">
                                         <Link className="nav-link trip-text-l" to="/inbox" onClick={() => closeNavbar()}>
@@ -137,7 +134,7 @@ function Navbar() {
                                             <span className="ms-2">{user?.name || 'Tony Chang'}</span>
                                         </a>
                                         <ul className="dropdown-menu dropdown-menu-end trip-dropdown-menu">
-                                            <li><Link className="dropdown-item trip-dropdown-item" to="/me" onClick={() => closeNavbar()}>我的會員中心</Link></li>
+                                            <li><Link className="dropdown-item trip-dropdown-item" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link></li>
                                             <li><Link className="dropdown-item trip-dropdown-item d-flex align-items-center" to="/inbox" onClick={() => closeNavbar()}>站內收件匣 <span className="inbox-badge">999</span></Link></li>
                                             <li><hr className="dropdown-divider mx-3" /></li>
                                             <li><button className="dropdown-item trip-dropdown-item text-center fw-bold" onClick={() => { logout(); }}>登出</button></li>
