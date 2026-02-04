@@ -119,6 +119,9 @@
 .trip-bg-primary-200 {
   background-color: var(--trip-color-primary-200);
 }
+.trip-color-gray-100 {
+  background-color: var(--trip-color-gray-100);
+}
 /* 標題系列 - 加粗且行高較緊湊 (120%) */
 .h1 {
   font-family: var(--trip-font-family);
@@ -301,4 +304,13 @@
   color: var(--trip-color-primary-1000);
   text-decoration: underline;
   text-decoration-color: var(--trip-color-primary-1000) !important;
+}
+.link-underline-gray-600 {
+  color: var(--trip-color-gray-600);
+  text-decoration: underline;
+  text-decoration-color: var(--trip-color-gray-600) !important;
+  &:hover {
+    color: var(--trip-color-primary-800);
+    text-decoration-color: var(--trip-color-primary-800) !important;
+  }
 }
