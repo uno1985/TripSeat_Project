@@ -1,0 +1,27 @@
+/* MemberSidebar 客製化樣式 */
+.member-sidebar {
+  min-width: 280px;
+}
+
+/* 選單 Hover 與 Active 效果 */
+.member-nav .nav-link {
+  transition: color 0.3s ease;
+}
+
+.member-nav .nav-link:hover {
+  color: #E78F0C; /* 你專案中常用的橘色 */
+}
+
+/* 手機版適應：根據圖四，手機版通常會撐滿寬度或作為頁面主體 */
+@media (max-width: 991.98px) {
+  .member-sidebar {
+    width: 100%;
+    box-shadow: none !important; /* 手機版通常背景是灰的，不需要陰影 */
+    background-color: transparent !important;
+  }
+  
+  .member-nav .nav-link {
+    font-size: 1.5rem; /* 手機版文字較大 */
+    margin-bottom: 1rem;
+  }
+}

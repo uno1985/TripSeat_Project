@@ -1,0 +1,18 @@
+.my-groups-section{
+  .h3{
+    color: var(--trip-color-gray-600);
+  }
+  .card{
+    border: none;
+    box-shadow: 0 0 5px #dedede;
+  }
+  .card-img-top{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .card-footer .btn{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+}

@@ -55,7 +55,7 @@ function Navbar() {
                         </li>
                         {
                             isLogin ? (<li className="nav-item mx-2">
-                                <Link to='/me' className="nav-link text-dark fw-bold" onClick={() => closeNavbar()}>會員中心</Link>
+                                <Link to='/member' className="nav-link text-dark fw-bold" onClick={() => closeNavbar()}>會員中心</Link>
 
                             </li>) : ('')
                         }
