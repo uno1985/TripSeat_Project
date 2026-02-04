@@ -1,8 +1,8 @@
 import Layout from "../layout/Layout"
-import MeLayout from "../layout/MeLayout"
+import MemberLayout from "../layout/MemberLayout"
 import About from "../pages/About"
 import Home from "../pages/Home"
-import MeIndex from "../pages/me/MeIndex"
+import MemberCenter from "../pages/member/MemberCenter"
 import NotFound from "../pages/NotFound"
 import Thoughts from "../pages/Thoughts"
 import TripsSearch from "../pages/TripsSearch"
@@ -36,18 +36,21 @@ const routes = [
 
             },
             {
-                path: '/me',
-                element: <MeLayout />,
+                path: '/member',
+                element: <MemberLayout />,
                 children: [
                     {
-                        path: '/me',
-                        element: <MeIndex />,
+                        // 會員中心主頁面 (Dashboard)
+                        path: '/member',
+                        element: <MemberCenter />,
                     },
-
+                    // {
+                    //     path: 'profile', //個人檔案
+                    //     element: <MemberProfile />,
+                    // },
                 ]
 
             },
-            ,
             {
                 path: '*',
                 element: <NotFound />
