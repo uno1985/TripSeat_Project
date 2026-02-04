@@ -8,7 +8,6 @@ import Icon_Certified from '../assets/images/icon-certified.svg'
 
 function TripsSearch() {
     const [trips, setTrips] = useState([]);
-    window.t = trips;
     useEffect(() => {
         const getTrips = async () => {
             const response = await axios.get('https://tripseat-api-server.onrender.com/trips');
