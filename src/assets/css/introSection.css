@@ -2,37 +2,58 @@
     background-color: var(--trip-color-gray-100);
     padding: 100px 0px;
     overflow: hidden;
-
-    .intro-container {
-        max-width: 1296px;
-    }
+    @media (max-width: 1024px) {
+        padding: 60px 0px;
+    }   
 
     .bigCloud {
         right: -50px;
         bottom: 156px;
+        @media (max-width: 1024px) {
+            width: 149px;
+            bottom: 425px;
+            left: -50px;
+            right: auto;
+        }   
     }
 
     .smallCloud {
         top: 232px;
         left: 125px;
+        @media (max-width: 1024px) {
+            width: 149px;
+            top: 575px;
+            left: auto;
+            right: -63px;
+        }   
     }
-}
 
-.introCard {
+    .introCard {
+        z-index: 5;                                                                                                                                                                                                                                                                                                                                                                                                                    
+    }
+    
     .stepImg-box {
         width: 39%;
+        @media (max-width: 1024px) {
+            width: 104px;
+        }
     }
-
+    
     .mainImg-box {
         width: 85%;
         padding: 24px 0px;
+        @media (max-width: 1024px) {
+            width: 240px;
+        }
+    }
+    
+    .introCard:nth-child(even) {
+        padding-top: 60px;
+    }
+
+    @media (max-width: 1024px) {
+        .introCard:nth-child(n+2) {
+            padding-top: 52px;
+        }
     }
 }
-
-.introCard:nth-child(even) {
-    padding-top: 60px;
-}
-
-/* * {
-    outline: 1px solid black
-} */

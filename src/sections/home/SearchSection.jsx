@@ -1,3 +1,4 @@
+import '../../assets/css/searchSection.css'
 import Selector from '../../components/Selector'
 import Image1157 from '../../assets/images/home-search-1157.svg'
 import Image1156 from '../../assets/images/home-search-1156.svg'
@@ -15,14 +16,16 @@ function SearchSection() {
     return (
         <>
         <div className="searchSection position-relative">
-            <div className="search-container mx-auto">
-                <h2 className="h2 text-center">從這裡，開始你的旅程</h2>
-                <SearchBar />
-                <div className="image-box d-flex justify-content-between align-items-end">
-                    <div><img src={Image1157} className="img-fluid" /></div>
-                    <div><img src={Image1156} className="img-fluid" /></div>
-                    <div><img src={Image1775} className="img-fluid" /></div>
-                    <div><img src={Image996} className="img-fluid" /></div>
+            <div className="container">
+                <div className="main">
+                    <h2 className="h2 text-center"><span>從這裡，</span><span>開始你的旅程</span></h2>
+                    <SearchBar />
+                    <div className="image-box d-flex justify-content-between align-items-end">
+                        <div><img src={Image1157} className="img-fluid" /></div>
+                        <div><img src={Image1156} className="img-fluid" /></div>
+                        <div><img src={Image1775} className="img-fluid" /></div>
+                        <div><img src={Image996} className="img-fluid" /></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,6 +38,8 @@ function SearchBar() {
         <div className="selector-box">
             <Selector
                 data={areas}
+                placeholder={"選擇地區"}
+                defaultValue={"選擇地區"}
                 className="selector h-100 text-center border-0 border-end"
             />
         </div>
@@ -42,12 +47,10 @@ function SearchBar() {
             <input
                 type="text"
                 className="h-100 w-100 border-0 ps-2"
-                placeholder={'請搜尋"煙火"'}/>
+                placeholder={'請搜尋"跨年"'}/>
         </div>
-        <div className="searchBtn-box d-flex justify-content-center align-items-center">
-            <div className="searchBtn" onClick={(e) => {console.log(e.target)}}>
-                <img src={SearchBtn} />
-            </div>
+        <div className="searchBtn-box flex-shrink-0" onClick={(e) => {console.log(e.target)}}>
+            <img src={SearchBtn} className="w-100"/>
         </div>
     </div>
 }

@@ -8,8 +8,6 @@ import Thoughts from "../pages/Thoughts"
 import TripsSearch from "../pages/TripsSearch"
 
 
-
-
 const routes = [
     {
         path: '/',

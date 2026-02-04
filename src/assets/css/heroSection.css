@@ -5,7 +5,7 @@
   .hero-wrapper {
     position: relative;
     overflow: hidden;
-    background-color: var(--trip-color-white, #ffffff);
+    background-color: var(--trip-color-white, --trip-color-white);
     padding-top: 32px;
     padding-bottom: 92px;
   }
@@ -20,23 +20,26 @@
     top: 72px;
     left: -25px;
     width: 149px;
+
+    animation-delay: 0s;
   } /* */
   .cloud-b {
     bottom: 198px;
     left: 103px;
-    transform: scaleX(-1);
     width: 209px;
+    animation-delay: -2s;
   } /* */
   .cloud-c {
     top: 195px;
     right: 215px;
-    transform: scaleX(-1);
     width: 149px;
+    animation-delay: -5s;
   } /* */
   .cloud-d {
     bottom: 105px;
     right: -45px;
     width: 260px;
+    animation-delay: -7s;
   } /* */
 
   .hero-content-box {
@@ -50,7 +53,7 @@
     font-size: 64px; /* */
     line-height: 1.2;
     letter-spacing: 0.06em;
-    color: #333333;
+    color: var(--trip-color-gray-800);
     margin-bottom: 8px; /* */
     min-height: 154px;
   }
@@ -59,7 +62,10 @@
   .hero-title .line-1 {
     position: relative;
     display: inline-block;
-    background-image: linear-gradient(#ffb74c, #ffb74c);
+    background-image: linear-gradient(
+      var(--trip-color-primary-800),
+      var(--trip-color-primary-800)
+    );
     background-repeat: no-repeat;
     background-size: 100% 15px;
     background-position: 0 85%;
@@ -68,23 +74,9 @@
   .hero-title .line-2 {
     display: block;
   }
-
-  /* 副標題打字機設定 */
-  .hero-subtitle {
-    font-family: "Noto Sans TC", sans-serif;
-    font-size: 20px;
-    line-height: 30px;
-    color: #333333;
-    margin-top: 24px; /* */
-    margin-bottom: 72px; /* 修正按鈕間距 */
-
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    border-right: 3px solid #ffb74c; /* 橘色游標 */
+  .img-fluid {
+    height: 431px;
   }
-
   /* RWD */
   @media (max-width: 991.98px) {
     .hero-wrapper {
@@ -105,7 +97,20 @@
     }
   }
 }
+/* 副標題打字機設定 */
+.hero-subtitle {
+  line-height: 30px;
 
+  margin-top: 24px; /* */
+  margin-bottom: 72px; /* 修正按鈕間距 */
+
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: fit-content;
+  max-width: 0;
+  border-right: 3px solid var(--trip-color-primary-800); /* 橘色游標 */
+}
 /* --- 動畫時序 --- */
 
 /* 打字機效果：2.5s 打完字，游標 1.1s 慢速持續閃爍 (infinite) */
@@ -117,10 +122,10 @@
 
 @keyframes typing {
   from {
-    width: 0;
+    max-width: 0;
   }
   to {
-    width: 100%;
+    max-width: 1000px;
   }
 }
 
@@ -130,7 +135,7 @@
     border-color: transparent;
   }
   50% {
-    border-color: #ffb74c;
+    border-color: var(--trip-color-primary-800);
   }
 }
 
@@ -175,12 +180,47 @@
 .dot {
   width: 24px;
   height: 8px;
-  background-color: #d9d9d9;
+  background-color: var(--trip-color-primary-100);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .dot.active {
-  background-color: #ffb74c;
+  background-color: var(--trip-color-primary-800);
   width: 48px;
+}
+
+/* --- 雲朵漂浮動畫定義 --- */
+
+.cloud-a,
+.cloud-d {
+  animation: cloudFloat 10s ease-in-out infinite;
+}
+
+@keyframes cloudFloat {
+  0%,
+  100% {
+    /* 保持原位，如果有翻轉要記得帶入 */
+    transform: translateX(0);
+  }
+  50% {
+    /* 向右移動 20px (可根據需求調整距離) */
+    transform: translateX(20px);
+  }
+}
+
+/* 注意：cloud-c 因為原本有 scaleX(-1)，動畫需要合併寫法才不會失效 */
+.cloud-c,
+.cloud-b {
+  animation: cloudFloatReverse 20s ease-in-out infinite;
+}
+
+@keyframes cloudFloatReverse {
+  0%,
+  100% {
+    transform: scaleX(-1) translateX(0);
+  }
+  50% {
+    transform: scaleX(-1) translateX(-20px);
+  }
 }

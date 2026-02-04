@@ -61,7 +61,7 @@ function HeroSection() {
 
                             {/* 副標題：持續慢速閃爍打字機 */}
                             <div className="hero-subtitle-container">
-                                <p className="hero-subtitle typewriter-animation" key={`sub-${currentIndex}`}>
+                                <p className="hero-subtitle typewriter-animation trip-text-l" key={`sub-${currentIndex}`}>
                                     {heroData[currentIndex].sub}
                                 </p>
                             </div>
