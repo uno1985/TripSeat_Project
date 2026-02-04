@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "../contexts/AuthContext";
 
 import LoginForm from "../components/LoginForm";

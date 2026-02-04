@@ -51,8 +51,10 @@ export const AuthProvider = ({ children }) => {
 
             setIsLogin(true);
             setUser(userData);
+            console.log(response)
             return { success: true };
         } catch (error) {
+            console.log(error)
             let message = "登入失敗";
             if (error.response?.data === "Incorrect password") {
                 message = "密碼輸入錯誤，請再試一次";

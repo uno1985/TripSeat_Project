@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import '../../assets/css/heroSection.css';
 
 import smailCloud from '../../assets/images/small-cloud.svg';
