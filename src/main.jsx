@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/basic.css'
 import './assets/css/style.css'
 
-import { createHashRouter, RouterProvider } from 'react-router';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import routes from './routes/router';
 
 //全站登入狀態

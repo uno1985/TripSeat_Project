@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as bootstrap from "bootstrap";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/AuthContext";
