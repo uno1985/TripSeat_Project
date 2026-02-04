@@ -1,0 +1,26 @@
+/* Notifictions.jsx */
+.notifications-section {
+  .h3{
+    color: var(--trip-color-gray-600);
+  }
+  .dashed-border {
+    border-bottom: 1px dashed #dee2e6 !important;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none !important;
+    border-bottom-right-radius: none;
+    border-bottom-left-radius: none;
+  }
+}
+
+/* 針對手機版微調字體大小 */
+@media (max-width: 768px) {
+  .notifications-section {
+    padding: 0;
+  }
+  .notifications-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}

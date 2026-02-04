@@ -29,7 +29,9 @@ function HotTripSection() {
                                     {/* 內容區塊 */}
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex justify-content-between align-items-start">
-                                            <h4 className="h4 mb-2">2026 跨年 101煙火團</h4>
+                                            <a href="##" className="h4 mb-2 text-decoration-none">
+                                                2026 跨年 101煙火團
+                                            </a>
                                             <span className="trip-text-m trip-text-gray-400 desktop-show">136人瀏覽</span>
                                         </div>
                                         
@@ -64,7 +66,7 @@ function HotTripSection() {
                                     {/* 內容區塊 */}
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex justify-content-between align-items-start">
-                                            <h4 className="h4 mb-2">彩妝課程五人優惠團</h4>
+                                            <a href="##" className="h4 mb-2 text-decoration-none">彩妝課程五人優惠團</a>
                                             <span className="trip-text-m trip-text-gray-400 desktop-show">36人瀏覽</span>
                                         </div>
                                         
@@ -100,7 +102,7 @@ function HotTripSection() {
                                     {/* 內容區塊 */}
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex justify-content-between align-items-start">
-                                            <h4 className="h4 mb-2">台南山上聖誕市集共乘</h4>
+                                            <a href="##" className="h4 mb-2 text-decoration-none">台南山上聖誕市集共乘</a>
                                             <span className="trip-text-m trip-text-gray-400 desktop-show">236人瀏覽</span>
                                         </div>
                                         
@@ -141,7 +143,7 @@ function HotTripSection() {
                                     {/* 內容區塊 */}
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex justify-content-between align-items-start">
-                                            <h4 className="h4 mb-2">手工皮件課程三人成團</h4>
+                                            <a href="##" className="h4 mb-2 text-decoration-none">手工皮件課程三人成團</a>
                                             <span className="trip-text-m trip-text-gray-400 desktop-show">12/12 開團</span>
                                         </div>
                                         
@@ -176,7 +178,7 @@ function HotTripSection() {
                                     {/* 內容區塊 */}
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex justify-content-between align-items-start">
-                                            <h4 className="h4 mb-2">阿里山小火車一日遊共乘</h4>
+                                            <a href="##" className="h4 mb-2 text-decoration-none">阿里山小火車一日遊共乘</a>
                                             <span className="trip-text-m trip-text-gray-400 desktop-show">12/08 開團</span>
                                         </div>
                                         
@@ -212,7 +214,7 @@ function HotTripSection() {
                                     {/* 內容區塊 */}
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex justify-content-between align-items-start">
-                                            <h4 className="h4 mb-2">卓也藍染、日月潭一日遊</h4>
+                                            <a href="##" className="h4 mb-2 text-decoration-none">卓也藍染、日月潭一日遊</a>
                                             <span className="trip-text-m trip-text-gray-400 desktop-show">12/07 開團</span>
                                         </div>
                                         

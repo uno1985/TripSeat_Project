@@ -7,7 +7,7 @@ import TripsSearch from './pages/TripsSearch'
 import Me from './pages/me'
 
 // Me的子頁面
-import MeIndex from './pages/me/MeIndex'
+import MemberCenter from './pages/member/MemberCenter'
 
 function Router() {
     return (
@@ -17,7 +17,7 @@ function Router() {
             <Route path='/thoughts' element={<Thoughts />}></Route>
             <Route path='/tripsSearch' element={<TripsSearch />}></Route>
             <Route path='/member' element={<Me />}>
-                <Route index element={<MeIndex />}></Route>
+                <Route index element={<MemberCenter />}></Route>
             </Route>
         </Routes>
 

@@ -1,49 +1,159 @@
-.navbar {
-  padding: 20px 0;
-  background-color: var(--trip-color-white);
-}
-
-.navbar-collapse {
-  flex-grow: 1;
-  display: flex;
-}
-.trip-logo {
-  width: 258px;
-  height: 34px;
-}
-
-.trip-nav-inner {
-  max-width: 1296px;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-}
-
-.trip-menu {
-  gap: 32px;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-}
-/* .trip-nav-spacer {
-  width: 240px;
-  flex-shrink: 0;
-  justify-content: flex-start;
-} */
-/* .trip-nav-right {
-  flex-shrink: 0;
-  justify-content: flex-end;
-} */
-
-/* 手機版啟用 */
-@media (max-width: 1024px) {
+.trip-navbar {
   .navbar {
-    background: #fff;
-    padding: 20px 16px;
-    min-height: 64px;
+    padding: 20px 0;
+    background-color: var(--trip-color-white);
   }
-  .trip-logo img {
-    content: url("../images/smail-logo.svg");
-    width: 41px;
+
+  .navbar-toggler {
+    border: none;
+    box-shadow: none;
+  }
+  .navbar-toggler:focus,
+  .navbar-toggler:active {
+    box-shadow: none;
+    outline: none;
+  }
+
+  /* 頭像樣式 */
+  .nav-avatar {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* 下拉選單 */
+  .trip-dropdown-menu {
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: 0 10px 30px var(--trip-color-gray-100) !important;
+    padding: 1rem 0 !important;
+    min-width: 180px !important;
+  }
+
+  .trip-dropdown-item {
+    padding: 12px 24px !important;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--trip-color-gray-800);
+    transition: background-color 0.2s; /* 讓背景切換平滑一點 */
+  }
+
+  /* 關鍵修正：移除點擊或選取時的藍色背景 */
+  .trip-dropdown-item:hover,
+  .trip-dropdown-item:focus,
+  .trip-dropdown-item:active {
+    background-color: var(
+      --trip-color-gray-100
+    ) !important; /* 改為極淺灰色，或用 transparent */
+    color: var(--trip-color-gray-800) !important; /* 確保文字不會變白 */
+    outline: none;
+  }
+
+  .inbox-badge {
+    background-color: var(--trip-color-primary-600);
+    color: var(--trip-color-white);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-left: 12px;
+  }
+  /* 針對桌機版頭像下拉按鈕的修正 */
+  .trip-nav-user .dropdown-toggle {
+    margin-left: 24px;
+    border: none;
+    box-shadow: none !important; /* 移除點擊時的藍色陰影 */
+    background-color: transparent !important; /* 防止點擊時出現背景色 */
+  }
+
+  /* 移除當下拉選單打開時，按鈕可能出現的樣式 */
+  .trip-nav-user .dropdown-toggle:focus,
+  .trip-nav-user .dropdown-toggle:active,
+  .trip-nav-user .dropdown-toggle[aria-expanded="true"] {
+    outline: none !important;
+    box-shadow: none !important;
+    color: inherit !important; /* 保持原有的文字顏色 */
+  }
+
+  /* 如果那個藍色是來自 Bootstrap 的按鈕背景 */
+  .btn-primary.dropdown-toggle:focus {
+    box-shadow: none !important;
+  }
+
+  /* 桌機版間距 */
+  @media (min-width: 992px) {
+    .navbar-collapse {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  /* 手機版樣式 */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 20px 16px;
+    }
+    .navbar-brand img {
+      content: url("../images/smail-logo.svg");
+      width: 41px;
+    }
+    .navbar-btn {
+      margin-top: 72px;
+      width: 100%;
+    }
+    .navbar-collapse {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .navbar-nav {
+      gap: 8px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link:active {
+      background-color: var(
+        --trip-color-gray-100
+      ) !important; /* 改為極淺灰色，或用 transparent */
+      color: var(--trip-color-gray-800) !important; /* 確保文字不會變白 */
+      outline: none;
+    }
+
+    .mobile-user-info {
+      background-color: var(--trip-color-primary-100);
+      padding: 16px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+
+      justify-content: center;
+      gap: 12px;
+    }
+    .inbox-link {
+      display: flex;
+      justify-content: center; /* 確保內容區塊置中 */
+      padding: 12px 0;
+    }
+
+    .link-text {
+      position: relative; /* 作為 Badge 的定位基準 */
+      display: inline-block;
+    }
+
+    .inbox-badge {
+      position: absolute; /* 絕對定位，不佔據空間 */
+      left: 100%; /* 從文字的右側開始 */
+      top: 50%; /* 垂直置中基準 */
+      transform: translateY(-50%); /* 修正垂直置中偏移 */
+
+      background-color: var(--trip-color-primary-800);
+      color: var(--trip-color-white);
+      padding: 2px 8px; /* 縮小一點點點點比較精緻 */
+      border-radius: 20px;
+      font-size: 0.75rem; /* 稍微縮小字體更有小標感 */
+      margin-left: 8px; /* 跟文字保持一點距離 */
+      white-space: nowrap; /* 避免數字斷行 */
+    }
   }
 }
