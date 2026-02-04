@@ -70,7 +70,10 @@ function Navbar() {
         loginModalRef.current.show();
         closeNavbar();
 
-    };
+                        </li>
+                        {
+                            isLogin ? (<li className="nav-item mx-2">
+                                <Link to='/member' className="nav-link text-dark fw-bold" onClick={() => closeNavbar()}>會員中心</Link>
 
     if (loading) return null;
 
