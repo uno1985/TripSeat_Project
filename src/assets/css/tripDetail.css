@@ -1,0 +1,662 @@
+/* TripDetail.css */
+/* Styles matching Member.png design exactly */
+
+.trip-detail-page {
+  background-color: #FAFAFA;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* Breadcrumb */
+.breadcrumb-nav {
+  padding: 8px 0;
+}
+
+/* Header */
+.trip-header {
+  margin-bottom: 24px;
+}
+
+.edit-link {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Tags */
+.trip-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trip-tag-pill {
+  background-color: var(--trip-color-primary-800);
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+}
+
+/* Section Titles */
+.section-title {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-h5-size);
+  line-height: var(--trip-line-height-tight);
+  margin: 0;
+}
+
+.subsection-title {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+  margin: 0;
+}
+
+/* Info Card (旅程資訊) */
+.info-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-label {
+  background-color: var(--trip-color-primary-100);
+  color: var(--trip-color-primary-1000);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+  white-space: nowrap;
+}
+
+.info-value {
+  color: var(--trip-color-gray-800);
+}
+
+/* Gallery */
+.gallery-section {
+  margin-bottom: 24px;
+}
+
+.hero-image-wrapper {
+  margin-bottom: 12px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.sub-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.sub-image-wrapper {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.sub-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.sub-image:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+/* Thumbnail Strip - 可點擊切換主圖 */
+.thumbnail-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.thumbnail-item {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.thumbnail-item:hover {
+  opacity: 0.85;
+}
+
+.thumbnail-item.active {
+  border-color: var(--trip-color-primary-800);
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Timeline Icon */
+.timeline-icon {
+  position: absolute;
+  font-size: 10px;
+}
+
+.timeline-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* About Section */
+.about-section p {
+  margin-bottom: 16px;
+}
+
+/* Quote Box */
+.quote-box {
+  background-color: var(--trip-color-primary-100);
+  padding: 16px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quote-mark {
+  font-size: 28px;
+  color: var(--trip-color-primary-800);
+  line-height: 1;
+}
+
+.quote-content {
+  flex: 1;
+}
+
+/* Feature Pills */
+.feature-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.feature-pill {
+  background-color: var(--trip-color-primary-100);
+  color: var(--trip-color-primary-1000);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feature-icon {
+  font-size: 14px;
+}
+
+/* Timeline / Itinerary */
+.timeline-container {
+  padding-left: 4px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.timeline-item.last {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--trip-color-primary-800);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px var(--trip-color-primary-800);
+  flex-shrink: 0;
+}
+
+.timeline-line {
+  width: 2px;
+  flex-grow: 1;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--trip-color-gray-200) 0,
+    var(--trip-color-gray-200) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  margin-top: 8px;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-top: 0;
+}
+
+.time-badge {
+  display: inline-block;
+  background-color: var(--trip-color-primary-100);
+  color: var(--trip-color-gray-800);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+  margin-bottom: 8px;
+}
+
+.timeline-title {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-text-m-size);
+  margin: 0 0 4px 0;
+}
+
+.timeline-desc {
+  margin: 0;
+}
+
+/* Sidebar */
+.sticky-sidebar {
+  position: sticky;
+  top: 100px;
+  z-index: 9;
+}
+
+/* Sidebar Cards */
+.sidebar-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Meeting Card (集合資訊) */
+.meeting-card .meeting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meeting-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Booking Card */
+.booking-boxes {
+  display: flex;
+  gap: 12px;
+}
+
+.booking-box {
+  flex: 1;
+  background-color: var(--trip-color-primary-100);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.box-label {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-600);
+  margin-bottom: 4px;
+}
+
+.box-value {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-h4-size);
+  color: var(--trip-color-gray-800);
+}
+
+.price-symbol {
+  font-size: var(--trip-font-h5-size);
+}
+
+.price-amount {
+  font-size: var(--trip-font-h4-size);
+}
+
+.price-unit {
+  font-size: var(--trip-font-text-s-size);
+  font-weight: var(--trip-font-weight-regular);
+  color: var(--trip-color-gray-400);
+}
+
+.countdown {
+  font-family: var(--trip-font-family);
+  letter-spacing: 0.05em;
+}
+
+.booking-note {
+  text-align: center;
+}
+
+/* Booking Rows */
+.booking-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.row-icon {
+  font-size: 16px;
+}
+
+.booking-row-value {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.seats-current {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-h4-size);
+  color: var(--trip-color-primary-800);
+}
+
+.seats-separator {
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-400);
+}
+
+.seats-max {
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-600);
+}
+
+/* Pax Stepper */
+.pax-stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.stepper-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: #fff;
+  color: var(--trip-color-gray-600);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.stepper-btn:hover {
+  background-color: var(--trip-color-gray-100);
+}
+
+.stepper-value {
+  width: 32px;
+  text-align: center;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-800);
+}
+
+/* CTA Button */
+.cta-button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+/* Host Card */
+.host-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.host-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.host-info {
+  flex: 1;
+}
+
+.host-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.host-name {
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-800);
+}
+
+.host-badge {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-primary-1000);
+  background-color: var(--trip-color-primary-100);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.host-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.host-rating .star {
+  color: var(--trip-color-primary-800);
+}
+
+.host-bio {
+  line-height: 1.6;
+}
+
+/* Memory Gallery (過往旅程記憶) */
+.memory-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.memory-item {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.memory-item.placeholder {
+  background-color: var(--trip-color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-icon {
+  opacity: 0.6;
+}
+
+/* Verified Button */
+.verified-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background-color: var(--trip-color-primary-800);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-text-s-size);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+}
+
+.verified-btn:hover {
+  background-color: var(--trip-color-primary-1000);
+}
+
+.verified-icon {
+  font-size: 14px;
+}
+
+/* Applicants Card */
+.applicants-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.applicants-avatars {
+  display: flex;
+}
+
+.applicant-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-right: -8px;
+}
+
+.applicant-avatar:last-child {
+  margin-right: 0;
+}
+
+.placeholder-avatar {
+  background-color: var(--trip-color-gray-200);
+}
+
+.applicants-count {
+  flex: 1;
+}
+
+.manage-btn {
+  padding: 6px 16px;
+  background-color: var(--trip-color-gray-100);
+  color: var(--trip-color-gray-600);
+  border: none;
+  border-radius: 20px;
+  font-family: var(--trip-font-family);
+  font-weight: var(--trip-font-weight-bold);
+  font-size: var(--trip-font-label-size);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.manage-btn:hover {
+  background-color: var(--trip-color-gray-200);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .sticky-sidebar {
+    position: static;
+  }
+
+  .hero-image {
+    height: 280px;
+  }
+
+  .sub-images {
+    display: none;
+  }
+
+  .thumbnail-strip {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .booking-boxes {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .trip-detail-page {
+    padding-bottom: 60px;
+  }
+
+  .info-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-image {
+    height: 220px;
+  }
+
+  .feature-pills {
+    gap: 8px;
+  }
+
+  .feature-pill {
+    padding: 6px 12px;
+  }
+}

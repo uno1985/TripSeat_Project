@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import * as bootstrap from "bootstrap";
 import { useForm } from "react-hook-form";
@@ -21,7 +21,7 @@ function Navbar() {
         register,
         handleSubmit,
         reset
-    } = useForm();
+    } = useForm({ defaultValues: test });
 
     // 初始化 Modal
     useEffect(() => {
@@ -39,7 +39,7 @@ function Navbar() {
 
 
 
-    const onSubmit = async (data) => {
+    const onSubmit = useCallback(async (data) => {
         try {
             const response = await login(data.email, data.password);
             if (response.success) {
@@ -51,7 +51,7 @@ function Navbar() {
         } catch (error) {
             console.error("登入過程出錯：", error);
         }
-    };
+    }, [login, reset]);
 
     const closeNavbar = () => {
         if (window.innerWidth >= 992) return;
@@ -59,7 +59,7 @@ function Navbar() {
         const nav = document.getElementById('navbarNav');
         if (!nav) return;
 
-        const instance = bootstrap.Collapse.getInstance(nav);
+        const instance = bootstrap.Collapse.getInstance(nav, { toggle: false });
         if (instance) {
             instance.hide();
         }
@@ -134,6 +134,13 @@ function Navbar() {
                                             <span className="ms-2">{user?.name || 'Tony Chang'}</span>
                                         </a>
                                         <ul className="dropdown-menu dropdown-menu-end trip-dropdown-menu">
+
+                                            {user?.role === 'admin' && <>
+                                                <a href="/docs/api-docs.html" className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">API 文件</a>
+                                                <a href="/docs/readme-docs.html" className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">ReadMe 文件</a>
+                                            </>
+                                            }
+
                                             <li><Link className="dropdown-item trip-dropdown-item" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link></li>
                                             <li><Link className="dropdown-item trip-dropdown-item d-flex align-items-center" to="/inbox" onClick={() => closeNavbar()}>站內收件匣 <span className="inbox-badge">999</span></Link></li>
                                             <li><hr className="dropdown-divider mx-3" /></li>
@@ -162,11 +169,11 @@ function Navbar() {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="mb-3">
                                     <label className="form-label fw-bold">電子信箱</label>
-                                    <input type="email" className="form-control" placeholder="example@mail.com" value={test.email} {...register("email")} />
+                                    <input type="email" className="form-control" placeholder="example@mail.com"  {...register("email")} />
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label fw-bold">密碼</label>
-                                    <input type="password" className="form-control" value={test.password} {...register("password")} />
+                                    <input type="password" className="form-control"  {...register("password")} />
                                 </div>
                                 <button type="submit" className="btn btn-primary">登入</button>
                             </form>
