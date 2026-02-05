@@ -136,8 +136,8 @@ function Navbar() {
                                         <ul className="dropdown-menu dropdown-menu-end trip-dropdown-menu">
 
                                             {user?.role === 'admin' && <>
-                                                <a href="/docs/api-docs.html" className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">API 文件</a>
-                                                <a href="/docs/readme-docs.html" className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">ReadMe 文件</a>
+                                                <a href={`${import.meta.env.BASE_URL}docs/api-docs.html`} className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">API 文件</a>
+                                                <a href={`${import.meta.env.BASE_URL}docs/readme-docs.html`} className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">ReadMe 文件</a>
                                             </>
                                             }
 
