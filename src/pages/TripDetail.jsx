@@ -4,8 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import '../assets/css/tripDetail.css';
 import { useAuth } from '../contexts/AuthContext';
 
-// API Base URL - 可依環境調整
-const API_BASE = 'http://localhost:3001';
+
+const API_URL = import.meta.env.VITE_API_BASE;
 
 function TripDetail() {
     const { id } = useParams();
@@ -17,7 +17,7 @@ function TripDetail() {
     const [pax, setPax] = useState(1);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const { user } = useAuth();
-    console.log(user?.name)
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -30,7 +30,7 @@ function TripDetail() {
 
         try {
             // 先取得 trip 資料
-            const tripRes = await fetch(`${API_BASE}/trips/${id}`);
+            const tripRes = await fetch(`${API_URL}/trips/${id}`);
 
             if (!tripRes.ok) {
                 throw new Error('找不到此旅程');
@@ -40,8 +40,8 @@ function TripDetail() {
 
             // 同時取得 itineraries 和 owner 資料
             const [itineraryRes, ownerRes] = await Promise.all([
-                fetch(`${API_BASE}/itineraries?trip_id=${id}`),
-                fetch(`${API_BASE}/users/${tripData.owner_id}`)
+                fetch(`${API_URL}/itineraries?trip_id=${id}`),
+                fetch(`${API_URL}/users/${tripData.owner_id}`)
             ]);
 
             const itineraryData = await itineraryRes.json();
@@ -52,6 +52,7 @@ function TripDetail() {
             setOwner(ownerData);
         } catch (err) {
             setError(err.message);
+            console.error(err);
         } finally {
             setLoading(false);
         }
