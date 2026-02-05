@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tripSeat Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Copied from api-docs.html */
+    :root {
+      --primary-100: #fffaf3;
+      --primary-200: #fff2e0;
+      --primary-400: #ffe1b4;
+      --primary-600: #ffcc7f;
+      --primary-800: #ffb74c;
+      --primary-1000: #e78f0c;
+      --gray-100: #f2f2f2;
+      --gray-200: #d4d4d4;
+      --gray-400: #939393;
+      --gray-600: #5b5b5b;
+      --gray-800: #333333;
+      --gray-1000: #212121;
+      --white: #ffffff;
+      --success: #4fcf7c;
+      --danger: #ff6b6b;
+      --info: #5b9bd5;
+      --warning: #ffc107;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--primary-800), var(--primary-1000));
+      color: var(--white);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+
+    .header .badge-info {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-top: 15px;
+      font-family: monospace;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--gray-600);
+      transition: all 0.2s;
+    }
+
+    .tab:hover {
+      border-color: var(--primary-600);
+      color: var(--primary-800);
+    }
+
+    .tab.active {
+      background: var(--primary-800);
+      border-color: var(--primary-800);
+      color: var(--white);
+    }
+
+    /* Section Card Style */
+    .section {
+      background: var(--white);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .section-header {
+      background: var(--primary-100);
+      padding: 20px;
+      border-bottom: 1px solid var(--primary-200);
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+      color: var(--primary-1000);
+      margin-bottom: 5px;
+    }
+
+    .section-header p {
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+
+    .section-content {
+      padding: 20px;
+    }
+
+    /* Content Typography within sections */
+    h3 {
+      color: var(--primary-1000);
+      margin: 15px 0 10px 0;
+      font-size: 18px;
+    }
+
+    h4 {
+      color: var(--primary-1000);
+      margin: 10px 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: var(--gray-800);
+    }
+
+    ul,
+    ol {
+      margin-bottom: 15px;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Compatibility for Markdown HTML Elements */
+
+    /* Code Blocks (pre) */
+    pre {
+      background: var(--gray-800);
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      margin: 10px 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-height: 1.6;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Inline code styling */
+    p code,
+    li code,
+    td code {
+      background: var(--primary-100);
+      color: var(--primary-1000);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    th {
+      background: var(--primary-100);
+      color: var(--primary-1000);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    td {
+      color: var(--gray-800);
+      font-size: 14px;
+    }
+
+    /* Hint / Blockquote style */
+    .hint {
+      background: #fff3e0;
+      /* Match warning/redirect color */
+      border-left: 4px solid var(--warning);
+      padding: 15px;
+      border-radius: 4px;
+      margin: 15px 0;
+      color: var(--gray-600);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>TripSeat Documentation</h1>
+    <p>揪團旅遊 Social Trip Platform</p>
+    <div class="badge-info"><strong>最後更新：</strong>2026/02/05 UNO</div>
+  </div>
+
+  <div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-tab="project">專案總覽</div>
+      <div class="tab" data-tab="git">Git / GitHub 規範</div>
+      <div class="tab" data-tab="setup">專案初始化</div>
+    </div>
+
+    <!-- Project Overview -->
+    <div id="project" class="section tab-content">
+      <div class="section-header">
+        <h2>TripSeat - 揪團旅遊 Social Trip Platform</h2>
+        <p><strong>TripSeat</strong> 是一個專為「揪團旅遊」設計的社群平台。</p>
+
+      </div>
+      <div class="section-content">
+        <p>透過簡約現代的設計與強大的信任機制，讓志同道合的旅伴能夠輕鬆相遇、安心出遊。</p>
+
+        <h3>🚀 技術棧 (Tech Stack)</h3>
+        <ul>
+          <li>前端：React (Vite) + Bootstrap 5</li>
+          <li>模擬後端：json-server + json-server-auth</li>
+          <li>設計風格：橘黃色系、簡約插畫、Google Fonts</li>
+        </ul>
+
+        <!-- <h3>📂 專案結構</h3>
+        <pre><code>tripSeat/
+├── backend/
+│   ├── db.json
+│   └── package.json
+├── docs/
+├── public/
+├── src/
+│   ├── api/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── routes/
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+└── vite.config.js</code></pre> -->
+      </div>
+    </div>
+
+    <!-- Git Rules -->
+    <div id="git" class="section tab-content" style="display:none">
+      <div class="section-header">
+        <h2>Git 使用規範</h2>
+        <p>本專案採用 <strong>feature → dev → main</strong> 流程，兼顧團隊協作與風險控管。</p>
+      </div>
+      <div class="section-content">
+        <h3>分支說明</h3>
+        <table>
+          <tr>
+            <th>分支</th>
+            <th>說明</th>
+          </tr>
+          <tr>
+            <td>main</td>
+            <td>主線，穩定可執行版本（會議或重大更新時才合併）</td>
+          </tr>
+          <tr>
+            <td>dev</td>
+            <td>整合驗證支線，所有功能先進入此分支</td>
+          </tr>
+          <tr>
+            <td>feature/*</td>
+            <td>個人開發分支，請以姓名或代號命名</td>
+          </tr>
+        </table>
+
+        <h3>使用原則（請務必閱讀）</h3>
+        <ul>
+          <li>所有實作一律在 <code>feature/*</code> 進行</li>
+          <li>禁止直接在 <code>main</code>、<code>dev</code> 開發或 commit</li>
+          <li>功能完成後，透過 GitHub PR 合併進 <code>dev</code></li>
+          <li>衝突統一以 <strong>GitHub PR 介面</strong> 為主要處理方式</li>
+        </ul>
+
+        <h3>GITHUB 基本操作流程</h3>
+        <div class="hint">本區塊同時具備「流程說明」與「教學用途」，請依實際熟悉程度操作。</div>
+
+        <h4>1️⃣ 開發前：同步主線狀態</h4>
+        <pre><code>git checkout main
+git pull origin main
+git checkout dev
+git pull origin dev</code></pre>
+        <p>用途：確保本機的 <code>main</code> 與 <code>dev</code> 都與遠端一致，避免從舊狀態開分支。</p>
+
+        <h4>🧩 開發中基本流程（add / commit / push）</h4>
+        <pre><code># 查看狀態
+git status
+
+# 加入所有變更檔案
+git add .
+
+# 或只加入單一檔案
+git add src/components/Navbar.jsx
+
+# 建立提交（commit）
+git commit -m "說明這次做了什麼"
+
+# 推送到目前分支
+git push</code></pre>
+        <div class="hint">
+          <ul>
+            <li><code>git add</code> 只會把檔案加入「暫存區（staged）」</li>
+            <li><code>commit</code> 才是真正寫入 Git 歷史</li>
+            <li>請避免一次 commit 太多不相關內容</li>
+          </ul>
+        </div>
+
+        <h4>2️⃣ 建立個人開發分支（務必從 dev）</h4>
+        <pre><code>git checkout dev
+git pull origin dev
+git checkout -b feature/uno
+git push -u origin feature/uno</code></pre>
+        <p>說明：第一次推送需設定 upstream，之後可直接使用 <code>git push</code>。</p>
+
+        <h4>3️⃣ 個人分支重建（選用，適合卡住或長期未同步）</h4>
+        <pre><code>git checkout dev
+git pull origin dev
+git branch -d feature/uno
+git push origin --delete feature/uno
+git checkout -b feature/uno
+git push -u origin feature/uno</code></pre>
+        <div class="hint">若本機刪除失敗，可改用 <code>git branch -D feature/uno</code> 強制刪除。</div>
+
+        <h4>4️⃣ 推送並建立 PR（feature → dev）</h4>
+        <pre><code>git push origin feature/uno</code></pre>
+        <div class="hint">
+          <ul>
+            <li>Push 後請至 GitHub 建立 PR</li>
+            <li>若發生衝突，請使用 PR 頁面的 <strong>Resolve conflicts</strong></li>
+            <li>不熟悉者請避免在本機自行 merge</li>
+          </ul>
+        </div>
+
+        <h4>5️⃣ 每週 dev → main 合併</h4>
+        <ul>
+          <li>由一人發起 PR</li>
+          <li>至少兩位成員審核通過</li>
+          <li>合併後請同步本機 main / dev</li>
+        </ul>
+
+        <h4>🔀 補充：使用 <code>merge --no-ff</code>（保留完整歷史）</h4>
+        <p>在需要保留功能分支完整歷史（例如重要功能、里程碑）時，可使用 <code>--no-ff</code> 方式合併。</p>
+        <pre><code>git checkout dev
+git merge --no-ff feature/uno</code></pre>
+        <div class="hint">
+          <ul>
+            <li>會產生一筆明確的 merge commit</li>
+            <li>方便日後回溯「這個功能何時合併」</li>
+            <li>一般日常 PR 不強制使用</li>
+          </ul>
+        </div>
+
+        <h4>🏷️ Git Tag（版本標記）</h4>
+        <p>Tag 用於標記重要版本（如 Demo、發佈、里程碑），通常在 <code>main</code> 分支上操作。</p>
+        <pre><code># 建立標籤
+git tag v1.0.0
+
+# 推送單一 tag
+git push origin v1.0.0
+
+# 一次推送所有 tag
+git push origin --tags</code></pre>
+        <div class="hint">
+          <ul>
+            <li>建議命名方式：<code>v主版.次版.修補</code></li>
+            <li>Tag 不會自動推送，需手動 push</li>
+            <li>可在 GitHub Releases 中對應使用</li>
+          </ul>
+        </div>
+
+        <h3>常用 Git 指令參考</h3>
+        <table>
+          <tr>
+            <th>指令</th>
+            <th>用途</th>
+          </tr>
+          <tr>
+            <td><code>git status</code></td>
+            <td>查看目前狀態</td>
+          </tr>
+          <tr>
+            <td><code>git branch</code></td>
+            <td>查看本機分支</td>
+          </tr>
+          <tr>
+            <td><code>git branch -r</code></td>
+            <td>查看遠端分支</td>
+          </tr>
+          <tr>
+            <td><code>git pull origin dev</code></td>
+            <td>同步 dev 分支</td>
+          </tr>
+          <tr>
+            <td><code>git push</code></td>
+            <td>推送目前分支</td>
+          </tr>
+          <tr>
+            <td><code>git merge --abort</code></td>
+            <td>中止衝突中的 merge</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Setup -->
+    <div id="setup" class="section tab-content" style="display:none">
+      <div class="section-header">
+        <h2>專案初始化</h2>
+        <p>快速建立開發環境</p>
+      </div>
+      <div class="section-content">
+        <h3>安裝套件</h3>
+        <pre><code>npm install</code></pre>
+        <p>如專案下載後發生有未載套件，請執行此項目</p>
+
+        <h3>啟動開發環境</h3>
+        <pre><code>npm run dev</code></pre>
+        <p>僅啟動預覽伺服器，方便一邊編輯一邊查看</p>
+
+        <h3>同時啟動 本機json-server</h3>
+        <pre><code>npm run dev-con</code></pre>
+
+
+        <h3>Build 專案</h3>
+        <pre><code>npm run build</code></pre>
+        <p>編譯dist檔案靜態預覽資料夾</p>
+
+        <h3>Preview 專案</h3>
+        <pre><code>npm run preview</code></pre>
+        <p>可使用dist編譯檔案瀏覽，並使用雲端後端資料庫</p>
+
+        <h3>部署 GitHub Pages（管理者）</h3>
+        <pre><code>npm run deploy</code></pre>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+
+</html>
