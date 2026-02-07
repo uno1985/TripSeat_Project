@@ -550,7 +550,7 @@
   font-family: var(--trip-font-family);
   font-weight: var(--trip-font-weight-bold);
   font-size: var(--trip-font-text-s-size);
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -558,9 +558,7 @@
   transition: background-color 0.2s;
 }
 
-.verified-btn:hover {
-  background-color: var(--trip-color-primary-1000);
-}
+
 
 .verified-icon {
   font-size: 14px;
@@ -613,6 +611,14 @@
 .manage-btn:hover {
   background-color: var(--trip-color-gray-200);
 }
+
+/* memory */
+.memory-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 /* Responsive */
 @media (max-width: 991px) {

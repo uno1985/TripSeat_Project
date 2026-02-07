@@ -24,7 +24,8 @@
       "created_at": "2025-12-01T10:00:00Z",
       "updated_at": "2025-12-31T11:00:00Z",
       "deleted_at": null,
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1985-03-15"
     },
     {
       "id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
@@ -50,7 +51,8 @@
       "created_at": "2025-12-15T15:30:00Z",
       "updated_at": "2025-12-15T15:30:00Z",
       "deleted_at": null,
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1992-07-22"
     },
     {
       "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
@@ -76,7 +78,8 @@
       "created_at": "2025-11-20T10:00:00Z",
       "updated_at": "2025-12-31T09:00:00Z",
       "deleted_at": null,
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1995-11-08"
     },
     {
       "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
@@ -102,7 +105,8 @@
       "created_at": "2025-12-01T08:00:00Z",
       "updated_at": "2025-12-31T10:30:00Z",
       "deleted_at": null,
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1978-02-28"
     },
     {
       "id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
@@ -121,7 +125,8 @@
       "rating_average": 4.7,
       "created_at": "2025-12-05T12:00:00Z",
       "updated_at": "2025-12-31T10:00:00Z",
-      "is_verified_host": 0
+      "is_verified_host": 0,
+      "birthday": "1998-04-12"
     },
     {
       "id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
@@ -140,7 +145,8 @@
       "rating_average": 4.9,
       "created_at": "2025-11-10T09:00:00Z",
       "updated_at": "2025-12-31T11:00:00Z",
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1988-09-05"
     },
     {
       "id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
@@ -159,7 +165,8 @@
       "rating_average": 4.6,
       "created_at": "2025-12-10T14:00:00Z",
       "updated_at": "2025-12-31T08:00:00Z",
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "2000-01-30"
     },
     {
       "id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
@@ -178,7 +185,8 @@
       "rating_average": 4.8,
       "created_at": "2025-12-01T10:00:00Z",
       "updated_at": "2025-12-31T09:30:00Z",
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1990-06-18"
     },
     {
       "id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
@@ -197,7 +205,8 @@
       "rating_average": 4.2,
       "created_at": "2025-11-25T15:00:00Z",
       "updated_at": "2025-12-31T07:00:00Z",
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1983-12-25"
     },
     {
       "id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
@@ -216,7 +225,8 @@
       "rating_average": 5,
       "created_at": "2025-11-05T11:00:00Z",
       "updated_at": "2025-12-31T12:00:00Z",
-      "is_verified_host": 0
+      "is_verified_host": 0,
+      "birthday": "1993-08-14"
     },
     {
       "id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
@@ -235,7 +245,8 @@
       "rating_average": 4.7,
       "created_at": "2025-12-20T10:00:00Z",
       "updated_at": "2025-12-31T11:15:00Z",
-      "is_verified_host": 0
+      "is_verified_host": 0,
+      "birthday": "1986-05-20"
     },
     {
       "id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
@@ -254,7 +265,8 @@
       "rating_average": 4.6,
       "created_at": "2025-12-12T05:00:00Z",
       "updated_at": "2025-12-31T10:45:00Z",
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1997-10-03"
     },
     {
       "id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
@@ -273,7 +285,8 @@
       "rating_average": 4.4,
       "created_at": "2025-12-18T16:00:00Z",
       "updated_at": "2025-12-31T09:00:00Z",
-      "is_verified_host": 0
+      "is_verified_host": 0,
+      "birthday": "1991-03-08"
     },
     {
       "id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
@@ -292,7 +305,8 @@
       "rating_average": 5,
       "created_at": "2025-11-01T20:00:00Z",
       "updated_at": "2025-12-31T12:30:00Z",
-      "is_verified_host": 1
+      "is_verified_host": 1,
+      "birthday": "1982-11-22"
     }
   ],
   "trips": [
@@ -3289,7 +3303,270 @@
   ],
   "applications": [],
   "participants": [],
-  "reviews": [],
+  "reviews": [
+    {
+      "id": "rev-001-a1b2c3d4",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "trip_title": "2026 跨年 101 煙火團",
+      "trip_location": "台北市 信義區",
+      "trip_image": "https://images.unsplash.com/photo-1505935428862-770b6f24f629?q=80&w=800",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_name": "露營女孩艾琳",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
+      "user_age": 30,
+      "rating": 5,
+      "content": "這是我第一次在台北跨年，原本擔心一個人會很無聊，沒想到透過平台認識了一群超棒的夥伴！團主小明真的很用心，提前幫大家踩點找了視野超好的位置，還準備了暖暖包和零食。當 101 煙火升起的那一刻，我們一起歡呼、擁抱、許願，那種感動真的無法用言語形容。煙火結束後大家還一起去吃宵夜，聊到凌晨三點才散場。這趟旅程不只是看煙火，更是交到了一群志同道合的朋友，真心推薦給每個想要有難忘跨年回憶的人！",
+      "images": [
+        "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?q=80&w=800",
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800"
+      ],
+      "likes_count": 42,
+      "is_public": true,
+      "created_at": "2026-01-02T10:30:00Z",
+      "updated_at": "2026-01-02T10:30:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-002-b2c3d4e5",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "trip_title": "2026 跨年 101 煙火團",
+      "trip_location": "台北市 信義區",
+      "trip_image": "https://images.unsplash.com/photo-1505935428862-770b6f24f629?q=80&w=800",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "user_name": "攝影師路加",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=luke",
+      "user_age": 35,
+      "rating": 5,
+      "content": "身為攝影師，能夠拍到完美的 101 煙火一直是我的心願！這次跟著團主的安排，我們提前卡位，找到了絕佳的拍攝角度。團主不只懂得找位置，還很貼心地幫大家規劃了拍攝時間軸，讓我有充裕的時間調整相機設定。煙火秀開始時，我一邊按快門一邊感動得眼眶泛淚。今年的煙火真的超美，而且身邊有一群同樣熱愛記錄美好瞬間的夥伴，邊拍邊討論構圖和參數，這種感覺真的太棒了。回家整理照片時，每張都是滿滿的回憶，絕對會再參加明年的跨年團！",
+      "images": [
+        "https://images.unsplash.com/photo-1546271876-af6caec5fae5?q=80&w=800"
+      ],
+      "likes_count": 38,
+      "is_public": true,
+      "created_at": "2026-01-02T14:15:00Z",
+      "updated_at": "2026-01-02T14:15:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-003-c3d4e5f6",
+      "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
+      "trip_title": "綠島石朗潛水團",
+      "trip_location": "台東縣 綠島鄉",
+      "trip_image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "user_name": "吃貨凱莉",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=kelly",
+      "user_age": 27,
+      "rating": 5,
+      "content": "這是我人生第一次潛水，原本超級緊張，但是阿強教練真的非常有耐心！他會一步一步教你呼吸技巧，確認每個人都準備好了才下水。綠島的海水清澈見底，能見度超好，我看到了好多五顏六色的熱帶魚，還有可愛的海龜從身邊游過，那一刻我真的感動到差點忘記呼吸（好險面鏡裡有空氣XD）。晚上大家一起在民宿吃燒烤、看星星，聊著白天水下的趣事，笑得肚子都痛了。這趟綠島之旅不只讓我愛上了潛水，更讓我體會到旅行的美好就是與對的人分享！",
+      "images": [
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800",
+        "https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=800",
+        "https://images.unsplash.com/photo-1517627043994-b991abb62fc8?q=80&w=800"
+      ],
+      "likes_count": 56,
+      "is_public": true,
+      "created_at": "2026-01-18T16:20:00Z",
+      "updated_at": "2026-01-18T16:20:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-004-d4e5f6a7",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "trip_title": "合歡山暗空公園觀星團",
+      "trip_location": "南投縣 仁愛鄉",
+      "trip_image": "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "user_name": "文青小雨",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "user_age": 26,
+      "rating": 5,
+      "content": "這是我看過最美的星空！傑克導覽員的專業程度讓我驚艷，他不只能指出每個星座的位置，還會講述星座背後的神話故事，讓觀星變成一場浪漫的時光旅行。那天天氣非常好，銀河清晰可見，我第一次用肉眼看到這麼多星星，多到數不清。傑克還帶了專業望遠鏡，讓我們看到了土星的光環和木星的衛星，太震撼了！山上的夜晚很冷，但大家圍在一起喝熱可可、聽星空故事，心裡卻暖暖的。這趟旅程讓我對宇宙有了全新的認識，也讓我更珍惜在地球上的每一刻。",
+      "images": [
+        "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=800",
+        "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=800"
+      ],
+      "likes_count": 73,
+      "is_public": true,
+      "created_at": "2026-01-22T08:45:00Z",
+      "updated_at": "2026-01-22T08:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-005-e5f6a7b8",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "trip_title": "鶯歌捏陶半日遊",
+      "trip_location": "新北市 鶯歌區",
+      "trip_image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "user_name": "路跑珊珊",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=sunny",
+      "user_age": 28,
+      "rating": 5,
+      "content": "原本只是想嘗試看看捏陶，沒想到這趟旅程給了我意想不到的療癒體驗！妙妙老師超級溫柔有耐心，從揉土、拉坯到修飾，每個步驟都細心指導。當雙手觸碰到濕潤的陶土時，那種觸感真的很舒服，所有的壓力都在指尖融化了。雖然我做出來的杯子有點歪，但妙妙老師說「這才是手作的溫度」，讓我覺得好感動。最棒的是兩週後收到燒製好的成品，看到自己親手做的杯子，那種成就感無與倫比。現在每天用自己做的杯子喝咖啡，都會想起那天愉快的捏陶時光。",
+      "images": [
+        "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?q=80&w=800",
+        "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800"
+      ],
+      "likes_count": 45,
+      "is_public": true,
+      "created_at": "2026-01-28T11:30:00Z",
+      "updated_at": "2026-01-28T11:30:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-006-f6a7b8c9",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "trip_title": "宜蘭大同野營趣",
+      "trip_location": "宜蘭縣 大同鄉",
+      "trip_image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "user_name": "單車阿健",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ken",
+      "user_age": 42,
+      "rating": 4,
+      "content": "終於體驗了一次真正的野營！大衛真的是野外求生專家，從搭帳篷、生火到野外烹飪，每個環節都有學問。我們在溪邊紮營，傍晚時分跳進冰涼的溪水裡消暑，那感覺太爽了！晚上圍著營火烤肉，聽著蟲鳴蛙叫，配上滿天星斗，這才是真正的遠離塵囂。雖然半夜被帳篷外的聲音嚇到（後來發現只是山羌），但這種刺激感正是野營的魅力！唯一扣分的是蚊子真的很多，下次會記得帶更強效的防蚊液。整體來說是一次難忘的體驗，推薦給想挑戰自己的朋友。",
+      "images": [
+        "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=800",
+        "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=800"
+      ],
+      "likes_count": 31,
+      "is_public": true,
+      "created_at": "2026-01-26T09:15:00Z",
+      "updated_at": "2026-01-26T09:15:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-007-a7b8c9d0",
+      "trip_id": "780fb2c8-2468-46f4-85b8-bdbd10755e37",
+      "trip_title": "台中第二市場美食大搜查",
+      "trip_location": "台中市 中區",
+      "trip_image": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=800",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "user_name": "桌遊愛好者大強",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=power",
+      "user_age": 34,
+      "rating": 5,
+      "content": "身為一個吃貨，這趟美食之旅簡直是天堂！凱莉對台中的傳統小吃瞭若指掌，帶我們穿梭在市場的巷弄間，每一攤都是隱藏版美食。從早餐的魯肉飯配菜頭粿開始，接著是紅茶、肉圓、麻薏湯、古早味蛋餅...每一口都是驚喜！最讓我印象深刻的是那家開了五十年的老麵攤，簡單的乾麵卻有著無法複製的古早味。跟著在地人吃就是不一樣，完全不用怕踩雷。吃完整圈下來肚子撐到不行，但心滿意足。這種美食團真的太適合喜歡吃又不知道吃什麼的人，大推！",
+      "images": [
+        "https://images.unsplash.com/photo-1512132411229-c30391241dd8?q=80&w=800",
+        "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=800"
+      ],
+      "likes_count": 52,
+      "is_public": true,
+      "created_at": "2026-01-03T15:40:00Z",
+      "updated_at": "2026-01-03T15:40:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-008-b8c9d0e1",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "trip_title": "淡水河畔夕陽攝影團",
+      "trip_location": "新北市 淡水區",
+      "trip_image": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=800",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "user_name": "小明愛旅行",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "user_age": 33,
+      "rating": 5,
+      "content": "這是一趟收穫滿滿的攝影之旅！路加老師不只是攝影高手，更是一位很棒的老師。他從最基本的光圈、快門講起，到如何構圖、如何等待最佳光線，每個技巧都講解得淺顯易懂。那天的夕陽超美，天空被染成橘紅色，倒映在河面上波光粼粼。路加帶我們找到了一個私房拍攝點，避開人潮又能拍到完整的夕陽。在他的指導下，我這個攝影菜鳥也拍出了可以當桌布的照片！攝影結束後大家一起在老街吃阿給、喝鐵蛋配啤酒，這種愜意的氛圍真的太美好了。",
+      "images": [
+        "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?q=80&w=800",
+        "https://images.unsplash.com/photo-1494548162494-384bba4ab999?q=80&w=800"
+      ],
+      "likes_count": 47,
+      "is_public": true,
+      "created_at": "2026-01-09T19:20:00Z",
+      "updated_at": "2026-01-09T19:20:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-009-c9d0e1f2",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "trip_title": "台北河濱晨跑 10K",
+      "trip_location": "台北市 中山區",
+      "trip_image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "user_name": "野營專家大衛",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
+      "user_age": 39,
+      "rating": 4,
+      "content": "早起跑步真的需要動力，而這個晨跑團就是最好的動力來源！珊珊配速控制得很好，不會太快讓人跟不上，也不會太慢讓人覺得沒挑戰。河濱的空氣清新，陽光灑在身上暖暖的，跑起來特別舒服。大家邊跑邊聊天，不知不覺就跑完了 10 公里，完全不覺得累！跑完後珊珊帶我們去吃附近的豆漿油條當早餐，流汗後吃東西真的特別香。這種健康又能交朋友的活動真的太棒了，已經報名下次的 15K 挑戰賽，期待再次與大家一起揮灑汗水！",
+      "images": [
+        "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800"
+      ],
+      "likes_count": 29,
+      "is_public": true,
+      "created_at": "2026-01-04T08:00:00Z",
+      "updated_at": "2026-01-04T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-010-d0e1f2a3",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "trip_title": "板橋桌遊之夜｜派對遊戲",
+      "trip_location": "新北市 板橋區",
+      "trip_image": "https://images.unsplash.com/photo-1632501641765-e568d28b0015?q=80&w=800",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "user_name": "手作達人妙妙",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=mia",
+      "user_age": 32,
+      "rating": 5,
+      "content": "超級好玩的一個晚上！大強準備的桌遊都是派對型的，規則簡單但超級歡樂。我們玩了《說書人》、《犯人在跳舞》還有《機密代號》，每一款都笑到肚子痛。雖然大家一開始都不認識，但玩了幾場遊戲後就變得超熟，聊天聊到完全忘記時間。大強還準備了零食和飲料，服務超周到。我特別喜歡《說書人》，每個人的想像力都太豐富了，猜圖猜到快笑死。這種不需要體力、又能快速破冰交朋友的活動真的很適合我這種宅女，已經預約下次的策略桌遊場了！",
+      "images": [
+        "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?q=80&w=800"
+      ],
+      "likes_count": 36,
+      "is_public": true,
+      "created_at": "2026-01-10T23:15:00Z",
+      "updated_at": "2026-01-10T23:15:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-011-e1f2a3b4",
+      "trip_id": "ddfa6703-c52b-419e-88f3-d70ba0a39a49",
+      "trip_title": "嘉義美術館文青之旅",
+      "trip_location": "嘉義市 西區",
+      "trip_image": "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=800",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "user_name": "攝影師路加",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=luke",
+      "user_age": 35,
+      "rating": 5,
+      "content": "嘉義市立美術館的建築本身就是一件藝術品！這趟由小雨帶領的文青之旅，讓我對嘉義有了完全不同的認識。我們從日治時期的老建築走到現代藝術空間，小雨對每個地方的歷史背景都如數家珍，聽她導覽比看導覽手冊有趣一百倍。館內的展覽也很精彩，結合了在地特色與當代藝術。最棒的是行程很鬆散，有充分的時間讓我拍照記錄。結束後我們在老屋咖啡廳喝下午茶，陽光透過老窗灑進來，那個畫面美到我拍了好幾張。這種慢步調的深度旅行，正是我一直在尋找的旅行方式。",
+      "images": [
+        "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?q=80&w=800",
+        "https://images.unsplash.com/photo-1494587351196-bbf5f29cff42?q=80&w=800"
+      ],
+      "likes_count": 41,
+      "is_public": true,
+      "created_at": "2026-01-06T17:30:00Z",
+      "updated_at": "2026-01-06T17:30:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "rev-012-f2a3b4c5",
+      "trip_id": "3f2f92a9-8d95-43e0-b1bd-29df94b0cc02",
+      "trip_title": "龍洞攀岩初體驗",
+      "trip_location": "新北市 貢寮區",
+      "trip_image": "https://images.unsplash.com/photo-1601024445121-e5b82f020549?q=80&w=800",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "user_name": "阿龍司機",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=dragon",
+      "user_age": 47,
+      "rating": 4,
+      "content": "年近五十還能挑戰攀岩，真的要感謝阿強教練的鼓勵！一開始我很懷疑自己能不能爬得上去，但阿強說只要願意嘗試，年齡不是問題。他幫我們穿戴好安全裝備，講解繩結和確保技巧，讓我們知道這是一項很安全的運動。第一次攀爬時手腳都在抖，但當我成功爬到頂端往下看，看到太平洋就在腳下，那種成就感無法言喻！雖然隔天全身痠痛，但心裡是滿足的。唯一建議是夏天去要注意防曬，岩壁上真的很熱。這次經驗讓我對「挑戰自我」有了新的體悟，人生真的要多嘗試！",
+      "images": [
+        "https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=800",
+        "https://images.unsplash.com/photo-1516592673884-4a382d1124c3?q=80&w=800"
+      ],
+      "likes_count": 28,
+      "is_public": true,
+      "created_at": "2026-02-06T14:00:00Z",
+      "updated_at": "2026-02-06T14:00:00Z",
+      "deleted_at": null
+    }
+  ],
   "messages": [],
   "notifications": [],
   "reports": [],
@@ -3297,56 +3574,98 @@
     {
       "id": "ff2470c6-3e41-4701-901e-6b9809f38002",
       "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "user_name": "攝影師路加",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=luke",
+      "user_age": 35,
       "contact_email": "luke@test.com",
-      "rating": 3,
-      "content": "介面很清爽，操作也很直覺！",
+      "rating": 4,
+      "content": "介面很清爽，操作也很直覺！搜尋旅程的功能設計得很好，可以快速找到想參加的活動。希望未來能增加更多攝影相關的行程分類。",
       "is_public": true,
       "created_at": "2026-02-05T16:11:09.270168"
     },
     {
       "id": "aec0cd4e-712f-4b71-b1fd-c43ec6d20c5b",
       "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_name": "露營女孩艾琳",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
+      "user_age": 30,
       "contact_email": "irene@example.com",
-      "rating": 4,
-      "content": "希望能增加更多登山團，很喜歡這個平台。",
+      "rating": 5,
+      "content": "超棒的平台！透過這裡認識了好多喜歡露營的朋友。希望能增加更多登山團和野營活動，也建議可以加入裝備共享的功能。",
       "is_public": true,
       "created_at": "2026-02-05T16:11:09.270168"
     },
     {
       "id": "c36d994f-1a80-471e-bf2e-74d5e36ea366",
       "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "user_name": "野營專家大衛",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
+      "user_age": 39,
       "contact_email": "david@test.com",
-      "rating": 3,
-      "content": "手機版瀏覽速度還可以再優化一點。",
+      "rating": 4,
+      "content": "手機版瀏覽速度還可以再優化一點，不過整體來說功能已經很完善。特別喜歡可以看到團主的評價紀錄，讓人比較放心報名。",
       "is_public": true,
       "created_at": "2026-02-05T16:11:09.270168"
     },
     {
       "id": "bca35df8-fbb2-47f3-a383-8fee7533dc95",
       "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "user_name": "路跑珊珊",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=sunny",
+      "user_age": 28,
       "contact_email": "sunny@test.com",
       "rating": 5,
-      "content": "媒合速度很快，我也成功找到旅伴了！",
+      "content": "媒合速度很快，我也成功找到旅伴了！之前一個人跑步都覺得無聊，現在每週都有跑友一起約跑，真的很開心認識大家！",
       "is_public": true,
       "created_at": "2026-02-05T16:11:09.270168"
     },
     {
       "id": "0380c92c-4fc6-430c-a88b-4fd369992ad9",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "user_name": "阿龍司機",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=dragon",
+      "user_age": 47,
       "contact_email": "dragon@example.com",
       "rating": 3,
-      "content": "建議增加黑名單功能，有些團主很雷。",
+      "content": "建議增加黑名單功能，有些團主很雷。另外如果能加入司機專屬的標籤會更好，方便需要交通接送的團找到我們。",
       "is_public": true,
       "created_at": "2026-02-05T16:11:09.270168"
     },
     {
       "id": "24866fc3-807b-44a5-8b9f-afbd1735afee",
       "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "user_name": "小明愛旅行",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "user_age": 33,
       "contact_email": "ming@example.com",
       "rating": 5,
-      "content": "整體體驗不錯，但搜尋功能可以再強大一點。",
+      "content": "整體體驗不錯，搜尋功能很強大，可以按照地區、日期、類型來篩選。作為團主開團也很方便，系統自動幫我管理報名人數。",
       "is_public": true,
       "created_at": "2026-02-05T16:11:09.270168"
+    },
+    {
+      "id": "fb1a2b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "user_name": "手作達人妙妙",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=mia",
+      "user_age": 32,
+      "contact_email": "mia@test.com",
+      "rating": 5,
+      "content": "非常適合開辦手作體驗課程！學員可以直接在平台上報名，省去很多溝通成本。介面設計也很溫馨，符合手作愛好者的品味。",
+      "is_public": true,
+      "created_at": "2026-02-03T10:22:15.000000"
+    },
+    {
+      "id": "ab2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "user_name": "星空導覽員傑克",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=jack",
+      "user_age": 43,
+      "contact_email": "jack@test.com",
+      "rating": 5,
+      "content": "開觀星團的好幫手！可以設定天候取消政策，參加者也都能理解。平台上聚集了很多對天文有興趣的朋友，招募團員變得很容易。",
+      "is_public": true,
+      "created_at": "2026-02-01T21:45:30.000000"
     }
   ],
   "categories": [

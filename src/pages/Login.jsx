@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 import LoginForm from "../components/LoginForm";
 import logo from '../assets/images/logo.svg';
-
+import Breadcrumb from '../components/Breadcrumb';
 import '../assets/css/login.css';
 
 function Login() {
@@ -26,29 +26,36 @@ function Login() {
 
 
     return (
-        <div className="login-page-container d-flex align-items-center justify-content-center">
-            <div className="login-card d-flex overflow-hidden bg-white shadow-lg">
-                {/* 左側：品牌視覺區 (桌機顯示) */}
-                <div className="login-visual d-none d-lg-flex flex-column justify-content-end p-5 text-white">
-                    <h2 className="display-5 fw-bold mb-3">開啟你的<br />下一次冒險</h2>
-                    <p className="lead opacity-75">加入 TripSeat，與志同道合的旅伴一起探索世界每個角落。</p>
-                </div>
-
-                {/* 右側：登入區 */}
-                <div className="login-form-section p-4 p-md-5 d-flex flex-column">
-                    <div className="mb-5">
-                        <Link to="/">
-                            <img src={logo} alt="TripSeat" height="40" className="mb-4" />
-                        </Link>
-                        <h3 className="fw-bold text-dark">歡迎回來！</h3>
-                        <p className="text-muted">請登入您的帳號以繼續</p>
+        <div className="container-xl pt-5">
+            {/* Breadcrumb */}
+            <Breadcrumb items={[
+                { label: '首頁', path: '/' },
+                { label: '登入' },
+            ]} />
+            <div className="login-page-container d-flex align-items-center justify-content-center">
+                <div className="login-card d-flex overflow-hidden bg-white shadow-lg">
+                    {/* 左側：品牌視覺區 (桌機顯示) */}
+                    <div className="login-visual d-none d-lg-flex flex-column justify-content-end p-5 text-white">
+                        <h2 className="display-5 fw-bold mb-3">開啟你的<br />下一次冒險</h2>
+                        <p className="lead opacity-75">加入 TripSeat，與志同道合的旅伴一起探索世界每個角落。</p>
                     </div>
 
-                    <LoginForm />
+                    {/* 右側：登入區 */}
+                    <div className="login-form-section p-4 p-md-5 d-flex flex-column">
+                        <div className="mb-5">
+                            <Link to="/">
+                                <img src={logo} alt="TripSeat" height="40" className="mb-4" />
+                            </Link>
+                            <h3 className="fw-bold text-dark">歡迎回來！</h3>
+                            <p className="text-muted">請登入您的帳號以繼續</p>
+                        </div>
 
-                    <div className="mt-auto pt-5 text-center">
-                        <span className="text-muted">還沒有帳號嗎？</span>
-                        <Link to="/register" className="ms-2 fw-bold text-primary text-decoration-none">立即註冊</Link>
+                        <LoginForm />
+
+                        <div className="mt-auto pt-5 text-center">
+                            <span className="text-muted">還沒有帳號嗎？</span>
+                            <Link to="/register" className="ms-2 fw-bold text-primary text-decoration-none">立即註冊</Link>
+                        </div>
                     </div>
                 </div>
             </div>
