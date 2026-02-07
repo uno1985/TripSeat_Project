@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
-import '../assets/css/tripDetail.css';
 import { useAuth } from '../contexts/AuthContext';
+import Breadcrumb from '../components/Breadcrumb';
+import axios from 'axios';
+import '../assets/css/tripDetail.css';
+import shieldCheck from '../assets/images/shield-check.svg';
 
 
 const API_URL = import.meta.env.VITE_API_BASE;
@@ -10,6 +12,7 @@ const API_URL = import.meta.env.VITE_API_BASE;
 function TripDetail() {
     const { id } = useParams();
     const [trip, setTrip] = useState(null);
+    const [otherTrip, setOtherTrip] = useState(null);
     const [owner, setOwner] = useState(null);
     const [itineraries, setItineraries] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -30,29 +33,25 @@ function TripDetail() {
 
         try {
             // 先取得 trip 資料
-            const tripRes = await fetch(`${API_URL}/trips/${id}`);
+            const tripRes = await axios.get(`${API_URL}/664/trips/${id}`);
 
-            if (!tripRes.ok) {
-                throw new Error('找不到此旅程');
-            }
-
-            const tripData = await tripRes.json();
-
-            // 同時取得 itineraries 和 owner 資料
-            const [itineraryRes, ownerRes] = await Promise.all([
-                fetch(`${API_URL}/itineraries?trip_id=${id}`),
-                fetch(`${API_URL}/users/${tripData.owner_id}`)
+            // 同時用解構方式取得 itineraries 和 owner 資料
+            const [itineraryRes, ownerRes, otherTripRes] = await Promise.all([
+                axios.get(`${API_URL}/664/itineraries?trip_id=${tripRes.data.id}`),
+                axios.get(`${API_URL}/664/users/${tripRes.data.owner_id}`),
+                axios.get(`${API_URL}/664/trips?owner_id=${tripRes.data.owner_id}`)
             ]);
 
-            const itineraryData = await itineraryRes.json();
-            const ownerData = ownerRes.ok ? await ownerRes.json() : null;
 
-            setTrip(tripData);
-            setItineraries(itineraryData);
-            setOwner(ownerData);
+            //刪除目前查詢的ID
+            const otherTrip = otherTripRes.data.filter(trip => trip.id !== tripRes.data.id);
+
+            setTrip(tripRes.data);
+            setItineraries(itineraryRes.data);
+            setOtherTrip(otherTrip);
+            setOwner(ownerRes.data);
         } catch (err) {
             setError(err.message);
-            console.error(err);
         } finally {
             setLoading(false);
         }
@@ -207,23 +206,24 @@ function TripDetail() {
         vibeTags: trip.vibe_tags || [],
         itinerary: formatItineraries(itineraries, trip.start_date),
         images: allImages,
-        applicants: Math.max(0, (trip.max_people || 4) - (trip.current_participants || 0))
+        applicants: Math.max(0, (trip.max_people || 4) - (trip.current_participants || 0)),
+        //其他旅程的ID跟第一張圖
+        otherTripItems: otherTrip.map(trip => ({
+            id: trip.id,
+            image: trip.image_url
+        }))
     };
 
     return (
         <div className="trip-detail-page">
-            <div className="container py-4">
+            <div className="container pt-5">
 
                 {/* Breadcrumb */}
-                <nav className="breadcrumb-nav mb-3">
-                    <span className="trip-text-s trip-text-gray-400">
-                        <Link to="/" className="text-decoration-none trip-text-gray-400">首頁</Link>
-                        {' / '}
-                        <Link to="/trips" className="text-decoration-none trip-text-gray-400">探索旅程</Link>
-                        {' / '}
-                        <span className="trip-text-gray-800">{t.title}</span>
-                    </span>
-                </nav>
+                <Breadcrumb items={[
+                    { label: '首頁', path: '/' },
+                    { label: '探索旅程' },
+                    { label: t.title }
+                ]} />
 
                 {/* Title & Tags */}
                 <div className="trip-header mb-4">
@@ -462,40 +462,28 @@ function TripDetail() {
                                 {/* 過往旅程記憶 */}
                                 <h6 className="subsection-title trip-text-gray-400 mb-3">過往旅程記憶</h6>
                                 <div className="memory-gallery mb-4">
-                                    <div className="memory-item placeholder">
-                                        <div className="placeholder-icon">
-                                            <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                                <path d="M28 0H4C1.79 0 0 1.79 0 4V20C0 22.21 1.79 24 4 24H28C30.21 24 32 22.21 32 20V4C32 1.79 30.21 0 28 0ZM4 20V4H28L28.01 20H4Z" fill="#D4D4D4" />
-                                                <circle cx="8" cy="8" r="2" fill="#D4D4D4" />
-                                                <path d="M24 16H8L12 10L15 14L18 10L24 16Z" fill="#D4D4D4" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="memory-item placeholder">
-                                        <div className="placeholder-icon">
-                                            <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                                <path d="M28 0H4C1.79 0 0 1.79 0 4V20C0 22.21 1.79 24 4 24H28C30.21 24 32 22.21 32 20V4C32 1.79 30.21 0 28 0ZM4 20V4H28L28.01 20H4Z" fill="#D4D4D4" />
-                                                <circle cx="8" cy="8" r="2" fill="#D4D4D4" />
-                                                <path d="M24 16H8L12 10L15 14L18 10L24 16Z" fill="#D4D4D4" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="memory-item placeholder">
-                                        <div className="placeholder-icon">
-                                            <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                                <path d="M28 0H4C1.79 0 0 1.79 0 4V20C0 22.21 1.79 24 4 24H28C30.21 24 32 22.21 32 20V4C32 1.79 30.21 0 28 0ZM4 20V4H28L28.01 20H4Z" fill="#D4D4D4" />
-                                                <circle cx="8" cy="8" r="2" fill="#D4D4D4" />
-                                                <path d="M24 16H8L12 10L15 14L18 10L24 16Z" fill="#D4D4D4" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                                    {t.otherTripItems && t.otherTripItems.length > 0 ? (
+                                        // 有資料時顯示圖片
+                                        t.otherTripItems.map(item => (
+                                            <div key={item.id} className="memory-item">
+                                                <Link to={`/trips/${item.id}`}>
+                                                    <img src={item.image} alt={item.title || ''} className="memory-image" />
+                                                </Link>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        // 沒資料時顯示 placeholder
+                                        <>
+
+                                        </>
+                                    )}
                                 </div>
 
                                 {/* Verified Badge Button */}
                                 {t.host.isVerified ? (
-                                    <button className="verified-btn">
-                                        <span className="verified-icon">🛡️</span> 已認證 真安心團主
-                                    </button>
+                                    <div className="verified-btn">
+                                        <span className="verified-icon" ><img src={shieldCheck} alt="shieldCheck" /></span> 已認證 真安心團主
+                                    </div>
                                 ) : null}
                             </div>
 

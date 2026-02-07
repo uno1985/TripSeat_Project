@@ -72,7 +72,7 @@ function Navbar() {
 
     };
 
-    if (loading) return null;
+
 
     return (
         <div className="trip-navbar">
@@ -149,9 +149,13 @@ function Navbar() {
                                     </div>
                                 </div>
                             </>
-                            ) : (
-                                <button className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => handleShowLogin()}>註冊 / 登入</button>
-                            )}
+                            ) : (<>
+                                {
+                                    loading ? (<div><p>伺服器準備中...</p></div>) : (<button className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => handleShowLogin()}>註冊 / 登入</button>)
+                                }
+
+
+                            </>)}
                         </div>
                     </div>
                 </div>

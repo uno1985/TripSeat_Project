@@ -5,6 +5,7 @@ import Home from "../pages/Home"
 import MemberCenter from "../pages/member/MemberCenter"
 import NotFound from "../pages/NotFound"
 import Thoughts from "../pages/Thoughts"
+import ThoughtsDetail from "../pages/ThoughtsDetail"
 import TripsSearch from "../pages/TripsSearch"
 import TripDetail from "../pages/TripDetail"
 import Login from "../pages/Login"
@@ -35,10 +36,16 @@ const routes = [
 
             },
             {
+                path: '/thoughts/:id',
+                element: <ThoughtsDetail />
+
+            },
+            {
                 path: '/about',
                 element: <About />
 
             },
+
             {
                 path: '/login',
                 element: <Login />
