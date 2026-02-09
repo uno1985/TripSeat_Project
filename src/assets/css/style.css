@@ -66,8 +66,7 @@ body{
 /* 旅遊心得 end*/
 
 .reviewsSection {
-  height: 400px; /* 規劃用 */
-  background-color: var(--trip-color-gray-400);
+  background-color: var(--trip-color-gray-100);
 }
 
 /* Balloon-Bear */
