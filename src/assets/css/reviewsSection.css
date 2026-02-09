@@ -1,0 +1,165 @@
+.pt-52 {
+  padding-top: 52px;
+}
+.pt-100 {
+  padding-top: 100px;
+}
+.pr-32 {
+  padding-right: 32px;
+}
+.pb-60 {
+  padding-bottom: 60px;
+}
+.mt-12 {
+  margin-top: 12px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+.mt-52 {
+  margin-top: 52px;
+}
+.mb-4 {
+  margin-bottom: 4px;
+}
+.mb-16 {
+  margin-bottom: 16px;
+}
+.mb-52 {
+  margin-bottom: 52px;
+}
+.mb-100 {
+  margin-bottom: 100px;
+}
+
+.g-28 {
+  gap: 28px;
+}
+
+.relative {
+  position: relative;
+}
+
+.rev-card-content img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.white-bg {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 60px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.rev-card-content {
+  z-index: 1;
+  padding-bottom: 28px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.z-1 {
+  z-index: 1;
+}
+.rev-card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.rev-bg-pic {
+  position: absolute;
+  bottom: -238px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.bCloud {
+  position: absolute;
+  bottom: 118px;
+  right: -42px;
+}
+.sCloud {
+  position: absolute;
+  top: 116px;
+  right: 183px;
+}
+.mCloud {
+  position: absolute;
+  top: 368px;
+  left: -41px;
+}
+
+/* 箭頭樣式 */
+.scroll-btn {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-49%);
+  z-index: 5;
+  cursor: pointer;
+  display: none;
+  padding: 0;
+  color: #fff;
+  font-size: 24px;
+  padding: 8px;
+  background-color: var(--trip-color-primary-800);
+  border-radius: 50%;
+  border: none;
+}
+
+.scroll-btn.left {
+  left: 12px;
+  z-index: 1000;
+}
+.scroll-btn.right {
+  right: 12px;
+}
+
+/* 卡片排版 */
+.rev-card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .rev-card {
+    gap: 20px;
+  }
+
+  .bCloud {
+    right: -50px;
+    height: 100px;
+    width: auto;
+    bottom: 190px;
+  }
+  .sCloud {
+    position: absolute;
+    top: 116px;
+    right: 70px;
+  }
+}
+@media (max-width: 992px) {
+  .scroll-btn {
+    display: flex;
+    z-index: 5;
+  }
+}
+@media (max-width: 768px) {
+  .bCloud {
+    display: none;
+  }
+  .mCloud {
+    position: absolute;
+    top: 142px;
+    left: -44px;
+  }
+}
