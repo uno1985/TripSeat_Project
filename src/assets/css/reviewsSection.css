@@ -7,6 +7,15 @@
 .pr-32 {
   padding-right: 32px;
 }
+.ps-12 {
+  padding-left: 12px;
+}
+.pb8 {
+  padding-bottom: 8px;
+}
+.pb-12 {
+  padding-bottom: 12px;
+}
 .pb-60 {
   padding-bottom: 60px;
 }
@@ -31,6 +40,12 @@
 }
 .mb-100 {
   margin-bottom: 100px;
+}
+.mr-8 {
+  margin-right: 8px;
+}
+.mr-12 {
+  margin-right: 12px;
 }
 
 .g-28 {
@@ -79,6 +94,7 @@
   transform: translateX(-50%);
   z-index: 0;
 }
+/* 雲朵 */
 .bCloud {
   position: absolute;
   bottom: 118px;
@@ -130,6 +146,37 @@
   width: 100%;
 }
 
+/* color */
+.gray-400 {
+  color: var(--trip-color-gray-400);
+}
+.primary-800 {
+  color: var(--trip-color-primary-800);
+}
+
+/* font */
+.fz-20 {
+  font-size: 20px;
+}
+.fz-16 {
+  font-size: 16px;
+}
+@media (max-width: 992px) {
+  .fz-20 {
+    font-size: 18px;
+  }
+  .fz-16 {
+    font-size: 14px;
+  }
+  @media (max-width: 768px) {
+    .fz-20 {
+      font-size: 16px;
+    }
+  }
+}
+.fw-400 {
+  font-weight: 400;
+}
 @media (max-width: 1200px) {
   .rev-card {
     gap: 20px;
@@ -159,7 +206,13 @@
   }
   .mCloud {
     position: absolute;
-    top: 142px;
-    left: -44px;
+    top: 200px;
+    left: -24px;
+    max-height: 58px;
   }
+   .sCloud {
+   display: none;
+  }
+
+
 }

@@ -65,6 +65,7 @@ const scrollRevCard = (direction) => {
 function ReviewsSection() {
   return (
     <div className="reviewsSection text-center relative overflow-hidden">
+      
       {/* 背景雲朵 */}
       <img src={group125} alt="Background picture" className="rev-bg-pic z-0" />
       <img src={bCloud} alt="Big Cloud" className="bCloud z-0" />
@@ -78,7 +79,7 @@ function ReviewsSection() {
 
         {/* 左箭頭 */}
         <button className="scroll-btn left" onClick={() => scrollRevCard(-1)}>
-          <i class="bi bi-chevron-left"></i>
+          <i className="bi bi-chevron-left"></i>
         </button>
 
         {/* 卡片內容 */}
