@@ -1,4 +1,7 @@
+//導入套件
 import { Link } from "react-router-dom";
+
+//導入樣式
 import "../assets/css/notFound.css";
 
 const NotFound = () => {

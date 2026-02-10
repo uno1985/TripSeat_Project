@@ -1,8 +1,12 @@
+//導入套件
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import Breadcrumb from '../components/Breadcrumb';
 import axios from 'axios';
+
+//導入元件
+import Breadcrumb from '../components/Breadcrumb';
+
+//導入樣式
 import '../assets/css/thoughts.css';
 
 const API_URL = import.meta.env.VITE_API_BASE;

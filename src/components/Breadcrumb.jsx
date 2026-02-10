@@ -1,4 +1,7 @@
+//導入套件
 import { Link } from 'react-router-dom';
+
+//導入樣式
 import '../assets/css/breadcrumb.css';
 
 /**
@@ -24,6 +27,8 @@ import '../assets/css/breadcrumb.css';
  *   { label: trip.title }
  * ]} />
  */
+
+
 function Breadcrumb({ items = [] }) {
   // 預設首頁
   const defaultItems = [{ label: '首頁', path: '/' }];

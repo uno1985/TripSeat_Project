@@ -1,10 +1,16 @@
+//導入套件
 import { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from "../contexts/AuthContext";
 
+//導入元件
+import { useAuth } from "../contexts/AuthContext";
 import LoginForm from "../components/LoginForm";
-import logo from '../assets/images/logo.svg';
 import Breadcrumb from '../components/Breadcrumb';
+
+//導入圖片
+import logo from '../assets/images/logo.svg';
+
+//導入樣式
 import '../assets/css/login.css';
 
 function Login() {
