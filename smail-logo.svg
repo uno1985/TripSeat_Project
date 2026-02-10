@@ -57,7 +57,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
   <rect
-     style="opacity:1;fill:#f9f9f9;fill-opacity:1;stroke:#ffff00;stroke-width:0;stroke-dasharray:none;stroke-opacity:1;stroke-linejoin:round;stroke-linecap:round;paint-order:normal;stroke-miterlimit:7.4"
+     style="display:none;opacity:1;fill:#ffff00;fill-opacity:1;stroke:#ffff00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:7.4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
      id="rect18"
      width="41.196228"
      height="34.145672"
@@ -68,5 +68,5 @@
      fill="#333333"
      id="path1"
      sodipodi:nodetypes="sssssssccssssssscscsssssccccccccscccccccccssssccccsssscccccccccccccccsccccscssscsss"
-     style="stroke-width:0.880034" />
+     style="stroke-width:0.880034;fill:#ffffff" />
 </svg>
