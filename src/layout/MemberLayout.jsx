@@ -24,8 +24,6 @@ const MemberLayout = () => {
                     
                     <Outlet />
                 </div>
-                {/* <CenterNotifications />
-                    <MyGroups /> */}
             </div >
         </div>
     )
