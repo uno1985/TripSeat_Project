@@ -34,6 +34,7 @@ import MemberGroups from "../pages/member/MemberGroups"
 import MemberCreateGroups from "../pages/member/MemberCreateGroups"
 import MemberFavorites from "../pages/member/MemberFavorites"
 import MemberNotifications from "../pages/member/MemberNotifications"
+import Legal from "../pages/Legal"
 
 
 const routes = [
@@ -70,6 +71,11 @@ const routes = [
                 //關於TripSeat
                 path: '/about',
                 element: <About />
+            },
+            {
+                //服務條款與幫助
+                path: '/legal',
+                element: <Legal />
             },
             {
                 //登入
