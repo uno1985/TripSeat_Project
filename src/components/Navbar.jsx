@@ -1,15 +1,19 @@
+// 導入套件
+import * as bootstrap from "bootstrap";
 import { useCallback, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import * as bootstrap from "bootstrap";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/AuthContext";
-import '../assets/css/navbar.css';
-import '../assets/css/loginModal.css';
+
+//導入圖片
 import logo from '../assets/images/logo.svg';
 import LoginModal from '../components/LoginModal';
 
+//導入樣式
+import '../assets/css/navbar.css';
+import '../assets/css/loginModal.css';
 
-
+//開發中測試用帳號 完成後刪除
 const test = {
     email: 'rain@test.com',
     password: 'password123'
@@ -19,11 +23,12 @@ const test = {
 function Navbar() {
     const { isLogin, user, login, logout, loading } = useAuth();
     const loginModalRef = useRef(null);
-
     const {
         register,
         handleSubmit,
-        reset
+        reset,
+        formState: {
+            errors }
     } = useForm({ defaultValues: test });
 
     // 初始化 Modal
@@ -35,11 +40,7 @@ function Navbar() {
                 backdrop: 'static'
             });
         }
-
     }, [loading]);
-
-
-
 
 
     const onSubmit = useCallback(async (data) => {

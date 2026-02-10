@@ -1,11 +1,18 @@
+//導入套件
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
-import Breadcrumb from '../components/Breadcrumb';
 import axios from 'axios';
+
+//導入元件
+import Breadcrumb from '../components/Breadcrumb';
+
+//導入圖片
 import shieldCheck from '../assets/images/shield-check.svg';
+
+//導入樣式
 import '../assets/css/thoughts.css';
 
+// API URL
 const API_URL = import.meta.env.VITE_API_BASE;
 
 function ThoughtsDetail() {

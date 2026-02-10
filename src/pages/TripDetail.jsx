@@ -1,12 +1,19 @@
+//導入套件
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+
+//導入元件
 import { useAuth } from '../contexts/AuthContext';
 import Breadcrumb from '../components/Breadcrumb';
-import axios from 'axios';
-import '../assets/css/tripDetail.css';
+
+//導入圖片
 import shieldCheck from '../assets/images/shield-check.svg';
 
+//導入樣式
+import '../assets/css/tripDetail.css';
 
+//API URL
 const API_URL = import.meta.env.VITE_API_BASE;
 
 function TripDetail() {

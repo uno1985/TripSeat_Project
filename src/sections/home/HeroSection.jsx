@@ -1,12 +1,16 @@
+//導入套件
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../../assets/css/heroSection.css';
 
+//導入圖片
 import smailCloud from '../../assets/images/small-cloud.svg';
 import bigCloud from '../../assets/images/big-cloud.svg';
 import homeHero01 from '../../assets/images/home-hero-01.svg';
 import homeHero02 from '../../assets/images/home-hero-02.svg';
 import homeHero04 from '../../assets/images/home-hero-04.PNG';
+
+//導入樣式
+import '../../assets/css/heroSection.css';
 
 function HeroSection() {
     const [currentIndex, setCurrentIndex] = useState(0);
