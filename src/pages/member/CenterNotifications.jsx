@@ -1,4 +1,3 @@
-import React from 'react';
 import '../../assets/css/notifictions.css';
 
 const Notifications = () => {
@@ -47,7 +46,7 @@ const Notifications = () => {
               <span className={`badge rounded-1 px-2 py-2 fw-normal ${note.badgeClass}`}>
                 {note.typeText}
               </span>
-              
+
               {/* 內容文字區塊 */}
               <div className="flex-grow-1">
                 <p className="mb-0 trip-text-l">

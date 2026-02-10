@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../assets/css/memberSidebar.css';
 import avatarImg from '../assets/images/avator09.png';
@@ -33,9 +33,9 @@ const MemberSidebar = () => {
             <span className="fs-5 fw-medium text-dark">{currentTitle}</span>
             <span className={`dropdown-toggle ${isOpen ? 'show' : ''}`}></span>
           </button>
-          
-          <ul className={`dropdown-menu w-100 shadow-sm border-0 mt-1 ${isOpen ? 'show' : ''}`} 
-              style={{ display: isOpen ? 'block' : 'none' }}>
+
+          <ul className={`dropdown-menu w-100 shadow-sm border-0 mt-1 ${isOpen ? 'show' : ''}`}
+            style={{ display: isOpen ? 'block' : 'none' }}>
             {menuItems.map((item, index) => (
               <li key={index}>
                 <Link
@@ -79,9 +79,8 @@ const MemberSidebar = () => {
               <li key={index} className="mb-3">
                 <Link
                   to={item.path}
-                  className={`nav-link py-2 fs-5 fw-medium transition-all ${
-                    location.pathname === item.path ? 'text-primary' : 'text-dark'
-                  }`}
+                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'text-primary' : 'text-dark'
+                    }`}
                   style={{ textDecoration: 'none' }}
                 >
                   {item.name}

@@ -35,7 +35,7 @@ function HeroSection() {
         flipText(heroData[currentIndex].title1, heroData[currentIndex].title2);
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % heroData.length);
-        }, 15000);
+        }, 8000);
         return () => clearInterval(timer);
     }, [currentIndex]);
 
