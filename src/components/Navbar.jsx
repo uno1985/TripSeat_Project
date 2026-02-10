@@ -4,7 +4,10 @@ import * as bootstrap from "bootstrap";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/AuthContext";
 import '../assets/css/navbar.css';
+import '../assets/css/loginModal.css';
 import logo from '../assets/images/logo.svg';
+import LoginModal from '../components/LoginModal';
+
 
 
 const test = {
@@ -160,31 +163,9 @@ function Navbar() {
                     </div>
                 </div>
             </nav >
-
-            {/* Login Modal */}
-            < div id="loginModal" className="modal fade" tabIndex="-1" >
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">登入 / 註冊 提示</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div className="modal-body">
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className="mb-3">
-                                    <label className="form-label fw-bold">電子信箱</label>
-                                    <input type="email" className="form-control" placeholder="example@mail.com"  {...register("email")} />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label fw-bold">密碼</label>
-                                    <input type="password" className="form-control"  {...register("password")} />
-                                </div>
-                                <button type="submit" className="btn btn-primary">登入</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div >
+            <> {/*登入Modal*/}
+                <LoginModal handleSubmit={handleSubmit} ref={loginModalRef} register={register} onSubmit={onSubmit} />
+            </>
         </div >
     );
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import '../../assets/css/myGroups.css';
 import time from '../../assets/images/time.svg'
 
@@ -47,9 +46,9 @@ const MyGroups = () => {
             <div className="card">
               {/* 圖片區域 */}
               <div className='position-relative'>
-                <img 
-                  src={group.image} 
-                  className="card-img-top" 
+                <img
+                  src={group.image}
+                  className="card-img-top"
                   alt={group.title}
                 />
                 <span className={`position-absolute top-0 start-0 m-3 badge px-2 py-1 fw-normal ${group.statusClass}`}>
