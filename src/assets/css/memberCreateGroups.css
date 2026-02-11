@@ -1,0 +1,284 @@
+/**
+ * 📍 目標位置：src/assets/css/memberCreateGroups.css
+ * 📝 在 MemberCreateGroups.jsx 中已 import
+ */
+
+/* ===== 我要開團頁面 ===== */
+.create-group-page {
+  padding-bottom: 40px;
+}
+
+/* 頁面標題 */
+.create-group-header {
+  border-bottom: 2px solid var(--trip-color-primary-200);
+  padding-bottom: 16px;
+}
+
+/* ===== 卡片區塊 ===== */
+.create-group-card {
+  background-color: var(--trip-color-white);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.create-group-card-title {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h5-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-800);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--trip-color-gray-100);
+}
+
+.create-group-card-title i {
+  color: var(--trip-color-primary-800);
+}
+
+/* ===== 表單元素 ===== */
+.create-group-label {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-600);
+  margin-bottom: 6px;
+}
+
+.create-group-input {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-800);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.create-group-input:focus {
+  border-color: var(--trip-color-primary-600);
+  box-shadow: 0 0 0 3px rgba(231, 143, 12, 0.1);
+}
+
+.create-group-input::placeholder {
+  color: var(--trip-color-gray-200);
+}
+
+.create-group-input-addon {
+  font-family: var(--trip-font-family);
+  font-weight: 700;
+  color: var(--trip-color-gray-600);
+  background-color: var(--trip-color-gray-100);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 10px 0 0 10px;
+}
+
+.create-group-hint {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-400);
+}
+
+/* ===== 圖片上傳區 ===== */
+.create-group-upload-area {
+  border: 2px dashed var(--trip-color-gray-200);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.create-group-upload-area:hover {
+  border-color: var(--trip-color-primary-600);
+  background-color: var(--trip-color-primary-100);
+}
+
+.create-group-upload-small {
+  padding: 24px 12px;
+}
+
+.create-group-upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.create-group-upload-placeholder i {
+  font-size: 32px;
+  color: var(--trip-color-gray-200);
+  transition: color 0.2s ease;
+}
+
+.create-group-upload-area:hover .create-group-upload-placeholder i {
+  color: var(--trip-color-primary-800);
+}
+
+.create-group-upload-placeholder p {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-400);
+  margin: 0;
+}
+
+.create-group-upload-placeholder span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-200);
+}
+
+.create-group-upload-small .create-group-upload-placeholder i {
+  font-size: 24px;
+}
+
+/* ===== 行程規劃區 ===== */
+.create-group-day-block {
+  background-color: var(--trip-color-gray-100);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.create-group-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.create-group-day-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 700;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+}
+
+.create-group-itinerary-item {
+  background-color: var(--trip-color-white);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 8px;
+  border: 1px solid var(--trip-color-gray-200);
+}
+
+/* 行程小表單 */
+.create-group-label-sm {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  color: var(--trip-color-gray-400);
+  margin-bottom: 4px;
+}
+
+.create-group-input-sm {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.create-group-input-sm:focus {
+  border-color: var(--trip-color-primary-600);
+  box-shadow: 0 0 0 2px rgba(231, 143, 12, 0.1);
+}
+
+/* ===== 按鈕 ===== */
+.create-group-btn-remove {
+  color: var(--trip-color-gray-400);
+  border: none;
+  background: none;
+  padding: 6px;
+  transition: color 0.2s ease;
+}
+
+.create-group-btn-remove:hover {
+  color: var(--trip-color-status-danger);
+}
+
+.create-group-btn-add-item {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-primary-1000);
+  background: none;
+  border: 1px dashed var(--trip-color-primary-400);
+  border-radius: 8px;
+  padding: 6px 16px;
+  transition: all 0.2s ease;
+}
+
+.create-group-btn-add-item:hover {
+  background-color: var(--trip-color-primary-100);
+  border-color: var(--trip-color-primary-800);
+}
+
+.create-group-btn-add-day {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  font-weight: 600;
+  color: var(--trip-color-primary-1000);
+  background-color: var(--trip-color-primary-100);
+  border: 2px dashed var(--trip-color-primary-400);
+  border-radius: 12px;
+  padding: 14px 24px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.create-group-btn-add-day:hover {
+  background-color: var(--trip-color-primary-200);
+  border-color: var(--trip-color-primary-800);
+}
+
+/* ===== 送出區 ===== */
+.create-group-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 0;
+  border-top: 1px solid var(--trip-color-gray-100);
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 768px) {
+  .create-group-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .create-group-card-title {
+    font-size: var(--trip-font-text-l-size);
+  }
+
+  /* 行程規劃手機版 - 改為堆疊 */
+  .create-group-itinerary-item .row > [class*="col-md"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .create-group-itinerary-item .col-md-1 {
+    text-align: left !important;
+    margin-top: 8px;
+  }
+
+  .create-group-actions {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .create-group-actions .btn {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .create-group-upload-area {
+    padding: 24px 16px;
+  }
+}
