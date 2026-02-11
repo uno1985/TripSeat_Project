@@ -1,0 +1,526 @@
+/* ===== 我的揪團頁面 ===== */
+.my-groups-page {
+  padding-bottom: 40px;
+}
+
+.my-groups-header {
+  border-bottom: 2px solid var(--trip-color-primary-200);
+  padding-bottom: 16px;
+}
+
+/* ===== 統計卡片 ===== */
+.my-groups-stat-card {
+  background-color: var(--trip-color-white);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.my-groups-stat-number {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h3-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-800);
+  line-height: 1;
+}
+
+.my-groups-stat-label {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-400);
+  margin-top: 6px;
+}
+
+/* ===== 篩選列 ===== */
+.my-groups-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.my-groups-filter-btn {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-gray-400);
+  background-color: var(--trip-color-white);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 50px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.my-groups-filter-btn:hover {
+  color: var(--trip-color-primary-1000);
+  border-color: var(--trip-color-primary-400);
+}
+
+.my-groups-filter-btn.active {
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+  border-color: var(--trip-color-primary-800);
+}
+
+/* ===== 揪團卡片 ===== */
+.my-groups-card {
+  background-color: var(--trip-color-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.my-groups-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.my-groups-card-ended {
+  opacity: 0.7;
+}
+
+.my-groups-card-ended:hover {
+  opacity: 1;
+}
+
+/* 封面圖 */
+.my-groups-card-img-wrapper {
+  position: relative;
+  height: 100%;
+  min-height: 200px;
+}
+
+.my-groups-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 狀態徽章 */
+.my-groups-status-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 700;
+  color: var(--trip-color-white);
+}
+
+.my-groups-status-open {
+  background-color: var(--trip-color-primary-800);
+}
+
+.my-groups-status-confirmed {
+  background-color: var(--trip-color-status-success);
+}
+
+.my-groups-status-ended {
+  background-color: var(--trip-color-gray-400);
+}
+
+/* 卡片 body */
+.my-groups-card-body {
+  padding: 20px 24px;
+}
+
+.my-groups-card-title {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h5-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-800);
+  margin-bottom: 6px;
+}
+
+/* 標籤 */
+.my-groups-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.my-groups-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  color: var(--trip-color-primary-1000);
+  background-color: var(--trip-color-primary-100);
+}
+
+/* 資訊列 */
+.my-groups-card-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--trip-color-gray-100);
+}
+
+.my-groups-card-info span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-600);
+}
+
+.my-groups-card-info i {
+  color: var(--trip-color-primary-800);
+}
+
+/* 操作按鈕（右上角） */
+.my-groups-card-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.my-groups-btn-edit {
+  color: var(--trip-color-gray-400);
+  border: none;
+  background: none;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.my-groups-btn-edit:hover {
+  color: var(--trip-color-primary-1000);
+  background-color: var(--trip-color-primary-100);
+}
+
+.my-groups-btn-more {
+  color: var(--trip-color-gray-400);
+  border: none;
+  background: none;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.my-groups-btn-more:hover {
+  color: var(--trip-color-gray-800);
+  background-color: var(--trip-color-gray-100);
+}
+
+/* ===== 待審核提醒 ===== */
+.my-groups-pending-alert {
+  display: flex;
+  align-items: center;
+  background-color: #fff8ee;
+  border: 1px solid var(--trip-color-primary-400);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-primary-1000);
+}
+
+.my-groups-pending-alert i {
+  color: var(--trip-color-primary-800);
+}
+
+.my-groups-btn-expand {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  color: var(--trip-color-primary-1000);
+  border: none;
+  background: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.my-groups-btn-expand:hover {
+  background-color: var(--trip-color-primary-200);
+}
+
+/* ===== 待審核名單 ===== */
+.my-groups-pending-list {
+  margin-bottom: 12px;
+}
+
+.my-groups-applicant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--trip-color-gray-100);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background-color: var(--trip-color-gray-100);
+}
+
+.my-groups-applicant-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.my-groups-applicant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.my-groups-applicant-name {
+  display: block;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-800);
+}
+
+.my-groups-applicant-detail {
+  display: block;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-400);
+}
+
+.my-groups-applicant-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.my-groups-btn-approve {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-status-success);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: opacity 0.2s ease;
+}
+
+.my-groups-btn-approve:hover {
+  opacity: 0.85;
+  color: var(--trip-color-white);
+}
+
+.my-groups-btn-reject {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-status-danger);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: opacity 0.2s ease;
+}
+
+.my-groups-btn-reject:hover {
+  opacity: 0.85;
+  color: var(--trip-color-white);
+}
+
+/* ===== 團員區 ===== */
+.my-groups-members-section {
+  margin-bottom: 12px;
+}
+
+.my-groups-btn-toggle-members {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-gray-600);
+  border: none;
+  background: none;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.my-groups-btn-toggle-members:hover {
+  color: var(--trip-color-primary-1000);
+}
+
+.my-groups-members-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 12px;
+  background-color: var(--trip-color-gray-100);
+  border-radius: 10px;
+}
+
+.my-groups-member {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
+}
+
+.my-groups-member-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.my-groups-member-badge {
+  font-size: var(--trip-font-label-size);
+  font-weight: 700;
+  color: var(--trip-color-primary-1000);
+  background-color: var(--trip-color-primary-200);
+  padding: 1px 8px;
+  border-radius: 50px;
+}
+
+/* ===== 卡片底部 ===== */
+.my-groups-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--trip-color-gray-100);
+}
+
+.my-groups-card-footer-right {
+  display: flex;
+  gap: 8px;
+}
+
+.my-groups-btn-view {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-gray-600);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 8px;
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.my-groups-btn-view:hover {
+  color: var(--trip-color-primary-1000);
+  border-color: var(--trip-color-primary-400);
+  background-color: var(--trip-color-primary-100);
+}
+
+.my-groups-btn-confirm {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-status-success);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: opacity 0.2s ease;
+}
+
+.my-groups-btn-confirm:hover {
+  opacity: 0.85;
+  color: var(--trip-color-white);
+}
+
+.my-groups-btn-cancel {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-status-danger);
+  background: none;
+  border: 1px solid var(--trip-color-status-danger);
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: all 0.2s ease;
+}
+
+.my-groups-btn-cancel:hover {
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-status-danger);
+}
+
+/* ===== 空狀態 ===== */
+.my-groups-empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.my-groups-empty i {
+  font-size: 48px;
+  color: var(--trip-color-gray-200);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.my-groups-empty h5 {
+  font-family: var(--trip-font-family);
+  font-weight: 700;
+  color: var(--trip-color-gray-600);
+}
+
+.my-groups-empty p {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-400);
+  margin-bottom: 24px;
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 768px) {
+  /* 統計卡片數字縮小 */
+  .my-groups-stat-number {
+    font-size: var(--trip-font-h4-size);
+  }
+
+  /* 卡片改垂直排列 */
+  .my-groups-card-img-wrapper {
+    min-height: 160px;
+    max-height: 200px;
+  }
+
+  .my-groups-card-body {
+    padding: 16px;
+  }
+
+  .my-groups-card-info {
+    gap: 8px;
+  }
+
+  .my-groups-card-info span {
+    font-size: var(--trip-font-label-size);
+  }
+
+  /* 待審核 - 行動按鈕堆疊 */
+  .my-groups-applicant {
+    flex-wrap: wrap;
+  }
+
+  .my-groups-applicant-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  /* 底部操作堆疊 */
+  .my-groups-card-footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .my-groups-card-footer-right {
+    justify-content: flex-end;
+  }
+
+  .my-groups-btn-view {
+    text-align: center;
+  }
+}
