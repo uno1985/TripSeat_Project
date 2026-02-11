@@ -18,6 +18,7 @@ function Selector({
             className={`form-select ${className}`}
             aria-label=""
             value={defaultValue}
+            name={props.name}
             onChange={onChange}>
             {
                 placeholder
