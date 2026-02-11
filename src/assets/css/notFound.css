@@ -1,0 +1,55 @@
+/**
+ * 📍 目標位置：src/assets/css/notFound.css
+ */
+
+/* ===== 404 Not Found Page ===== */
+.not-found-section {
+  padding: 80px 0;
+  background-color: var(--trip-color-white);
+}
+
+.min-vh-70 {
+  min-height: 70vh;
+}
+
+/* 404 大字 */
+.not-found-code {
+  font-family: var(--trip-font-family);
+  font-size: 160px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--trip-color-primary-400);
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .not-found-code {
+    font-size: 100px;
+  }
+
+  .not-found-section {
+    padding: 40px 0;
+  }
+}
+
+/* 插圖 */
+.not-found-image-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.not-found-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.not-found-image:hover {
+  opacity: 1;
+}

@@ -1,17 +1,15 @@
+//導入套件
 import { useForm } from "react-hook-form";
-import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+
+//導入元件
+import { useAuth } from "../contexts/AuthContext";
 
 function LoginForm({ onSuccess }) {
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
-
-
-
 
     const onSubmit = async (data) => {
         try {

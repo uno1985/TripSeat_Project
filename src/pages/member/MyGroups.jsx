@@ -1,5 +1,5 @@
-import React from 'react';
 import '../../assets/css/myGroups.css';
+import time from '../../assets/images/time.svg'
 
 const MyGroups = () => {
   const groups = [
@@ -46,9 +46,9 @@ const MyGroups = () => {
             <div className="card">
               {/* 圖片區域 */}
               <div className='position-relative'>
-                <img 
-                  src={group.image} 
-                  className="card-img-top" 
+                <img
+                  src={group.image}
+                  className="card-img-top"
                   alt={group.title}
                 />
                 <span className={`position-absolute top-0 start-0 m-3 badge px-2 py-1 fw-normal ${group.statusClass}`}>
@@ -62,18 +62,20 @@ const MyGroups = () => {
               </div>
               {/* 內容區域 */}
               <div className="card-body p-3">
-                <h5 className="card-title fw-bold fs-6 mb-2 text-truncate-2" style={{ height: '2.8rem' }}>
+                <h5 className="card-title h5 text-truncate-2">
                   {group.title}
                 </h5>
-                <div className="d-flex align-items-center text-muted mb-2 small">
-                  <i className="bi bi-clock me-2"></i>
+                <div className="d-flex align-items-center trip-text-s my-3">
+                  <img src={time} className="me-2 icon-time" alt="時間icon" />
                   {group.time}
                 </div>
                 <div className="d-flex align-items-center small">
                   {/* 模擬頭像疊加 */}
-                  <div className="avatar-group me-2">
-                    <img src="https://i.pravatar.cc/30?u=1" className="rounded-circle border border-white" width="24" alt="user" />
-                    <img src="https://i.pravatar.cc/30?u=2" className="rounded-circle border border-white ms-n2" width="24" alt="user" />
+                  <div className="avatar-group d-inline-flex flex-row-reverse align-items-center me-2">
+                    {/* 注意：這裡為了讓後面的蓋住前面的，我們在結構上可以維持順序，但用 CSS 控制重疊 */}
+                    <img src="https://i.pravatar.cc/30?u=3" className="avatar-item" alt="user" />
+                    <img src="https://i.pravatar.cc/30?u=2" className="avatar-item" alt="user" />
+                    <img src="https://i.pravatar.cc/30?u=1" className="avatar-item" alt="user" />
                   </div>
                   <span className="text-muted">
                     已有 <span className="fw-bold text-dark">{group.participants}</span> 位乘客加入

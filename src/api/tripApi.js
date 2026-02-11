@@ -1,1 +1,0 @@
-//旅程相關請求 (GET /trips, POST /trips)

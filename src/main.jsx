@@ -1,5 +1,7 @@
 
 import { createRoot } from 'react-dom/client'
+
+// 導入全域樣式
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/basic.css'
 import './assets/css/style.css'

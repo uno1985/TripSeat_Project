@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from "axios";
 import '../assets/css/tripsSearch.css'
 import Selector from '../components/Selector'
 import Icon_Location from '../assets/images/icon-location.svg'
 import Icon_Time from '../assets/images/icon-time.svg'
 import Icon_Certified from '../assets/images/icon-certified.svg'
+import { Categories, Transports } from '../data/constants.js'
+const API_URL = import.meta.env.VITE_API_BASE;
 
 function TripsSearch() {
     const [trips, setTrips] = useState([]);
+    const [searchParams] = useSearchParams();
     useEffect(() => {
         const getTrips = async () => {
-            const response = await axios.get('https://tripseat-api-server.onrender.com/trips');
+            const url = searchParams
+                        ? `${API_URL}/trips?${searchParams}`
+                        : `${API_URL}/trips`;
+            const response = await axios.get(url);
             if (!!response && !!response.data) {
                 setTrips(response.data);
             }
         }
         getTrips();
-    }, []);
+    }, [searchParams]);
 
     function handleTripsCount(num) {
         if (!num) {
@@ -90,6 +97,76 @@ function TripsSearch() {
 }
 
 function SideBar() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [filters, setFilters] = useState({
+        q: '',
+        //start_date: '',
+        location_like: [],
+        tags_like: [],
+        //days: '',
+        transportation_like: '',
+        owner_is_verified_host: null
+    });
+
+    function handleFilterChange(e) {
+        const {name:key, value, checked} = e.target;
+        setFilters((prev) => {
+            let newValue = structuredClone(filters[key]);
+
+            switch (key) {
+                case 'location_like':
+                case 'tags_like':
+                    if (newValue.includes(value)) {
+                        newValue.splice(newValue.indexOf(value), 1);
+                    }
+                    else {
+                        newValue.push(value);
+                    }
+                    break;
+                case 'owner_is_verified_host':
+                    newValue = Number(checked);
+                    break;
+                default:
+                    newValue = value;
+                    break;
+            }
+
+            return {
+                ...prev,
+                [key]: newValue
+            }
+        });
+    }
+
+    function onUpdateFilter() {
+        const params = new URLSearchParams();
+        Object.entries(filters).forEach(([key, value]) => {
+            switch (typeof(value)) {
+                case 'string':
+                case 'boolean':
+                case 'number':
+                    if (value || typeof(value) === 'boolean') {
+                        params.set(key, value);
+                    }
+                    break;
+                case 'object':
+                    if (Array.isArray(value) && value) {
+                        value.forEach((item) => params.append(key, item));
+                    }
+                    break;
+            }
+            // if (Array.isArray(value)) {
+            //     value.forEach((item) => params.append(key, item));
+            // }
+            // else {
+            //     if (value) {
+            //         params.set(key, value)
+            //     }
+            // }
+        });
+        setSearchParams(params);
+    }
+
     return (
         <>
         <div className="tripsSreach-sideBar">
@@ -105,36 +182,50 @@ function SideBar() {
                 <label className="filter-label trip-text-m">出發地</label>
                 <Selector
                     data={[{text:"台北市", value: "台北市"}, {text:"台中市", value:"台中市"}, {text:"高雄市", value:"高雄市"}]}
-                    defaultValue={"台北市"}
+                    placeholder={filters.location_like.join(',') ? '' : "請選擇"}
+                    name={"location_like"}
+                    onChange={(e) => handleFilterChange(e)}
                     className="selector" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">類別</label>
                 <Selector
-                    data={[{text:"跨年", value: "跨年"}, {text:"親子", value:"親子"}, {text:"露營", value:"露營"}, {text:"海邊", value:"海邊"}]}
-                    defaultValue={"跨年"}
+                    data={Categories}
+                    name={"tags_like"}
+                    placeholder={filters.tags_like.join(',') || "請選擇"}
+                    onChange={(e) => handleFilterChange(e)}
                     className="selector" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">旅程天數</label>
                 <Selector
                     data={[{text:"單日", value: "單日"}, {text:"多日", value:"多日"}]}
-                    defaultValue={"單日"}
+                    name={"days"}
+                    placeholder={"請選擇"}
+                    onChange={(e) => handleFilterChange(e)}
                     className="selector" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">交通方式</label>
                 <Selector
-                    data={[{text:"自駕自乘", value: "自駕自乘"}, {text:"自行前往", value:"自行前往"}, {text:"大眾交通", value:"大眾交通"}, {text:"專人接送", value:"專人接送"}]}
-                    defaultValue={"自行前往"}
+                    data={Transports}
+                    name={"transportation_like"}
+                    placeholder={filters.transportation_like || "請選擇"}
+                    onChange={(e) => handleFilterChange(e)}
                     className="selector" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">其他</label>
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="certifiedHost" name="certifiedHost"/>
+                    <input className="form-check-input" type="checkbox" value="" id="certifiedHost"
+                        name="owner_is_verified_host"
+                        onChange={(e) => handleFilterChange(e)}/>
                     <label className="form-check-label trip-text-m" htmlFor="certifiedHost">真安心團主認證</label>
                 </div>
+            </div>
+            <div className="updateBtn-container">
+                <button className="btn trip-btn-primary trip-btn-l" type="button"
+                    onClick={(e) => onUpdateFilter(e)}>更新搜尋</button>
             </div>
         </div>
         </>
@@ -166,8 +257,8 @@ function TripCard({data: trip}) {
                 </div>
             )
         }
-        return (<div className="status-box status-available d-flex align-items-center">
-            <span className="text-title-m trip-text-primary-1000">{`剩餘 ${vacancy} 個座位`}</span>
+        return (<div className="status-box status-available d-flex align-items-center flex-shrink-0">
+            <span className="text-title-m trip-text-primary-1000 text-nowrap">{`剩餘 ${vacancy} 個座位`}</span>
             </div>
         );
     }
@@ -188,7 +279,7 @@ function TripCard({data: trip}) {
     return (
         <>
         <div className="g-col-4 tripCard position-relative">
-            {handleDisplayCertifiedHost(true)}
+            {handleDisplayCertifiedHost(trip.owner_is_verified_host)}
             <div className="imgBox">
                 <img src={trip.image_url} alt={trip.title} />
             </div>
@@ -208,11 +299,11 @@ function TripCard({data: trip}) {
                     </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
-                    <div className="host-info-container d-flex align-items-center">
+                    <div className="host-info-container d-flex align-items-center flex-grow-1">
                         <div className="host-photo">
-                            {/* {<img src=""/>} */}
+                            <img src={trip.owner_avatar}/>
                         </div>
-                        <span className="text-title-m">UNO</span>
+                        <div className="host-name text-title-m">{trip.owner_name}</div>
                     </div>
                     <div>{handleDisplayVacancy({max_people: trip.max_people, current_participants: trip.current_participants})}</div>
                 </div>

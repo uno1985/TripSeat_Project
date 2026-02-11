@@ -1,12 +1,19 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+// 導入套件
 import * as bootstrap from "bootstrap";
+import { useCallback, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/AuthContext";
-import '../assets/css/navbar.css';
+
+//導入圖片
 import logo from '../assets/images/logo.svg';
+import LoginModal from '../components/LoginModal';
 
+//導入樣式
+import '../assets/css/navbar.css';
+import '../assets/css/loginModal.css';
 
+//開發中測試用帳號 完成後刪除
 const test = {
     email: 'rain@test.com',
     password: 'password123'
@@ -16,12 +23,13 @@ const test = {
 function Navbar() {
     const { isLogin, user, login, logout, loading } = useAuth();
     const loginModalRef = useRef(null);
-
     const {
         register,
         handleSubmit,
-        reset
-    } = useForm();
+        reset,
+        formState: {
+            errors }
+    } = useForm({ defaultValues: test });
 
     // 初始化 Modal
     useEffect(() => {
@@ -32,14 +40,10 @@ function Navbar() {
                 backdrop: 'static'
             });
         }
-
     }, [loading]);
 
 
-
-
-
-    const onSubmit = async (data) => {
+    const onSubmit = useCallback(async (data) => {
         try {
             const response = await login(data.email, data.password);
             if (response.success) {
@@ -51,7 +55,7 @@ function Navbar() {
         } catch (error) {
             console.error("登入過程出錯：", error);
         }
-    };
+    }, [login, reset]);
 
     const closeNavbar = () => {
         if (window.innerWidth >= 992) return;
@@ -59,7 +63,7 @@ function Navbar() {
         const nav = document.getElementById('navbarNav');
         if (!nav) return;
 
-        const instance = bootstrap.Collapse.getInstance(nav);
+        const instance = bootstrap.Collapse.getInstance(nav, { toggle: false });
         if (instance) {
             instance.hide();
         }
@@ -72,7 +76,7 @@ function Navbar() {
 
     };
 
-    if (loading) return null;
+
 
     return (
         <div className="trip-navbar">
@@ -134,6 +138,13 @@ function Navbar() {
                                             <span className="ms-2">{user?.name || 'Tony Chang'}</span>
                                         </a>
                                         <ul className="dropdown-menu dropdown-menu-end trip-dropdown-menu">
+
+                                            {user?.role === 'admin' && <>
+                                                <a href={`${import.meta.env.BASE_URL}docs/api-docs.html`} className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">API 文件</a>
+                                                <a href={`${import.meta.env.BASE_URL}docs/readme-docs.html`} className="dropdown-item trip-dropdown-item" target="_blank" rel="noopener noreferrer">ReadMe 文件</a>
+                                            </>
+                                            }
+
                                             <li><Link className="dropdown-item trip-dropdown-item" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link></li>
                                             <li><Link className="dropdown-item trip-dropdown-item d-flex align-items-center" to="/inbox" onClick={() => closeNavbar()}>站內收件匣 <span className="inbox-badge">999</span></Link></li>
                                             <li><hr className="dropdown-divider mx-3" /></li>
@@ -142,38 +153,20 @@ function Navbar() {
                                     </div>
                                 </div>
                             </>
-                            ) : (
-                                <button className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => handleShowLogin()}>註冊 / 登入</button>
-                            )}
+                            ) : (<>
+                                {
+                                    loading ? (<div><p>伺服器準備中...</p></div>) : (<button className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => handleShowLogin()}>註冊 / 登入</button>)
+                                }
+
+
+                            </>)}
                         </div>
                     </div>
                 </div>
             </nav >
-
-            {/* Login Modal */}
-            < div id="loginModal" className="modal fade" tabIndex="-1" >
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">登入 / 註冊 提示</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div className="modal-body">
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className="mb-3">
-                                    <label className="form-label fw-bold">電子信箱</label>
-                                    <input type="email" className="form-control" placeholder="example@mail.com" value={test.email} {...register("email")} />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label fw-bold">密碼</label>
-                                    <input type="password" className="form-control" value={test.password} {...register("password")} />
-                                </div>
-                                <button type="submit" className="btn btn-primary">登入</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div >
+            <> {/*登入Modal*/}
+                <LoginModal handleSubmit={handleSubmit} ref={loginModalRef} register={register} onSubmit={onSubmit} />
+            </>
         </div >
     );
 }
