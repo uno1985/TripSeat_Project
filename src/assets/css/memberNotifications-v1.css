@@ -1,0 +1,439 @@
+/**
+ * 📍 目標位置：src/assets/css/memberNotifications-v1.css
+ * 📝 會員通知頁面 v1 樣式 - 簡潔實用版
+ */
+
+/* ========== 頁面容器 ========== */
+.member-notifications-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ========== 頁面標題 ========== */
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--trip-color-gray-100);
+}
+
+.notif-header-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notif-header .h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.notif-unread-badge {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 700;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+  padding: 6px 14px;
+  border-radius: 50px;
+}
+
+.notif-mark-all-btn {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-gray-600);
+  background-color: var(--trip-color-gray-100);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notif-mark-all-btn:hover {
+  background-color: var(--trip-color-gray-800);
+  color: var(--trip-color-white);
+}
+
+/* ========== 通知列表 ========== */
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ========== 通知項目 ========== */
+.notif-item {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  background-color: var(--trip-color-white);
+  padding: 20px;
+  border-radius: 16px;
+  border: 2px solid var(--trip-color-gray-100);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.notif-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border-color: var(--trip-color-primary-200);
+}
+
+.notif-item.unread {
+  background-color: var(--trip-color-primary-100);
+  border-color: var(--trip-color-primary-400);
+}
+
+.notif-item.unread:hover {
+  background-color: var(--trip-color-white);
+}
+
+/* 未讀標記點 */
+.notif-unread-dot {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--trip-color-primary-800);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ========== 通知圖示 ========== */
+.notif-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--trip-color-white);
+}
+
+.notif-icon-apply {
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+}
+
+.notif-icon-success {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+}
+
+.notif-icon-cancel {
+  background: linear-gradient(135deg, #f44336, #c62828);
+}
+
+.notif-icon-message {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+}
+
+.notif-icon-system {
+  background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+}
+
+.notif-icon-reminder {
+  background: linear-gradient(135deg, #ff5722, #d84315);
+}
+
+.notif-icon-join {
+  background: linear-gradient(135deg, #4fcf7c, #2e8b57);
+}
+
+/* ========== 通知內容 ========== */
+.notif-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 類型標籤 */
+.notif-type-tag {
+  display: inline-block;
+  font-family: var(--trip-font-family);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.03em;
+  align-self: flex-start;
+}
+
+.notif-tag-apply {
+  color: #e65100;
+  background-color: #fff3e0;
+}
+
+.notif-tag-success {
+  color: #1b5e20;
+  background-color: #e8f5e9;
+}
+
+.notif-tag-cancel {
+  color: #b71c1c;
+  background-color: #ffebee;
+}
+
+.notif-tag-message {
+  color: #0d47a1;
+  background-color: #e3f2fd;
+}
+
+.notif-tag-system {
+  color: #4a148c;
+  background-color: #f3e5f5;
+}
+
+.notif-tag-reminder {
+  color: #bf360c;
+  background-color: #fbe9e7;
+}
+
+.notif-tag-join {
+  color: #1b5e20;
+  background-color: #e8f5e9;
+}
+
+/* 主要文字 */
+.notif-text {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  line-height: 1.6;
+  color: var(--trip-color-gray-800);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+/* 使用者資訊 */
+.notif-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.notif-user img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--trip-color-primary-400);
+}
+
+.notif-user a {
+  color: var(--trip-color-gray-1000);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.notif-user a:hover {
+  color: var(--trip-color-primary-1000);
+}
+
+/* 旅程連結 */
+.notif-trip-link {
+  font-weight: 700;
+  color: var(--trip-color-primary-1000);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.notif-trip-link:hover {
+  color: var(--trip-color-primary-800);
+  text-decoration: underline;
+}
+
+/* 私訊預覽 */
+.notif-message-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: var(--trip-color-gray-100);
+  padding: 12px;
+  border-radius: 10px;
+  border-left: 3px solid var(--trip-color-primary-600);
+  margin-top: 6px;
+}
+
+.notif-message-preview i {
+  color: var(--trip-color-primary-800);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notif-message-preview span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 操作按鈕 */
+.notif-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 700;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.notif-action-btn:hover {
+  background-color: var(--trip-color-primary-1000);
+  color: var(--trip-color-white);
+  transform: translateX(4px);
+}
+
+/* 時間 */
+.notif-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--trip-font-family);
+  font-size: 12px;
+  color: var(--trip-color-gray-400);
+  margin-top: 4px;
+}
+
+.notif-time i {
+  font-size: 11px;
+}
+
+/* ========== 空狀態 ========== */
+.notif-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--trip-color-gray-400);
+}
+
+.notif-empty i {
+  font-size: 80px;
+  color: var(--trip-color-gray-200);
+  margin-bottom: 20px;
+}
+
+.notif-empty h5 {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h5-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-600);
+  margin-bottom: 8px;
+}
+
+.notif-empty p {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-400);
+  margin: 0;
+}
+
+/* ========== 響應式設計 ========== */
+@media (max-width: 768px) {
+  .member-notifications-page {
+    padding: 16px;
+  }
+
+  .notif-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .notif-header-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .notif-mark-all-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .notif-item {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .notif-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .notif-text {
+    font-size: 14px;
+  }
+
+  .notif-user img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .notif-empty {
+    padding: 60px 20px;
+  }
+
+  .notif-empty i {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notif-header .h3 {
+    font-size: 20px;
+  }
+
+  .notif-unread-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .notif-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .notif-icon {
+    align-self: flex-start;
+  }
+
+  .notif-text {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

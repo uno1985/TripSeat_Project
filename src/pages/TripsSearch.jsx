@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import axios from "axios";
 import '../assets/css/tripsSearch.css'
 import Selector from '../components/Selector'
@@ -11,25 +11,36 @@ const API_URL = import.meta.env.VITE_API_BASE;
 
 function TripsSearch() {
     const [trips, setTrips] = useState([]);
+    const [totalCount, setTotalCount] = useState();
+    const [currentPage, setPage] = useState();
+    const [limit, setLimit] = useState();
     const [searchParams] = useSearchParams();
     useEffect(() => {
         const getTrips = async () => {
+            setPage(currentPage || Number(searchParams.get('page')) || 1);
+            setLimit(limit || Number(searchParams.get('limit')) || 9);
             const url = searchParams
                         ? `${API_URL}/trips?${searchParams}`
                         : `${API_URL}/trips`;
-            const response = await axios.get(url);
+            const response = await axios.get(url, {
+                params: {
+                    _page: currentPage,
+                    _limit: limit
+                }
+            });
             if (!!response && !!response.data) {
                 setTrips(response.data);
+                setTotalCount(response?.headers['x-total-count'] || 0)
             }
         }
         getTrips();
-    }, [searchParams]);
+    }, [searchParams, currentPage]);
 
-    function handleTripsCount(num) {
-        if (!num) {
+    function handleTotalCount() {
+        if (!totalCount) {
             return 0;
         }
-        return num > 999 ? '999+' : num;
+        return totalCount > 999 ? '999+' : totalCount;
     }
     
     return (
@@ -49,7 +60,7 @@ function TripsSearch() {
                             <div className="filter-container d-flex">
                                 <div className="flex-grow-1">
                                     <span className="trip-text-m">搜尋到</span>
-                                    <span className="trip-text-m">{handleTripsCount(trips.length)}</span>
+                                    <span className="trip-text-m">{handleTotalCount()}</span>
                                     <span className="trip-text-m">個結果</span></div>
                                 <div className="d-flex align-items-center">
                                     <span className="trip-text-m flex-shrink-0">排序方式</span>
@@ -68,25 +79,11 @@ function TripsSearch() {
                                     })}
                                 </div>
                             </div>
-                            <div className="pagination-container">
-                                <nav aria-label="Page navigation example">
-                                    <ul className="pagination justify-content-center">
-                                        <li className="page-item">
-                                        <a className="page-link trip-text-primary-1000" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                        </li>
-                                        <li className="page-item"><a className="page-link trip-text-primary-1000" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link trip-text-primary-1000" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link trip-text-primary-1000" href="#">3</a></li>
-                                        <li className="page-item">
-                                        <a className="page-link trip-text-primary-1000" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                        </li>
-                                    </ul>
-                                    </nav>
-                            </div>
+                            <Pagination 
+                                currentPage={currentPage}
+                                setPage={setPage}
+                                totalCount={totalCount}
+                                limit={limit} />
                         </div>
                     </div>
                 </div>
@@ -172,7 +169,9 @@ function SideBar() {
         <div className="tripsSreach-sideBar">
             <div className="filter-group">
                 <label className="filter-label trip-text-m">搜尋關鍵字</label>
-                <input type="text" className="input w-100"/>
+                <input type="text" className="input w-100"
+                    name="q"
+                    onChange={(e) => handleFilterChange(e)}/>
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">旅遊日期</label>
@@ -182,7 +181,7 @@ function SideBar() {
                 <label className="filter-label trip-text-m">出發地</label>
                 <Selector
                     data={[{text:"台北市", value: "台北市"}, {text:"台中市", value:"台中市"}, {text:"高雄市", value:"高雄市"}]}
-                    placeholder={filters.location_like.join(',') ? '' : "請選擇"}
+                    placeholder={filters.location_like.join(',') || "請選擇"}
                     name={"location_like"}
                     onChange={(e) => handleFilterChange(e)}
                     className="selector" />
@@ -209,7 +208,7 @@ function SideBar() {
                 <label className="filter-label trip-text-m">交通方式</label>
                 <Selector
                     data={Transports}
-                    name={"transportation_like"}
+                    name={"transport_like"}
                     placeholder={filters.transportation_like || "請選擇"}
                     onChange={(e) => handleFilterChange(e)}
                     className="selector" />
@@ -279,6 +278,7 @@ function TripCard({data: trip}) {
     return (
         <>
         <div className="g-col-4 tripCard position-relative">
+        <Link to={`/trips/${trip.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             {handleDisplayCertifiedHost(trip.owner_is_verified_host)}
             <div className="imgBox">
                 <img src={trip.image_url} alt={trip.title} />
@@ -308,6 +308,7 @@ function TripCard({data: trip}) {
                     <div>{handleDisplayVacancy({max_people: trip.max_people, current_participants: trip.current_participants})}</div>
                 </div>
             </div>
+        </Link>
         </div>
         </>
     );
@@ -316,6 +317,55 @@ function TripCard({data: trip}) {
 function Tag({text}) {
     return (
         <div className="trip-tag d-flex justify-content-center align-items-center"><span className="">{text}</span></div>
+    )
+}
+
+function Pagination({currentPage, setPage, totalCount, limit}) {
+    const totalPages = Math.ceil(totalCount / limit);
+    return (
+        <>
+        <div className="pagination-container">
+            <nav aria-label="Page navigation example">
+                <ul className="pagination justify-content-center">
+                    <li className="page-item"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (currentPage > 1) {
+                                setPage(currentPage - 1);
+                            }
+                        }}>
+                    <a className="page-link trip-text-primary-1000" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    {
+                        Array.from({ length: totalPages }, (_, i) => i + 1).map((idx) => {
+                            return (
+                                <li className="page-item"
+                                    key={`page_${idx}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setPage(idx);
+                                    }}
+                                ><a className="page-link trip-text-primary-1000" href="#">{idx}</a></li>
+                            )
+                        })
+                    }
+                    <li className="page-item"
+                        onClick={(e) => {
+                                e.preventDefault();
+                                if (totalPages > currentPage) {
+                                    setPage(currentPage + 1);
+                                }
+                            }}>
+                    <a className="page-link trip-text-primary-1000" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        </>
     )
 }
 
