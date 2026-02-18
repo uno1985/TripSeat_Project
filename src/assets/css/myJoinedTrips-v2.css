@@ -1,0 +1,293 @@
+﻿.mjv2-wrap {
+  background: linear-gradient(
+    180deg,
+    var(--trip-color-white) 0%,
+    var(--trip-color-primary-100) 100%
+  );
+  border: 1px solid var(--trip-color-primary-200);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.mjv2-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mjv2-title {
+  margin: 0;
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-800);
+  font-size: var(--trip-font-h5-size);
+  font-weight: var(--trip-font-weight-bold);
+}
+
+.mjv2-sub {
+  margin: 6px 0 0;
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-400);
+  font-size: var(--trip-font-text-s-size);
+}
+
+.mjv2-link {
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-600);
+  text-decoration: underline;
+  text-decoration-color: var(--trip-color-gray-600);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+}
+
+.mjv2-link:hover {
+  color: var(--trip-color-primary-1000);
+  text-decoration-color: var(--trip-color-primary-1000);
+}
+
+.mjv2-next {
+  margin-top: 14px;
+  background: var(--trip-color-white);
+  border: 1px solid var(--trip-color-primary-200);
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.mjv2-next-label {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-primary-1000);
+  font-weight: var(--trip-font-weight-bold);
+}
+
+.mjv2-next-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mjv2-next-main strong {
+  width: 100%;
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-800);
+  font-size: var(--trip-font-text-m-size);
+}
+
+.mjv2-next-main span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-600);
+}
+
+.mjv2-seats {
+  background: var(--trip-color-primary-100);
+  color: var(--trip-color-primary-1000);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: var(--trip-font-weight-bold);
+}
+
+.mjv2-filters {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mjv2-chip {
+  font-family: var(--trip-font-family);
+  border: 1px solid var(--trip-color-gray-200);
+  background: var(--trip-color-white);
+  color: var(--trip-color-gray-400);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mjv2-chip:hover {
+  border-color: var(--trip-color-primary-400);
+  color: var(--trip-color-primary-1000);
+}
+
+.mjv2-chip.is-active {
+  color: var(--trip-color-white);
+  background: var(--trip-color-primary-800);
+  border-color: var(--trip-color-primary-800);
+}
+
+.mjv2-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mjv2-card {
+  background: var(--trip-color-white);
+  border: 1px solid var(--trip-color-gray-100);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.mjv2-card.status-ended {
+  opacity: 0.92;
+}
+
+.mjv2-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.mjv2-badge {
+  font-family: var(--trip-font-family);
+  background: var(--trip-color-primary-100);
+  color: var(--trip-color-primary-1000);
+  font-size: var(--trip-font-label-size);
+  font-weight: var(--trip-font-weight-bold);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.mjv2-mood {
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-400);
+  font-size: var(--trip-font-label-size);
+}
+
+.mjv2-card-title {
+  margin: 10px 0;
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-800);
+  font-size: var(--trip-font-text-m-size);
+  font-weight: var(--trip-font-weight-bold);
+}
+
+.mjv2-meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.mjv2-meta li {
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-600);
+  font-size: var(--trip-font-text-s-size);
+}
+
+.mjv2-meta i {
+  color: var(--trip-color-primary-800);
+}
+
+.mjv2-progress-row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mjv2-progress-bar {
+  flex: 1;
+  height: 7px;
+  background: var(--trip-color-gray-100);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.mjv2-progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--trip-color-primary-600),
+    var(--trip-color-primary-800)
+  );
+}
+
+.mjv2-progress-text {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-600);
+}
+
+.mjv2-review {
+  margin-top: 10px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
+  background: var(--trip-color-gray-100);
+  border-left: 3px solid var(--trip-color-primary-400);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.mjv2-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.mjv2-btn {
+  font-family: var(--trip-font-family);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mjv2-btn.ghost {
+  border: 1px solid var(--trip-color-gray-200);
+  background: var(--trip-color-white);
+  color: var(--trip-color-gray-600);
+}
+
+.mjv2-btn.ghost:hover {
+  border-color: var(--trip-color-primary-400);
+  color: var(--trip-color-primary-1000);
+}
+
+.mjv2-btn.solid {
+  border: 1px solid var(--trip-color-primary-800);
+  background: var(--trip-color-primary-800);
+  color: var(--trip-color-white);
+}
+
+.mjv2-btn.solid:hover {
+  background: var(--trip-color-primary-1000);
+  border-color: var(--trip-color-primary-1000);
+}
+
+.mjv2-empty {
+  margin-top: 14px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--trip-color-white);
+  border: 1px dashed var(--trip-color-gray-200);
+  color: var(--trip-color-gray-400);
+  text-align: center;
+  font-family: var(--trip-font-family);
+}
+
+@media (max-width: 900px) {
+  .mjv2-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mjv2-next {
+    grid-template-columns: 1fr;
+  }
+}
