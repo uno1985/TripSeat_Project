@@ -1,0 +1,440 @@
+.member-trips-page {
+  padding-bottom: 40px;
+}
+
+.member-trips-header {
+  border-bottom: 2px solid var(--trip-color-primary-200);
+  padding-bottom: 16px;
+}
+
+/* ===== 統計卡片 ===== */
+.member-trips-stat-card {
+  background-color: var(--trip-color-white);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.member-trips-stat-number {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h3-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-800);
+  line-height: 1;
+}
+
+.member-trips-stat-label {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-400);
+  margin-top: 6px;
+}
+
+/* ===== 篩選列 ===== */
+.member-trips-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.member-trips-filter-btn {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-gray-400);
+  background-color: var(--trip-color-white);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 50px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.member-trips-filter-btn:hover {
+  color: var(--trip-color-primary-1000);
+  border-color: var(--trip-color-primary-400);
+}
+
+.member-trips-filter-btn.active {
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+  border-color: var(--trip-color-primary-800);
+}
+
+/* ===== 卡片列表 ===== */
+.member-trips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== 旅程卡片 ===== */
+.member-trips-card {
+  background-color: var(--trip-color-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease;
+}
+
+.member-trips-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.member-trips-card-ended {
+  opacity: 0.75;
+}
+
+.member-trips-card-ended:hover {
+  opacity: 1;
+}
+
+/* ===== 封面圖 ===== */
+.member-trips-card-img-wrapper {
+  position: relative;
+  height: 100%;
+  min-height: 220px;
+}
+
+.member-trips-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 狀態徽章（圖片上） */
+.member-trips-status-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 700;
+  color: var(--trip-color-white);
+}
+
+.member-trips-status-open {
+  background-color: var(--trip-color-primary-800);
+}
+
+.member-trips-status-confirmed {
+  background-color: var(--trip-color-status-success);
+}
+
+.member-trips-status-ended {
+  background-color: var(--trip-color-gray-400);
+}
+
+/* ===== 卡片 Body ===== */
+.member-trips-card-body {
+  padding: 20px 24px;
+}
+
+/* 標題 */
+.member-trips-card-title {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h5-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-800);
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85%;
+}
+
+.member-trips-card-ended .member-trips-card-title {
+  color: var(--trip-color-gray-400);
+}
+
+/* 狀態藥丸（標題旁，桌面隱藏 / 手機版也隱藏，因為圖片上有） */
+.member-trips-status-pill {
+  display: none;
+  font-family: var(--trip-font-family);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.member-trips-pill-open {
+  color: var(--trip-color-primary-1000);
+  background-color: var(--trip-color-primary-100);
+}
+
+.member-trips-pill-confirmed {
+  color: #0f5132;
+  background-color: #d1e7dd;
+}
+
+.member-trips-pill-ended {
+  color: var(--trip-color-gray-600);
+  background-color: var(--trip-color-gray-100);
+}
+
+/* 資訊列 */
+.member-trips-card-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--trip-color-gray-100);
+}
+
+.member-trips-card-info span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-600);
+}
+
+.member-trips-card-info i {
+  color: var(--trip-color-primary-800);
+}
+
+/* 團主資訊 */
+.member-trips-host {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-600);
+}
+
+.member-trips-host-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== 心得區塊 ===== */
+.member-trips-review-section {
+  background-color: var(--trip-color-gray-100);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.member-trips-review-header {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 700;
+  color: var(--trip-color-gray-600);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.member-trips-review-header i {
+  color: var(--trip-color-primary-800);
+  font-size: 13px;
+}
+
+/* 有心得時 */
+.member-trips-review-content {
+  position: relative;
+}
+
+.member-trips-review-text {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  /* 限制 2 行 + 省略 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.member-trips-btn-edit-review {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 600;
+  color: var(--trip-color-primary-1000);
+  background: none;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.member-trips-btn-edit-review:hover {
+  background-color: var(--trip-color-primary-200);
+  color: var(--trip-color-primary-1000);
+}
+
+/* 無心得時 */
+.member-trips-review-empty {
+  display: flex;
+  align-items: center;
+}
+
+.member-trips-review-placeholder {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-400);
+  font-style: italic;
+}
+
+.member-trips-review-placeholder i {
+  color: var(--trip-color-gray-200);
+}
+
+/* ===== 底部操作按鈕 ===== */
+.member-trips-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--trip-color-gray-100);
+}
+
+/* 查看細節按鈕 */
+.member-trips-btn-detail {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+  border: none;
+  border-radius: 50px;
+  padding: 8px 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.member-trips-btn-detail:hover {
+  background-color: var(--trip-color-primary-1000);
+  color: var(--trip-color-white);
+}
+
+/* 新增心得按鈕 */
+.member-trips-btn-add-review {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-primary-1000);
+  background-color: transparent;
+  border: 2px solid var(--trip-color-primary-800);
+  border-radius: 50px;
+  padding: 6px 18px;
+  transition: all 0.2s ease;
+}
+
+.member-trips-btn-add-review:hover {
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-primary-800);
+}
+
+/* 取消參加按鈕 */
+.member-trips-btn-cancel-join {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 600;
+  color: var(--trip-color-status-danger);
+  background: none;
+  border: 1px solid var(--trip-color-status-danger);
+  border-radius: 50px;
+  padding: 6px 18px;
+  transition: all 0.2s ease;
+}
+
+.member-trips-btn-cancel-join:hover {
+  color: var(--trip-color-white);
+  background-color: var(--trip-color-status-danger);
+}
+
+/* ===== 空狀態 ===== */
+.member-trips-empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.member-trips-empty i {
+  font-size: 48px;
+  color: var(--trip-color-gray-200);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.member-trips-empty h5 {
+  font-family: var(--trip-font-family);
+  font-weight: 700;
+  color: var(--trip-color-gray-600);
+}
+
+.member-trips-empty p {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-m-size);
+  color: var(--trip-color-gray-400);
+  margin-bottom: 24px;
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 768px) {
+  /* 統計數字縮小 */
+  .member-trips-stat-number {
+    font-size: var(--trip-font-h4-size);
+  }
+
+  /* 封面圖改全寬 */
+  .member-trips-card-img-wrapper {
+    min-height: 160px;
+    max-height: 200px;
+  }
+
+  .member-trips-card-body {
+    padding: 16px;
+  }
+
+  /* 手機版顯示狀態藥丸（因為圖片上方的徽章改成全寬可能看不到） */
+  .member-trips-status-pill {
+    display: inline-block;
+  }
+
+  /* 標題全寬 */
+  .member-trips-card-title {
+    max-width: 100%;
+    margin-bottom: 6px;
+  }
+
+  /* 資訊列垂直排列 */
+  .member-trips-card-info {
+    gap: 6px;
+    flex-direction: column;
+  }
+
+  .member-trips-card-info span {
+    font-size: var(--trip-font-label-size);
+  }
+
+  /* 心得區塊 */
+  .member-trips-review-section {
+    padding: 12px 14px;
+  }
+
+  /* 底部操作垂直堆疊 */
+  .member-trips-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .member-trips-btn-detail,
+  .member-trips-btn-add-review,
+  .member-trips-btn-cancel-join {
+    text-align: center;
+    width: 100%;
+  }
+}
