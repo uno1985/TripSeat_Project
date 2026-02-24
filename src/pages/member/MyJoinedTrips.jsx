@@ -1,79 +1,10 @@
-﻿import { useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
 import '../../assets/css/myJoinedTrips.css';
 
-const TRIPS = [
-  {
-    id: 701,
-    title: '阿里山雲海日出線',
-    status: 'upcoming',
-    date: '2026/04/03 03:50',
-    location: '嘉義',
-    host: '晨光小隊',
-    participants: 5,
-    maxPeople: 7,
-    image: 'https://images.unsplash.com/photo-1464822759844-d150ad6d1b2f?q=80&w=1200&fit=crop',
-    hook: '凌晨第一班小火車，直達觀景平台。',
-    tags: ['日出', '攝影', '山線'],
-    story: null,
-  },
-  {
-    id: 702,
-    title: '台南老城夜拍散步',
-    status: 'open',
-    date: '2026/03/21 18:40',
-    location: '台南',
-    host: '阿修',
-    participants: 4,
-    maxPeople: 8,
-    image: 'https://images.unsplash.com/photo-1526481280695-3c46915b9b56?q=80&w=1200&fit=crop',
-    hook: '路線以巷弄光影為主，附現場構圖建議。',
-    tags: ['夜拍', '散步', '城市'],
-    story: null,
-  },
-  {
-    id: 703,
-    title: '花蓮海岸慢跑團',
-    status: 'upcoming',
-    date: '2026/03/30 06:20',
-    location: '花蓮',
-    host: '小魚',
-    participants: 6,
-    maxPeople: 6,
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&fit=crop',
-    hook: '配速分組，跑後早餐集合。',
-    tags: ['運動', '海線'],
-    story: null,
-  },
-  {
-    id: 704,
-    title: '台東海線慢旅兩日',
-    status: 'ended',
-    date: '2026/01/18 09:00',
-    location: '台東',
-    host: 'Ming',
-    participants: 8,
-    maxPeople: 8,
-    image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&fit=crop',
-    hook: '海景民宿與在地早餐路線。',
-    tags: ['慢旅', '海景'],
-    story: '整體節奏很舒服，住宿點位和停留時間抓得剛好。',
-  },
-  {
-    id: 705,
-    title: '屏東山海野炊團',
-    status: 'ended',
-    date: '2025/12/20 10:00',
-    location: '屏東',
-    host: '布魯',
-    participants: 6,
-    maxPeople: 6,
-    image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=1200&fit=crop',
-    hook: '分組料理比賽與海邊日落收尾。',
-    tags: ['野炊', '團隊'],
-    story: null,
-  },
-];
+const API_URL = import.meta.env.VITE_API_BASE;
 
 const STATUS_META = {
   all: '全部',
@@ -89,39 +20,136 @@ function ratio(current, total) {
   return Math.round((current / total) * 100);
 }
 
+function getTripStatus(trip) {
+  const now = new Date();
+  const start = trip.start_date ? new Date(trip.start_date) : null;
+  const end = trip.end_date ? new Date(trip.end_date) : null;
+  const isFull = (trip.current_participants || 0) >= (trip.max_people || 0);
+
+  if (trip.status === 'ended' || (end && end < now)) return 'ended';
+  if ((trip.status === 'confirmed' || isFull) && start && start >= now) return 'upcoming';
+  if (trip.status === 'open') return 'open';
+  if (start && start >= now) return 'upcoming';
+  return 'ended';
+}
+
+function formatDateTime(startDate, meetingTime) {
+  if (!startDate) return '';
+  const d = new Date(startDate);
+  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+  const dateText = `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}(${weekdays[d.getDay()]})`;
+  return `${dateText} ${meetingTime || ''}`.trim();
+}
+
 export default function MyJoinedTripsV7() {
+  const { user } = useAuth();
+  const [trips, setTrips] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [status, setStatus] = useState('all');
+  const [focusId, setFocusId] = useState(null);
 
   const filtered = useMemo(() => {
-    if (status === 'all') return TRIPS;
-    return TRIPS.filter((trip) => trip.status === status);
-  }, [status]);
+    if (status === 'all') return trips;
+    return trips.filter((trip) => trip.status === status);
+  }, [status, trips]);
 
   const counts = useMemo(() => {
     return {
-      all: TRIPS.length,
-      upcoming: TRIPS.filter((trip) => trip.status === 'upcoming').length,
-      open: TRIPS.filter((trip) => trip.status === 'open').length,
-      ended: TRIPS.filter((trip) => trip.status === 'ended').length,
+      all: trips.length,
+      upcoming: trips.filter((trip) => trip.status === 'upcoming').length,
+      open: trips.filter((trip) => trip.status === 'open').length,
+      ended: trips.filter((trip) => trip.status === 'ended').length,
     };
-  }, []);
-
-  const [focusId, setFocusId] = useState(TRIPS[0].id);
+  }, [trips]);
 
   const focusTrip = useMemo(() => {
     const candidate = filtered.find((trip) => trip.id === focusId);
     return candidate || filtered[0] || null;
   }, [filtered, focusId]);
 
-  const stories = TRIPS.filter((trip) => trip.status === 'ended');
+  const stories = trips.filter((trip) => trip.status === 'ended');
+
+  useEffect(() => {
+    const fetchJoinedTrips = async () => {
+      if (!user?.id) {
+        setTrips([]);
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      setError(null);
+
+      try {
+        const [reviewsRes, tripsRes] = await Promise.all([
+          axios.get(`${API_URL}/664/reviews?user_id=${user.id}&_sort=created_at&_order=desc`),
+          axios.get(`${API_URL}/664/trips`),
+        ]);
+
+        const reviewMap = new Map();
+        (reviewsRes.data || [])
+          .filter((review) => !review.deleted_at)
+          .forEach((review) => {
+            if (!reviewMap.has(review.trip_id)) {
+              reviewMap.set(review.trip_id, review);
+            }
+          });
+
+        const rows = (tripsRes.data || [])
+          .filter((trip) => !trip.deleted_at && reviewMap.has(trip.id))
+          .map((trip) => {
+            const review = reviewMap.get(trip.id);
+            const statusType = getTripStatus(trip);
+            const story = review?.content || null;
+            const hook = trip.vibe_text || (trip.description ? trip.description.split('\n')[0] : '期待你的旅程故事。');
+
+            return {
+              id: trip.id,
+              title: trip.title,
+              status: statusType,
+              date: formatDateTime(trip.start_date, trip.meeting_time),
+              location: trip.location || '未提供',
+              host: trip.owner_name || '團主',
+              participants: trip.current_participants || 0,
+              maxPeople: trip.max_people || 0,
+              image: trip.image_url || 'https://images.unsplash.com/photo-1464822759844-d150ad6d1b2f?q=80&w=1200&fit=crop',
+              hook,
+              tags: trip.tags || [],
+              story,
+            };
+          });
+
+        setTrips(rows);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJoinedTrips();
+  }, [user?.id]);
+
+  useEffect(() => {
+    if (!focusId && filtered.length > 0) {
+      setFocusId(filtered[0].id);
+    }
+    if (focusId && filtered.length > 0 && !filtered.some((trip) => trip.id === focusId)) {
+      setFocusId(filtered[0].id);
+    }
+  }, [filtered, focusId]);
+
+  if (loading) return <div className="py-4">載入中...</div>;
+  if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;
 
   return (
-    <section className="mjv7">
+    <section className="mjv7 mb-5">
       <header className="mjv7-editorial-head">
         <div>
           <p className="mjv7-kicker">TRIPSEAT MEMBER EDIT</p>
-          <h2 className="mjv7-title">我的參加行程 v7</h2>
-          <p className="mjv7-sub">這版以「視覺編輯版面」呈現你的旅程節奏與故事感。</p>
+          <h2 className="mjv7-title">我的參加行程</h2>
+          <p className="mjv7-sub">你的旅程節奏與故事。</p>
         </div>
         <Link to="/member/trips" className="mjv7-head-link">展開完整行程</Link>
       </header>

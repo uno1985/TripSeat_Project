@@ -1,7 +1,108 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
 import '../../assets/css/memberGroups.css';
 
+const API_URL = import.meta.env.VITE_API_BASE;
+
+
 const MemberGroups = () => {
+    const { user } = useAuth();
+    const [searchParams] = useSearchParams();
+    const focusTripId = searchParams.get('tripId');
+
+    const [trips, setTrips] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const getStatusType = (trip) => {
+        const now = new Date();
+        const end = trip.end_date ? new Date(trip.end_date) : null;
+        const isEnded = end && end < now;
+        const isFull = (trip.current_participants || 0) >= (trip.max_people || 0);
+
+        if (trip.status === 'ended' || isEnded) return 'ended';
+        if (trip.status === 'confirmed' || isFull) return 'confirmed';
+        return 'open';
+    };
+
+    const statusTextMap = {
+        open: '招募中',
+        confirmed: '已成團',
+        ended: '已結束',
+    };
+
+    const formatDateRange = (startDate, endDate) => {
+        if (!startDate) return '';
+        const s = new Date(startDate);
+        const e = endDate ? new Date(endDate) : null;
+        const fmt = (d) => `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`;
+        return e && s.toDateString() !== e.toDateString() ? `${fmt(s)} - ${fmt(e)}` : fmt(s);
+    };
+
+    const daysUntil = (deadline) => {
+        if (!deadline) return null;
+        const now = new Date();
+        const end = new Date(deadline);
+        const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+        return diff > 0 ? diff : 0;
+    };
+      useEffect(() => {
+        const fetchMyTrips = async () => {
+        if (!user?.id) {
+            setTrips([]);
+            setLoading(false);
+            return;
+        }
+
+        setLoading(true);
+        setError(null);
+        try {
+            const res = await axios.get(`${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc`);
+            const rows = (res.data || [])
+            .filter((t) => !t.deleted_at)
+            .map((t) => ({
+                ...t,
+                statusType: getStatusType(t),
+                statusText: statusTextMap[getStatusType(t)],
+            }));
+            setTrips(rows);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+        };
+
+        fetchMyTrips();
+    }, [user?.id]);
+
+      const stats = useMemo(() => ({
+        all: trips.length,
+        open: trips.filter((t) => t.statusType === 'open').length,
+        confirmed: trips.filter((t) => t.statusType === 'confirmed').length,
+        ended: trips.filter((t) => t.statusType === 'ended').length,
+    }), [trips]);
+
+    const focusedTrip = useMemo(() => {
+        if (!focusTripId) return null;
+        return trips.find((t) => t.id === focusTripId) || null;
+    }, [trips, focusTripId]);
+
+    const openTrip = useMemo(() => {
+        if (focusedTrip?.statusType === 'open') return focusedTrip;
+        return trips.find((t) => t.statusType === 'open') || null;
+    }, [focusedTrip, trips]);
+
+    const otherTrips = useMemo(
+        () => trips.filter((t) => t.id !== openTrip?.id),
+        [trips, openTrip]
+    );
+    if (loading) return <div className="py-4">載入中...</div>;
+    if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;
+
+
     return (
         <div className="my-groups-page">
 
@@ -27,25 +128,25 @@ const MemberGroups = () => {
             <div className="row g-3 mb-4">
                 <div className="col-6 col-md-3">
                     <div className="my-groups-stat-card">
-                        <div className="my-groups-stat-number">5</div>
+                        <div className="my-groups-stat-number">{stats.all}</div>
                         <div className="my-groups-stat-label">全部揪團</div>
                     </div>
                 </div>
                 <div className="col-6 col-md-3">
                     <div className="my-groups-stat-card">
-                        <div className="my-groups-stat-number trip-text-primary-1000">3</div>
+                        <div className="my-groups-stat-number trip-text-primary-1000">{stats.open}</div>
                         <div className="my-groups-stat-label">招募中</div>
                     </div>
                 </div>
                 <div className="col-6 col-md-3">
                     <div className="my-groups-stat-card">
-                        <div className="my-groups-stat-number" style={{ color: 'var(--trip-color-status-success)' }}>1</div>
+                        <div className="my-groups-stat-number" style={{ color: 'var(--trip-color-status-success)' }}>{stats.confirmed}</div>
                         <div className="my-groups-stat-label">已成團</div>
                     </div>
                 </div>
                 <div className="col-6 col-md-3">
                     <div className="my-groups-stat-card">
-                        <div className="my-groups-stat-number trip-text-gray-400">1</div>
+                        <div className="my-groups-stat-number trip-text-gray-400">{stats.ended}</div>
                         <div className="my-groups-stat-label">已結束</div>
                     </div>
                 </div>
@@ -60,20 +161,21 @@ const MemberGroups = () => {
             </div>
 
             {/* ===== 揪團卡片列表 ===== */}
+            
 
             {/* --- 卡片 1：招募中 (有待審核) --- */}
-            <div className="my-groups-card mb-3">
+            {openTrip && <div className="my-groups-card mb-3">
                 <div className="row g-0">
                     {/* 封面圖 */}
                     <div className="col-md-3">
                         <div className="my-groups-card-img-wrapper">
                             <img
-                                src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=400&h=300&fit=crop&q=80"
-                                alt="旅程封面"
+                                src={openTrip.image_url || "https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=400&h=300&fit=crop&q=80"}
+                                alt={openTrip.title}
                                 className="my-groups-card-img"
                             />
                             <span className="my-groups-status-badge my-groups-status-open">
-                                招募中
+                                {openTrip.statusText}
                             </span>
                         </div>
                     </div>
@@ -85,12 +187,12 @@ const MemberGroups = () => {
                             <div className="d-flex justify-content-between align-items-start mb-2">
                                 <div>
                                     <h5 className="my-groups-card-title">
-                                        2026 春季花蓮慢旅行
+                                        {openTrip.title}
                                     </h5>
                                     <div className="my-groups-card-tags">
-                                        <span className="my-groups-tag">自然</span>
-                                        <span className="my-groups-tag">攝影</span>
-                                        <span className="my-groups-tag">慢旅行</span>
+                                        {(openTrip.tags || []).slice(0, 3).map((tag) => (
+                                            <span key={tag} className="my-groups-tag">{tag}</span>
+                                        ))}
                                     </div>
                                 </div>
                                 <div className="my-groups-card-actions">
@@ -105,10 +207,10 @@ const MemberGroups = () => {
 
                             {/* 資訊列 */}
                             <div className="my-groups-card-info">
-                                <span><i className="bi bi-calendar3 me-1"></i>2026/03/15 - 03/17</span>
-                                <span><i className="bi bi-geo-alt me-1"></i>花蓮縣 秀林鄉</span>
-                                <span><i className="bi bi-people me-1"></i>3 / 6 人</span>
-                                <span><i className="bi bi-clock me-1"></i>剩餘 12 天截止</span>
+                                <span><i className="bi bi-calendar3 me-1"></i>{formatDateRange(openTrip.start_date, openTrip.end_date)}</span>
+                                <span><i className="bi bi-geo-alt me-1"></i>{openTrip.location}</span>
+                                <span><i className="bi bi-people me-1"></i>{openTrip.current_participants || 0} / {openTrip.max_people || 0} 人</span>
+                                <span><i className="bi bi-clock me-1"></i>剩餘 {daysUntil(openTrip.deadline) ?? '--'} 天截止</span>
                             </div>
 
                             {/* 待審核提醒 */}
@@ -193,7 +295,7 @@ const MemberGroups = () => {
 
                             {/* 底部操作 */}
                             <div className="my-groups-card-footer">
-                                <Link to="/trips/1" className="btn btn-sm my-groups-btn-view">
+                                <Link to={`/trips/${openTrip.id}`} className="btn btn-sm my-groups-btn-view">
                                     <i className="bi bi-eye me-1"></i>查看旅程頁面
                                 </Link>
                                 <div className="my-groups-card-footer-right">
@@ -208,10 +310,10 @@ const MemberGroups = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
 
             {/* --- 卡片 2：已成團 --- */}
-            <div className="my-groups-card mb-3">
+            {/* <div className="my-groups-card mb-3">
                 <div className="row g-0">
                     <div className="col-md-3">
                         <div className="my-groups-card-img-wrapper">
@@ -265,50 +367,56 @@ const MemberGroups = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* --- 卡片 3：已結束 --- */}
-            <div className="my-groups-card my-groups-card-ended mb-3">
-                <div className="row g-0">
-                    <div className="col-md-3">
-                        <div className="my-groups-card-img-wrapper">
-                            <img
-                                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80"
-                                alt="旅程封面"
-                                className="my-groups-card-img"
-                            />
-                            <span className="my-groups-status-badge my-groups-status-ended">
-                                已結束
-                            </span>
+            {otherTrips.map((trip) => (
+                <div
+                    key={trip.id}
+                    className={`my-groups-card mb-3 ${trip.statusType === 'ended' ? 'my-groups-card-ended' : ''}`}
+                >
+                    <div className="row g-0">
+                        <div className="col-md-3">
+                            <div className="my-groups-card-img-wrapper">
+                                <img
+                                    src={trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80'}
+                                    alt={trip.title}
+                                    className="my-groups-card-img"
+                                />
+                                <span className={`my-groups-status-badge my-groups-status-${trip.statusType}`}>
+                                    {trip.statusText}
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-md-9">
-                        <div className="my-groups-card-body">
-                            <div className="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h5 className="my-groups-card-title trip-text-gray-400">合歡山北峰攻頂團</h5>
-                                    <div className="my-groups-card-tags">
-                                        <span className="my-groups-tag">登山</span>
-                                        <span className="my-groups-tag">百岳</span>
+                        <div className="col-md-9">
+                            <div className="my-groups-card-body">
+                                <div className="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 className="my-groups-card-title trip-text-gray-400">{trip.title}</h5>
+                                        <div className="my-groups-card-tags">
+                                            {(trip.tags || []).slice(0, 3).map((tag) => (
+                                                <span key={tag} className="my-groups-tag">{tag}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="my-groups-card-info">
-                                <span><i className="bi bi-calendar3 me-1"></i>2025/12/20 - 12/21</span>
-                                <span><i className="bi bi-geo-alt me-1"></i>南投縣 仁愛鄉</span>
-                                <span><i className="bi bi-people me-1"></i>6 / 6 人</span>
-                            </div>
+                                <div className="my-groups-card-info">
+                                    <span><i className="bi bi-calendar3 me-1"></i>{formatDateRange(trip.start_date, trip.end_date)}</span>
+                                    <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
+                                    <span><i className="bi bi-people me-1"></i>{trip.max_people || 0} 人</span>
+                                </div>
 
-                            <div className="my-groups-card-footer">
-                                <Link to="/trips/3" className="btn btn-sm my-groups-btn-view">
-                                    <i className="bi bi-eye me-1"></i>查看旅程頁面
-                                </Link>
+                                <div className="my-groups-card-footer">
+                                    <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
+                                        <i className="bi bi-eye me-1"></i>查看旅程頁面
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            ))}
 
             {/* ===== 空狀態（當沒有揪團時顯示） ===== */}
             {/*

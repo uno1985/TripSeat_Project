@@ -7,7 +7,7 @@ function MemberCenter() {
 
       <CenterNotifications />
       <MyGroups />
-      <MyJoinedTrips />   {/* ← 加這行 */}
+      <MyJoinedTrips /> 
 
     </>
   )
