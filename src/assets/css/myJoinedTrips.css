@@ -1,364 +1,473 @@
-/**
- * 📍 目標位置：src/assets/css/myJoinedTrips.css
- * 📝 橫式卡片設計 v3 - 新增心得預覽 + 操作按鈕
- */
-
-.my-joined-section .h3 {
-  color: var(--trip-color-gray-600);
-}
-
-/* ===== 卡片列表容器 ===== */
-.joined-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* ===== 橫式卡片 ===== */
-.joined-card {
-  display: flex;
-  align-items: stretch;
-  background-color: var(--trip-color-white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.25s ease;
-}
-
-.joined-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-  color: inherit;
-}
-
-.joined-card-ended {
-  opacity: 0.7;
-}
-
-.joined-card-ended:hover {
-  opacity: 1;
-}
-
-/* ===== 左側圖片 ===== */
-.joined-card-img-wrapper {
+﻿.mjv7 {
+  background: linear-gradient(160deg, var(--trip-color-white) 0%, var(--trip-color-primary-100) 100%);
+  border: 1px solid var(--trip-color-primary-200);
+  border-radius: 26px;
+  padding: 24px;
   position: relative;
-  width: 180px;
-  min-height: 130px;
-  flex-shrink: 0;
+  overflow: hidden;
 }
 
-.joined-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 狀態圓點（圖片左上角） */
-.joined-status-dot {
+.mjv7::before,
+.mjv7::after {
+  content: '';
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid var(--trip-color-white);
+  border-radius: 999px;
+  pointer-events: none;
 }
 
-.joined-status-upcoming {
-  background-color: #17a2b8;
+.mjv7::before {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 183, 76, 0.22), transparent 68%);
+  right: -120px;
+  top: -140px;
 }
 
-.joined-status-open {
-  background-color: var(--trip-color-primary-800);
+.mjv7::after {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 204, 127, 0.28), transparent 70%);
+  left: -90px;
+  bottom: -120px;
 }
 
-.joined-status-ended {
-  background-color: var(--trip-color-gray-400);
+.mjv7-editorial-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
 }
 
-/* ===== 中間資訊區 ===== */
-.joined-card-body {
-  flex: 1;
-  padding: 16px 20px;
+.mjv7-kicker {
+  margin: 0;
+  font-family: var(--trip-font-family);
+  letter-spacing: 0.12em;
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-primary-1000);
+  font-weight: var(--trip-font-weight-bold);
+}
+
+.mjv7-title {
+  margin: 8px 0 0;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-h4-size);
+  color: var(--trip-color-gray-800);
+}
+
+.mjv7-sub {
+  margin: 8px 0 0;
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-400);
+  font-size: var(--trip-font-text-s-size);
+}
+
+.mjv7-head-link {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--trip-color-gray-600);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mjv7-head-link:hover {
+  color: var(--trip-color-primary-1000);
+  border-color: var(--trip-color-primary-400);
+}
+
+.mjv7-status-row {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.mjv7-status-pill {
+  border: 1px solid var(--trip-color-gray-200);
+  background: rgba(255, 255, 255, 0.84);
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: left;
+  display: grid;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.mjv7-status-pill span {
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-400);
+  font-size: var(--trip-font-label-size);
+}
+
+.mjv7-status-pill strong {
+  font-family: var(--trip-font-family);
+  color: var(--trip-color-gray-800);
+  font-size: var(--trip-font-text-m-size);
+}
+
+.mjv7-status-pill.is-active {
+  border-color: var(--trip-color-primary-800);
+  background: linear-gradient(120deg, var(--trip-color-primary-100), var(--trip-color-white));
+}
+
+.mjv7-status-pill.is-active span {
+  color: var(--trip-color-primary-1000);
+}
+
+.mjv7-stage {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.mjv7-focus {
+  min-height: 400px;
+  border-radius: 22px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.mjv7-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, rgba(0, 0, 0, 0.1) 0%, rgba(33, 33, 33, 0.72) 78%),
+    linear-gradient(90deg, rgba(255, 183, 76, 0.24), transparent 40%);
+}
+
+.mjv7-focus-content {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-width: 0;
+  justify-content: flex-end;
+  color: var(--trip-color-white);
 }
 
-.joined-card-top {
-  margin-bottom: 8px;
-}
-
-/* 狀態標籤 */
-.joined-status-tag {
-  display: inline-block;
+.mjv7-badge {
+  align-self: flex-start;
   font-family: var(--trip-font-family);
-  font-size: 11px;
+  font-size: var(--trip-font-label-size);
   font-weight: 700;
-  padding: 2px 10px;
-  border-radius: 50px;
-  margin-bottom: 4px;
-  letter-spacing: 0.03em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
 }
 
-.joined-tag-upcoming {
-  color: #0c5460;
-  background-color: #d1ecf1;
+.mjv7-badge.upcoming { background: rgba(79, 207, 124, 0.9); color: #0d3b1c; }
+.mjv7-badge.open { background: rgba(255, 183, 76, 0.94); color: #4f2e00; }
+.mjv7-badge.ended { background: rgba(212, 212, 212, 0.92); color: #333; }
+
+.mjv7-focus-content h3 {
+  margin: 10px 0 8px;
+  font-family: var(--trip-font-family);
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  line-height: 1.25;
 }
 
-.joined-tag-open {
-  color: var(--trip-color-primary-1000);
-  background-color: var(--trip-color-primary-100);
+.mjv7-focus-content p {
+  margin: 0;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  opacity: 0.92;
 }
 
-.joined-tag-ended {
-  color: var(--trip-color-gray-600);
-  background-color: var(--trip-color-gray-100);
+.mjv7-meta {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* 標題 */
-.joined-card-title {
+.mjv7-meta span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.mjv7-tags {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mjv7-tags span {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  background: rgba(255, 255, 255, 0.13);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.mjv7-focus-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.focus-btn {
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.focus-btn.solid {
+  background: var(--trip-color-primary-800);
+  color: var(--trip-color-white);
+}
+
+.focus-btn.ghost {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--trip-color-white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.mjv7-rail {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--trip-color-gray-100);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.mjv7-rail h4 {
+  margin: 0 0 10px;
   font-family: var(--trip-font-family);
   font-size: var(--trip-font-text-m-size);
-  font-weight: 700;
   color: var(--trip-color-gray-800);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-/* 日期 & 地點 */
-.joined-card-meta {
+.mjv7-rail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  max-height: 390px;
+  overflow: auto;
+}
+
+.mjv7-rail li button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--trip-color-gray-200);
+  background: var(--trip-color-white);
+  border-radius: 12px;
+  padding: 9px;
+  cursor: pointer;
+}
+
+.mjv7-rail li.is-active button {
+  border-color: var(--trip-color-primary-400);
+  background: var(--trip-color-primary-100);
+}
+
+.mjv7-rail-top {
   display: flex;
-  gap: 16px;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mjv7-rail-top strong {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
+}
+
+.mjv7-rail-top span,
+.mjv7-rail-mid,
+.mjv7-rail-bottom small {
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-400);
+}
+
+.mjv7-rail-mid {
+  margin-top: 4px;
+}
+
+.mjv7-rail-bottom {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mjv7-capacity-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--trip-color-gray-100);
+  overflow: hidden;
+}
+
+.mjv7-capacity-track span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--trip-color-primary-600), var(--trip-color-primary-800));
+}
+
+.mjv7-empty,
+.mjv7-empty-block {
+  text-align: center;
+  border: 1px dashed var(--trip-color-gray-200);
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--trip-color-gray-400);
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+}
+
+.mjv7-story-wall {
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.wall-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   margin-bottom: 10px;
 }
 
-.joined-card-meta span {
+.wall-head h4 {
+  margin: 0;
   font-family: var(--trip-font-family);
-  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-800);
+  font-size: var(--trip-font-text-m-size);
+}
+
+.wall-head span {
+  font-family: var(--trip-font-family);
   color: var(--trip-color-gray-400);
+  font-size: var(--trip-font-label-size);
 }
 
-.joined-card-meta i {
-  color: var(--trip-color-primary-800);
-  font-size: 11px;
+.wall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
-/* 底部列：團主 + 進度條 */
-.joined-card-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.wall-card {
+  background: var(--trip-color-white);
+  border: 1px solid var(--trip-color-gray-100);
+  border-radius: 14px;
+  overflow: hidden;
 }
 
-/* 團主 */
-.joined-host {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.joined-host-avatar {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
+.wall-card img {
+  width: 100%;
+  height: 140px;
   object-fit: cover;
 }
 
-.joined-host span {
-  font-family: var(--trip-font-family);
-  font-size: var(--trip-font-label-size);
-  font-weight: 600;
-  color: var(--trip-color-gray-600);
+.wall-body {
+  padding: 10px;
 }
 
-/* 人數進度條 */
-.joined-progress-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  max-width: 160px;
-}
-
-.joined-progress-bar {
-  flex: 1;
-  height: 6px;
-  background-color: var(--trip-color-gray-100);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.joined-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--trip-color-primary-600), var(--trip-color-primary-800));
-  border-radius: 3px;
-  transition: width 0.3s ease;
-}
-
-.joined-progress-text {
-  font-family: var(--trip-font-family);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--trip-color-gray-600);
-  white-space: nowrap;
-}
-
-/* ===== 心得預覽列 ===== */
-.joined-review-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-top: 10px;
-  padding: 10px 14px;
-  background-color: var(--trip-color-gray-100);
-  border-radius: 10px;
-  border-left: 3px solid var(--trip-color-primary-400);
-}
-
-.joined-review-icon {
-  color: var(--trip-color-primary-800);
-  font-size: 13px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.joined-review-text {
-  font-family: var(--trip-font-family);
-  font-size: var(--trip-font-label-size);
-  color: var(--trip-color-gray-800);
-  line-height: 1.5;
+.wall-body h5 {
   margin: 0;
-  /* 限制 2 行 + 省略 */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-800);
 }
 
-.joined-review-empty {
+.wall-body p {
+  margin: 6px 0 0;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  color: var(--trip-color-gray-600);
+  line-height: 1.5;
+  min-height: 40px;
+}
+
+.wall-meta {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wall-meta span {
   font-family: var(--trip-font-family);
   font-size: var(--trip-font-label-size);
   color: var(--trip-color-gray-400);
-  font-style: italic;
 }
 
-/* ===== 操作按鈕列 ===== */
-.joined-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--trip-color-gray-100);
-}
-
-/* 查看細節 */
-.joined-btn-detail {
+.wall-meta button {
   font-family: var(--trip-font-family);
   font-size: var(--trip-font-label-size);
-  font-weight: 600;
-  color: var(--trip-color-white);
-  background-color: var(--trip-color-primary-800);
-  border: none;
-  border-radius: 50px;
-  padding: 6px 16px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.joined-btn-detail:hover {
-  background-color: var(--trip-color-primary-1000);
-  color: var(--trip-color-white);
-}
-
-/* 新增心得 */
-.joined-btn-add-review {
-  font-family: var(--trip-font-family);
-  font-size: var(--trip-font-label-size);
-  font-weight: 600;
+  border: 1px solid var(--trip-color-primary-400);
   color: var(--trip-color-primary-1000);
-  background-color: transparent;
-  border: 1.5px solid var(--trip-color-primary-800);
-  border-radius: 50px;
-  padding: 5px 14px;
-  transition: all 0.2s ease;
+  background: var(--trip-color-white);
+  border-radius: 999px;
+  padding: 4px 10px;
 }
 
-.joined-btn-add-review:hover {
+.wall-meta button:hover {
+  background: var(--trip-color-primary-800);
+  border-color: var(--trip-color-primary-800);
   color: var(--trip-color-white);
-  background-color: var(--trip-color-primary-800);
 }
 
-/* 編輯心得 */
-.joined-btn-edit-review {
-  font-family: var(--trip-font-family);
-  font-size: var(--trip-font-label-size);
-  font-weight: 600;
-  color: var(--trip-color-gray-600);
-  background: none;
-  border: 1px solid var(--trip-color-gray-200);
-  border-radius: 50px;
-  padding: 5px 14px;
-  transition: all 0.2s ease;
+@media (max-width: 1100px) {
+  .mjv7-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .mjv7-rail ul {
+    max-height: 280px;
+  }
+
+  .wall-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.joined-btn-edit-review:hover {
-  color: var(--trip-color-primary-1000);
-  border-color: var(--trip-color-primary-400);
-  background-color: var(--trip-color-primary-100);
-}
-
-/* ===== 手機版 ===== */
-@media (max-width: 768px) {
-  .joined-card {
-    flex-wrap: wrap;
-    border-radius: 12px;
+@media (max-width: 760px) {
+  .mjv7 {
+    padding: 16px;
+    border-radius: 18px;
   }
 
-  .joined-card-img-wrapper {
-    width: 100%;
-    min-height: 140px;
-    max-height: 160px;
-  }
-
-  .joined-card-body {
-    padding: 12px 16px;
-  }
-
-  .joined-card-meta {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .joined-card-bottom {
+  .mjv7-editorial-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
   }
 
-  .joined-progress-wrapper {
-    max-width: 100%;
-    width: 100%;
+  .mjv7-status-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .joined-card-actions {
-    flex-wrap: wrap;
+  .mjv7-focus {
+    min-height: 330px;
   }
 
-  .joined-btn-detail,
-  .joined-btn-add-review,
-  .joined-btn-edit-review {
-    flex: 1;
-    text-align: center;
-    min-width: 120px;
+  .wall-grid {
+    grid-template-columns: 1fr;
   }
 }
