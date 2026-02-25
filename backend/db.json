@@ -156,7 +156,7 @@
       "email_verified": true,
       "password": "$2a$10$50myH1zzVUMXHPxL9LW7Mu1t86LPG.45cX6PbpUJ/5mz9eErHNYSK",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
-      "intro": "喜歡逛美術館跟書店，安靜的旅行最棒。",
+      "intro": "喜歡逛美術館跟書店，安靜的旅行最棒。希望能在這裡找到更多相似的夥伴！",
       "status": "active",
       "trust_score": 88,
       "trips_created": 1,
@@ -164,9 +164,12 @@
       "trips_completed": 4,
       "rating_average": 4.6,
       "created_at": "2025-12-10T14:00:00Z",
-      "updated_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2026-02-25T11:14:56.394Z",
       "is_verified_host": 1,
-      "birthday": "2000-01-30"
+      "birthday": "2000-01-30",
+      "nickname": "",
+      "phone": "",
+      "frequent_departures": []
     },
     {
       "id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
