@@ -109,7 +109,7 @@ const MemberSidebar = () => {
               <li key={index} className="mb-3">
                 <Link
                   to={item.path}
-                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'text-primary' : 'text-dark'
+                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
                     }`}
                   style={{ textDecoration: 'none' }}
                 >
