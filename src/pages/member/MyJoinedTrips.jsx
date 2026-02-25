@@ -91,10 +91,17 @@ export default function MyJoinedTripsV7() {
       setError(null);
 
       try {
-        const [reviewsRes, tripsRes] = await Promise.all([
+        const [participantsRes, reviewsRes, tripsRes] = await Promise.all([
+          axios.get(`${API_URL}/664/participants?user_id=${user.id}&role=member`),
           axios.get(`${API_URL}/664/reviews?user_id=${user.id}&_sort=created_at&_order=desc`),
           axios.get(`${API_URL}/664/trips`),
         ]);
+
+        const participantTripIds = new Set(
+          (participantsRes.data || [])
+            .filter((row) => !row.deleted_at)
+            .map((row) => row.trip_id)
+        );
 
         const reviewMap = new Map();
         (reviewsRes.data || [])
@@ -106,7 +113,7 @@ export default function MyJoinedTripsV7() {
           });
 
         const rows = (tripsRes.data || [])
-          .filter((trip) => !trip.deleted_at && reviewMap.has(trip.id))
+          .filter((trip) => !trip.deleted_at && participantTripIds.has(trip.id))
           .map((trip) => {
             const review = reviewMap.get(trip.id);
             const statusType = getTripStatus(trip);
