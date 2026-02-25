@@ -156,7 +156,7 @@
       "email_verified": true,
       "password": "$2a$10$50myH1zzVUMXHPxL9LW7Mu1t86LPG.45cX6PbpUJ/5mz9eErHNYSK",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
-      "intro": "喜歡逛美術館跟書店，安靜的旅行最棒。",
+      "intro": "喜歡逛美術館跟書店，安靜的旅行最棒。希望能在這裡找到更多相似的夥伴！",
       "status": "active",
       "trust_score": 88,
       "trips_created": 1,
@@ -164,9 +164,12 @@
       "trips_completed": 4,
       "rating_average": 4.6,
       "created_at": "2025-12-10T14:00:00Z",
-      "updated_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2026-02-25T11:14:56.394Z",
       "is_verified_host": 1,
-      "birthday": "2000-01-30"
+      "birthday": "2000-01-30",
+      "nickname": "",
+      "phone": "",
+      "frequent_departures": []
     },
     {
       "id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
@@ -887,7 +890,7 @@
       "end_date": "2026-03-05",
       "deadline": "2026-03-01",
       "price": 1200,
-      "current_participants": 1,
+      "current_participants": 2,
       "max_people": 4,
       "category": "手作體驗",
       "tags": [
@@ -917,7 +920,8 @@
         "好相處",
         "老宅",
         "展覽"
-      ]
+      ],
+      "updated_at": "2026-02-25T08:59:32.057Z"
     },
     {
       "id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
@@ -931,7 +935,7 @@
       "end_date": "2026-04-01",
       "deadline": "2026-03-31",
       "price": 100,
-      "current_participants": 3,
+      "current_participants": 4,
       "max_people": 10,
       "category": "慶祝",
       "tags": [
@@ -962,7 +966,8 @@
         "派對",
         "不趕行程",
         "談心"
-      ]
+      ],
+      "updated_at": "2026-02-25T09:42:57.414Z"
     },
     {
       "id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
@@ -1316,7 +1321,7 @@
       "end_date": "2026-11-12",
       "deadline": "2026-11-05",
       "price": 0,
-      "current_participants": 20,
+      "current_participants": 19,
       "max_people": 50,
       "category": "慶祝",
       "tags": [
@@ -1344,7 +1349,8 @@
         "桌遊",
         "派對",
         "慢活"
-      ]
+      ],
+      "updated_at": "2026-02-25T08:44:49.926Z"
     },
     {
       "id": "10c70cf6-5694-4939-8a30-94b56c3480c1",
@@ -3302,7 +3308,1145 @@
     }
   ],
   "applications": [],
-  "participants": [],
+  "participants": [
+    {
+      "id": "61033eda-9152-4f61-8f09-99d0bdd8170c",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "owner",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "89ba4c20-3cb5-4736-8735-06d2d0ce5525",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "ab1504b1-b772-4c58-9c87-f2e73d97fbca",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "9d077790-c8df-4857-9f95-458f4dc3705f",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "e7e7f181-8034-4903-aac6-e95042543336",
+      "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "44f94a11-e427-4386-b30e-d9afca3663fc",
+      "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c83d9b02-de1d-4912-acee-6088fcd7c0a2",
+      "trip_id": "ddfa6703-c52b-419e-88f3-d70ba0a39a49",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "created_at": "2025-12-30T14:00:00Z",
+      "updated_at": "2025-12-30T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "06034070-9fbe-479e-b028-54225388440f",
+      "trip_id": "ddfa6703-c52b-419e-88f3-d70ba0a39a49",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-30T14:00:00Z",
+      "updated_at": "2025-12-30T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "d12f9458-df64-4f2b-aac0-0200179ec628",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "owner",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b2bf3f4f-c78f-48f0-87f0-c335d507b28f",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "41887bcc-350f-4a5d-966f-e8f73dd58ebd",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "e2cc694a-aaf1-4dde-bac1-77a289786d1e",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b6fcff15-d4a6-4382-8041-9f28ddacc527",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "1a8a549b-6c2d-4f14-ba09-6f6f9e4ff6f2",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "owner",
+      "created_at": "2025-12-29T11:00:00Z",
+      "updated_at": "2025-12-29T11:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "024427cd-9128-4613-b4af-86ecc1dd7bd0",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "member",
+      "created_at": "2025-12-29T11:00:00Z",
+      "updated_at": "2025-12-29T11:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c01cf2a2-8c05-4140-b269-b8f33eab43d2",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "owner",
+      "created_at": "2025-12-20T20:00:00Z",
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "6e1567c8-b1e6-4e1e-99da-fb4bb4204774",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-20T20:00:00Z",
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "cfd2649e-a88a-47fc-b2b1-9796df40f700",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T20:00:00Z",
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "abb15da4-05f8-4bfd-a7c4-1cfab621f87c",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "owner",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "517a8328-783a-4ee7-bbb0-0084e968e472",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "2d0e270d-c7db-46e2-8890-039da91e3d51",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "660d304a-7d4a-4c61-92e9-0507f13971f1",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "db94dd85-8ec4-4f91-b59f-b556a99cc015",
+      "trip_id": "780fb2c8-2468-46f4-85b8-bdbd10755e37",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "owner",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "ae8cecec-0e15-4971-a85b-47203ce0c3ff",
+      "trip_id": "780fb2c8-2468-46f4-85b8-bdbd10755e37",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "0b619388-79fa-4ca5-9e4b-22b962b4d70f",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "owner",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "16fe9034-ea87-4183-b5bf-b888a7cd9e25",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "21336fec-28fd-427e-a892-0693f3d9a8d4",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "9fc5f87a-4185-4374-992e-c44681eea23e",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "05b65a5c-21a4-41ec-be5c-fd0b00d8db2d",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "52ec7753-f375-4600-9a2c-1951dcd2403e",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "9e025cc1-26d1-4b4f-8ff1-9975108601de",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "085ba765-827e-4c33-b45f-ddfbbad72b8b",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c2931ecb-0910-49dc-8df2-dede4eae1365",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "role": "owner",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "279d9256-d6ec-47a5-8ce0-35fcd44c01b6",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "member",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "336c4bee-fa76-4ef5-8c03-0b223b6aa2b8",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "056620be-cca8-4e51-bad8-23b5e7944df1",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b83971ad-d552-4670-b110-5373f2fa6b77",
+      "trip_id": "3f2f92a9-8d95-43e0-b1bd-29df94b0cc02",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "7e5ffaa4-b75c-4cf1-af91-5efedd5b7f06",
+      "trip_id": "3f2f92a9-8d95-43e0-b1bd-29df94b0cc02",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "110d8c3f-09ad-4867-a4ea-b8e47823e817",
+      "trip_id": "d44e76e7-6873-42f0-891a-6809d68f0628",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "4eb5c9b0-feda-45b0-8b6f-4458cea39f2d",
+      "trip_id": "3ed2c004-f1f2-4877-a299-0801c360a651",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "owner",
+      "created_at": "2025-12-15T20:00:00Z",
+      "updated_at": "2025-12-15T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "ec337545-b001-417f-bd34-452b5329dd43",
+      "trip_id": "3ed2c004-f1f2-4877-a299-0801c360a651",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-15T20:00:00Z",
+      "updated_at": "2025-12-15T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "8fcc8e3b-8aca-4dd0-a30b-5c3e9550545c",
+      "trip_id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "owner",
+      "created_at": "2025-12-28T11:00:00Z",
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c1887dcb-679a-400f-9195-6203bf1e7f8e",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "owner",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "53103d88-4851-4e53-9e06-030f0593eac5",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "f5ebf0fb-1e2b-411b-8024-f853ef6b07ce",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2026-02-25T10:17:19.784Z",
+      "deleted_at": null,
+      "application_status": "approved"
+    },
+    {
+      "id": "39f133ae-e5b2-4dc1-b7c1-709aba15973c",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "owner",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "41893197-0712-4687-bd21-f784b00fc9e7",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "782b72ef-fd8a-4731-aee4-66ac9b97004e",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "owner",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "a4ebc890-c50c-4bd5-bf21-7c35fa78d682",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "84c27c9d-84fd-4960-8e16-725afb2552ac",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "d8175e6b-d6c8-44ef-bc39-1c018d003e3b",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "89b02e4f-4164-4a21-9848-d790c91ce20c",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "7f3694bb-68a9-4481-9f55-16552965f5d4",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "owner",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "18fc140c-ad80-4451-a556-8bcc655f5872",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "6344ecf1-da38-4927-82ff-cfa7ed0f9400",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "8ec0717c-1555-4dd4-a082-781bb7699bfb",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "03ca1813-f8e6-4874-a16c-4cff48874763",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "f5be3957-5f09-4afb-a048-16b066652bc0",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "20d30471-39c9-46b9-9b8f-350560ffc1c4",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b44afa7e-cdfb-4a18-b81f-a69205b0db6c",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c973ce84-a3e4-42fd-9f36-83ad795e0aa2",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "d48b553b-041d-43e7-972a-7e381365f0ec",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "6cb44e07-f661-4c12-8ad0-6f9937cca019",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "02dd76dd-dd6b-4430-8d3d-384e73a2eedf",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "e3135a70-3f14-480d-98c8-3ff1033a316b",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "6834493d-5026-4910-809c-31041a9d30a4",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "0901e2b3-d572-4925-b0de-f200a945effa",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "8ffb26b1-8f61-444f-b88c-bee950f7efe3",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "80e14d12-f264-4387-bb14-fb2c416c493c",
+      "trip_id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "owner",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "6ef14a32-51dc-4b5b-a7cf-b1c18cfa3ccf",
+      "trip_id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c4c13331-f291-4b8a-be9f-43ec00891ef2",
+      "trip_id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b82c8903-cb5a-471b-be0b-6c009c567db6",
+      "trip_id": "78fb8c3c-9f43-4488-9f5d-dfe677e961ce",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "owner",
+      "created_at": "2025-12-28T11:00:00Z",
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "631814f0-2418-42a2-a8d2-b83e4bdd7b9e",
+      "trip_id": "78fb8c3c-9f43-4488-9f5d-dfe677e961ce",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T11:00:00Z",
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "d5f5cb98-5f11-4573-8d6b-97ea282c6807",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "owner",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "99d14d92-9927-4912-b3d1-6a22e3dfe995",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "888aee42-58e1-4ef5-8739-80da242f3116",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "0fa53841-2420-4ed4-bd4c-117a06cd4fb2",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "dd66ff9c-0e47-46e2-a73e-014b45a4d817",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "owner",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "d30c5a17-0d7b-4e25-b06d-f5dee77c9eae",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "aac50b79-82f6-4f2f-866c-a64e5fbe1dff",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "31668411-26a5-43fd-878c-e789a8d50db6",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c18fb785-122f-4e00-b0c5-0631655069be",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c4347512-3fe7-4199-8d68-a87fd0162f73",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "owner",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "86b1384f-799e-41b4-bd7a-a2b16d9ec9e1",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "482539df-54ae-47e8-818b-acb367537644",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c9557e71-b23f-4a27-80a7-72656923e12e",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b2468816-5ca7-4f73-9321-473f56313a8d",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3793818f-de8b-479b-8c73-f394cacaf601",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "0042c7bc-f53b-484e-a7ca-c548d8bc6828",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "2904af2d-ffd1-4d8d-840c-d4aab478adc2",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2026-02-25T08:44:49.925Z",
+      "deleted_at": "2026-02-25T08:44:49.925Z"
+    },
+    {
+      "id": "347806f5-9958-4d7b-a5a8-e5174064cb50",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3e2cb1ca-4e64-4797-a215-58858c572675",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "51b9fcb7-163c-4b17-8b19-964f4f9b4b36",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "916bb88d-7f23-44df-851c-97219c1b8f92",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c28d8f8f-1afa-40dc-8ba5-581851e43d86",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "ae414aa4-add2-4f2c-a67c-dbb46dbb1905",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "48a72ea1-6ab6-441b-8566-27d4485deaa2",
+      "trip_id": "10c70cf6-5694-4939-8a30-94b56c3480c1",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "e7582144-44db-4c21-bf50-4048e39ea6c2",
+      "trip_id": "10c70cf6-5694-4939-8a30-94b56c3480c1",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "fdc7ad5e-d3aa-450a-a2be-8dc951036c7c",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "owner",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3b6e18d4-cde1-40e8-b01a-e71015d767b4",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "b42a2eca-f3e9-4626-9034-39f3f673f27e",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "50cb4129-4f79-47cc-b59e-5d40562422ea",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "owner",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "97b94ff7-d880-47ce-9dde-86aba35fcc83",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "f7247671-26fa-4ff2-8745-8009000d2b1f",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "8a63d346-58c9-416d-8cc0-a06fbd76c180",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "8749a1cb-f455-4b66-8d48-b60a36ea50ef",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "848e940b-93e0-4e08-bad7-bff20dadc01d",
+      "trip_id": "51f98870-8fef-4f2d-b211-d160b3b3c1bd",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "owner",
+      "created_at": "2025-12-31T07:00:00Z",
+      "updated_at": "2025-12-31T07:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "d699dadb-811f-4936-bf18-c11f22cf367e",
+      "trip_id": "51f98870-8fef-4f2d-b211-d160b3b3c1bd",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T07:00:00Z",
+      "updated_at": "2025-12-31T07:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "f4f130ef-6e1e-4115-b7a4-9887d40f547f",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2025-12-31T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "ee5298c3-5dbf-4bce-ae4e-b4732b2628f1",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2025-12-31T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "750e4523-0b0c-4987-8834-651627aa5608",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2025-12-31T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3dc144f0-705f-4004-b2e6-d2b0006f89db",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2025-12-31T08:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "04456c06-08a1-4290-a57e-291af8d8a828",
+      "trip_id": "5a39add5-5844-498c-bada-0a018bcd820b",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "owner",
+      "created_at": "2025-12-31T11:15:00Z",
+      "updated_at": "2025-12-31T11:15:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "2e446740-6935-44c0-8621-2cdc597099d6",
+      "trip_id": "5a39add5-5844-498c-bada-0a018bcd820b",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T11:15:00Z",
+      "updated_at": "2025-12-31T11:15:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "bf48c78c-3fbc-4d74-b290-f31bdeb03822",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "owner",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "0c048e5c-aa78-4686-a3cb-e09c5525522c",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "eaa1d4fc-5556-4d20-976d-230245294704",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "66e25b4c-0ca7-4b39-9079-7639333eb6e5",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "65c4a417-6d65-469a-987a-b70e3ca068de",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "04ffc8b8-e8bc-4e51-a982-520a3119ebe3",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "f9ec3081-d91f-49c0-aa5d-cb07fe8ae02e",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "be76100b-e3ba-4fb0-8bee-d95f930b3205",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "ec794e7a-7671-4c45-8562-6bcc743dc7c6",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "a039eb3e-a7df-4db0-891e-61839c2b4c6a",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
+    },
+    {
+      "trip_id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2026-02-25T08:59:32.038Z",
+      "updated_at": "2026-02-25T09:25:50.946Z",
+      "deleted_at": null,
+      "id": "YI13GLL",
+      "application_status": "approved"
+    },
+    {
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "application_status": "pending",
+      "created_at": "2026-02-25T09:42:57.399Z",
+      "updated_at": "2026-02-25T09:42:57.399Z",
+      "deleted_at": null,
+      "id": "28ciH1t"
+    }
+  ],
   "reviews": [
     {
       "id": "rev-001-a1b2c3d4",
@@ -3389,7 +4533,7 @@
       "likes_count": 73,
       "is_public": true,
       "created_at": "2026-01-22T08:45:00Z",
-      "updated_at": "2026-01-22T08:45:00Z",
+      "updated_at": "2026-02-25T01:16:40.517Z",
       "deleted_at": null
     },
     {
@@ -3568,7 +4712,24 @@
     }
   ],
   "messages": [],
-  "notifications": [],
+  "notifications": [
+    {
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "type": "approval",
+      "actor_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "actor_name": "吃貨凱莉",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": false,
+      "created_at": "2026-02-25T10:17:19.784Z",
+      "updated_at": "2026-02-25T10:17:19.784Z",
+      "deleted_at": null,
+      "id": 1
+    }
+  ],
   "reports": [],
   "site_feedbacks": [
     {
@@ -3713,6 +4874,48 @@
       "created_at": "2025-12-01T00:00:00Z",
       "updated_at": "2025-12-01T00:00:00Z",
       "deleted_at": null
+    }
+  ],
+  "favorites": [
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "created_at": "2026-02-25T11:04:56.087Z",
+      "updated_at": "2026-02-25T11:52:14.950Z",
+      "deleted_at": "2026-02-25T11:52:14.950Z",
+      "id": 1
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "created_at": "2026-02-25T11:06:02.368Z",
+      "updated_at": "2026-02-25T11:06:02.368Z",
+      "deleted_at": null,
+      "id": 2
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "created_at": "2026-02-25T11:06:22.033Z",
+      "updated_at": "2026-02-25T11:06:22.033Z",
+      "deleted_at": null,
+      "id": 3
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "created_at": "2026-02-25T11:54:31.067Z",
+      "updated_at": "2026-02-25T11:54:31.067Z",
+      "deleted_at": null,
+      "id": 4
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "created_at": "2026-02-25T11:54:49.691Z",
+      "updated_at": "2026-02-25T11:54:49.691Z",
+      "deleted_at": null,
+      "id": 5
     }
   ]
 }

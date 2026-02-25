@@ -1,6 +1,6 @@
 //導入套件
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 //導入元件
@@ -18,6 +18,8 @@ const API_URL = import.meta.env.VITE_API_BASE;
 
 function TripDetail() {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const location = useLocation();
     const [trip, setTrip] = useState(null);
     const [otherTrip, setOtherTrip] = useState(null);
     const [owner, setOwner] = useState(null);
@@ -26,37 +28,97 @@ function TripDetail() {
     const [error, setError] = useState(null);
     const [pax, setPax] = useState(1);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [hasApplied, setHasApplied] = useState(false);
+    const [applicationStatus, setApplicationStatus] = useState(null);
+    const [tripApplicants, setTripApplicants] = useState([]);
+    const [favoriteId, setFavoriteId] = useState(null);
+    const [applying, setApplying] = useState(false);
+    const [applyMessage, setApplyMessage] = useState('');
     const { user } = useAuth();
 
 
     useEffect(() => {
         window.scrollTo(0, 0);
         fetchTripData();
-    }, [id]);
+    }, [id, user?.id]);
+
+    const getToken = () =>
+        document.cookie
+            .split('; ')
+            .find((row) => row.startsWith('tripToken='))
+            ?.split('=')[1];
 
     const fetchTripData = async () => {
         setLoading(true);
         setError(null);
 
         try {
-            // 先取得 trip 資料
-            const tripRes = await axios.get(`${API_URL}/664/trips/${id}`);
+            // 先取得 trip 資料（:id 失敗時 fallback 用 query 查）
+            let tripData = null;
+            try {
+                const tripRes = await axios.get(`${API_URL}/664/trips/${id}`);
+                tripData = tripRes.data;
+            } catch (err) {
+                const fallbackRes = await axios.get(`${API_URL}/664/trips?id=${encodeURIComponent(id)}`);
+                tripData = (fallbackRes.data || [])[0] || null;
+                if (!tripData) throw err;
+            }
 
             // 同時用解構方式取得 itineraries 和 owner 資料
-            const [itineraryRes, ownerRes, otherTripRes] = await Promise.all([
-                axios.get(`${API_URL}/664/itineraries?trip_id=${tripRes.data.id}`),
-                axios.get(`${API_URL}/664/users/${tripRes.data.owner_id}`),
-                axios.get(`${API_URL}/664/trips?owner_id=${tripRes.data.owner_id}`)
+            const participantReq = user?.id
+                ? axios.get(`${API_URL}/664/participants?trip_id=${tripData.id}&user_id=${user.id}`)
+                : Promise.resolve({ data: [] });
+            const favoriteReq = user?.id
+                ? axios.get(`${API_URL}/664/favorites?trip_id=${tripData.id}&user_id=${user.id}`)
+                : Promise.resolve({ data: [] });
+            const tripParticipantsReq = axios.get(`${API_URL}/664/participants?trip_id=${tripData.id}`);
+            const usersReq = axios.get(`${API_URL}/664/users`);
+
+            const [itineraryRes, ownerRes, otherTripRes, participantRes, tripParticipantsRes, usersRes, favoriteRes] = await Promise.all([
+                axios.get(`${API_URL}/664/itineraries?trip_id=${tripData.id}`),
+                axios.get(`${API_URL}/664/users/${tripData.owner_id}`),
+                axios.get(`${API_URL}/664/trips?owner_id=${tripData.owner_id}`),
+                participantReq,
+                tripParticipantsReq,
+                usersReq,
+                favoriteReq,
             ]);
 
 
             //刪除目前查詢的ID
-            const otherTrip = otherTripRes.data.filter(trip => trip.id !== tripRes.data.id);
+            const otherTrip = otherTripRes.data.filter(trip => trip.id !== tripData.id);
+            const activeParticipant = (participantRes.data || []).find((row) => !row.deleted_at);
+            const joined = Boolean(activeParticipant);
+            const joinedStatus = activeParticipant
+                ? (activeParticipant.application_status || 'approved')
+                : null;
+            const activeFavorite = (favoriteRes.data || []).find((row) => !row.deleted_at);
+            const userMap = new Map((usersRes.data || []).map((item) => [item.id, item]));
+            const applicants = (tripParticipantsRes.data || [])
+                .filter(
+                    (row) =>
+                        !row.deleted_at &&
+                        row.role === 'member' &&
+                        (row.application_status || 'pending') === 'pending'
+                )
+                .map((row) => ({
+                    id: row.id,
+                    userId: row.user_id,
+                    name: userMap.get(row.user_id)?.name || '會員',
+                    avatar: userMap.get(row.user_id)?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${row.user_id}`,
+                    createdAt: row.created_at || row.updated_at || '',
+                }))
+                .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
 
-            setTrip(tripRes.data);
+            setTrip(tripData);
             setItineraries(itineraryRes.data);
             setOtherTrip(otherTrip);
             setOwner(ownerRes.data);
+            setTripApplicants(applicants);
+            setHasApplied(joined);
+            setApplicationStatus(joinedStatus);
+            setFavoriteId(activeFavorite?.id || null);
+            setApplyMessage('');
         } catch (err) {
             setError(err.message);
         } finally {
@@ -220,6 +282,185 @@ function TripDetail() {
             image: trip.image_url
         }))
     };
+    const isOwner = trip.owner_id === user?.id;
+    const isFull = t.currentPax >= t.maxPax;
+    const isDeadlinePassed = t.countdown === '已截止';
+    const isCtaDisabled = isOwner || hasApplied || isFull || isDeadlinePassed;
+    const ctaText = isOwner
+        ? '你是團主'
+        : applicationStatus === 'pending'
+            ? '審核中'
+            : hasApplied
+                ? '已加入'
+            : isFull
+                ? '已額滿'
+                : isDeadlinePassed
+                    ? '已截止'
+                    : '申請加入旅程';
+
+    const handleApplyJoin = async () => {
+        if (!user?.id) {
+            navigate('/login', { state: { from: location } });
+            return;
+        }
+
+        if (isCtaDisabled || applying) return;
+
+        const token = getToken();
+        if (!token) {
+            setApplyMessage('登入狀態失效，請重新登入');
+            return;
+        }
+
+        const joinCount = Math.max(1, pax);
+        const nextParticipants = Math.min((trip.current_participants || 0) + joinCount, trip.max_people || 0);
+
+        setApplying(true);
+        setApplyMessage('');
+
+        try {
+            const existingRes = await axios.get(
+                `${API_URL}/664/participants?trip_id=${trip.id}&user_id=${user.id}`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            const existingRows = existingRes.data || [];
+            const activeRow = existingRows.find((row) => !row.deleted_at);
+            const deletedRow = existingRows.find((row) => row.deleted_at);
+
+            if (activeRow) {
+                setHasApplied(true);
+                const status = activeRow.application_status || 'approved';
+                setApplicationStatus(status);
+                setApplyMessage(status === 'pending' ? '你已申請，等待團主審核' : '你已加入此旅程');
+                return;
+            }
+
+            if (deletedRow) {
+                await axios.patch(
+                    `${API_URL}/664/participants/${deletedRow.id}`,
+                    {
+                        role: 'member',
+                        application_status: 'pending',
+                        deleted_at: null,
+                        updated_at: new Date().toISOString(),
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+            } else {
+                await axios.post(
+                    `${API_URL}/664/participants`,
+                    {
+                        trip_id: trip.id,
+                        user_id: user.id,
+                        role: 'member',
+                        application_status: 'pending',
+                        created_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
+                        deleted_at: null,
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+            }
+
+            try {
+                await axios.patch(
+                    `${API_URL}/trips/${trip.id}`,
+                    {
+                        current_participants: nextParticipants,
+                        updated_at: new Date().toISOString(),
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+            } catch {
+                // trip 人數欄位更新失敗時，不阻斷申請成功流程
+            }
+
+            setTrip((prev) => ({
+                ...prev,
+                current_participants: nextParticipants,
+            }));
+            setHasApplied(true);
+            setApplicationStatus('pending');
+            setApplyMessage('申請成功，審核中');
+        } catch (err) {
+            setApplyMessage(err.response?.data || err.message || '申請失敗，請稍後再試');
+        } finally {
+            setApplying(false);
+        }
+    };
+
+    const handleFavorite = async () => {
+        if (!user?.id) {
+            navigate('/login', { state: { from: location } });
+            return;
+        }
+
+        const token = getToken();
+        if (!token) {
+            alert('登入狀態失效，請重新登入');
+            return;
+        }
+
+        try {
+            if (favoriteId) {
+                await axios.patch(
+                    `${API_URL}/664/favorites/${favoriteId}`,
+                    {
+                        deleted_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setFavoriteId(null);
+                alert('已從收藏移除');
+                return;
+            }
+
+            const existingRes = await axios.get(
+                `${API_URL}/664/favorites?trip_id=${trip.id}&user_id=${user.id}`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            const rows = existingRes.data || [];
+            const activeRow = rows.find((row) => !row.deleted_at);
+            const deletedRow = rows.find((row) => row.deleted_at);
+
+            if (activeRow) {
+                setFavoriteId(activeRow.id);
+                alert('此旅程已在收藏中');
+                return;
+            }
+
+            if (deletedRow) {
+                await axios.patch(
+                    `${API_URL}/664/favorites/${deletedRow.id}`,
+                    {
+                        deleted_at: null,
+                        updated_at: new Date().toISOString(),
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setFavoriteId(deletedRow.id);
+            } else {
+                const res = await axios.post(
+                    `${API_URL}/664/favorites`,
+                    {
+                        user_id: user.id,
+                        trip_id: trip.id,
+                        created_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
+                        deleted_at: null,
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setFavoriteId(res.data.id);
+            }
+
+            alert('已加入收藏');
+        } catch (err) {
+            alert(err.response?.data || err.message || '加入收藏失敗');
+        }
+    };
 
     return (
         <div className="trip-detail-page">
@@ -234,7 +475,7 @@ function TripDetail() {
 
                 {/* Title & Tags */}
                 <div className="trip-header mb-4">
-                    <div className="d-flex justify-content-between align-items-start">
+                    <div className="d-flex align-items-start">
                         <div>
                             <h1 className="h2 mb-3 trip-text-gray-800">{t.title}</h1>
                             <div className="trip-tags">
@@ -243,7 +484,20 @@ function TripDetail() {
                                 ))}
                             </div>
                         </div>
-                        {trip.owner_id === user?.id && <a href="#" className="link-m trip-text-gray-600 edit-link">編輯旅程</a>}
+                        <div className="d-flex align-items-center gap-2">
+                            {trip.owner_id === user?.id && <a href="#" className="link-m trip-text-gray-600 edit-link">編輯旅程</a>}
+                            <button
+                                type="button"
+                                className="trip-favorite-btn"
+                                onClick={handleFavorite}
+                                title="加入收藏"
+                                aria-label="加入收藏"
+                            >
+                                <span className={`material-symbols-outlined trip-favorite-icon ${favoriteId ? 'is-active' : ''}`}>
+                                    favorite
+                                </span>
+                            </button>
+                        </div>
 
                     </div>
                 </div>
@@ -445,9 +699,12 @@ function TripDetail() {
                                 </div>
 
                                 {/* CTA Button */}
-                                <button className="trip-btn-primary trip-btn-l cta-button">
-                                    申請加入旅程
+                                <button className="trip-btn-primary trip-btn-l cta-button" disabled={isCtaDisabled || applying} onClick={handleApplyJoin}>
+                                    {applying ? '申請中...' : ctaText}
                                 </button>
+                                {applyMessage && (
+                                    <p className="trip-text-s trip-text-gray-400 mt-2 mb-0">{applyMessage}</p>
+                                )}
                             </div>
 
                             {/* Host Card */}
@@ -500,13 +757,20 @@ function TripDetail() {
                                     <h5 className="subsection-title trip-text-gray-600 mb-3">申請加入名單</h5>
                                     <div className="applicants-row">
                                         <div className="applicants-avatars">
-                                            <div className="applicant-avatar placeholder-avatar"></div>
-                                            <div className="applicant-avatar placeholder-avatar"></div>
+                                            {tripApplicants.slice(0, 3).map((applicant) => (
+                                                <img
+                                                    key={applicant.id}
+                                                    src={applicant.avatar}
+                                                    alt={applicant.name}
+                                                    className="applicant-avatar"
+                                                />
+                                            ))}
+                                            {tripApplicants.length === 0 && <div className="applicant-avatar placeholder-avatar"></div>}
                                         </div>
                                         <span className="applicants-count trip-text-s trip-text-gray-400">
-                                            已有 {t.applicants} 位乘客申請加入
+                                            已有 {tripApplicants.length} 位乘客申請加入
                                         </span>
-                                        <button className="manage-btn">管理</button>
+                                        <Link to={`/member/groups?tripId=${trip.id}`} className="manage-btn">管理</Link>
                                     </div>
                                 </div>
                             </>}
