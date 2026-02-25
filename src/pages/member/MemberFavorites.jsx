@@ -97,9 +97,19 @@ const MemberFavorites = () => {
   if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;
 
   return (
-    <div className="my-groups-section my-4">
-      <div className="d-flex justify-content-between align-items-center mb-4 mx-2">
-        <h3 className="h3 mb-0">我的收藏</h3>
+    <div className="my-groups-section">
+      <div className="my-groups-header mb-4">
+        <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
+          <div>
+            <h2 className="h3 trip-text-gray-800 d-flex align-items-center">
+              <span class="material-symbols-outlined trip-text-primary-800 fs-2 me-2">favorite</span>
+              我的收藏
+            </h2>
+            <p className="trip-text-m trip-text-gray-400 mt-1 mb-0">
+              收藏你感興趣的旅程，隨時快速查看
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="row g-4">
