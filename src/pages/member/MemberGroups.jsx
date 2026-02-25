@@ -17,6 +17,7 @@ const MemberGroups = () => {
     const [membersByTrip, setMembersByTrip] = useState({});
     const [expandedPending, setExpandedPending] = useState(true);
     const [expandedMembers, setExpandedMembers] = useState(true);
+    const [expandedMembersByTrip, setExpandedMembersByTrip] = useState({});
     const [approvedIds, setApprovedIds] = useState([]);
     const [processingIds, setProcessingIds] = useState([]);
     const [actionError, setActionError] = useState('');
@@ -158,6 +159,13 @@ const MemberGroups = () => {
         if (!openTrip) return [];
         return membersByTrip[openTrip.id] || [];
     }, [membersByTrip, openTrip]);
+
+    const toggleMembersByTrip = (tripId) => {
+        setExpandedMembersByTrip((prev) => ({
+            ...prev,
+            [tripId]: !prev[tripId],
+        }));
+    };
 
     const handleApproveApplicant = async (applicant) => {
         if (!applicant?.participantId || processingIds.includes(applicant.participantId)) return;
@@ -546,51 +554,82 @@ const MemberGroups = () => {
 
             {/* --- 卡片 3：已結束 --- */}
             {otherTrips.map((trip) => (
-                <div
-                    key={trip.id}
-                    className={`my-groups-card mb-3 ${trip.statusType === 'ended' ? 'my-groups-card-ended' : ''}`}
-                >
-                    <div className="row g-0">
-                        <div className="col-md-3">
-                            <div className="my-groups-card-img-wrapper">
-                                <img
-                                    src={trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80'}
-                                    alt={trip.title}
-                                    className="my-groups-card-img"
-                                />
-                                <span className={`my-groups-status-badge my-groups-status-${trip.statusType}`}>
-                                    {trip.statusText}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="col-md-9">
-                            <div className="my-groups-card-body">
-                                <div className="d-flex justify-content-between align-items-start mb-2">
-                                    <div>
-                                        <h5 className="my-groups-card-title trip-text-gray-400">{trip.title}</h5>
-                                        <div className="my-groups-card-tags">
-                                            {(trip.tags || []).slice(0, 3).map((tag) => (
-                                                <span key={tag} className="my-groups-tag">{tag}</span>
-                                            ))}
+                (() => {
+                    const tripMembers = membersByTrip[trip.id] || [];
+                    const isExpanded = Boolean(expandedMembersByTrip[trip.id]);
+
+                    return (
+                        <div
+                            key={trip.id}
+                            className={`my-groups-card mb-3 ${trip.statusType === 'ended' ? 'my-groups-card-ended' : ''}`}
+                        >
+                            <div className="row g-0">
+                                <div className="col-md-3">
+                                    <div className="my-groups-card-img-wrapper">
+                                        <img
+                                            src={trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80'}
+                                            alt={trip.title}
+                                            className="my-groups-card-img"
+                                        />
+                                        <span className={`my-groups-status-badge my-groups-status-${trip.statusType}`}>
+                                            {trip.statusText}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="col-md-9">
+                                    <div className="my-groups-card-body">
+                                        <div className="d-flex justify-content-between align-items-start mb-2">
+                                            <div>
+                                                <h5 className="my-groups-card-title trip-text-gray-400">{trip.title}</h5>
+                                                <div className="my-groups-card-tags">
+                                                    {(trip.tags || []).slice(0, 3).map((tag) => (
+                                                        <span key={tag} className="my-groups-tag">{tag}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="my-groups-card-info">
+                                            <span><i className="bi bi-calendar3 me-1"></i>{formatDateRange(trip.start_date, trip.end_date)}</span>
+                                            <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
+                                            <span><i className="bi bi-people me-1"></i>{trip.current_participants || 0} / {trip.max_people || 0} 人</span>
+                                        </div>
+
+                                        <div className="my-groups-members-section">
+                                            <button
+                                                className="btn btn-sm my-groups-btn-toggle-members"
+                                                type="button"
+                                                onClick={() => toggleMembersByTrip(trip.id)}
+                                            >
+                                                <i className="bi bi-people-fill me-1"></i>
+                                                查看目前團員 ({tripMembers.length})
+                                                <i className={`bi ms-1 ${isExpanded ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
+                                            </button>
+
+                                            {isExpanded && (
+                                                <div className="my-groups-members-list">
+                                                    {tripMembers.map((member) => (
+                                                        <div key={member.participantId} className="my-groups-member">
+                                                            <img src={member.avatar} alt={`${member.name} 頭像`} className="my-groups-member-avatar" />
+                                                            <span>{member.name}</span>
+                                                            {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="my-groups-card-footer">
+                                            <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
+                                                <i className="bi bi-eye me-1"></i>查看旅程頁面
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className="my-groups-card-info">
-                                    <span><i className="bi bi-calendar3 me-1"></i>{formatDateRange(trip.start_date, trip.end_date)}</span>
-                                    <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
-                                    <span><i className="bi bi-people me-1"></i>{trip.max_people || 0} 人</span>
-                                </div>
-
-                                <div className="my-groups-card-footer">
-                                    <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
-                                        <i className="bi bi-eye me-1"></i>查看旅程頁面
-                                    </Link>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    );
+                })()
             ))}
 
             {/* ===== 空狀態（當沒有揪團時顯示） ===== */}
