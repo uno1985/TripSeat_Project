@@ -48,6 +48,15 @@ export default function MyJoinedTripsV7() {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('all');
   const [focusId, setFocusId] = useState(null);
+  const [editor, setEditor] = useState({ open: false, tripId: null, text: '' });
+  const [saving, setSaving] = useState(false);
+  const [modalError, setModalError] = useState('');
+
+  const getToken = () =>
+    document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('tripToken='))
+      ?.split('=')[1];
 
   const filtered = useMemo(() => {
     if (status === 'all') return trips;
@@ -106,6 +115,7 @@ export default function MyJoinedTripsV7() {
 
             return {
               id: trip.id,
+              reviewId: review?.id || null,
               title: trip.title,
               status: statusType,
               date: formatDateTime(trip.start_date, trip.meeting_time),
@@ -139,6 +149,95 @@ export default function MyJoinedTripsV7() {
       setFocusId(filtered[0].id);
     }
   }, [filtered, focusId]);
+
+  const openEditor = (trip) => {
+    setEditor({
+      open: true,
+      tripId: trip.id,
+      text: trip.story || '',
+    });
+    setModalError('');
+  };
+
+  const closeEditor = () => {
+    if (saving) return;
+    setEditor({ open: false, tripId: null, text: '' });
+    setModalError('');
+  };
+
+  const handleSaveReview = async () => {
+    const targetTrip = trips.find((trip) => trip.id === editor.tripId);
+    const content = editor.text.trim();
+
+    if (!targetTrip || !content) {
+      setModalError('心得內容不能為空白');
+      return;
+    }
+
+    const token = getToken();
+    if (!token || !user?.id) {
+      setModalError('登入狀態失效，請重新登入');
+      return;
+    }
+
+    setSaving(true);
+    setModalError('');
+
+    try {
+      if (targetTrip.reviewId) {
+        await axios.patch(
+          `${API_URL}/664/reviews/${targetTrip.reviewId}`,
+          {
+            content,
+            updated_at: new Date().toISOString(),
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+      } else {
+        const res = await axios.post(
+          `${API_URL}/664/reviews`,
+          {
+            trip_id: targetTrip.id,
+            trip_title: targetTrip.title,
+            trip_location: targetTrip.location,
+            trip_image: targetTrip.image,
+            user_id: user.id,
+            user_name: user.name,
+            user_avatar: user.avatar,
+            user_age: null,
+            rating: 5,
+            content,
+            images: [],
+            likes_count: 0,
+            is_public: true,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            deleted_at: null,
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        targetTrip.reviewId = res.data.id;
+      }
+
+      setTrips((prev) =>
+        prev.map((trip) =>
+          trip.id === editor.tripId
+            ? {
+                ...trip,
+                story: content,
+                reviewId: trip.reviewId || targetTrip.reviewId,
+              }
+            : trip
+        )
+      );
+      closeEditor();
+    } catch (err) {
+      setModalError(err.response?.data || err.message || '儲存心得失敗');
+    } finally {
+      setSaving(false);
+    }
+  };
 
   if (loading) return <div className="py-4">載入中...</div>;
   if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;
@@ -239,13 +338,50 @@ export default function MyJoinedTripsV7() {
                 <p>{trip.story || '這趟還沒有心得，等你補上最真實的感受。'}</p>
                 <div className="wall-meta">
                   <span><i className="bi bi-geo-alt" /> {trip.location}</span>
-                  <button type="button">{trip.story ? '編輯心得' : '新增心得'}</button>
+                  <button type="button" onClick={() => openEditor(trip)}>
+                    {trip.story ? '編輯心得' : '新增心得'}
+                  </button>
                 </div>
               </div>
             </article>
           ))}
         </div>
       </section>
+
+      {editor.open && (
+        <>
+          <div className="modal fade show d-block" tabIndex="-1" role="dialog" aria-modal="true">
+            <div className="modal-dialog modal-lg modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">編輯心得</h5>
+                  <button type="button" className="btn-close" onClick={closeEditor} disabled={saving}></button>
+                </div>
+                <div className="modal-body">
+                  {modalError && <div className="alert alert-warning py-2">{modalError}</div>}
+                  <textarea
+                    className="form-control"
+                    rows={8}
+                    placeholder="寫下你的旅程心得..."
+                    value={editor.text}
+                    onChange={(e) => setEditor((prev) => ({ ...prev, text: e.target.value }))}
+                    disabled={saving}
+                  />
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-outline-secondary" onClick={closeEditor} disabled={saving}>
+                    取消
+                  </button>
+                  <button type="button" className="btn btn-primary" onClick={handleSaveReview} disabled={saving}>
+                    {saving ? '儲存中...' : '儲存心得'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal-backdrop fade show"></div>
+        </>
+      )}
     </section>
   );
 }
