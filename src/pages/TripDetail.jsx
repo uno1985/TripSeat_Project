@@ -368,87 +368,104 @@ function TripDetail() {
                     <div className="col-lg-4">
                         <div className="sticky-sidebar">
 
-                            {/* 集合資訊 */}
-                            <div className="section-block mb-4">
-                                <h3 className="section-title trip-text-gray-800 mb-3">集合資訊</h3>
-                                <div className="sidebar-card meeting-card">
-                                    <div className="meeting-info">
-                                        <div className="meeting-item">
-                                            <span className="info-label">集合地點</span>
-                                            <span className="info-value trip-text-s trip-text-gray-800">{t.meeting.location}</span>
+                            {
+                                user ? (
+                                    <>
+                                        < div className="section-block mb-4">
+                                            <h3 className="section-title trip-text-gray-800 mb-3">集合資訊</h3>
+                                            <div className="sidebar-card meeting-card">
+                                                <div className="meeting-info">
+                                                    <div className="meeting-item">
+                                                        <span className="info-label">集合地點</span>
+                                                        <span className="info-value trip-text-s trip-text-gray-800">{t.meeting.location}</span>
+                                                    </div>
+                                                    <div className="meeting-item">
+                                                        <span className="info-label">集合時間</span>
+                                                        <span className="info-value trip-text-s trip-text-gray-800">{t.meeting.time}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="meeting-item">
-                                            <span className="info-label">集合時間</span>
-                                            <span className="info-value trip-text-s trip-text-gray-800">{t.meeting.time}</span>
+
+                                        {/* Booking Card */}
+                                        <div className="sidebar-card booking-card mb-4">
+                                            {/* Price & Countdown */}
+                                            <div className="booking-boxes mb-3">
+                                                <div className="booking-box">
+                                                    <div className="box-label">預估平攤費用：</div>
+                                                    <div className="box-value">
+                                                        <span className="price-symbol">$</span>
+                                                        <span className="price-amount">{t.price.toLocaleString()}</span>
+                                                        <span className="price-unit">/人</span>
+                                                    </div>
+                                                </div>
+                                                <div className="booking-box">
+                                                    <div className="box-label">剩餘時間：</div>
+                                                    <div className="box-value countdown">{t.countdown}</div>
+                                                </div>
+                                            </div>
+
+                                            <p className="booking-note trip-text-s trip-text-gray-400 mb-4">
+                                                以上為預估費用，實際費用以團主公告為準。
+                                            </p>
+
+                                            {/* Seats Info */}
+                                            <div className="booking-row mb-3">
+                                                <div className="booking-row-label">
+                                                    <span className="row-icon">👥</span>
+                                                    <span className="trip-text-m trip-text-gray-600 fw-bold">剩餘座位</span>
+                                                </div>
+                                                <div className="booking-row-value">
+                                                    <span className="seats-current">{t.currentPax}</span>
+                                                    <span className="seats-separator">/</span>
+                                                    <span className="seats-max">{t.maxPax}個</span>
+                                                </div>
+                                            </div>
+
+                                            {/* Pax Selector */}
+                                            <div className="booking-row mb-4">
+                                                <div className="booking-row-label">
+                                                    <span className="row-icon">👤</span>
+                                                    <span className="trip-text-m trip-text-gray-600 fw-bold">我有</span>
+                                                </div>
+                                                <div className="booking-row-value">
+                                                    <div className="pax-stepper">
+                                                        <button
+                                                            className="stepper-btn"
+                                                            type="button"
+                                                            onClick={() => setPax(Math.max(1, pax - 1))}
+                                                        >−</button>
+                                                        <span className="stepper-value">{pax}</span>
+                                                        <button
+                                                            className="stepper-btn"
+                                                            type="button"
+                                                            onClick={() => setPax(Math.min(t.maxPax - t.currentPax, pax + 1))}
+                                                        >+</button>
+                                                    </div>
+                                                    <span className="trip-text-m trip-text-gray-600">人</span>
+                                                </div>
+                                            </div>
+
+                                            {/* CTA Button */}
+                                            <button className="trip-btn-primary trip-btn-l cta-button">
+                                                申請加入旅程
+                                            </button>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </>) : (<div className="sidebar-card booking-card mb-4 text-center py-4">
+                                        <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🔒</div>
+                                        <h5 className="trip-text-gray-800 mb-2">登入後才能查看</h5>
+                                        <p className="trip-text-s trip-text-gray-400 mb-4">
+                                            集合資訊與報名功能僅限會員使用
+                                        </p>
+                                        <Link to="/login" className="trip-btn-primary trip-btn-m cta-button d-block">
+                                            立即登入
+                                        </Link>
+                                        <p className="trip-text-s trip-text-gray-400 mt-3 mb-0">
+                                            還沒有帳號？<Link to="/register" className="trip-text-primary">免費註冊</Link>
+                                        </p>
+                                    </div>)
+                            }
 
-                            {/* Booking Card */}
-                            <div className="sidebar-card booking-card mb-4">
-                                {/* Price & Countdown */}
-                                <div className="booking-boxes mb-3">
-                                    <div className="booking-box">
-                                        <div className="box-label">預估平攤費用：</div>
-                                        <div className="box-value">
-                                            <span className="price-symbol">$</span>
-                                            <span className="price-amount">{t.price.toLocaleString()}</span>
-                                            <span className="price-unit">/人</span>
-                                        </div>
-                                    </div>
-                                    <div className="booking-box">
-                                        <div className="box-label">剩餘時間：</div>
-                                        <div className="box-value countdown">{t.countdown}</div>
-                                    </div>
-                                </div>
-
-                                <p className="booking-note trip-text-s trip-text-gray-400 mb-4">
-                                    以上為預估費用，實際費用以團主公告為準。
-                                </p>
-
-                                {/* Seats Info */}
-                                <div className="booking-row mb-3">
-                                    <div className="booking-row-label">
-                                        <span className="row-icon">👥</span>
-                                        <span className="trip-text-m trip-text-gray-600 fw-bold">剩餘座位</span>
-                                    </div>
-                                    <div className="booking-row-value">
-                                        <span className="seats-current">{t.currentPax}</span>
-                                        <span className="seats-separator">/</span>
-                                        <span className="seats-max">{t.maxPax}個</span>
-                                    </div>
-                                </div>
-
-                                {/* Pax Selector */}
-                                <div className="booking-row mb-4">
-                                    <div className="booking-row-label">
-                                        <span className="row-icon">👤</span>
-                                        <span className="trip-text-m trip-text-gray-600 fw-bold">我有</span>
-                                    </div>
-                                    <div className="booking-row-value">
-                                        <div className="pax-stepper">
-                                            <button
-                                                className="stepper-btn"
-                                                type="button"
-                                                onClick={() => setPax(Math.max(1, pax - 1))}
-                                            >−</button>
-                                            <span className="stepper-value">{pax}</span>
-                                            <button
-                                                className="stepper-btn"
-                                                type="button"
-                                                onClick={() => setPax(Math.min(t.maxPax - t.currentPax, pax + 1))}
-                                            >+</button>
-                                        </div>
-                                        <span className="trip-text-m trip-text-gray-600">人</span>
-                                    </div>
-                                </div>
-
-                                {/* CTA Button */}
-                                <button className="trip-btn-primary trip-btn-l cta-button">
-                                    申請加入旅程
-                                </button>
-                            </div>
 
                             {/* Host Card */}
                             <div className="sidebar-card host-card mb-4">
