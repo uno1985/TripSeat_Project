@@ -97,7 +97,7 @@ const MemberFavorites = () => {
   if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;
 
   return (
-    <div className="my-groups-section">
+    <div className="my-groups-section mb-4">
       <div className="my-groups-header mb-4">
         <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
           <div>

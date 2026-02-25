@@ -404,7 +404,16 @@ function TripDetail() {
 
         try {
             if (favoriteId) {
-                alert('此旅程已在收藏中');
+                await axios.patch(
+                    `${API_URL}/664/favorites/${favoriteId}`,
+                    {
+                        deleted_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setFavoriteId(null);
+                alert('已從收藏移除');
                 return;
             }
 

@@ -192,7 +192,7 @@
 /* Timeline Icon */
 .timeline-icon {
   position: absolute;
-  font-size: 10px;
+  font-size: 20px;
 }
 
 .timeline-dot {
@@ -275,9 +275,9 @@
 }
 
 .timeline-dot {
-  width: 12px;
-  height: 12px;
-  background-color: var(--trip-color-primary-800);
+  width: 25px;
+  height: 25px;
+  /* background-color: var(--trip-color-primary-800); */
   border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: 0 0 0 2px var(--trip-color-primary-800);
