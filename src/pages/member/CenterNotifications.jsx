@@ -8,6 +8,8 @@ const API_URL = import.meta.env.VITE_API_BASE;
 
 const TYPE_META = {
   apply: { text: '入團申請', badgeClass: 'bg-warning-subtle text-warning-emphasis' },
+  approval: { text: '審核通知', badgeClass: 'bg-success-subtle text-success-emphasis' },
+  rejected: { text: '審核通知', badgeClass: 'bg-danger-subtle text-danger-emphasis' },
   success: { text: '成團通知', badgeClass: 'bg-info-subtle text-info-emphasis' },
   cancel: { text: '棄團通知', badgeClass: 'bg-danger-subtle text-danger-emphasis' },
   review: { text: '心得通知', badgeClass: 'bg-primary-subtle text-primary-emphasis' },
@@ -32,10 +34,12 @@ const Notifications = () => {
       setError(null);
 
       try {
-        const [notifRes, myTripsRes, reviewsRes] = await Promise.all([
-          axios.get(`${API_URL}/664/notifications?user_id=${user.id}&_sort=created_at&_order=desc&_limit=5`),
+        const [notifRes, myTripsRes, reviewsRes, participantsRes, usersRes] = await Promise.all([
+          axios.get(`${API_URL}/664/notifications?user_id=${user.id}&_sort=created_at&_order=desc&_limit=3`),
           axios.get(`${API_URL}/664/trips?owner_id=${user.id}`),
           axios.get(`${API_URL}/664/reviews?_sort=created_at&_order=desc`),
+          axios.get(`${API_URL}/664/participants?_sort=created_at&_order=desc`),
+          axios.get(`${API_URL}/664/users`),
         ]);
 
         const dbNotifs = (notifRes.data || []).map((item) => {
@@ -60,9 +64,29 @@ const Notifications = () => {
         }
 
         const myTripMap = new Map((myTripsRes.data || []).map((trip) => [trip.id, trip]));
-        const fallback = (reviewsRes.data || [])
+        const userMap = new Map((usersRes.data || []).map((item) => [item.id, item]));
+
+        const applyFallback = (participantsRes.data || [])
+          .filter((row) => !row.deleted_at && row.role === 'member' && row.user_id !== user.id && myTripMap.has(row.trip_id))
+          .map((row) => {
+            const actor = userMap.get(row.user_id);
+            const trip = myTripMap.get(row.trip_id);
+            return {
+              id: `apply-${row.id}`,
+              typeText: TYPE_META.apply.text,
+              badgeClass: TYPE_META.apply.badgeClass,
+              user: { name: actor?.name || '會員', id: row.user_id },
+              content: ' 提出入團申請：',
+              trip: { name: trip?.title || '未命名旅程', id: row.trip_id },
+              endContent: '',
+              linkText: '前往查看',
+              actionLink: `/member/groups`,
+              created_at: row.created_at || row.updated_at || '',
+            };
+          });
+
+        const reviewFallback = (reviewsRes.data || [])
           .filter((review) => !review.deleted_at && myTripMap.has(review.trip_id) && review.user_id !== user.id)
-          .slice(0, 5)
           .map((review) => ({
             id: `review-${review.id}`,
             typeText: TYPE_META.review.text,
@@ -75,6 +99,10 @@ const Notifications = () => {
             actionLink: `/thoughts/${review.id}`,
             created_at: review.created_at,
           }));
+
+        const fallback = [...applyFallback, ...reviewFallback]
+          .sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)))
+          .slice(0, 3);
 
         setNotifications(fallback);
       } catch (err) {

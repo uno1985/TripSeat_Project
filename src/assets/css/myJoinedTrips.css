@@ -173,6 +173,29 @@
 .mjv7-badge.open { background: rgba(255, 183, 76, 0.94); color: #4f2e00; }
 .mjv7-badge.ended { background: rgba(212, 212, 212, 0.92); color: #333; }
 
+.mjv7-apply-badge {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-label-size);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.mjv7-apply-badge.is-pending {
+  background: rgba(255, 240, 204, 0.9);
+  color: #8a5600;
+  border-color: rgba(255, 183, 76, 0.8);
+}
+
+.mjv7-apply-badge.is-approved {
+  background: rgba(214, 247, 225, 0.92);
+  color: #0e6030;
+  border-color: rgba(79, 207, 124, 0.8);
+}
+
 .mjv7-focus-content h3 {
   margin: 10px 0 8px;
   font-family: var(--trip-font-family);
@@ -286,7 +309,9 @@
 
 .mjv7-rail-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -294,6 +319,7 @@
   font-family: var(--trip-font-family);
   font-size: var(--trip-font-text-s-size);
   color: var(--trip-color-gray-800);
+  min-width: 0;
 }
 
 .mjv7-rail-top span,
@@ -306,6 +332,13 @@
 
 .mjv7-rail-mid {
   margin-top: 4px;
+}
+
+.mjv7-apply-badge.mjv7-apply-badge-sm {
+  margin-top: 0;
+  padding: 2px 8px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .mjv7-rail-bottom {

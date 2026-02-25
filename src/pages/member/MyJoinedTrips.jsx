@@ -41,6 +41,13 @@ function formatDateTime(startDate, meetingTime) {
   return `${dateText} ${meetingTime || ''}`.trim();
 }
 
+function getApplicationMeta(status) {
+  if (status === 'pending') {
+    return { text: '審核中', className: 'is-pending' };
+  }
+  return { text: '已核准', className: 'is-approved' };
+}
+
 export default function MyJoinedTripsV7() {
   const { user } = useAuth();
   const [trips, setTrips] = useState([]);
@@ -97,11 +104,9 @@ export default function MyJoinedTripsV7() {
           axios.get(`${API_URL}/664/trips`),
         ]);
 
-        const participantTripIds = new Set(
-          (participantsRes.data || [])
-            .filter((row) => !row.deleted_at)
-            .map((row) => row.trip_id)
-        );
+        const activeParticipants = (participantsRes.data || []).filter((row) => !row.deleted_at);
+        const participantTripIds = new Set(activeParticipants.map((row) => row.trip_id));
+        const participantMap = new Map(activeParticipants.map((row) => [row.trip_id, row]));
 
         const reviewMap = new Map();
         (reviewsRes.data || [])
@@ -123,6 +128,8 @@ export default function MyJoinedTripsV7() {
             return {
               id: trip.id,
               reviewId: review?.id || null,
+              participantCreatedAt: participantMap.get(trip.id)?.created_at || '',
+              applicationStatus: participantMap.get(trip.id)?.application_status || 'approved',
               title: trip.title,
               status: statusType,
               date: formatDateTime(trip.start_date, trip.meeting_time),
@@ -135,7 +142,8 @@ export default function MyJoinedTripsV7() {
               tags: trip.tags || [],
               story,
             };
-          });
+          })
+          .sort((a, b) => String(b.participantCreatedAt).localeCompare(String(a.participantCreatedAt)));
 
         setTrips(rows);
       } catch (err) {
@@ -310,7 +318,9 @@ export default function MyJoinedTripsV7() {
                     <button type="button" onClick={() => setFocusId(trip.id)}>
                       <div className="mjv7-rail-top">
                         <strong>{trip.title}</strong>
-                        <span>{STATUS_META[trip.status]}</span>
+                        <span className={`mjv7-apply-badge mjv7-apply-badge-sm ${getApplicationMeta(trip.applicationStatus).className}`}>
+                          {getApplicationMeta(trip.applicationStatus).text}
+                        </span>
                       </div>
                       <div className="mjv7-rail-mid">{trip.date} ・ {trip.location}</div>
                       <div className="mjv7-rail-bottom">
