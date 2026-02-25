@@ -4872,5 +4872,31 @@
       "updated_at": "2025-12-01T00:00:00Z",
       "deleted_at": null
     }
+  ],
+  "favorites": [
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "created_at": "2026-02-25T11:04:56.087Z",
+      "updated_at": "2026-02-25T11:04:56.087Z",
+      "deleted_at": null,
+      "id": 1
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "created_at": "2026-02-25T11:06:02.368Z",
+      "updated_at": "2026-02-25T11:06:02.368Z",
+      "deleted_at": null,
+      "id": 2
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "created_at": "2026-02-25T11:06:22.033Z",
+      "updated_at": "2026-02-25T11:06:22.033Z",
+      "deleted_at": null,
+      "id": 3
+    }
   ]
 }

@@ -31,6 +31,7 @@ function TripDetail() {
     const [hasApplied, setHasApplied] = useState(false);
     const [applicationStatus, setApplicationStatus] = useState(null);
     const [tripApplicants, setTripApplicants] = useState([]);
+    const [favoriteId, setFavoriteId] = useState(null);
     const [applying, setApplying] = useState(false);
     const [applyMessage, setApplyMessage] = useState('');
     const { user } = useAuth();
@@ -52,33 +53,46 @@ function TripDetail() {
         setError(null);
 
         try {
-            // 先取得 trip 資料
-            const tripRes = await axios.get(`${API_URL}/664/trips/${id}`);
+            // 先取得 trip 資料（:id 失敗時 fallback 用 query 查）
+            let tripData = null;
+            try {
+                const tripRes = await axios.get(`${API_URL}/664/trips/${id}`);
+                tripData = tripRes.data;
+            } catch (err) {
+                const fallbackRes = await axios.get(`${API_URL}/664/trips?id=${encodeURIComponent(id)}`);
+                tripData = (fallbackRes.data || [])[0] || null;
+                if (!tripData) throw err;
+            }
 
             // 同時用解構方式取得 itineraries 和 owner 資料
             const participantReq = user?.id
-                ? axios.get(`${API_URL}/664/participants?trip_id=${tripRes.data.id}&user_id=${user.id}`)
+                ? axios.get(`${API_URL}/664/participants?trip_id=${tripData.id}&user_id=${user.id}`)
                 : Promise.resolve({ data: [] });
-            const tripParticipantsReq = axios.get(`${API_URL}/664/participants?trip_id=${tripRes.data.id}`);
+            const favoriteReq = user?.id
+                ? axios.get(`${API_URL}/664/favorites?trip_id=${tripData.id}&user_id=${user.id}`)
+                : Promise.resolve({ data: [] });
+            const tripParticipantsReq = axios.get(`${API_URL}/664/participants?trip_id=${tripData.id}`);
             const usersReq = axios.get(`${API_URL}/664/users`);
 
-            const [itineraryRes, ownerRes, otherTripRes, participantRes, tripParticipantsRes, usersRes] = await Promise.all([
-                axios.get(`${API_URL}/664/itineraries?trip_id=${tripRes.data.id}`),
-                axios.get(`${API_URL}/664/users/${tripRes.data.owner_id}`),
-                axios.get(`${API_URL}/664/trips?owner_id=${tripRes.data.owner_id}`),
+            const [itineraryRes, ownerRes, otherTripRes, participantRes, tripParticipantsRes, usersRes, favoriteRes] = await Promise.all([
+                axios.get(`${API_URL}/664/itineraries?trip_id=${tripData.id}`),
+                axios.get(`${API_URL}/664/users/${tripData.owner_id}`),
+                axios.get(`${API_URL}/664/trips?owner_id=${tripData.owner_id}`),
                 participantReq,
                 tripParticipantsReq,
                 usersReq,
+                favoriteReq,
             ]);
 
 
             //刪除目前查詢的ID
-            const otherTrip = otherTripRes.data.filter(trip => trip.id !== tripRes.data.id);
+            const otherTrip = otherTripRes.data.filter(trip => trip.id !== tripData.id);
             const activeParticipant = (participantRes.data || []).find((row) => !row.deleted_at);
             const joined = Boolean(activeParticipant);
             const joinedStatus = activeParticipant
                 ? (activeParticipant.application_status || 'approved')
                 : null;
+            const activeFavorite = (favoriteRes.data || []).find((row) => !row.deleted_at);
             const userMap = new Map((usersRes.data || []).map((item) => [item.id, item]));
             const applicants = (tripParticipantsRes.data || [])
                 .filter(
@@ -96,13 +110,14 @@ function TripDetail() {
                 }))
                 .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
 
-            setTrip(tripRes.data);
+            setTrip(tripData);
             setItineraries(itineraryRes.data);
             setOtherTrip(otherTrip);
             setOwner(ownerRes.data);
             setTripApplicants(applicants);
             setHasApplied(joined);
             setApplicationStatus(joinedStatus);
+            setFavoriteId(activeFavorite?.id || null);
             setApplyMessage('');
         } catch (err) {
             setError(err.message);
@@ -375,6 +390,69 @@ function TripDetail() {
         }
     };
 
+    const handleFavorite = async () => {
+        if (!user?.id) {
+            navigate('/login', { state: { from: location } });
+            return;
+        }
+
+        const token = getToken();
+        if (!token) {
+            alert('登入狀態失效，請重新登入');
+            return;
+        }
+
+        try {
+            if (favoriteId) {
+                alert('此旅程已在收藏中');
+                return;
+            }
+
+            const existingRes = await axios.get(
+                `${API_URL}/664/favorites?trip_id=${trip.id}&user_id=${user.id}`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            const rows = existingRes.data || [];
+            const activeRow = rows.find((row) => !row.deleted_at);
+            const deletedRow = rows.find((row) => row.deleted_at);
+
+            if (activeRow) {
+                setFavoriteId(activeRow.id);
+                alert('此旅程已在收藏中');
+                return;
+            }
+
+            if (deletedRow) {
+                await axios.patch(
+                    `${API_URL}/664/favorites/${deletedRow.id}`,
+                    {
+                        deleted_at: null,
+                        updated_at: new Date().toISOString(),
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setFavoriteId(deletedRow.id);
+            } else {
+                const res = await axios.post(
+                    `${API_URL}/664/favorites`,
+                    {
+                        user_id: user.id,
+                        trip_id: trip.id,
+                        created_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
+                        deleted_at: null,
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setFavoriteId(res.data.id);
+            }
+
+            alert('已加入收藏');
+        } catch (err) {
+            alert(err.response?.data || err.message || '加入收藏失敗');
+        }
+    };
+
     return (
         <div className="trip-detail-page">
             <div className="container pt-5">
@@ -388,7 +466,7 @@ function TripDetail() {
 
                 {/* Title & Tags */}
                 <div className="trip-header mb-4">
-                    <div className="d-flex justify-content-between align-items-start">
+                    <div className="d-flex align-items-start">
                         <div>
                             <h1 className="h2 mb-3 trip-text-gray-800">{t.title}</h1>
                             <div className="trip-tags">
@@ -397,7 +475,20 @@ function TripDetail() {
                                 ))}
                             </div>
                         </div>
-                        {trip.owner_id === user?.id && <a href="#" className="link-m trip-text-gray-600 edit-link">編輯旅程</a>}
+                        <div className="d-flex align-items-center gap-2">
+                            {trip.owner_id === user?.id && <a href="#" className="link-m trip-text-gray-600 edit-link">編輯旅程</a>}
+                            <button
+                                type="button"
+                                className="trip-favorite-btn"
+                                onClick={handleFavorite}
+                                title="加入收藏"
+                                aria-label="加入收藏"
+                            >
+                                <span className={`material-symbols-outlined trip-favorite-icon ${favoriteId ? 'is-active' : ''}`}>
+                                    favorite
+                                </span>
+                            </button>
+                        </div>
 
                     </div>
                 </div>
