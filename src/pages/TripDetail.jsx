@@ -292,11 +292,11 @@ function TripDetail() {
             ? '審核中'
             : hasApplied
                 ? '已加入'
-            : isFull
-                ? '已額滿'
-                : isDeadlinePassed
-                    ? '已截止'
-                    : '申請加入旅程';
+                : isFull
+                    ? '已額滿'
+                    : isDeadlinePassed
+                        ? '已截止'
+                        : '申請加入旅程';
 
     const handleApplyJoin = async () => {
         if (!user?.id) {
@@ -720,88 +720,88 @@ function TripDetail() {
                                     </div>)
                             }
 
-                                {/* CTA Button */}
-                                <button className="trip-btn-primary trip-btn-l cta-button" disabled={isCtaDisabled || applying} onClick={handleApplyJoin}>
-                                    {applying ? '申請中...' : ctaText}
-                                </button>
-                                {applyMessage && (
-                                    <p className="trip-text-s trip-text-gray-400 mt-2 mb-0">{applyMessage}</p>
+                            {/* CTA Button */}
+                            <button className="trip-btn-primary trip-btn-l cta-button" disabled={isCtaDisabled || applying} onClick={handleApplyJoin}>
+                                {applying ? '申請中...' : ctaText}
+                            </button>
+                            {applyMessage && (
+                                <p className="trip-text-s trip-text-gray-400 mt-2 mb-0">{applyMessage}</p>
+                            )}
+                        </div>
+
+                        {/* Host Card */}
+                        <div className="sidebar-card host-card mb-4">
+                            <div className="host-header mb-3">
+                                <img src={t.host.avatar} alt={t.host.name} className="host-avatar" />
+                                <div className="host-info">
+                                    <div className="host-name-row">
+                                        <span className="host-name">{t.host.name}</span>
+                                        <span className="host-badge">{t.host.badge}</span>
+                                    </div>
+                                    <div className="host-rating trip-text-s trip-text-gray-400">
+                                        <span className="star">★</span> {t.host.rating} ({t.host.reviews} 趟旅程)
+                                    </div>
+                                </div>
+                            </div>
+                            <p className="host-bio trip-text-s trip-text-gray-600 mb-4">{t.host.bio}</p>
+
+                            {/* 過往旅程記憶 */}
+                            <h6 className="subsection-title trip-text-gray-400 mb-3">過往旅程記憶</h6>
+                            <div className="memory-gallery mb-4">
+                                {t.otherTripItems && t.otherTripItems.length > 0 ? (
+                                    // 有資料時顯示圖片
+                                    t.otherTripItems.map(item => (
+                                        <div key={item.id} className="memory-item">
+                                            <Link to={`/trips/${item.id}`}>
+                                                <img src={item.image} alt={item.title || ''} className="memory-image" />
+                                            </Link>
+                                        </div>
+                                    ))
+                                ) : (
+                                    // 沒資料時顯示 placeholder
+                                    <>
+
+                                    </>
                                 )}
                             </div>
 
-                            {/* Host Card */}
-                            <div className="sidebar-card host-card mb-4">
-                                <div className="host-header mb-3">
-                                    <img src={t.host.avatar} alt={t.host.name} className="host-avatar" />
-                                    <div className="host-info">
-                                        <div className="host-name-row">
-                                            <span className="host-name">{t.host.name}</span>
-                                            <span className="host-badge">{t.host.badge}</span>
-                                        </div>
-                                        <div className="host-rating trip-text-s trip-text-gray-400">
-                                            <span className="star">★</span> {t.host.rating} ({t.host.reviews} 趟旅程)
-                                        </div>
-                                    </div>
+                            {/* Verified Badge Button */}
+                            {t.host.isVerified ? (
+                                <div className="verified-btn">
+                                    <span className="verified-icon" ><img src={shieldCheck} alt="shieldCheck" /></span> 已認證 真安心團主
                                 </div>
-                                <p className="host-bio trip-text-s trip-text-gray-600 mb-4">{t.host.bio}</p>
-
-                                {/* 過往旅程記憶 */}
-                                <h6 className="subsection-title trip-text-gray-400 mb-3">過往旅程記憶</h6>
-                                <div className="memory-gallery mb-4">
-                                    {t.otherTripItems && t.otherTripItems.length > 0 ? (
-                                        // 有資料時顯示圖片
-                                        t.otherTripItems.map(item => (
-                                            <div key={item.id} className="memory-item">
-                                                <Link to={`/trips/${item.id}`}>
-                                                    <img src={item.image} alt={item.title || ''} className="memory-image" />
-                                                </Link>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        // 沒資料時顯示 placeholder
-                                        <>
-
-                                        </>
-                                    )}
-                                </div>
-
-                                {/* Verified Badge Button */}
-                                {t.host.isVerified ? (
-                                    <div className="verified-btn">
-                                        <span className="verified-icon" ><img src={shieldCheck} alt="shieldCheck" /></span> 已認證 真安心團主
-                                    </div>
-                                ) : null}
-                            </div>
-
-                            {/* Applicants Card */}
-                            {trip.owner_id === user?.id && <>
-                                <div className="sidebar-card applicants-card">
-                                    <h5 className="subsection-title trip-text-gray-600 mb-3">申請加入名單</h5>
-                                    <div className="applicants-row">
-                                        <div className="applicants-avatars">
-                                            {tripApplicants.slice(0, 3).map((applicant) => (
-                                                <img
-                                                    key={applicant.id}
-                                                    src={applicant.avatar}
-                                                    alt={applicant.name}
-                                                    className="applicant-avatar"
-                                                />
-                                            ))}
-                                            {tripApplicants.length === 0 && <div className="applicant-avatar placeholder-avatar"></div>}
-                                        </div>
-                                        <span className="applicants-count trip-text-s trip-text-gray-400">
-                                            已有 {tripApplicants.length} 位乘客申請加入
-                                        </span>
-                                        <Link to={`/member/groups?tripId=${trip.id}`} className="manage-btn">管理</Link>
-                                    </div>
-                                </div>
-                            </>}
-
+                            ) : null}
                         </div>
+
+                        {/* Applicants Card */}
+                        {trip.owner_id === user?.id && <>
+                            <div className="sidebar-card applicants-card">
+                                <h5 className="subsection-title trip-text-gray-600 mb-3">申請加入名單</h5>
+                                <div className="applicants-row">
+                                    <div className="applicants-avatars">
+                                        {tripApplicants.slice(0, 3).map((applicant) => (
+                                            <img
+                                                key={applicant.id}
+                                                src={applicant.avatar}
+                                                alt={applicant.name}
+                                                className="applicant-avatar"
+                                            />
+                                        ))}
+                                        {tripApplicants.length === 0 && <div className="applicant-avatar placeholder-avatar"></div>}
+                                    </div>
+                                    <span className="applicants-count trip-text-s trip-text-gray-400">
+                                        已有 {tripApplicants.length} 位乘客申請加入
+                                    </span>
+                                    <Link to={`/member/groups?tripId=${trip.id}`} className="manage-btn">管理</Link>
+                                </div>
+                            </div>
+                        </>}
+
                     </div>
                 </div>
             </div>
         </div>
+
     );
 }
 
