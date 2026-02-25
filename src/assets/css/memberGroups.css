@@ -307,6 +307,7 @@
 .my-groups-btn-approve:hover {
   opacity: 0.85;
   color: var(--trip-color-white);
+  background-color: var(--trip-color-gray-600);
 }
 
 .my-groups-btn-reject {
@@ -324,6 +325,7 @@
 .my-groups-btn-reject:hover {
   opacity: 0.85;
   color: var(--trip-color-white);
+  background-color: var(--trip-color-gray-600);
 }
 
 /* ===== 團員區 ===== */
@@ -428,6 +430,7 @@
 .my-groups-btn-confirm:hover {
   opacity: 0.85;
   color: var(--trip-color-white);
+  background-color: var(--trip-color-gray-600);
 }
 
 .my-groups-btn-cancel {

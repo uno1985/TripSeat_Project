@@ -26,10 +26,25 @@ const initialForm = {
     cancellationPolicy: '',
 };
 
+const createItineraryItem = () => ({
+    id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    time: '',
+    icon: '📍',
+    title: '',
+    note: '',
+});
+
+const createItineraryDay = (day) => ({
+    id: `day-${day}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    day,
+    items: [createItineraryItem()],
+});
+
 const MemberCreateGroups = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
     const [form, setForm] = useState(initialForm);
+    const [itineraryDays, setItineraryDays] = useState([createItineraryDay(1)]);
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -64,6 +79,66 @@ const MemberCreateGroups = () => {
             .split('; ')
             .find((row) => row.startsWith('tripToken='))
             ?.split('=')[1];
+
+    const updateItineraryItem = (dayId, itemId, field, value) => {
+        setItineraryDays((prev) =>
+            prev.map((day) => {
+                if (day.id !== dayId) return day;
+                return {
+                    ...day,
+                    items: day.items.map((item) =>
+                        item.id === itemId ? { ...item, [field]: value } : item
+                    ),
+                };
+            })
+        );
+    };
+
+    const addItineraryItem = (dayId) => {
+        setItineraryDays((prev) =>
+            prev.map((day) =>
+                day.id === dayId
+                    ? { ...day, items: [...day.items, createItineraryItem()] }
+                    : day
+            )
+        );
+    };
+
+    const removeItineraryItem = (dayId, itemId) => {
+        setItineraryDays((prev) =>
+            prev.map((day) => {
+                if (day.id !== dayId) return day;
+                if (day.items.length === 1) return day;
+                return {
+                    ...day,
+                    items: day.items.filter((item) => item.id !== itemId),
+                };
+            })
+        );
+    };
+
+    const addItineraryDay = () => {
+        setItineraryDays((prev) => [...prev, createItineraryDay(prev.length + 1)]);
+    };
+
+    const removeItineraryDay = (dayId) => {
+        setItineraryDays((prev) => {
+            const target = prev.find((day) => day.id === dayId);
+            if (!target || target.day === 1) return prev;
+
+            return prev
+                .filter((day) => day.id !== dayId)
+                .map((day, index) => ({ ...day, day: index + 1 }));
+        });
+    };
+
+    const getItineraryTypeByIcon = (icon) => {
+        if (icon === '🍽️') return 'food';
+        if (icon === '🚗') return 'transport';
+        if (icon === '🏨') return 'accommodation';
+        if (icon === '✏️') return 'note';
+        return 'activity';
+    };
 
     const handlePublish = async () => {
         if (!canSubmit) {
@@ -127,6 +202,45 @@ const MemberCreateGroups = () => {
             const res = await axios.post(`${API_URL}/600/trips`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
+
+            const itineraryPayloads = itineraryDays
+                .flatMap((day) =>
+                    day.items
+                        .filter((item) => item.title.trim() || item.note.trim())
+                        .map((item) => ({
+                            day: day.day,
+                            time: item.time || '09:00',
+                            type: getItineraryTypeByIcon(item.icon),
+                            icon: item.icon,
+                            title: item.title.trim() || '行程安排',
+                            note: item.note.trim(),
+                        }))
+                );
+
+            if (itineraryPayloads.length > 0) {
+                await Promise.all(
+                    itineraryPayloads.map((item) =>
+                        axios.post(
+                            `${API_URL}/600/itineraries`,
+                            {
+                                trip_id: res.data.id,
+                                day: item.day,
+                                time: item.time,
+                                type: item.type,
+                                icon: item.icon,
+                                title: item.title,
+                                note: item.note,
+                                updated_at: new Date().toISOString(),
+                                deleted_at: null,
+                            },
+                            {
+                                headers: { Authorization: `Bearer ${token}` },
+                            }
+                        )
+                    )
+                );
+            }
+
             navigate(`/trips/${res.data.id}`);
         } catch (err) {
             setError(err.response?.data || err.message || '發佈失敗');
@@ -487,55 +601,96 @@ const MemberCreateGroups = () => {
                     可依天數新增每日行程，讓旅伴提前了解安排
                 </p>
 
-                {/* Day 1 範例 */}
-                <div className="create-group-day-block">
-                    <div className="create-group-day-header">
-                        <span className="create-group-day-badge">Day 1</span>
-                        {/* 開發者自行加入刪除天數按鈕 */}
-                    </div>
-
-                    {/* 行程項目 */}
-                    <div className="create-group-itinerary-item">
-                        <div className="row g-2 align-items-end">
-                            <div className="col-md-2">
-                                <label className="form-label create-group-label-sm">時間</label>
-                                <input type="time" className="form-control create-group-input-sm" />
-                            </div>
-                            <div className="col-md-2">
-                                <label className="form-label create-group-label-sm">圖示</label>
-                                <select className="form-select create-group-input-sm">
-                                    <option value="📍">📍 地點</option>
-                                    <option value="🍽️">🍽️ 餐食</option>
-                                    <option value="🏨">🏨 住宿</option>
-                                    <option value="🚗">🚗 交通</option>
-                                    <option value="🎯">🎯 活動</option>
-                                    <option value="✏️">✏️ 備註</option>
-                                </select>
-                            </div>
-                            <div className="col-md-3">
-                                <label className="form-label create-group-label-sm">項目名稱</label>
-                                <input type="text" className="form-control create-group-input-sm" placeholder="例如：出發集合" />
-                            </div>
-                            <div className="col-md-4">
-                                <label className="form-label create-group-label-sm">備註</label>
-                                <input type="text" className="form-control create-group-input-sm" placeholder="補充說明（選填）" />
-                            </div>
-                            <div className="col-md-1 text-center">
-                                <button type="button" className="btn btn-sm create-group-btn-remove" title="刪除此項">
+                {itineraryDays.map((day) => (
+                    <div className="create-group-day-block" key={day.id}>
+                        <div className="create-group-day-header">
+                            <span className="create-group-day-badge">Day {day.day}</span>
+                            {day.day > 1 && (
+                                <button
+                                    type="button"
+                                    className="btn btn-sm create-group-btn-remove"
+                                    title={`刪除 Day ${day.day}`}
+                                    onClick={() => removeItineraryDay(day.id)}
+                                >
                                     <i className="bi bi-trash"></i>
                                 </button>
-                            </div>
+                            )}
                         </div>
-                    </div>
 
-                    {/* 新增行程項目按鈕 */}
-                    <button type="button" className="btn btn-sm create-group-btn-add-item mt-2">
-                        <i className="bi bi-plus me-1"></i>新增行程項目
-                    </button>
-                </div>
+                        {day.items.map((item) => (
+                            <div className="create-group-itinerary-item" key={item.id}>
+                                <div className="row g-2 align-items-end">
+                                    <div className="col-md-2">
+                                        <label className="form-label create-group-label-sm">時間</label>
+                                        <input
+                                            type="time"
+                                            className="form-control create-group-input-sm"
+                                            value={item.time}
+                                            onChange={(e) => updateItineraryItem(day.id, item.id, 'time', e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="col-md-2">
+                                        <label className="form-label create-group-label-sm">圖示</label>
+                                        <select
+                                            className="form-select create-group-input-sm"
+                                            value={item.icon}
+                                            onChange={(e) => updateItineraryItem(day.id, item.id, 'icon', e.target.value)}
+                                        >
+                                            <option value="📍">📍 地點</option>
+                                            <option value="🍽️">🍽️ 餐食</option>
+                                            <option value="🏨">🏨 住宿</option>
+                                            <option value="🚗">🚗 交通</option>
+                                            <option value="🎯">🎯 活動</option>
+                                            <option value="✏️">✏️ 備註</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <label className="form-label create-group-label-sm">項目名稱</label>
+                                        <input
+                                            type="text"
+                                            className="form-control create-group-input-sm"
+                                            placeholder="例如：出發集合"
+                                            value={item.title}
+                                            onChange={(e) => updateItineraryItem(day.id, item.id, 'title', e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="col-md-4">
+                                        <label className="form-label create-group-label-sm">備註</label>
+                                        <input
+                                            type="text"
+                                            className="form-control create-group-input-sm"
+                                            placeholder="補充說明（選填）"
+                                            value={item.note}
+                                            onChange={(e) => updateItineraryItem(day.id, item.id, 'note', e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="col-md-1 text-center">
+                                        <button
+                                            type="button"
+                                            className="btn btn-sm create-group-btn-remove"
+                                            title="刪除此項"
+                                            onClick={() => removeItineraryItem(day.id, item.id)}
+                                            disabled={day.items.length === 1}
+                                        >
+                                            <i className="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <button
+                            type="button"
+                            className="btn btn-sm create-group-btn-add-item mt-2"
+                            onClick={() => addItineraryItem(day.id)}
+                        >
+                            <i className="bi bi-plus me-1"></i>新增行程項目
+                        </button>
+                    </div>
+                ))}
 
                 {/* 新增天數按鈕 */}
-                <button type="button" className="btn create-group-btn-add-day mt-3">
+                <button type="button" className="btn create-group-btn-add-day mt-3" onClick={addItineraryDay}>
                     <i className="bi bi-plus-circle me-2"></i>新增一天
                 </button>
             </div>

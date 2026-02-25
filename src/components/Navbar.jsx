@@ -129,7 +129,9 @@ function Navbar() {
 
                         <div className="d-flex">
                             {isLogin ? (<>
-                                <button className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => closeNavbar()}>我要開團</button>
+                                <Link to="/member/create-group" className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => closeNavbar()}>
+                                    我要開團
+                                </Link>
                                 <div className="d-flex align-items-center">
 
                                     <div className="dropdown trip-nav-user d-none d-lg-block">
