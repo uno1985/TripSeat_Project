@@ -3708,8 +3708,9 @@
       "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
       "role": "member",
       "created_at": "2025-12-30T12:00:00Z",
-      "updated_at": "2025-12-30T12:00:00Z",
-      "deleted_at": null
+      "updated_at": "2026-02-25T10:17:19.784Z",
+      "deleted_at": null,
+      "application_status": "approved"
     },
     {
       "id": "39f133ae-e5b2-4dc1-b7c1-709aba15973c",
@@ -4708,7 +4709,24 @@
     }
   ],
   "messages": [],
-  "notifications": [],
+  "notifications": [
+    {
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "type": "approval",
+      "actor_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "actor_name": "吃貨凱莉",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": false,
+      "created_at": "2026-02-25T10:17:19.784Z",
+      "updated_at": "2026-02-25T10:17:19.784Z",
+      "deleted_at": null,
+      "id": 1
+    }
+  ],
   "reports": [],
   "site_feedbacks": [
     {

@@ -127,10 +127,10 @@ const Notifications = () => {
 
       <div className="list-group list-group-flush bg-white shadow-sm rounded-4 p-4">
         {notifications.length === 0 && (
-          <div className="text-center text-muted py-3">目前沒有通知</div>
+          <div className="text-center text-muted py-2">目前沒有通知</div>
         )}
         {notifications.map((note) => (
-          <div key={note.id} className="list-group-item border-0 px-0 py-3 dashed-border">
+          <div key={note.id} className="list-group-item border-0 px-0 py-2 dashed-border">
             <div className="d-flex align-items-start gap-3">
               {/* 狀態標籤 */}
               <span className={`badge rounded-1 px-2 py-2 fw-normal ${note.badgeClass}`}>
@@ -139,7 +139,7 @@ const Notifications = () => {
 
               {/* 內容文字區塊 */}
               <div className="flex-grow-1">
-                <p className="mb-0 trip-text-l">
+                <p className="mb-0 trip-text-m">
                   {/* 會員名稱連結 */}
                   {note.user && (
                     <Link to={`/member/${note.user.id}`} className="fw-bold text-dark text-decoration-none mx-1">
