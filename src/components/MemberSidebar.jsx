@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../contexts/AuthContext';
 import '../assets/css/memberSidebar.css';
 import avatarImg from '../assets/images/avator09.png';
 
+
+
 const MemberSidebar = () => {
   const location = useLocation();
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false); // 用於手機版下拉選單狀態
+
 
   const menuItems = [
     { name: '我的檔案', path: '/member/profile' },
@@ -19,6 +25,16 @@ const MemberSidebar = () => {
   // 根據目前路徑取得選單名稱，若無匹配則顯示「會員中心」
   const currentItem = menuItems.find(item => item.path === location.pathname);
   const currentTitle = currentItem ? currentItem.name : '會員中心';
+
+
+
+  // 直接用 user，不需要 profile
+  const displayName = user?.name || '會員';
+  const displayIntro = user?.intro || '歡迎來到會員中心';
+  const displayAvatar = user?.avatar || avatarImg;
+  const displayRating = user?.rating_average ?? '-';
+  const displayTrips = user?.trips_completed ?? 0;
+
 
   return (
     <div className="member-sidebar-container">
@@ -56,18 +72,18 @@ const MemberSidebar = () => {
         <div className="profile-info mb-4">
           <div className="avatar-wrapper mb-3">
             <img
-              src={avatarImg}
+              src={displayAvatar}
               alt="User Avatar"
               className="rounded-circle border"
               style={{ width: '120px', height: '120px', objectFit: 'cover' }}
             />
           </div>
-          <h3 className="h3 fw-bold mb-1">Cami Wang</h3>
-          <p className="trip-text-m trip-text-gray-400 mb-2">小小冒險家</p>
+          <h3 className="h3 fw-bold mb-1">{displayName}</h3>
+          <p className="trip-text-m trip-text-gray-400 mb-2">{displayIntro}</p>
           <div className="rating d-flex align-items-center justify-content-center">
             <span className="trip-btn-m p-0 me-1">★</span>
-            <span className="trip-btn-m p-0 fw-bold">4.8</span>
-            <span className="trip-text-s ms-1">(129 則評價)</span>
+            <span className="trip-btn-m p-0 fw-bold">{displayRating}</span>
+            <span className="trip-text-s ms-1">({displayTrips} 趟旅程)</span>
           </div>
         </div>
 
@@ -79,7 +95,7 @@ const MemberSidebar = () => {
               <li key={index} className="mb-3">
                 <Link
                   to={item.path}
-                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'text-primary' : 'text-dark'
+                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
                     }`}
                   style={{ textDecoration: 'none' }}
                 >

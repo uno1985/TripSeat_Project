@@ -75,14 +75,28 @@ export const AuthProvider = ({ children }) => {
         window.location.hash = '#/';
     };
 
-    // 4. 初次載入時執行檢查
+
+
+    // 4.
+    const updateUser = (updatedData) => {
+        const merged = { ...user, ...updatedData };
+        localStorage.setItem('tripUser', JSON.stringify(merged));
+        setUser(merged);
+    };
+
+
+    // 5. 初次載入時執行檢查
     useEffect(() => {
         checkLogin();
     }, []);
 
-    // 5. 這是最重要的！沒有 return，網頁就會變白的
+
+
+
+
+    // 6. 這是最重要的！沒有 return，網頁就會變白的
     return (
-        <AuthContext.Provider value={{ isLogin, user, login, logout, loading }}>
+        <AuthContext.Provider value={{ isLogin, user, login, logout, loading, updateUser }}>
             {children}
         </AuthContext.Provider>
     );

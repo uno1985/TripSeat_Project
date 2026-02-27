@@ -3,7 +3,7 @@
     {
       "id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
       "role": "admin",
-      "name": "系統管理員",
+      "name": "系統管理員的啦",
       "email": "admin@trips.com",
       "email_verified": true,
       "password": "$2a$10$50myH1zzVUMXHPxL9LW7Mu1t86LPG.45cX6PbpUJ/5mz9eErHNYSK",
@@ -22,10 +22,12 @@
       "rating_average": 5,
       "last_login_at": "2025-12-31T08:00:00Z",
       "created_at": "2025-12-01T10:00:00Z",
-      "updated_at": "2025-12-31T11:00:00Z",
+      "updated_at": "2026-02-25T16:16:18.026Z",
       "deleted_at": null,
       "is_verified_host": 1,
-      "birthday": "1985-03-15"
+      "birthday": "1985-03-15",
+      "nickname": "系統",
+      "frequent_departures": []
     },
     {
       "id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
@@ -52,7 +54,9 @@
       "updated_at": "2025-12-15T15:30:00Z",
       "deleted_at": null,
       "is_verified_host": 1,
-      "birthday": "1992-07-22"
+      "birthday": "1992-07-22",
+      "nickname": null,
+      "frequent_departures": []
     },
     {
       "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
@@ -79,7 +83,9 @@
       "updated_at": "2025-12-31T09:00:00Z",
       "deleted_at": null,
       "is_verified_host": 1,
-      "birthday": "1995-11-08"
+      "birthday": "1995-11-08",
+      "nickname": null,
+      "frequent_departures": []
     },
     {
       "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
@@ -106,7 +112,9 @@
       "updated_at": "2025-12-31T10:30:00Z",
       "deleted_at": null,
       "is_verified_host": 1,
-      "birthday": "1978-02-28"
+      "birthday": "1978-02-28",
+      "nickname": null,
+      "frequent_departures": []
     },
     {
       "id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
@@ -126,7 +134,19 @@
       "created_at": "2025-12-05T12:00:00Z",
       "updated_at": "2025-12-31T10:00:00Z",
       "is_verified_host": 0,
-      "birthday": "1998-04-12"
+      "birthday": "1998-04-12",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0911222333",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T10:00:00Z",
+      "deleted_at": null,
+      "nickname": "凱莉",
+      "frequent_departures": [
+        "台北",
+        "新北"
+      ]
     },
     {
       "id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
@@ -146,17 +166,29 @@
       "created_at": "2025-11-10T09:00:00Z",
       "updated_at": "2025-12-31T11:00:00Z",
       "is_verified_host": 1,
-      "birthday": "1988-09-05"
+      "birthday": "1988-09-05",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0922333444",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T11:00:00Z",
+      "deleted_at": null,
+      "nickname": "阿強",
+      "frequent_departures": [
+        "基隆",
+        "台北"
+      ]
     },
     {
       "id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "role": "member",
-      "name": "文青小雨",
+      "name": "文青小雨傘壓",
       "email": "rain@test.com",
       "email_verified": true,
       "password": "$2a$10$50myH1zzVUMXHPxL9LW7Mu1t86LPG.45cX6PbpUJ/5mz9eErHNYSK",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
-      "intro": "喜歡逛美術館跟書店，安靜的旅行最棒。",
+      "intro": "喜歡逛美術館跟書店，安靜的旅行最棒。希望能在這裡找到更多相似的夥伴！",
       "status": "active",
       "trust_score": 88,
       "trips_created": 1,
@@ -164,9 +196,20 @@
       "trips_completed": 4,
       "rating_average": 4.6,
       "created_at": "2025-12-10T14:00:00Z",
-      "updated_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2026-02-25T16:15:33.246Z",
       "is_verified_host": 1,
-      "birthday": "2000-01-30"
+      "birthday": "2000-01-30",
+      "nickname": "小雨",
+      "phone": "0921234567",
+      "frequent_departures": [
+        "台北"
+      ],
+      "google_id": null,
+      "line_id": null,
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2026-02-25T16:15:33.246Z",
+      "deleted_at": null
     },
     {
       "id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
@@ -186,7 +229,19 @@
       "created_at": "2025-12-01T10:00:00Z",
       "updated_at": "2025-12-31T09:30:00Z",
       "is_verified_host": 1,
-      "birthday": "1990-06-18"
+      "birthday": "1990-06-18",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0933444555",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T09:30:00Z",
+      "deleted_at": null,
+      "nickname": "路加",
+      "frequent_departures": [
+        "台中",
+        "南投"
+      ]
     },
     {
       "id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
@@ -206,7 +261,19 @@
       "created_at": "2025-11-25T15:00:00Z",
       "updated_at": "2025-12-31T07:00:00Z",
       "is_verified_host": 1,
-      "birthday": "1983-12-25"
+      "birthday": "1983-12-25",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0944555666",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T07:00:00Z",
+      "deleted_at": null,
+      "nickname": "阿健",
+      "frequent_departures": [
+        "高雄",
+        "屏東"
+      ]
     },
     {
       "id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
@@ -226,7 +293,19 @@
       "created_at": "2025-11-05T11:00:00Z",
       "updated_at": "2025-12-31T12:00:00Z",
       "is_verified_host": 0,
-      "birthday": "1993-08-14"
+      "birthday": "1993-08-14",
+      "phone": "0921885467",
+      "google_id": null,
+      "line_id": null,
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T12:00:00Z",
+      "deleted_at": null,
+      "nickname": "妙妙",
+      "frequent_departures": [
+        "新北",
+        "台北"
+      ]
     },
     {
       "id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
@@ -246,7 +325,19 @@
       "created_at": "2025-12-20T10:00:00Z",
       "updated_at": "2025-12-31T11:15:00Z",
       "is_verified_host": 0,
-      "birthday": "1986-05-20"
+      "birthday": "1986-05-20",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0956677889",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T11:15:00Z",
+      "deleted_at": null,
+      "nickname": "大衛",
+      "frequent_departures": [
+        "台東",
+        "花蓮"
+      ]
     },
     {
       "id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
@@ -266,7 +357,19 @@
       "created_at": "2025-12-12T05:00:00Z",
       "updated_at": "2025-12-31T10:45:00Z",
       "is_verified_host": 1,
-      "birthday": "1997-10-03"
+      "birthday": "1997-10-03",
+      "phone": "0929994670",
+      "google_id": null,
+      "line_id": null,
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "nickname": "珊珊",
+      "frequent_departures": [
+        "台南",
+        "高雄"
+      ]
     },
     {
       "id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
@@ -286,7 +389,18 @@
       "created_at": "2025-12-18T16:00:00Z",
       "updated_at": "2025-12-31T09:00:00Z",
       "is_verified_host": 0,
-      "birthday": "1991-03-08"
+      "birthday": "1991-03-08",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0966777888",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T09:00:00Z",
+      "deleted_at": null,
+      "nickname": "大強",
+      "frequent_departures": [
+        "台北"
+      ]
     },
     {
       "id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
@@ -306,7 +420,19 @@
       "created_at": "2025-11-01T20:00:00Z",
       "updated_at": "2025-12-31T12:30:00Z",
       "is_verified_host": 1,
-      "birthday": "1982-11-22"
+      "birthday": "1982-11-22",
+      "google_id": null,
+      "line_id": null,
+      "phone": "0977888999",
+      "phone_verified": false,
+      "blocked_reason": null,
+      "last_login_at": "2025-12-31T12:30:00Z",
+      "deleted_at": null,
+      "nickname": "傑克",
+      "frequent_departures": [
+        "宜蘭",
+        "花蓮"
+      ]
     }
   ],
   "trips": [
@@ -398,7 +524,11 @@
       "vibe_tags": [
         "慢活",
         "看海"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "ddfa6703-c52b-419e-88f3-d70ba0a39a49",
@@ -442,7 +572,11 @@
         "說走就走",
         "桌遊",
         "歷史"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-30T14:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
@@ -488,7 +622,11 @@
         "星空",
         "冒險",
         "慢活"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "4c0c6903-d975-4e38-8793-5be40f79f498",
@@ -498,11 +636,11 @@
       "cancellation_policy": "需預付材料費不退",
       "location": "新北市 鶯歌區",
       "meeting_point": "鶯歌老街口",
-      "start_date": "2026-01-12",
-      "end_date": "2026-01-12",
-      "deadline": "2026-01-10",
+      "start_date": "2026-03-22",
+      "end_date": "2026-03-22",
+      "deadline": "2026-02-28T23:00:00+08:00",
       "price": 800,
-      "current_participants": 2,
+      "current_participants": 4,
       "max_people": 4,
       "category": "手作體驗",
       "tags": [
@@ -530,7 +668,11 @@
         "攝影",
         "手作",
         "展覽"
-      ]
+      ],
+      "updated_at": "2026-02-27T18:19:06.431Z",
+      "is_featured": false,
+      "blocked_reason": null,
+      "deleted_at": null
     },
     {
       "id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
@@ -574,7 +716,11 @@
         "慢活",
         "看海",
         "體力活"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
@@ -617,7 +763,11 @@
         "桌遊",
         "談心",
         "看海"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "780fb2c8-2468-46f4-85b8-bdbd10755e37",
@@ -659,7 +809,11 @@
       "vibe_tags": [
         "吃貨",
         "喝酒"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
@@ -701,7 +855,11 @@
       "vibe_tags": [
         "派對",
         "交朋友"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
@@ -745,7 +903,11 @@
         "挑戰自我",
         "談心",
         "夜市"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "3f2f92a9-8d95-43e0-b1bd-29df94b0cc02",
@@ -789,7 +951,11 @@
         "秘境",
         "說走就走",
         "森林浴"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "d44e76e7-6873-42f0-891a-6809d68f0628",
@@ -831,7 +997,11 @@
       "vibe_tags": [
         "輕鬆自在",
         "喝酒"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "3ed2c004-f1f2-4877-a299-0801c360a651",
@@ -873,7 +1043,11 @@
       "vibe_tags": [
         "秘境",
         "挑戰自我"
-      ]
+      ],
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-15T20:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
@@ -887,7 +1061,7 @@
       "end_date": "2026-03-05",
       "deadline": "2026-03-01",
       "price": 1200,
-      "current_participants": 1,
+      "current_participants": 2,
       "max_people": 4,
       "category": "手作體驗",
       "tags": [
@@ -917,7 +1091,11 @@
         "好相處",
         "老宅",
         "展覽"
-      ]
+      ],
+      "updated_at": "2026-02-25T08:59:32.057Z",
+      "is_featured": false,
+      "blocked_reason": null,
+      "deleted_at": null
     },
     {
       "id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
@@ -931,7 +1109,7 @@
       "end_date": "2026-04-01",
       "deadline": "2026-03-31",
       "price": 100,
-      "current_participants": 3,
+      "current_participants": 4,
       "max_people": 10,
       "category": "慶祝",
       "tags": [
@@ -962,7 +1140,11 @@
         "派對",
         "不趕行程",
         "談心"
-      ]
+      ],
+      "updated_at": "2026-02-25T09:42:57.414Z",
+      "is_featured": false,
+      "blocked_reason": null,
+      "deleted_at": null
     },
     {
       "id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
@@ -1005,7 +1187,12 @@
         "秘境",
         "熱血",
         "爆汗"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "c16f907e-3444-41cd-9a31-72170006fa2d",
@@ -1049,7 +1236,12 @@
         "不趕行程",
         "挑戰自我",
         "早起"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
@@ -1091,7 +1283,12 @@
       "vibe_tags": [
         "秘境",
         "看海"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
@@ -1131,7 +1328,12 @@
       "vibe_tags": [
         "不趕行程",
         "挑戰自我"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
@@ -1173,7 +1375,12 @@
         "冒險",
         "吸收芬多精",
         "爆汗"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "78fb8c3c-9f43-4488-9f5d-dfe677e961ce",
@@ -1218,7 +1425,12 @@
         "輕鬆自在",
         "老宅",
         "美學"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "7ef88ccd-5062-4b23-b704-355db9f70413",
@@ -1261,7 +1473,12 @@
         "爆汗",
         "體力活",
         "森林浴"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
@@ -1303,7 +1520,12 @@
         "隱藏版美食",
         "分享故事",
         "談心"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
@@ -1316,7 +1538,7 @@
       "end_date": "2026-11-12",
       "deadline": "2026-11-05",
       "price": 0,
-      "current_participants": 20,
+      "current_participants": 19,
       "max_people": 50,
       "category": "慶祝",
       "tags": [
@@ -1344,7 +1566,12 @@
         "桌遊",
         "派對",
         "慢活"
-      ]
+      ],
+      "updated_at": "2026-02-25T08:44:49.926Z",
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "deleted_at": null
     },
     {
       "id": "10c70cf6-5694-4939-8a30-94b56c3480c1",
@@ -1386,7 +1613,12 @@
         "冒險",
         "早起",
         "吸收芬多精"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
@@ -1429,7 +1661,12 @@
         "輕鬆自在",
         "手作",
         "療癒"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "d2c96378-2d58-4566-9a14-9660e322879f",
@@ -1473,7 +1710,12 @@
         "不趕行程",
         "談心",
         "喝酒"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "51f98870-8fef-4f2d-b211-d160b3b3c1bd",
@@ -1513,7 +1755,12 @@
       "vibe_tags": [
         "秘境",
         "說走就走"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-31T07:00:00Z",
+      "deleted_at": null
     },
     {
       "id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
@@ -1522,12 +1769,12 @@
       "host_rating": 4.6,
       "location": "台南市 中西區",
       "meeting_point": "神農街口",
-      "start_date": "2026-02-14",
-      "end_date": "2026-02-14",
-      "deadline": "2026-02-13",
+      "start_date": "2026-03-16",
+      "end_date": "2026-03-16",
+      "deadline": "2026-03-15",
       "price": 100,
-      "current_participants": 4,
-      "max_people": 8,
+      "current_participants": null,
+      "max_people": 6,
       "category": "慶祝",
       "tags": [
         "台南",
@@ -1557,7 +1804,12 @@
         "輕鬆自在",
         "手作",
         "展覽"
-      ]
+      ],
+      "updated_at": "2026-02-27T19:29:42.539Z",
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "deleted_at": null
     },
     {
       "id": "5a39add5-5844-498c-bada-0a018bcd820b",
@@ -1601,7 +1853,12 @@
         "交朋友",
         "分享故事",
         "看海"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-31T11:15:00Z",
+      "deleted_at": null
     },
     {
       "id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
@@ -1644,7 +1901,12 @@
         "不趕行程",
         "喝酒",
         "分享故事"
-      ]
+      ],
+      "cancellation_policy": "如需取消請提前 3 天通知",
+      "is_featured": false,
+      "blocked_reason": null,
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null
     }
   ],
   "itineraries": [
@@ -3302,7 +3564,1544 @@
     }
   ],
   "applications": [],
-  "participants": [],
+  "participants": [
+    {
+      "id": "61033eda-9152-4f61-8f09-99d0bdd8170c",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "owner",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "89ba4c20-3cb5-4736-8735-06d2d0ce5525",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "ab1504b1-b772-4c58-9c87-f2e73d97fbca",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "9d077790-c8df-4857-9f95-458f4dc3705f",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "e7e7f181-8034-4903-aac6-e95042543336",
+      "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "44f94a11-e427-4386-b30e-d9afca3663fc",
+      "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c83d9b02-de1d-4912-acee-6088fcd7c0a2",
+      "trip_id": "ddfa6703-c52b-419e-88f3-d70ba0a39a49",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "created_at": "2025-12-30T14:00:00Z",
+      "updated_at": "2025-12-30T14:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "06034070-9fbe-479e-b028-54225388440f",
+      "trip_id": "ddfa6703-c52b-419e-88f3-d70ba0a39a49",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-30T14:00:00Z",
+      "updated_at": "2025-12-30T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "d12f9458-df64-4f2b-aac0-0200179ec628",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "owner",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b2bf3f4f-c78f-48f0-87f0-c335d507b28f",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "41887bcc-350f-4a5d-966f-e8f73dd58ebd",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "e2cc694a-aaf1-4dde-bac1-77a289786d1e",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b6fcff15-d4a6-4382-8041-9f28ddacc527",
+      "trip_id": "6d2493db-5ed9-4ace-8d71-cbbbec8d9f32",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "1a8a549b-6c2d-4f14-ba09-6f6f9e4ff6f2",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "owner",
+      "created_at": "2025-12-29T11:00:00Z",
+      "updated_at": "2025-12-29T11:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "024427cd-9128-4613-b4af-86ecc1dd7bd0",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "member",
+      "created_at": "2025-12-29T11:00:00Z",
+      "updated_at": "2026-02-27T15:16:48.479Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c01cf2a2-8c05-4140-b269-b8f33eab43d2",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "owner",
+      "created_at": "2025-12-20T20:00:00Z",
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "6e1567c8-b1e6-4e1e-99da-fb4bb4204774",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-20T20:00:00Z",
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "cfd2649e-a88a-47fc-b2b1-9796df40f700",
+      "trip_id": "f9ae0f8d-a4a7-49d7-be3c-7795ab6c2a9b",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T20:00:00Z",
+      "updated_at": "2025-12-20T20:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "abb15da4-05f8-4bfd-a7c4-1cfab621f87c",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "owner",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "517a8328-783a-4ee7-bbb0-0084e968e472",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "2d0e270d-c7db-46e2-8890-039da91e3d51",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "660d304a-7d4a-4c61-92e9-0507f13971f1",
+      "trip_id": "5f4211a2-205d-4891-a9fb-fe784dba4260",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "db94dd85-8ec4-4f91-b59f-b556a99cc015",
+      "trip_id": "780fb2c8-2468-46f4-85b8-bdbd10755e37",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "owner",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "ae8cecec-0e15-4971-a85b-47203ce0c3ff",
+      "trip_id": "780fb2c8-2468-46f4-85b8-bdbd10755e37",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "0b619388-79fa-4ca5-9e4b-22b962b4d70f",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "owner",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "16fe9034-ea87-4183-b5bf-b888a7cd9e25",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "21336fec-28fd-427e-a892-0693f3d9a8d4",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "9fc5f87a-4185-4374-992e-c44681eea23e",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "05b65a5c-21a4-41ec-be5c-fd0b00d8db2d",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "52ec7753-f375-4600-9a2c-1951dcd2403e",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "9e025cc1-26d1-4b4f-8ff1-9975108601de",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "085ba765-827e-4c33-b45f-ddfbbad72b8b",
+      "trip_id": "12f235d9-9081-401c-af11-bcfc7616fdd2",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c2931ecb-0910-49dc-8df2-dede4eae1365",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "role": "owner",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "279d9256-d6ec-47a5-8ce0-35fcd44c01b6",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "member",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "336c4bee-fa76-4ef5-8c03-0b223b6aa2b8",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "056620be-cca8-4e51-bad8-23b5e7944df1",
+      "trip_id": "956f0ae1-0302-4c58-b8cc-496d5e8c670d",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-28T16:00:00Z",
+      "updated_at": "2025-12-28T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b83971ad-d552-4670-b110-5373f2fa6b77",
+      "trip_id": "3f2f92a9-8d95-43e0-b1bd-29df94b0cc02",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "7e5ffaa4-b75c-4cf1-af91-5efedd5b7f06",
+      "trip_id": "3f2f92a9-8d95-43e0-b1bd-29df94b0cc02",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "110d8c3f-09ad-4867-a4ea-b8e47823e817",
+      "trip_id": "d44e76e7-6873-42f0-891a-6809d68f0628",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "4eb5c9b0-feda-45b0-8b6f-4458cea39f2d",
+      "trip_id": "3ed2c004-f1f2-4877-a299-0801c360a651",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "owner",
+      "created_at": "2025-12-15T20:00:00Z",
+      "updated_at": "2025-12-15T20:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "ec337545-b001-417f-bd34-452b5329dd43",
+      "trip_id": "3ed2c004-f1f2-4877-a299-0801c360a651",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-15T20:00:00Z",
+      "updated_at": "2025-12-15T20:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "8fcc8e3b-8aca-4dd0-a30b-5c3e9550545c",
+      "trip_id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "owner",
+      "created_at": "2025-12-28T11:00:00Z",
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c1887dcb-679a-400f-9195-6203bf1e7f8e",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "owner",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "53103d88-4851-4e53-9e06-030f0593eac5",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "f5ebf0fb-1e2b-411b-8024-f853ef6b07ce",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2026-02-25T10:17:19.784Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "39f133ae-e5b2-4dc1-b7c1-709aba15973c",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "owner",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "41893197-0712-4687-bd21-f784b00fc9e7",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "782b72ef-fd8a-4731-aee4-66ac9b97004e",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "owner",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "a4ebc890-c50c-4bd5-bf21-7c35fa78d682",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "84c27c9d-84fd-4960-8e16-725afb2552ac",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "d8175e6b-d6c8-44ef-bc39-1c018d003e3b",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "89b02e4f-4164-4a21-9848-d790c91ce20c",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2025-12-15T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "7f3694bb-68a9-4481-9f55-16552965f5d4",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "owner",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "18fc140c-ad80-4451-a556-8bcc655f5872",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "6344ecf1-da38-4927-82ff-cfa7ed0f9400",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "8ec0717c-1555-4dd4-a082-781bb7699bfb",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "03ca1813-f8e6-4874-a16c-4cff48874763",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "f5be3957-5f09-4afb-a048-16b066652bc0",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "20d30471-39c9-46b9-9b8f-350560ffc1c4",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b44afa7e-cdfb-4a18-b81f-a69205b0db6c",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c973ce84-a3e4-42fd-9f36-83ad795e0aa2",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "d48b553b-041d-43e7-972a-7e381365f0ec",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "member",
+      "created_at": "2025-12-25T14:00:00Z",
+      "updated_at": "2025-12-25T14:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "6cb44e07-f661-4c12-8ad0-6f9937cca019",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "02dd76dd-dd6b-4430-8d3d-384e73a2eedf",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "e3135a70-3f14-480d-98c8-3ff1033a316b",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "6834493d-5026-4910-809c-31041a9d30a4",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "0901e2b3-d572-4925-b0de-f200a945effa",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "8ffb26b1-8f61-444f-b88c-bee950f7efe3",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "80e14d12-f264-4387-bb14-fb2c416c493c",
+      "trip_id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "owner",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "6ef14a32-51dc-4b5b-a7cf-b1c18cfa3ccf",
+      "trip_id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c4c13331-f291-4b8a-be9f-43ec00891ef2",
+      "trip_id": "6d6179f2-1f12-4bfb-81d6-8db22652d6ee",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-20T10:00:00Z",
+      "updated_at": "2025-12-20T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b82c8903-cb5a-471b-be0b-6c009c567db6",
+      "trip_id": "78fb8c3c-9f43-4488-9f5d-dfe677e961ce",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "owner",
+      "created_at": "2025-12-28T11:00:00Z",
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "631814f0-2418-42a2-a8d2-b83e4bdd7b9e",
+      "trip_id": "78fb8c3c-9f43-4488-9f5d-dfe677e961ce",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T11:00:00Z",
+      "updated_at": "2025-12-28T11:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "d5f5cb98-5f11-4573-8d6b-97ea282c6807",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "owner",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "99d14d92-9927-4912-b3d1-6a22e3dfe995",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "888aee42-58e1-4ef5-8739-80da242f3116",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "0fa53841-2420-4ed4-bd4c-117a06cd4fb2",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2025-12-01T20:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "dd66ff9c-0e47-46e2-a73e-014b45a4d817",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "owner",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "d30c5a17-0d7b-4e25-b06d-f5dee77c9eae",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "aac50b79-82f6-4f2f-866c-a64e5fbe1dff",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "31668411-26a5-43fd-878c-e789a8d50db6",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c18fb785-122f-4e00-b0c5-0631655069be",
+      "trip_id": "b4f2bf29-ce41-47d0-ac5b-4edb6b201a75",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-30T12:00:00Z",
+      "updated_at": "2025-12-30T12:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c4347512-3fe7-4199-8d68-a87fd0162f73",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "owner",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "86b1384f-799e-41b4-bd7a-a2b16d9ec9e1",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "482539df-54ae-47e8-818b-acb367537644",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c9557e71-b23f-4a27-80a7-72656923e12e",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b2468816-5ca7-4f73-9321-473f56313a8d",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "3793818f-de8b-479b-8c73-f394cacaf601",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "0042c7bc-f53b-484e-a7ca-c548d8bc6828",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "2904af2d-ffd1-4d8d-840c-d4aab478adc2",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2026-02-25T08:44:49.925Z",
+      "deleted_at": "2026-02-25T08:44:49.925Z",
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "347806f5-9958-4d7b-a5a8-e5174064cb50",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "3e2cb1ca-4e64-4797-a215-58858c572675",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "51b9fcb7-163c-4b17-8b19-964f4f9b4b36",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "916bb88d-7f23-44df-851c-97219c1b8f92",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "c28d8f8f-1afa-40dc-8ba5-581851e43d86",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u9a0b1c2-d3e4-f5a6-b7c8-901234567823",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "ae414aa4-add2-4f2c-a67c-dbb46dbb1905",
+      "trip_id": "51ebbfb2-ec9f-416e-be90-efdc74307910",
+      "user_id": "u0b1c2d3-e4f5-a6b7-c8d9-012345678934",
+      "role": "member",
+      "created_at": "2025-12-31T05:00:00Z",
+      "updated_at": "2025-12-31T05:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "48a72ea1-6ab6-441b-8566-27d4485deaa2",
+      "trip_id": "10c70cf6-5694-4939-8a30-94b56c3480c1",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "owner",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "e7582144-44db-4c21-bf50-4048e39ea6c2",
+      "trip_id": "10c70cf6-5694-4939-8a30-94b56c3480c1",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-28T10:00:00Z",
+      "updated_at": "2025-12-28T10:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "fdc7ad5e-d3aa-450a-a2be-8dc951036c7c",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "owner",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "3b6e18d4-cde1-40e8-b01a-e71015d767b4",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "b42a2eca-f3e9-4626-9034-39f3f673f27e",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-25T16:00:00Z",
+      "updated_at": "2025-12-25T16:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "50cb4129-4f79-47cc-b59e-5d40562422ea",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "owner",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "97b94ff7-d880-47ce-9dde-86aba35fcc83",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "f7247671-26fa-4ff2-8745-8009000d2b1f",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "8a63d346-58c9-416d-8cc0-a06fbd76c180",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "8749a1cb-f455-4b66-8d48-b60a36ea50ef",
+      "trip_id": "d2c96378-2d58-4566-9a14-9660e322879f",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-20T08:00:00Z",
+      "updated_at": "2025-12-20T08:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "848e940b-93e0-4e08-bad7-bff20dadc01d",
+      "trip_id": "51f98870-8fef-4f2d-b211-d160b3b3c1bd",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "owner",
+      "created_at": "2025-12-31T07:00:00Z",
+      "updated_at": "2025-12-31T07:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "d699dadb-811f-4936-bf18-c11f22cf367e",
+      "trip_id": "51f98870-8fef-4f2d-b211-d160b3b3c1bd",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T07:00:00Z",
+      "updated_at": "2025-12-31T07:00:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "f4f130ef-6e1e-4115-b7a4-9887d40f547f",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2025-12-31T08:00:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "ee5298c3-5dbf-4bce-ae4e-b4732b2628f1",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2026-02-27T19:29:42.539Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "750e4523-0b0c-4987-8834-651627aa5608",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2026-02-27T19:29:36.500Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "3dc144f0-705f-4004-b2e6-d2b0006f89db",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T08:00:00Z",
+      "updated_at": "2026-02-27T19:29:21.028Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "04456c06-08a1-4290-a57e-291af8d8a828",
+      "trip_id": "5a39add5-5844-498c-bada-0a018bcd820b",
+      "user_id": "u7e8f9a0-b1c2-d3e4-f5a6-789012345601",
+      "role": "owner",
+      "created_at": "2025-12-31T11:15:00Z",
+      "updated_at": "2025-12-31T11:15:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "2e446740-6935-44c0-8621-2cdc597099d6",
+      "trip_id": "5a39add5-5844-498c-bada-0a018bcd820b",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T11:15:00Z",
+      "updated_at": "2025-12-31T11:15:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "bf48c78c-3fbc-4d74-b290-f31bdeb03822",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "owner",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "0c048e5c-aa78-4686-a3cb-e09c5525522c",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "eaa1d4fc-5556-4d20-976d-230245294704",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "66e25b4c-0ca7-4b39-9079-7639333eb6e5",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "65c4a417-6d65-469a-987a-b70e3ca068de",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "04ffc8b8-e8bc-4e51-a982-520a3119ebe3",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "f9ec3081-d91f-49c0-aa5d-cb07fe8ae02e",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u2f3a4b5-c6d7-e8f9-a0b1-2345678901bc",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "be76100b-e3ba-4fb0-8bee-d95f930b3205",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "ec794e7a-7671-4c45-8562-6bcc743dc7c6",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u4b5c6d7-e8f9-a0b1-c2d3-4567890123de",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "a039eb3e-a7df-4db0-891e-61839c2b4c6a",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "user_id": "u5c6d7e8-f9a0-b1c2-d3e4-5678901234ef",
+      "role": "member",
+      "created_at": "2025-12-31T10:45:00Z",
+      "updated_at": "2025-12-31T10:45:00Z",
+      "deleted_at": null,
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "trip_id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "created_at": "2026-02-25T08:59:32.038Z",
+      "updated_at": "2026-02-25T09:25:50.946Z",
+      "deleted_at": null,
+      "id": "YI13GLL",
+      "application_status": "approved",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "application_status": "pending",
+      "created_at": "2026-02-25T09:42:57.399Z",
+      "updated_at": "2026-02-25T09:42:57.399Z",
+      "deleted_at": null,
+      "id": "28ciH1t",
+      "comment": null,
+      "joinCount": 1
+    },
+    {
+      "id": "8ecf20e8-540e-4530-b6aa-8532cc42fd62",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "comment": "我要要帶我媽媽一起去玩玩看，拜託請讓我加入好嗎",
+      "joinCount": 2,
+      "application_status": "approved",
+      "created_at": "2026-02-27T18:18:44.634Z",
+      "updated_at": "2026-02-27T18:19:06.431Z",
+      "deleted_at": null
+    },
+    {
+      "id": "9c48401f-27ab-4c0c-899e-eaeaba5dde4f",
+      "trip_id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
+      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "role": "member",
+      "comment": "我想要帶我男朋友一起去，我很好聊的!希望可以玩得開心",
+      "joinCount": 2,
+      "application_status": "pending",
+      "created_at": "2026-02-27T18:38:52.454Z",
+      "updated_at": "2026-02-27T18:38:52.454Z",
+      "deleted_at": null
+    }
+  ],
   "reviews": [
     {
       "id": "rev-001-a1b2c3d4",
@@ -3389,7 +5188,7 @@
       "likes_count": 73,
       "is_public": true,
       "created_at": "2026-01-22T08:45:00Z",
-      "updated_at": "2026-01-22T08:45:00Z",
+      "updated_at": "2026-02-25T01:16:40.517Z",
       "deleted_at": null
     },
     {
@@ -3567,8 +5366,223 @@
       "deleted_at": null
     }
   ],
-  "messages": [],
-  "notifications": [],
+  "messages": [
+    {
+      "id": "7446d9a0-726b-4c21-9e3d-77fe4fb2afd5",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "sender_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "sender_name": "小明愛旅行",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "receiver_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "receiver_name": "吃貨凱莉",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=kelly",
+      "content": "凱莉你好！想問一下集合時間是幾點？行程說明上寫得不太清楚",
+      "is_read": true,
+      "created_at": "2026-02-24T16:02:39.739Z",
+      "deleted_at": null
+    },
+    {
+      "id": "4dca405d-bf47-4a42-8baa-3c12621946c5",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "sender_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "sender_name": "吃貨凱莉",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=kelly",
+      "receiver_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "receiver_name": "小明愛旅行",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "content": "小明你好！集合時間是晚上 6 點，在花蓮火車站前廣場集合喔～",
+      "is_read": true,
+      "created_at": "2026-02-24T18:02:39.741Z",
+      "deleted_at": null
+    },
+    {
+      "id": "a64c595a-2529-4e2e-a3c2-9c52f3eabd2b",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "sender_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "sender_name": "小明愛旅行",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "receiver_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "receiver_name": "吃貨凱莉",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=kelly",
+      "content": "了解！那需要提前準備什麼嗎？比如現金或是什麼特別注意事項？",
+      "is_read": true,
+      "created_at": "2026-02-25T12:02:39.741Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3b8fb0e5-8e86-4617-a144-ca1372323d03",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "sender_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "sender_name": "吃貨凱莉",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=kelly",
+      "receiver_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "receiver_name": "小明愛旅行",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "content": "建議帶現金，夜市部分攤販不收刷卡。另外肚子要留好，我們會吃很多好料！😋",
+      "is_read": true,
+      "created_at": "2026-02-26T18:02:39.741Z",
+      "deleted_at": null
+    },
+    {
+      "id": "a6f9bb60-0ce4-4fa8-96cb-fcc4e13abf66",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "sender_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "sender_name": "文青小雨傘壓",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "receiver_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "receiver_name": "露營女孩艾琳",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
+      "content": "艾琳，感謝你的申請！歡迎加入神農街宵夜團，有任何問題隨時都可以問我。",
+      "is_read": true,
+      "created_at": "2026-02-22T14:02:39.741Z",
+      "deleted_at": null
+    },
+    {
+      "id": "80c6284e-30f8-4705-8b8a-afe55fa0b5c2",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "sender_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "sender_name": "露營女孩艾琳",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
+      "receiver_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "receiver_name": "文青小雨傘壓",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "content": "謝謝！請問這趟路線大概幾公里？我有在路跑所以不擔心走路，只是想提前準備。",
+      "is_read": true,
+      "created_at": "2026-02-23T12:02:39.741Z",
+      "deleted_at": null
+    },
+    {
+      "id": "c639a79c-df4d-4432-873a-9431d6b7271d",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "sender_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "sender_name": "文青小雨傘壓",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "receiver_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "receiver_name": "露營女孩艾琳",
+      "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
+      "content": "哈哈路跑好厲害！我們路線大約 2-3 公里，輕鬆散步為主，中途會停很多美食點。穿舒適的鞋子就好～",
+      "is_read": false,
+      "created_at": "2026-02-25T19:02:39.741Z",
+      "deleted_at": null
+    },
+    {
+      "id": "5038b50d-2241-4405-aa9c-c789ea256fb4",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "sender_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "sender_name": "小明愛旅行",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "receiver_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "receiver_name": "吃貨凱莉",
+      "content": "好喔!!!!!",
+      "is_read": true,
+      "created_at": "2026-02-27T20:04:43.910Z",
+      "deleted_at": null
+    },
+    {
+      "id": "f12f1dc6-fd7d-4dc5-84d0-1332cc78380c",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "sender_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "sender_name": "吃貨凱莉",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=kelly",
+      "receiver_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "receiver_name": "小明愛旅行",
+      "content": "期待那天能看到你喔!!",
+      "is_read": false,
+      "created_at": "2026-02-27T20:05:49.406Z",
+      "deleted_at": null
+    }
+  ],
+  "notifications": [
+    {
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "type": "approval",
+      "actor_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "actor_name": "吃貨凱莉",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": true,
+      "created_at": "2026-02-25T10:17:19.784Z",
+      "updated_at": "2026-02-25T10:17:19.784Z",
+      "deleted_at": null,
+      "id": 1
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "type": "approval",
+      "actor_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
+      "actor_name": "手作達人妙妙",
+      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
+      "trip_title": "鶯歌捏陶半日遊",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": true,
+      "created_at": "2026-02-27T18:19:06.431Z",
+      "updated_at": "2026-02-27T18:19:06.431Z",
+      "deleted_at": null,
+      "id": 2
+    },
+    {
+      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "type": "approval",
+      "actor_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "actor_name": "文青小雨傘壓",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": false,
+      "created_at": "2026-02-27T19:29:21.028Z",
+      "updated_at": "2026-02-27T19:29:21.028Z",
+      "deleted_at": null,
+      "id": 3
+    },
+    {
+      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "type": "approval",
+      "actor_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "actor_name": "文青小雨傘壓",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": true,
+      "created_at": "2026-02-27T19:29:36.500Z",
+      "updated_at": "2026-02-27T19:29:36.500Z",
+      "deleted_at": null,
+      "id": 4
+    },
+    {
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "type": "approval",
+      "actor_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "actor_name": "文青小雨傘壓",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "content": " 你的入團申請已核准：",
+      "action_text": "查看行程",
+      "action_link": "/member/trips",
+      "is_read": false,
+      "created_at": "2026-02-27T19:29:42.539Z",
+      "updated_at": "2026-02-27T19:29:42.539Z",
+      "deleted_at": null,
+      "id": 5
+    }
+  ],
   "reports": [],
   "site_feedbacks": [
     {
@@ -3713,6 +5727,64 @@
       "created_at": "2025-12-01T00:00:00Z",
       "updated_at": "2025-12-01T00:00:00Z",
       "deleted_at": null
+    }
+  ],
+  "favorites": [
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "95bc284a-430e-45fa-a1aa-092a2b571c47",
+      "created_at": "2026-02-25T11:04:56.087Z",
+      "updated_at": "2026-02-25T11:52:14.950Z",
+      "deleted_at": "2026-02-25T11:52:14.950Z",
+      "id": 1
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
+      "created_at": "2026-02-25T11:06:02.368Z",
+      "updated_at": "2026-02-25T11:06:02.368Z",
+      "deleted_at": null,
+      "id": 2
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "created_at": "2026-02-25T11:06:22.033Z",
+      "updated_at": "2026-02-25T11:06:22.033Z",
+      "deleted_at": null,
+      "id": 3
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
+      "created_at": "2026-02-25T11:54:31.067Z",
+      "updated_at": "2026-02-25T11:54:31.067Z",
+      "deleted_at": null,
+      "id": 4
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "created_at": "2026-02-25T11:54:49.691Z",
+      "updated_at": "2026-02-25T11:54:49.691Z",
+      "deleted_at": null,
+      "id": 5
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
+      "created_at": "2026-02-27T14:48:42.792Z",
+      "updated_at": "2026-02-27T14:48:42.792Z",
+      "deleted_at": null,
+      "id": 6
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
+      "created_at": "2026-02-27T14:54:41.599Z",
+      "updated_at": "2026-02-27T15:05:02.723Z",
+      "deleted_at": null,
+      "id": 7
     }
   ]
 }

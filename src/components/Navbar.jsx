@@ -129,7 +129,9 @@ function Navbar() {
 
                         <div className="d-flex">
                             {isLogin ? (<>
-                                <button className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => closeNavbar()}>我要開團</button>
+                                <Link to="/member/create-group" className="navbar-btn btn trip-btn-primary trip-btn-m" onClick={() => closeNavbar()}>
+                                    我要開團
+                                </Link>
                                 <div className="d-flex align-items-center">
 
                                     <div className="dropdown trip-nav-user d-none d-lg-block">
@@ -146,7 +148,8 @@ function Navbar() {
                                             }
 
                                             <li><Link className="dropdown-item trip-dropdown-item" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link></li>
-                                            <li><Link className="dropdown-item trip-dropdown-item d-flex align-items-center" to="/inbox" onClick={() => closeNavbar()}>站內收件匣 <span className="inbox-badge">999</span></Link></li>
+                                            <li><Link className="dropdown-item trip-dropdown-item d-flex align-items-center" to="/member/notifications" onClick={() => closeNavbar()}>站內收件匣 </Link></li>
+                                            {/* <span className="inbox-badge">999</span> */}
                                             <li><hr className="dropdown-divider mx-3" /></li>
                                             <li><button className="dropdown-item trip-dropdown-item text-center fw-bold" onClick={() => { logout(); }}>登出</button></li>
                                         </ul>

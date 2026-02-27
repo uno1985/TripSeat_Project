@@ -4,6 +4,7 @@ import x from "../assets/images/X.png";
 import line from "../assets/images/LINE.png";
 import fb from "../assets/images/FB.png";
 import ig from "../assets/images/IG.png";
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="footer container pt-52">
@@ -21,18 +22,11 @@ function Footer() {
           </div>
         </div>
         <div className="">
-          <a href="" className="mr-8 footerLink">
-            關於我們
-          </a>
-          <a href="" className="mr-8 footerLink">
-            使用條款
-          </a>
-          <a href="" className="mr-8 footerLink">
-            隱私政策
-          </a>
-          <a href="" className="footerLink">
-            常見問題
-          </a>
+
+          <Link to="/about" className="mr-8 footerLink">關於我們</Link>
+          <Link to="/legal#terms" className="mr-8 footerLink">使用條款</Link>
+          <Link to="/legal#privacy" className="mr-8 footerLink">隱私政策</Link>
+          <Link to="/legal#faq" className="mr-8 footerLink">常見問題</Link>
         </div>
         <div className="text-start">
           <img className="footerContact mr-12" src={fb} alt="facebook" />
