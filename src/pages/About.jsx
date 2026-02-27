@@ -60,31 +60,31 @@ const About = () => {
 
     const team = [
         {
-            name: '林小明',
-            role: '創辦人 / CEO',
+            name: 'Uno Wu',
+            role: '創意發想者',
             desc: '曾背包走遍 30 國，深信旅行能改變人生，希望讓更多人找到旅伴圓夢。',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ceo&backgroundColor=ffb74c',
+            avatar: 'https://api.dicebear.com/7.x/lorelei/svg?seed=kelly&backgroundColor=ffb74c',
             tag: '旅行狂熱者',
         },
         {
-            name: '陳美玲',
+            name: 'Cami Wang',
             role: '產品設計師',
             desc: '10 年 UX 設計經驗，致力打造讓使用者一用就愛上的旅遊社群體驗。',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ux&backgroundColor=a5d8ff',
-            tag: 'UX 達人',
+            avatar: 'https://api.dicebear.com/7.x/lorelei/svg?seed=designer&backgroundColor=a5d8ff',
+            tag: 'UI UX 達人',
         },
         {
-            name: '王大龍',
-            role: '技術長 / CTO',
+            name: '小光',
+            role: '全端工程師',
             desc: '熱衷開源技術與系統架構，打造穩定、快速、安全的平台基礎設施。',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=cto&backgroundColor=b2f2bb',
+            avatar: 'https://api.dicebear.com/7.x/lorelei/svg?seed=engineer&backgroundColor=b2f2bb',
             tag: '工程達人',
         },
         {
-            name: '張雅婷',
+            name: '大頭',
             role: '社群經營總監',
             desc: '擅長社群行銷與活動策劃，讓 TripSeat 的每一個旅程故事都被更多人看見。',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=cmo&backgroundColor=ffd8a8',
+            avatar: 'https://api.dicebear.com/7.x/lorelei/svg?seed=social&backgroundColor=ffd6e0',
             tag: '社群靈魂',
         },
     ];
@@ -150,7 +150,7 @@ const About = () => {
                                 從一個旅人的孤單<br />出發的旅程平台
                             </h2>
                             <p className="about-story-text">
-                                2023 年，創辦人林小明在一次獨自旅行中，在合歡山的山頂上，望著壯觀的雲海，心裡卻有一種說不出的遺憾——<strong>如果這一刻有個人能一起分享，該有多好。</strong>
+                                2025 年，創辦人林小明在一次獨自旅行中，在合歡山的山頂上，望著壯觀的雲海，心裡卻有一種說不出的遺憾——<strong>如果這一刻有個人能一起分享，該有多好。</strong>
                             </p>
                             <p className="about-story-text">
                                 那一刻，TripSeat 的種子悄悄萌芽。我們相信，最美的風景需要有人共同欣賞，最好的旅行需要有旅伴相陪。
@@ -161,7 +161,7 @@ const About = () => {
                             <div className="about-story-quote">
                                 <i className="bi bi-quote"></i>
                                 <blockquote>旅行的意義，不在於去了哪裡，而在於和誰一起去。</blockquote>
-                                <cite>— 林小明，TripSeat 創辦人</cite>
+                                <cite>— UNO，TripSeat 創辦人</cite>
                             </div>
                         </div>
                     </div>
