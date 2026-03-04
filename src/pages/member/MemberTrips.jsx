@@ -269,7 +269,7 @@ const MemberTrips = () => {
         axios.patch(
           `${API_URL}/664/trips/${targetTrip.id}`,
           {
-            current_participants: Math.max((targetTrip.participants || 1) - trip.joinCount, 0),
+            current_participants: Math.max((targetTrip.participants || 1) - (targetTrip.joinCount || 1), 0),
             updated_at: new Date().toISOString(),
           },
           { headers: { Authorization: `Bearer ${token}` } }

@@ -26,9 +26,7 @@ function Navbar() {
     const {
         register,
         handleSubmit,
-        reset,
-        formState: {
-            errors }
+        reset
     } = useForm({ defaultValues: test });
 
     // 初始化 Modal
