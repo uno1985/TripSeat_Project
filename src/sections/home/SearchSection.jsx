@@ -56,7 +56,7 @@ function SearchBar() {
                     setKeyword(e.target.value);
                 }}/>
         </div>
-        <div className="searchBtn-box flex-shrink-0" onClick={(e) => {
+        <div className="searchBtn-box flex-shrink-0" onClick={() => {
                 const url = keyword ? `/trips?q=${keyword}` : '/trips';
                 navigate(url);
             }}>

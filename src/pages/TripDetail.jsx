@@ -1,5 +1,5 @@
 //導入套件
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Toaster, toast } from 'sonner'
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -39,18 +39,13 @@ function TripDetail() {
     const { user } = useAuth();
 
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        fetchTripData();
-    }, [id, user?.id]);
-
     const getToken = () =>
         document.cookie
             .split('; ')
             .find((row) => row.startsWith('tripToken='))
             ?.split('=')[1];
 
-    const fetchTripData = async () => {
+    const fetchTripData = useCallback(async () => {
         setLoading(true);
         setError(null);
 
@@ -126,7 +121,12 @@ function TripDetail() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id, user?.id]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        fetchTripData();
+    }, [fetchTripData]);
 
     // 格式化日期顯示
     const formatDateRange = (startDate, endDate) => {
@@ -315,7 +315,6 @@ function TripDetail() {
         }
 
         const joinCount = Math.max(1, pax);
-        const nextParticipants = Math.min((trip.current_participants || 0) + joinCount, trip.max_people || 0);
 
         setApplying(true);
         setApplyMessage('');
