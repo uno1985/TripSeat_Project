@@ -22,7 +22,7 @@ function Selector({
             onChange={onChange}>
             {
                 placeholder
-                ? <option value={placeholder} key={"placeholder"}>{placeholder}</option>
+                ? <option value={"placeholder"} key={"placeholder"}>{placeholder}</option>
                 : null
             }
             {
