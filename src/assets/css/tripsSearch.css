@@ -139,6 +139,10 @@
         background-color: var(--trip-color-primary-200);
     }
 
+    .host-info-container {
+        min-width: 0;
+    }
+
     .host-photo {
         width: 24px;
         height: 24px;

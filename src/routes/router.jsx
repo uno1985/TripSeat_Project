@@ -3,7 +3,7 @@
 // children下的 path 以下兩種方式皆會呈現相同結果
 // {
 //     path: '/member',
-//         element: <MemberLayout />,
+//         element: <ProtectedRoute><MemberLayout /></ProtectedRoute>,
 //             children: [
 //                 {
 //                     // 我的檔案
@@ -35,6 +35,7 @@ import MemberCreateGroups from "../pages/member/MemberCreateGroups"
 import MemberFavorites from "../pages/member/MemberFavorites"
 import MemberNotifications from "../pages/member/MemberNotifications"
 import Legal from "../pages/Legal"
+import ProtectedRoute from "../components/ProtectedRoute"
 
 
 const routes = [
@@ -85,7 +86,7 @@ const routes = [
             {
                 //會員中心
                 path: '/member',
-                element: <MemberLayout />,
+                element: <ProtectedRoute><MemberLayout /></ProtectedRoute>,
                 children: [
                     {
                         // 會員中心主頁面

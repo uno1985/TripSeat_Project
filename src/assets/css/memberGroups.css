@@ -286,6 +286,18 @@
   color: var(--trip-color-gray-400);
 }
 
+.my-groups-applicant-comment {
+  display: block;
+  font-family: var(--trip-font-family);
+  font-size: var(--trip-font-text-s-size);
+  color: var(--trip-color-gray-400);
+  border: 1px solid var(--trip-color-gray-200);
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 8px;
+  background-color: var(--trip-color-white);
+}
+
 .my-groups-applicant-actions {
   display: flex;
   gap: 6px;
@@ -307,6 +319,7 @@
 .my-groups-btn-approve:hover {
   opacity: 0.85;
   color: var(--trip-color-white);
+  background-color: var(--trip-color-gray-600);
 }
 
 .my-groups-btn-reject {
@@ -324,6 +337,7 @@
 .my-groups-btn-reject:hover {
   opacity: 0.85;
   color: var(--trip-color-white);
+  background-color: var(--trip-color-gray-600);
 }
 
 /* ===== 團員區 ===== */
@@ -428,6 +442,7 @@
 .my-groups-btn-confirm:hover {
   opacity: 0.85;
   color: var(--trip-color-white);
+  background-color: var(--trip-color-gray-600);
 }
 
 .my-groups-btn-cancel {

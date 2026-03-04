@@ -18,7 +18,7 @@ const Layout = () => {
             <Navbar />
             <Outlet />
             <Footer />
-            <Demo />
+            {/* <Demo /> */}
 
             <div className="bear">
                 <img src={bearImage} alt="氣球小熊" />

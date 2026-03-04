@@ -1,5 +1,6 @@
 /* TripDetail.css */
 /* Styles matching Member.png design exactly */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0');
 
 .trip-detail-page {
   background-color: #FAFAFA;
@@ -20,6 +21,33 @@
 .edit-link {
   text-decoration: none;
   white-space: nowrap;
+}
+
+.trip-favorite-btn {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trip-favorite-btn:hover {
+  border-color: var(--trip-color-primary-400);
+}
+
+.trip-favorite-icon {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: var(--trip-color-primary-800);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.trip-favorite-icon.is-active {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: #dc3545;
 }
 
 /* Tags */
@@ -164,7 +192,7 @@
 /* Timeline Icon */
 .timeline-icon {
   position: absolute;
-  font-size: 10px;
+  font-size: 20px;
 }
 
 .timeline-dot {
@@ -247,9 +275,9 @@
 }
 
 .timeline-dot {
-  width: 12px;
-  height: 12px;
-  background-color: var(--trip-color-primary-800);
+  width: 25px;
+  height: 25px;
+  /* background-color: var(--trip-color-primary-800); */
   border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: 0 0 0 2px var(--trip-color-primary-800);

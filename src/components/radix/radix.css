@@ -1,0 +1,8 @@
+@import './css/regionSelector.css';
+@import './css/datePicker.css';
+
+.selector-text {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}

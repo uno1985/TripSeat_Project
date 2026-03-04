@@ -10,7 +10,7 @@ function Selector({
     defaultValue='',
     placeholder='',
     className='',
-    onChange=(e) => {},
+    onChange=() => {},
     ...props}) {
     return (
         <>
@@ -22,7 +22,7 @@ function Selector({
             onChange={onChange}>
             {
                 placeholder
-                ? <option value={placeholder} key={"placeholder"}>{placeholder}</option>
+                ? <option value={"placeholder"} key={"placeholder"}>{placeholder}</option>
                 : null
             }
             {
@@ -48,4 +48,3 @@ export default Selector
 //     className: PropTypes.string,
 //     onChange: PropTypes.func,
 // };
-
