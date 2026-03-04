@@ -5,13 +5,13 @@ import { useAuth } from '../contexts/AuthContext';
 import '../assets/css/memberSidebar.css';
 import avatarImg from '../assets/images/avator09.png';
 
-const API_URL = import.meta.env.VITE_API_BASE;
+
 
 const MemberSidebar = () => {
   const location = useLocation();
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false); // 用於手機版下拉選單狀態
-  const [profile, setProfile] = useState(null);
+
 
   const menuItems = [
     { name: '我的檔案', path: '/member/profile' },
@@ -26,29 +26,15 @@ const MemberSidebar = () => {
   const currentItem = menuItems.find(item => item.path === location.pathname);
   const currentTitle = currentItem ? currentItem.name : '會員中心';
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      if (!user?.id) return;
-      try {
-        const res = await axios.get(`${API_URL}/664/users/${user.id}`);
-        if (res.data && !res.data.deleted_at) {
-          setProfile(res.data);
-        }
-      } catch (err) {
-        // 失敗時保留 AuthContext 內的 user 顯示，不中斷側欄
-        console.log(err);
-      }
-    };
 
-    fetchUserProfile();
-  }, [user?.id]);
 
-  const displayProfile = profile || user;
-  const displayName = displayProfile?.name || '會員';
-  const displayIntro = displayProfile?.intro || '歡迎來到會員中心';
-  const displayAvatar = displayProfile?.avatar || avatarImg;
-  const displayRating = displayProfile?.rating_average ?? '-';
-  const displayTrips = displayProfile?.trips_completed ?? 0;
+  // 直接用 user，不需要 profile
+  const displayName = user?.name || '會員';
+  const displayIntro = user?.intro || '歡迎來到會員中心';
+  const displayAvatar = user?.avatar || avatarImg;
+  const displayRating = user?.rating_average ?? '-';
+  const displayTrips = user?.trips_completed ?? 0;
+
 
   return (
     <div className="member-sidebar-container">

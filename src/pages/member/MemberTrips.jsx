@@ -74,15 +74,17 @@ const MemberTrips = () => {
       setError(null);
 
       try {
-        const [participantsRes, reviewsRes, tripsRes] = await Promise.all([
+        const [participantsRes, reviewsRes, tripsRes, usersRes] = await Promise.all([
           axios.get(`${API_URL}/664/participants?user_id=${user.id}&role=member`),
           axios.get(`${API_URL}/664/reviews?user_id=${user.id}&_sort=created_at&_order=desc`),
           axios.get(`${API_URL}/664/trips`),
+          axios.get(`${API_URL}/664/users`),
         ]);
 
         const activeParticipants = (participantsRes.data || []).filter((row) => !row.deleted_at);
         const participantTripIds = new Set(activeParticipants.map((row) => row.trip_id));
         const participantMap = new Map(activeParticipants.map((row) => [row.trip_id, row]));
+        const userMap = new Map((usersRes.data || []).map((u) => [u.id, u]));
 
         const reviewMap = new Map();
         (reviewsRes.data || [])
@@ -103,6 +105,7 @@ const MemberTrips = () => {
               id: trip.id,
               participantId: participantMap.get(trip.id)?.id || null,
               applicationStatus: participantMap.get(trip.id)?.application_status || 'approved',
+              joinCount: participantMap.get(trip.id)?.joinCount || 1,
               reviewId: review?.id || null,
               status: STATUS_TEXT[statusType],
               statusType,
@@ -111,6 +114,7 @@ const MemberTrips = () => {
               location: trip.location || '未提供',
               image: trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80',
               host: trip.owner_name || '團主',
+              hostPhone: userMap.get(trip.owner_id)?.phone || '',
               hostAvatar: trip.owner_avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=default',
               participants: trip.current_participants || 0,
               maxPeople: trip.max_people || 0,
@@ -205,10 +209,10 @@ const MemberTrips = () => {
         prev.map((trip) =>
           trip.id === editor.tripId
             ? {
-                ...trip,
-                review: content,
-                reviewId: trip.reviewId || targetTrip.reviewId,
-              }
+              ...trip,
+              review: content,
+              reviewId: trip.reviewId || targetTrip.reviewId,
+            }
             : trip
         )
       );
@@ -265,7 +269,7 @@ const MemberTrips = () => {
         axios.patch(
           `${API_URL}/664/trips/${targetTrip.id}`,
           {
-            current_participants: Math.max((targetTrip.participants || 1) - 1, 0),
+            current_participants: Math.max((targetTrip.participants || 1) - trip.joinCount, 0),
             updated_at: new Date().toISOString(),
           },
           { headers: { Authorization: `Bearer ${token}` } }
@@ -389,12 +393,13 @@ const MemberTrips = () => {
                     <div className="member-trips-card-info">
                       <span><i className="bi bi-calendar3 me-1"></i>{trip.date}</span>
                       <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
+                      <span><i className="bi bi-person-check me-1"></i>報名 {trip.joinCount} 人</span>
                       <span><i className="bi bi-people me-1"></i>{trip.participants} / {trip.maxPeople} 人</span>
                     </div>
 
                     <div className="member-trips-host">
                       <img src={trip.hostAvatar} alt={trip.host} className="member-trips-host-avatar" />
-                      <span>團主：{trip.host}</span>
+                      <span>團主：{trip.host} {trip.applicationStatus === 'approved' && `(${trip.hostPhone})`}</span>
                     </div>
 
                     <div className="member-trips-review-section">

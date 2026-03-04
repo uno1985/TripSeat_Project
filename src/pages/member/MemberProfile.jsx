@@ -26,7 +26,7 @@ const normalizeDepartures = (value) => {
 };
 
 const MemberProfile = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
   const [form, setForm] = useState(emptyForm);
   const [origin, setOrigin] = useState(emptyForm);
   const [departures, setDepartures] = useState([]);
@@ -156,9 +156,10 @@ const MemberProfile = () => {
       setOriginDepartures(departures);
       setSuccess('個人資料已更新');
 
-      const localUser = JSON.parse(localStorage.getItem('tripUser') || '{}');
-      const merged = { ...localUser, ...payload };
-      localStorage.setItem('tripUser', JSON.stringify(merged));
+      // const localUser = JSON.parse(localStorage.getItem('tripUser') || '{}');
+      // const merged = { ...localUser, ...payload };
+      // localStorage.setItem('tripUser', JSON.stringify(merged));
+      updateUser(payload);
     } catch (err) {
       setError(err.response?.data || err.message || '儲存失敗');
     } finally {
