@@ -3,10 +3,12 @@ import { useSearchParams, Link } from 'react-router-dom';
 import axios from "axios";
 import '../assets/css/tripsSearch.css'
 import Selector from '../components/Selector'
+import { Radix } from '../components/radix/Radix.jsx'
 import Icon_Location from '../assets/images/icon-location.svg'
 import Icon_Time from '../assets/images/icon-time.svg'
 import Icon_Certified from '../assets/images/icon-certified.svg'
 import { Categories, Transports } from '../data/constants.js'
+
 const API_URL = import.meta.env.VITE_API_BASE;
 
 function TripsSearch() {
@@ -97,7 +99,8 @@ function SideBar() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [filters, setFilters] = useState({
         q: '',
-        //start_date: '',
+        start_date_gte: '',
+        end_date_lte: '',
         location_like: [],
         tags_like: [],
         //days: '',
@@ -124,6 +127,10 @@ function SideBar() {
                     newValue = Number(checked);
                     break;
                 default:
+                    if (value === "placeholder") {
+                        newValue = '';
+                        break;
+                    }
                     newValue = value;
                     break;
             }
@@ -164,27 +171,53 @@ function SideBar() {
         setSearchParams(params);
     }
 
+    function onDateChange(e) {
+        const { startDate, endDate, key } = e.selection;
+        setFilters((prev) => {
+            return {
+                ...prev,
+                start_date_gte: dateFormat(startDate.toLocaleDateString()),
+                end_date_lte: dateFormat(endDate.toLocaleDateString())
+            };
+        });
+    }
+
+    function handleRegionSelect(e, isSelected) {
+        const value = e.target.dataset?.value;
+        if (value) {
+            setFilters((prev) => {
+                return {
+                    ...prev,
+                    location_like: isSelected
+                        ? prev.location_like.filter(x => x !== value)
+                        : [...prev.location_like, e.target.dataset?.value],
+                }
+            });
+        }
+    }
+
     return (
         <>
         <div className="tripsSreach-sideBar">
             <div className="filter-group">
                 <label className="filter-label trip-text-m">搜尋關鍵字</label>
-                <input type="text" className="input w-100"
+                <input type="text" className="input w-100 ps-2 trip-text-m trip-text-gray-600"
                     name="q"
                     onChange={(e) => handleFilterChange(e)}/>
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">旅遊日期</label>
-                <input type="text" className="input w-100"/>
+                <Radix.DateRangePicker
+                    onDateChange={onDateChange}
+                    fontStyle={"trip-text-s trip-text-gray-600 text-start"}/>
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">出發地</label>
-                <Selector
-                    data={[{text:"台北市", value: "台北市"}, {text:"台中市", value:"台中市"}, {text:"高雄市", value:"高雄市"}]}
-                    placeholder={filters.location_like.join(',') || "請選擇"}
-                    name={"location_like"}
-                    onChange={(e) => handleFilterChange(e)}
-                    className="selector" />
+                <Radix.RegionSelector
+                    className={"trip-text-m trip-text-gray-600"}
+                    regions={filters.location_like || []}
+                    onSelect={handleRegionSelect}
+                    />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">類別</label>
@@ -193,25 +226,26 @@ function SideBar() {
                     name={"tags_like"}
                     placeholder={filters.tags_like.join(',') || "請選擇"}
                     onChange={(e) => handleFilterChange(e)}
-                    className="selector" />
+                    className="selector trip-text-m trip-text-gray-600" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">旅程天數</label>
                 <Selector
                     data={[{text:"單日", value: "單日"}, {text:"多日", value:"多日"}]}
                     name={"days"}
-                    placeholder={"請選擇"}
+                    placeholder={filters.days || "請選擇"}
                     onChange={(e) => handleFilterChange(e)}
-                    className="selector" />
+                    className="selector trip-text-m trip-text-gray-600" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">交通方式</label>
                 <Selector
                     data={Transports}
                     name={"transport_like"}
-                    placeholder={filters.transportation_like || "請選擇"}
+                    placeholder={"請選擇"}
+                    defaultValue={filters.transport_like || "placeholder"}
                     onChange={(e) => handleFilterChange(e)}
-                    className="selector" />
+                    className="selector trip-text-m trip-text-gray-600" />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">其他</label>
@@ -367,6 +401,11 @@ function Pagination({currentPage, setPage, totalCount, limit}) {
         </div>
         </>
     )
+}
+
+function dateFormat(string) {
+    const split = string.split('/');
+    return `${split[0]}-${split[1].padStart(2, '0')}-${split[2].padStart(2, '0')}`;
 }
 
 
