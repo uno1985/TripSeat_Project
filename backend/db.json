@@ -1109,7 +1109,7 @@
       "end_date": "2026-04-01",
       "deadline": "2026-03-31",
       "price": 100,
-      "current_participants": 4,
+      "current_participants": 3,
       "max_people": 10,
       "category": "慶祝",
       "tags": [
@@ -5069,37 +5069,11 @@
       "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "role": "member",
-      "application_status": "pending",
+      "application_status": "rejected",
       "created_at": "2026-02-25T09:42:57.399Z",
       "updated_at": "2026-02-25T09:42:57.399Z",
       "deleted_at": null,
-      "id": "28ciH1t",
-      "comment": null,
-      "joinCount": 1
-    },
-    {
-      "id": "8ecf20e8-540e-4530-b6aa-8532cc42fd62",
-      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
-      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
-      "role": "member",
-      "comment": "我要要帶我媽媽一起去玩玩看，拜託請讓我加入好嗎",
-      "joinCount": 2,
-      "application_status": "approved",
-      "created_at": "2026-02-27T18:18:44.634Z",
-      "updated_at": "2026-02-27T18:19:06.431Z",
-      "deleted_at": null
-    },
-    {
-      "id": "9c48401f-27ab-4c0c-899e-eaeaba5dde4f",
-      "trip_id": "f82dfb2c-7760-4a75-b19f-e867f2882b25",
-      "user_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
-      "role": "member",
-      "comment": "我想要帶我男朋友一起去，我很好聊的!希望可以玩得開心",
-      "joinCount": 2,
-      "application_status": "pending",
-      "created_at": "2026-02-27T18:38:52.454Z",
-      "updated_at": "2026-02-27T18:38:52.454Z",
-      "deleted_at": null
+      "id": "28ciH1t"
     }
   ],
   "reviews": [
@@ -5180,7 +5154,7 @@
       "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
       "user_age": 26,
       "rating": 5,
-      "content": "這是我看過最美的星空！傑克導覽員的專業程度讓我驚艷，他不只能指出每個星座的位置，還會講述星座背後的神話故事，讓觀星變成一場浪漫的時光旅行。那天天氣非常好，銀河清晰可見，我第一次用肉眼看到這麼多星星，多到數不清。傑克還帶了專業望遠鏡，讓我們看到了土星的光環和木星的衛星，太震撼了！山上的夜晚很冷，但大家圍在一起喝熱可可、聽星空故事，心裡卻暖暖的。這趟旅程讓我對宇宙有了全新的認識，也讓我更珍惜在地球上的每一刻。",
+      "content": "這是我看過最美的星空！傑克導覽員的專業程度讓我驚艷，他不只能指出每個星座的位置，還會講述星座背後的神話故事，讓觀星變成一場浪漫的時光旅行。那天天氣非常好，銀河清晰可見，我第一次用肉眼看到這麼多星星，多到數不清。傑克還帶了專業望遠鏡，讓我們看到了土星的光環和木星的衛星，太震撼了！山上的夜晚很冷，但大家圍在一起喝熱可可、聽星空故事，心裡卻暖暖的。這趟旅程讓我對宇宙有了全新的認識，也讓我更珍惜在地球上的每一刻。Good!",
       "images": [
         "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=800",
         "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=800"
@@ -5188,7 +5162,7 @@
       "likes_count": 73,
       "is_public": true,
       "created_at": "2026-01-22T08:45:00Z",
-      "updated_at": "2026-02-25T01:16:40.517Z",
+      "updated_at": "2026-02-25T13:12:07.545Z",
       "deleted_at": null
     },
     {
@@ -5364,6 +5338,25 @@
       "created_at": "2026-02-06T14:00:00Z",
       "updated_at": "2026-02-06T14:00:00Z",
       "deleted_at": null
+    },
+    {
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "trip_location": "台南市 中西區",
+      "trip_image": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "user_name": "系統管理員",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=admin",
+      "user_age": null,
+      "rating": 5,
+      "content": "宵夜很好吃！",
+      "images": [],
+      "likes_count": 0,
+      "is_public": true,
+      "created_at": "2026-02-25T13:15:48.606Z",
+      "updated_at": "2026-02-25T13:15:48.606Z",
+      "deleted_at": null,
+      "id": "hGKtrAU"
     }
   ],
   "messages": [
@@ -5517,70 +5510,6 @@
       "updated_at": "2026-02-25T10:17:19.784Z",
       "deleted_at": null,
       "id": 1
-    },
-    {
-      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
-      "type": "approval",
-      "actor_id": "u6d7e8f9-a0b1-c2d3-e4f5-6789012345f0",
-      "actor_name": "手作達人妙妙",
-      "trip_id": "4c0c6903-d975-4e38-8793-5be40f79f498",
-      "trip_title": "鶯歌捏陶半日遊",
-      "content": " 你的入團申請已核准：",
-      "action_text": "查看行程",
-      "action_link": "/member/trips",
-      "is_read": true,
-      "created_at": "2026-02-27T18:19:06.431Z",
-      "updated_at": "2026-02-27T18:19:06.431Z",
-      "deleted_at": null,
-      "id": 2
-    },
-    {
-      "user_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
-      "type": "approval",
-      "actor_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
-      "actor_name": "文青小雨傘壓",
-      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
-      "trip_title": "神農街宵夜散策",
-      "content": " 你的入團申請已核准：",
-      "action_text": "查看行程",
-      "action_link": "/member/trips",
-      "is_read": false,
-      "created_at": "2026-02-27T19:29:21.028Z",
-      "updated_at": "2026-02-27T19:29:21.028Z",
-      "deleted_at": null,
-      "id": 3
-    },
-    {
-      "user_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
-      "type": "approval",
-      "actor_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
-      "actor_name": "文青小雨傘壓",
-      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
-      "trip_title": "神農街宵夜散策",
-      "content": " 你的入團申請已核准：",
-      "action_text": "查看行程",
-      "action_link": "/member/trips",
-      "is_read": true,
-      "created_at": "2026-02-27T19:29:36.500Z",
-      "updated_at": "2026-02-27T19:29:36.500Z",
-      "deleted_at": null,
-      "id": 4
-    },
-    {
-      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
-      "type": "approval",
-      "actor_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
-      "actor_name": "文青小雨傘壓",
-      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
-      "trip_title": "神農街宵夜散策",
-      "content": " 你的入團申請已核准：",
-      "action_text": "查看行程",
-      "action_link": "/member/trips",
-      "is_read": false,
-      "created_at": "2026-02-27T19:29:42.539Z",
-      "updated_at": "2026-02-27T19:29:42.539Z",
-      "deleted_at": null,
-      "id": 5
     }
   ],
   "reports": [],
