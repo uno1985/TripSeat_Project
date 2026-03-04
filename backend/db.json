@@ -935,7 +935,7 @@
       "end_date": "2026-04-01",
       "deadline": "2026-03-31",
       "price": 100,
-      "current_participants": 4,
+      "current_participants": 3,
       "max_people": 10,
       "category": "慶祝",
       "tags": [
@@ -967,7 +967,7 @@
         "不趕行程",
         "談心"
       ],
-      "updated_at": "2026-02-25T09:42:57.414Z"
+      "updated_at": "2026-02-25T13:23:52.485Z"
     },
     {
       "id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
@@ -4440,10 +4440,10 @@
       "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "role": "member",
-      "application_status": "pending",
+      "application_status": "rejected",
       "created_at": "2026-02-25T09:42:57.399Z",
-      "updated_at": "2026-02-25T09:42:57.399Z",
-      "deleted_at": null,
+      "updated_at": "2026-02-25T13:23:52.485Z",
+      "deleted_at": "2026-02-25T13:23:52.485Z",
       "id": "28ciH1t"
     }
   ],
@@ -4525,7 +4525,7 @@
       "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
       "user_age": 26,
       "rating": 5,
-      "content": "這是我看過最美的星空！傑克導覽員的專業程度讓我驚艷，他不只能指出每個星座的位置，還會講述星座背後的神話故事，讓觀星變成一場浪漫的時光旅行。那天天氣非常好，銀河清晰可見，我第一次用肉眼看到這麼多星星，多到數不清。傑克還帶了專業望遠鏡，讓我們看到了土星的光環和木星的衛星，太震撼了！山上的夜晚很冷，但大家圍在一起喝熱可可、聽星空故事，心裡卻暖暖的。這趟旅程讓我對宇宙有了全新的認識，也讓我更珍惜在地球上的每一刻。",
+      "content": "這是我看過最美的星空！傑克導覽員的專業程度讓我驚艷，他不只能指出每個星座的位置，還會講述星座背後的神話故事，讓觀星變成一場浪漫的時光旅行。那天天氣非常好，銀河清晰可見，我第一次用肉眼看到這麼多星星，多到數不清。傑克還帶了專業望遠鏡，讓我們看到了土星的光環和木星的衛星，太震撼了！山上的夜晚很冷，但大家圍在一起喝熱可可、聽星空故事，心裡卻暖暖的。這趟旅程讓我對宇宙有了全新的認識，也讓我更珍惜在地球上的每一刻。Good!",
       "images": [
         "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=800",
         "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=800"
@@ -4533,7 +4533,7 @@
       "likes_count": 73,
       "is_public": true,
       "created_at": "2026-01-22T08:45:00Z",
-      "updated_at": "2026-02-25T01:16:40.517Z",
+      "updated_at": "2026-02-25T13:12:07.545Z",
       "deleted_at": null
     },
     {
@@ -4709,6 +4709,25 @@
       "created_at": "2026-02-06T14:00:00Z",
       "updated_at": "2026-02-06T14:00:00Z",
       "deleted_at": null
+    },
+    {
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "trip_location": "台南市 中西區",
+      "trip_image": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800",
+      "user_id": "7f3b89b1-7c5e-4b2a-9e1d-4d5f6a7b8c9d",
+      "user_name": "系統管理員",
+      "user_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=admin",
+      "user_age": null,
+      "rating": 5,
+      "content": "宵夜很好吃！",
+      "images": [],
+      "likes_count": 0,
+      "is_public": true,
+      "created_at": "2026-02-25T13:15:48.606Z",
+      "updated_at": "2026-02-25T13:15:48.606Z",
+      "deleted_at": null,
+      "id": "hGKtrAU"
     }
   ],
   "messages": [],
@@ -4728,6 +4747,22 @@
       "updated_at": "2026-02-25T10:17:19.784Z",
       "deleted_at": null,
       "id": 1
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "type": "rejected",
+      "actor_id": "u1e2f3a4-b5c6-d7e8-f9a0-1234567890ab",
+      "actor_name": "吃貨凱莉",
+      "trip_id": "ca4581c6-0fc1-4533-a23a-de066d994e66",
+      "trip_title": "花蓮東大門夜市大飽口福",
+      "content": " 你的入團申請未通過：",
+      "action_text": "查看其他行程",
+      "action_link": "/trips",
+      "is_read": false,
+      "created_at": "2026-02-25T13:23:52.485Z",
+      "updated_at": "2026-02-25T13:23:52.485Z",
+      "deleted_at": null,
+      "id": 2
     }
   ],
   "reports": [],
