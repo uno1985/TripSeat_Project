@@ -5074,6 +5074,18 @@
       "updated_at": "2026-02-25T09:42:57.399Z",
       "deleted_at": null,
       "id": "28ciH1t"
+    },
+    {
+      "id": "a917efd3-e1e9-44ab-80bb-e493b2c9132a",
+      "trip_id": "5a39add5-5844-498c-bada-0a018bcd820b",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "comment": "我是小雨，很喜歡戶外活動，也很喜歡司馬庫斯，曾經去過一次，想再跟大家一起去玩！",
+      "joinCount": 1,
+      "application_status": "pending",
+      "created_at": "2026-03-04T12:57:52.854Z",
+      "updated_at": "2026-03-04T12:57:52.854Z",
+      "deleted_at": null
     }
   ],
   "reviews": [
