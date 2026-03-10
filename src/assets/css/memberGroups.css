@@ -553,3 +553,11 @@
   background: var(--trip-color-primary-800);
   color: #fff;
 }
+
+/* [AI修改開始 2026-03-11] 桌機版 5 張統計卡片同排顯示，避免新增草稿後提早換行 */
+@media (min-width: 992px) {
+  .my-groups-stat-col {
+    width: 20%;
+  }
+}
+/* [AI修改結束 2026-03-11] */

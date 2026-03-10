@@ -402,6 +402,36 @@ const MemberCreateGroups = () => {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
+            // [AI修改開始 2026-03-11] 建立旅程時同步補一筆 owner participant，否則團主不會出現在團員名單
+            const targetTripId = editTripId || tripRes.data.id;
+            const ownerParticipantRes = await axios.get(
+                `${API_URL}/664/participants?trip_id=${targetTripId}&user_id=${user.id}&role=owner`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            if ((ownerParticipantRes.data || []).filter((item) => !item.deleted_at).length === 0) {
+                await axios.post(
+                    `${API_URL}/600/participants`,
+                    {
+                        id: crypto.randomUUID(),
+                        userId: user.id,
+                        trip_id: targetTripId,
+                        user_id: user.id,
+                        role: 'owner',
+                        application_status: null,
+                        comment: null,
+                        joinCount: 1,
+                        created_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
+                        deleted_at: null,
+                    },
+                    {
+                        headers: { Authorization: `Bearer ${token}` },
+                    }
+                );
+            }
+            // [AI修改結束 2026-03-11]
+
             const itineraryPayloads = itineraryDays
                 .flatMap((day) =>
                     day.items
@@ -448,7 +478,7 @@ const MemberCreateGroups = () => {
                                 id: crypto.randomUUID(),
                                 // [AI修改 2026-03-10] json-server-auth 的 /600 POST 會檢查 userId
                                 userId: user.id,
-                                trip_id: editTripId || tripRes.data.id,
+                                trip_id: targetTripId,
                                 day: item.day,
                                 time: item.time,
                                 type: item.type,
@@ -466,7 +496,6 @@ const MemberCreateGroups = () => {
                 );
             }
 
-            const targetTripId = editTripId || tripRes.data.id;
             navigate(redirectToTrip ? `/trips/${targetTripId}` : '/member/groups');
         } catch (err) {
             setError(err.response?.data || err.message || `${editTripId ? '更新' : '發佈'}失敗`);

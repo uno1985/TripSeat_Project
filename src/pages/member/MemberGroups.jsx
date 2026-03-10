@@ -70,74 +70,74 @@ const MemberGroups = () => {
         return diff > 0 ? diff : 0;
     };
     const fetchMyTrips = async () => {
-            if (!user?.id) {
-                setTrips([]);
-                setApplicantsByTrip({});
-                setMembersByTrip({});
-                setLoading(false);
-                return;
-            }
+        if (!user?.id) {
+            setTrips([]);
+            setApplicantsByTrip({});
+            setMembersByTrip({});
+            setLoading(false);
+            return;
+        }
 
-            setLoading(true);
-            setError(null);
-            try {
-                const [tripsRes, participantsRes, usersRes] = await Promise.all([
-                    axios.get(`${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc`),
-                    axios.get(`${API_URL}/664/participants`),
-                    axios.get(`${API_URL}/664/users`),
-                ]);
+        setLoading(true);
+        setError(null);
+        try {
+            const [tripsRes, participantsRes, usersRes] = await Promise.all([
+                axios.get(`${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc`),
+                axios.get(`${API_URL}/664/participants`),
+                axios.get(`${API_URL}/664/users`),
+            ]);
 
-                const rows = (tripsRes.data || [])
-                    .filter((t) => !t.deleted_at)
-                    .map((t) => ({
-                        ...t,
-                        statusType: getStatusType(t),
-                        statusText: statusTextMap[getStatusType(t)],
-                    }));
+            const rows = (tripsRes.data || [])
+                .filter((t) => !t.deleted_at)
+                .map((t) => ({
+                    ...t,
+                    statusType: getStatusType(t),
+                    statusText: statusTextMap[getStatusType(t)],
+                }));
 
-                const tripIdSet = new Set(rows.map((t) => t.id));
-                const userMap = new Map((usersRes.data || []).map((u) => [u.id, u]));
-                const nextApplicantsByTrip = {};
-                const nextMembersByTrip = {};
+            const tripIdSet = new Set(rows.map((t) => t.id));
+            const userMap = new Map((usersRes.data || []).map((u) => [u.id, u]));
+            const nextApplicantsByTrip = {};
+            const nextMembersByTrip = {};
 
-                (participantsRes.data || [])
-                    .filter((p) => !p.deleted_at && tripIdSet.has(p.trip_id))
-                    .forEach((p) => {
-                        const profile = userMap.get(p.user_id) || {};
-                        const item = {
-                            participantId: p.id,
-                            userId: p.user_id,
-                            role: p.role,
-                            status: p.application_status || 'pending',
-                            comment: p.comment || '無加入宣言',
-                            // [AI修改 2026-03-10] 避免 joinCount 缺值時造成人數運算異常
-                            joinCount: p.joinCount || 1,
-                            name: profile.name || '未命名會員',
-                            phone: profile.phone || '未提供電話',
-                            avatar: profile.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${p.user_id}`,
-                            detail: `${profile.birthday ? `${new Date().getFullYear() - new Date(profile.birthday).getFullYear()}歲・` : ''}已完成 ${profile.trips_completed || 0} 趟旅程・評分 ${profile.rating_average || 0}`,
-                        };
+            (participantsRes.data || [])
+                .filter((p) => !p.deleted_at && tripIdSet.has(p.trip_id))
+                .forEach((p) => {
+                    const profile = userMap.get(p.user_id) || {};
+                    const item = {
+                        participantId: p.id,
+                        userId: p.user_id,
+                        role: p.role,
+                        status: p.application_status || 'pending',
+                        comment: p.comment || '無加入宣言',
+                        // [AI修改 2026-03-10] 避免 joinCount 缺值時造成人數運算異常
+                        joinCount: p.joinCount || 1,
+                        name: profile.name || '未命名會員',
+                        phone: profile.phone || '未提供電話',
+                        avatar: profile.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${p.user_id}`,
+                        detail: `${profile.birthday ? `${new Date().getFullYear() - new Date(profile.birthday).getFullYear()}歲・` : ''}已完成 ${profile.trips_completed || 0} 趟旅程・評分 ${profile.rating_average || 0}`,
+                    };
 
-                        if (!nextMembersByTrip[p.trip_id]) nextMembersByTrip[p.trip_id] = [];
-                        nextMembersByTrip[p.trip_id].push(item);
+                    if (!nextMembersByTrip[p.trip_id]) nextMembersByTrip[p.trip_id] = [];
+                    nextMembersByTrip[p.trip_id].push(item);
 
-                        if (p.role !== 'owner' && (p.application_status || 'pending') === 'pending') {
-                            if (!nextApplicantsByTrip[p.trip_id]) nextApplicantsByTrip[p.trip_id] = [];
-                            nextApplicantsByTrip[p.trip_id].push(item);
-                        }
-                    });
+                    if (p.role !== 'owner' && (p.application_status || 'pending') === 'pending') {
+                        if (!nextApplicantsByTrip[p.trip_id]) nextApplicantsByTrip[p.trip_id] = [];
+                        nextApplicantsByTrip[p.trip_id].push(item);
+                    }
+                });
 
-                setTrips(rows);
-                setApplicantsByTrip(nextApplicantsByTrip);
-                setMembersByTrip(nextMembersByTrip);
-                setApprovedIds([]);
-                setActionError('');
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+            setTrips(rows);
+            setApplicantsByTrip(nextApplicantsByTrip);
+            setMembersByTrip(nextMembersByTrip);
+            setApprovedIds([]);
+            setActionError('');
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
         fetchMyTrips();
@@ -226,6 +226,9 @@ const MemberGroups = () => {
             setActionError(err.response?.data || err.message || '刪除旅程失敗');
         } finally {
             setProcessingIds((prev) => prev.filter((id) => id !== trip.id));
+        }
+    };
+
     const openMessageModal = (member) => {
         setMessageModal({ open: true, recipientName: member.name, recipientId: member.userId, message: '' });
         setMessageError('');
@@ -461,31 +464,31 @@ const MemberGroups = () => {
 
             {/* ===== 統計摘要 ===== */}
             <div className="row g-3 mb-4">
-                <div className="col-6 col-md-3">
+                <div className="col-6 col-md-3 my-groups-stat-col">
                     <div className="my-groups-stat-card">
                         <div className="my-groups-stat-number">{stats.all}</div>
                         <div className="my-groups-stat-label">全部揪團</div>
                     </div>
                 </div>
-                <div className="col-6 col-md-3">
+                <div className="col-6 col-md-3 my-groups-stat-col">
                     <div className="my-groups-stat-card">
                         <div className="my-groups-stat-number trip-text-gray-600">{stats.draft}</div>
                         <div className="my-groups-stat-label">草稿</div>
                     </div>
                 </div>
-                <div className="col-6 col-md-3">
+                <div className="col-6 col-md-3 my-groups-stat-col">
                     <div className="my-groups-stat-card">
                         <div className="my-groups-stat-number trip-text-primary-1000">{stats.open}</div>
                         <div className="my-groups-stat-label">招募中</div>
                     </div>
                 </div>
-                <div className="col-6 col-md-3">
+                <div className="col-6 col-md-3 my-groups-stat-col">
                     <div className="my-groups-stat-card">
                         <div className="my-groups-stat-number" style={{ color: 'var(--trip-color-status-success)' }}>{stats.confirmed}</div>
                         <div className="my-groups-stat-label">已成團</div>
                     </div>
                 </div>
-                <div className="col-6 col-md-3">
+                <div className="col-6 col-md-3 my-groups-stat-col">
                     <div className="my-groups-stat-card">
                         <div className="my-groups-stat-number trip-text-gray-400">{stats.ended}</div>
                         <div className="my-groups-stat-label">已結束</div>
@@ -805,36 +808,36 @@ const MemberGroups = () => {
                                                 )}
                                             </div>
 
-                                             <div className="my-groups-card-footer">
-                                                 <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
-                                                     <i className="bi bi-eye me-1"></i>查看旅程頁面
-                                                 </Link>
-                                                 <div className="my-groups-card-footer-right">
-                                                     <Link to={`/member/create-group?tripId=${trip.id}`} className="btn btn-sm my-groups-btn-edit" title="編輯">
-                                                         <i className="bi bi-pencil-square"></i>
-                                                     </Link>
-                                                     {trip.statusType === 'draft' && (
-                                                         <button
-                                                             className="btn btn-sm my-groups-btn-confirm"
-                                                             type="button"
-                                                             onClick={() => handlePublishTrip(trip)}
-                                                             disabled={processingIds.includes(trip.id)}
-                                                         >
-                                                             <i className="bi bi-send-check me-1"></i>正式公開
-                                                         </button>
-                                                     )}
-                                                     <button
-                                                         className="btn btn-sm my-groups-btn-cancel"
-                                                         type="button"
-                                                         onClick={() => handleDeleteTrip(trip)}
-                                                         disabled={processingIds.includes(trip.id)}
-                                                     >
-                                                         <i className="bi bi-trash me-1"></i>刪除旅程
-                                                     </button>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
+                                            <div className="my-groups-card-footer">
+                                                <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
+                                                    <i className="bi bi-eye me-1"></i>查看旅程頁面
+                                                </Link>
+                                                <div className="my-groups-card-footer-right">
+                                                    <Link to={`/member/create-group?tripId=${trip.id}`} className="btn btn-sm my-groups-btn-edit" title="編輯">
+                                                        <i className="bi bi-pencil-square"></i>
+                                                    </Link>
+                                                    {trip.statusType === 'draft' && (
+                                                        <button
+                                                            className="btn btn-sm my-groups-btn-confirm"
+                                                            type="button"
+                                                            onClick={() => handlePublishTrip(trip)}
+                                                            disabled={processingIds.includes(trip.id)}
+                                                        >
+                                                            <i className="bi bi-send-check me-1"></i>正式公開
+                                                        </button>
+                                                    )}
+                                                    <button
+                                                        className="btn btn-sm my-groups-btn-cancel"
+                                                        type="button"
+                                                        onClick={() => handleDeleteTrip(trip)}
+                                                        disabled={processingIds.includes(trip.id)}
+                                                    >
+                                                        <i className="bi bi-trash me-1"></i>刪除旅程
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         );

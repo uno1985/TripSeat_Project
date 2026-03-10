@@ -1,6 +1,7 @@
 // 導入套件
 import * as bootstrap from "bootstrap";
-import { useCallback, useEffect, useRef } from 'react';
+import axios from 'axios';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/AuthContext";
@@ -15,14 +16,18 @@ import '../assets/css/loginModal.css';
 
 //開發中測試用帳號 完成後刪除
 const test = {
-    email: 'rain@test.com',
-    password: 'password123'
+    email: '',
+    password: ''
 }
+
+const API_URL = import.meta.env.VITE_API_BASE;
+const MEMBER_UNREAD_EVENT = 'tripseat:member-unread-changed';
 
 
 function Navbar() {
     const { isLogin, user, login, logout, loading } = useAuth();
     const loginModalRef = useRef(null);
+    const [unreadCount, setUnreadCount] = useState(0);
     const {
         register,
         handleSubmit,
@@ -39,6 +44,42 @@ function Navbar() {
             });
         }
     }, [loading]);
+
+    // [AI修改開始 2026-03-11] Navbar 同步未讀通知/私訊數，讓站內收件匣旁的紅色 badge 不用重整就更新
+    useEffect(() => {
+        if (!isLogin || !user?.id) {
+            setUnreadCount(0);
+            return;
+        }
+
+        const fetchUnreadCount = async () => {
+            const [notifRes, msgRes] = await Promise.all([
+                axios.get(`${API_URL}/664/notifications?recipient_id=${user.id}`).catch(() => ({ data: [] })),
+                axios.get(`${API_URL}/664/messages?receiver_id=${user.id}`).catch(() => ({ data: [] })),
+            ]);
+
+            const notifUnread = (notifRes.data || []).filter((item) => !item.deleted_at && !item.is_read && item.sender_id).length;
+            const msgUnread = (msgRes.data || []).filter((item) => !item.deleted_at && !item.is_read).length;
+            setUnreadCount(notifUnread + msgUnread);
+        };
+
+        const handleUnreadChange = (event) => {
+            const nextCount = event?.detail?.total;
+            if (typeof nextCount === 'number') {
+                setUnreadCount(nextCount);
+                return;
+            }
+            fetchUnreadCount();
+        };
+
+        fetchUnreadCount();
+        window.addEventListener(MEMBER_UNREAD_EVENT, handleUnreadChange);
+
+        return () => {
+            window.removeEventListener(MEMBER_UNREAD_EVENT, handleUnreadChange);
+        };
+    }, [isLogin, user?.id]);
+    // [AI修改結束 2026-03-11]
 
 
     const onSubmit = useCallback(async (data) => {
@@ -114,10 +155,13 @@ function Navbar() {
                                         <Link className="nav-link trip-text-l" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link>
                                     </li>
                                     <li className="d-lg-none">
-                                        <Link className="nav-link trip-text-l" to="/member/notifications" onClick={() => closeNavbar()}>
+                                        <Link className="nav-link trip-text-l d-flex align-items-center justify-content-between" to="/member/notifications" onClick={() => closeNavbar()}>
                                             <span className="link-text">
                                                 站內收件匣
                                             </span>
+                                            {unreadCount > 0 && (
+                                                <span className="badge rounded-pill bg-danger ms-2">{unreadCount}</span>
+                                            )}
                                         </Link>
                                     </li >
                                     <li className="d-lg-none"><Link className="nav-link trip-text-l text-center fw-bold" onClick={() => { logout(); }}>登出</Link></li>
@@ -146,8 +190,14 @@ function Navbar() {
                                             }
 
                                             <li><Link className="dropdown-item trip-dropdown-item" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link></li>
-                                            <li><Link className="dropdown-item trip-dropdown-item d-flex align-items-center" to="/member/notifications" onClick={() => closeNavbar()}>站內收件匣 </Link></li>
-                                            {/* <span className="inbox-badge">999</span> */}
+                                            <li>
+                                                <Link className="dropdown-item trip-dropdown-item d-flex align-items-center justify-content-between" to="/member/notifications" onClick={() => closeNavbar()}>
+                                                    <span>站內收件匣</span>
+                                                    {unreadCount > 0 && (
+                                                        <span className="badge rounded-pill bg-danger ms-2">{unreadCount}</span>
+                                                    )}
+                                                </Link>
+                                            </li>
                                             <li><hr className="dropdown-divider mx-3" /></li>
                                             <li><button className="dropdown-item trip-dropdown-item text-center fw-bold" onClick={() => { logout(); }}>登出</button></li>
                                         </ul>
