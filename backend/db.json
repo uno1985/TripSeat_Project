@@ -1907,6 +1907,52 @@
       "blocked_reason": null,
       "updated_at": "2025-12-31T10:45:00Z",
       "deleted_at": null
+    },
+    {
+      "id": "81f47a50-26f8-487d-957f-ace888c123ab",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "owner_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "title": "澎湖初夏跳島看夕陽三天兩夜",
+      "category": "戶外探險",
+      "tags": [
+        "澎湖",
+        "跳島",
+        "夕陽"
+      ],
+      "description": "這趟想安排一個節奏舒服的澎湖三天兩夜小旅行，\n白天跑幾個經典海景點，傍晚看夕陽，晚上逛市區吃在地小吃。\n不走特種兵行程，重點是拍照、放空、吃好吃的，也希望旅伴時間觀念正常、好溝通。\n我們馬公機場見~~~~~",
+      "vibe_text": "海風、夕陽、拍照、慢節奏，不趕行程但也不拖隊。",
+      "vibe_tags": [
+        "慢旅",
+        "海景",
+        "美食",
+        "拍照"
+      ],
+      "start_date": "2026-06-10",
+      "end_date": "2026-06-12",
+      "deadline": "2026-06-05",
+      "location": "澎湖縣 馬公市",
+      "meeting_point": "馬公機場國內線出口",
+      "meeting_time": "09:00",
+      "transport": "其他",
+      "accommodation": "馬公市區民宿兩晚，雙人房或三人房",
+      "price": 3500,
+      "max_people": 6,
+      "current_participants": 1,
+      "cancellation_policy": "出發前 7 天可全額退費",
+      "image_url": "https://i.ibb.co/wZnc0jhz/Screenshot-2026-03-10-223608.png",
+      "related_images": [
+        "https://i.ibb.co/MDpfFnXL/Screenshot-2026-03-10-223629.png",
+        "https://i.ibb.co/1Jh7b9nn/Screenshot-2026-03-10-223616.png"
+      ],
+      "status": "open",
+      "owner_name": "文青小雨傘壓",
+      "owner_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "owner_is_verified_host": 1,
+      "views": 0,
+      "is_featured": false,
+      "created_at": "2026-03-10T15:48:59.482Z",
+      "updated_at": "2026-03-10T15:48:59.482Z",
+      "deleted_at": null
     }
   ],
   "itineraries": [
@@ -3560,6 +3606,45 @@
       "location_lng": 122.28523922294711,
       "note": "領取小禮物",
       "updated_at": "2026-02-05T16:11:09.269141",
+      "deleted_at": null
+    },
+    {
+      "id": "89c50be9-a06e-4355-aa67-0e709601d52e",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
+      "day": 1,
+      "time": "09:00",
+      "type": "activity",
+      "icon": "📍",
+      "title": "馬公機場集合",
+      "note": "大家自己坐飛機",
+      "updated_at": "2026-03-10T15:48:59.569Z",
+      "deleted_at": null
+    },
+    {
+      "id": "aeefd0fc-2098-454e-908a-15d698383fb2",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
+      "day": 2,
+      "time": "05:00",
+      "type": "activity",
+      "icon": "📍",
+      "title": "要坐船跳島所以要很早",
+      "note": "",
+      "updated_at": "2026-03-10T15:48:59.569Z",
+      "deleted_at": null
+    },
+    {
+      "id": "32a7fd7c-21d4-4e5f-bae8-cb7bb567feb0",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
+      "day": 3,
+      "time": "18:00",
+      "type": "activity",
+      "icon": "📍",
+      "title": "最後一班飛回台灣的飛機",
+      "note": "有緣再相會",
+      "updated_at": "2026-03-10T15:48:59.570Z",
       "deleted_at": null
     }
   ],
@@ -5473,7 +5558,7 @@
       "receiver_name": "露營女孩艾琳",
       "receiver_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
       "content": "哈哈路跑好厲害！我們路線大約 2-3 公里，輕鬆散步為主，中途會停很多美食點。穿舒適的鞋子就好～",
-      "is_read": false,
+      "is_read": true,
       "created_at": "2026-02-25T19:02:39.741Z",
       "deleted_at": null
     },
@@ -5503,6 +5588,20 @@
       "content": "期待那天能看到你喔!!",
       "is_read": false,
       "created_at": "2026-02-27T20:05:49.406Z",
+      "deleted_at": null
+    },
+    {
+      "id": "43a39c30-33a6-4884-8083-aca41c67e9c5",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "sender_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "sender_name": "露營女孩艾琳",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=irene",
+      "receiver_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "receiver_name": "文青小雨傘壓",
+      "content": "還可以啦!!!",
+      "is_read": false,
+      "created_at": "2026-03-10T15:47:18.761Z",
       "deleted_at": null
     }
   ],

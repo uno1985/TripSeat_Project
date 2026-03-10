@@ -13,6 +13,14 @@ const getStatusMeta = (trip) => {
   const isEnded = end && end < now;
   const isFull = (trip.current_participants || 0) >= (trip.max_people || 0);
 
+  // [AI修改開始 2026-03-10] 會員中心我的揪團摘要支援顯示草稿狀態
+  if (trip.status === 'draft') {
+    return {
+      text: '草稿',
+      className: 'bg-secondary-subtle text-secondary-emphasis',
+    }
+  }
+  // [AI修改結束 2026-03-10]
   if (trip.status === 'ended' || isEnded) {
     return {
       text: '已結束',
