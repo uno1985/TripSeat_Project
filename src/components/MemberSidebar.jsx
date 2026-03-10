@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import '../assets/css/memberSidebar.css';
 import avatarImg from '../assets/images/avator09.png';
+
+const API_URL = import.meta.env.VITE_API_BASE;
 
 
 
@@ -10,6 +13,20 @@ const MemberSidebar = () => {
   const location = useLocation();
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false); // 用於手機版下拉選單狀態
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  // 撈未讀私訊數（notifications 表的 recipient_id + messages 表的 receiver_id）
+  useEffect(() => {
+    if (!user?.id) return;
+    Promise.all([
+      axios.get(`${API_URL}/664/notifications?recipient_id=${user.id}`).catch(() => ({ data: [] })),
+      axios.get(`${API_URL}/664/messages?receiver_id=${user.id}`).catch(() => ({ data: [] })),
+    ]).then(([notifRes, msgRes]) => {
+      const notifUnread = (notifRes.data || []).filter(m => !m.deleted_at && !m.is_read && m.sender_id).length;
+      const msgUnread   = (msgRes.data   || []).filter(m => !m.deleted_at && !m.is_read).length;
+      setUnreadCount(notifUnread + msgUnread);
+    });
+  }, [user?.id]);
 
 
   const menuItems = [
@@ -18,7 +35,7 @@ const MemberSidebar = () => {
     { name: '我的揪團', path: '/member/groups' },
     { name: '我要開團', path: '/member/create-group' },
     { name: '我的收藏', path: '/member/favorites' },
-    { name: '訊息通知', path: '/member/notifications' },
+    { name: '訊息通知', path: '/member/notifications', badge: unreadCount },
   ];
 
   // 根據目前路徑取得選單名稱，若無匹配則顯示「會員中心」
@@ -55,10 +72,13 @@ const MemberSidebar = () => {
               <li key={index}>
                 <Link
                   to={item.path}
-                  className={`dropdown-item py-2 fs-6 ${location.pathname === item.path ? 'active bg-primary text-white' : ''}`}
+                  className={`dropdown-item py-2 fs-6 d-flex align-items-center justify-content-between ${location.pathname === item.path ? 'active bg-primary text-white' : ''}`}
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  {item.badge > 0 && (
+                    <span className="badge rounded-pill bg-danger ms-2">{item.badge}</span>
+                  )}
                 </Link>
               </li>
             ))}
@@ -94,11 +114,14 @@ const MemberSidebar = () => {
               <li key={index} className="mb-3">
                 <Link
                   to={item.path}
-                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
+                  className={`nav-link py-2 fs-5 fw-medium transition-all d-flex align-items-center justify-content-center gap-2 ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
                     }`}
                   style={{ textDecoration: 'none' }}
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  {item.badge > 0 && (
+                    <span className="badge rounded-pill bg-danger">{item.badge}</span>
+                  )}
                 </Link>
               </li>
             ))}

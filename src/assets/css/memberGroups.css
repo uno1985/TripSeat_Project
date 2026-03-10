@@ -539,3 +539,17 @@
     text-align: center;
   }
 }
+
+/* message */
+.my-groups-btn-message {
+  font-size: 12px;
+  padding: 2px 10px;
+  border: 1px solid var(--trip-color-gray-600);
+  color: var(--trip-color-gray-600);
+  border-radius: 6px;
+  background: transparent;
+}
+.my-groups-btn-message:hover {
+  background: var(--trip-color-primary-800);
+  color: #fff;
+}
