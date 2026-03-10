@@ -1,5 +1,6 @@
 //導入套件
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Toaster, toast } from 'sonner'
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
@@ -34,13 +35,9 @@ function TripDetail() {
     const [favoriteId, setFavoriteId] = useState(null);
     const [applying, setApplying] = useState(false);
     const [applyMessage, setApplyMessage] = useState('');
+    const [joinCheck, setJoinCheck] = useState({ open: false, tripId: null, text: '' });
     const { user } = useAuth();
 
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        fetchTripData();
-    }, [id, user?.id]);
 
     const getToken = () =>
         document.cookie
@@ -48,7 +45,7 @@ function TripDetail() {
             .find((row) => row.startsWith('tripToken='))
             ?.split('=')[1];
 
-    const fetchTripData = async () => {
+    const fetchTripData = useCallback(async () => {
         setLoading(true);
         setError(null);
 
@@ -124,7 +121,12 @@ function TripDetail() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id, user?.id]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        fetchTripData();
+    }, [fetchTripData]);
 
     // 格式化日期顯示
     const formatDateRange = (startDate, endDate) => {
@@ -161,11 +163,11 @@ function TripDetail() {
 
         if (diff <= 0) return '已截止';
 
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const day = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hour = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        return `${String(day).padStart(2, '0')} 天 ${String(hour).padStart(2, '0')} 小時 ${String(minute).padStart(2, '0')} 分`;
     };
 
     // 根據 day 和 time 排序並格式化行程
@@ -313,7 +315,6 @@ function TripDetail() {
         }
 
         const joinCount = Math.max(1, pax);
-        const nextParticipants = Math.min((trip.current_participants || 0) + joinCount, trip.max_people || 0);
 
         setApplying(true);
         setApplyMessage('');
@@ -351,9 +352,12 @@ function TripDetail() {
                 await axios.post(
                     `${API_URL}/664/participants`,
                     {
+                        id: crypto.randomUUID(),
                         trip_id: trip.id,
                         user_id: user.id,
                         role: 'member',
+                        comment: joinCheck.text.trim() || null,
+                        joinCount: joinCount,
                         application_status: 'pending',
                         created_at: new Date().toISOString(),
                         updated_at: new Date().toISOString(),
@@ -363,26 +367,27 @@ function TripDetail() {
                 );
             }
 
-            try {
-                await axios.patch(
-                    `${API_URL}/trips/${trip.id}`,
-                    {
-                        current_participants: nextParticipants,
-                        updated_at: new Date().toISOString(),
-                    },
-                    { headers: { Authorization: `Bearer ${token}` } }
-                );
-            } catch {
-                // trip 人數欄位更新失敗時，不阻斷申請成功流程
-            }
+            // try {
+            //     await axios.patch(
+            //         `${API_URL}/trips/${trip.id}`,
+            //         {
+            //             current_participants: nextParticipants,
+            //             updated_at: new Date().toISOString(),
+            //         },
+            //         { headers: { Authorization: `Bearer ${token}` } }
+            //     );
+            // } catch {
+            //     // trip 人數欄位更新失敗時，不阻斷申請成功流程
+            // }
 
-            setTrip((prev) => ({
-                ...prev,
-                current_participants: nextParticipants,
-            }));
+            // setTrip((prev) => ({
+            //     ...prev,
+            //     current_participants: nextParticipants,
+            // }));
             setHasApplied(true);
             setApplicationStatus('pending');
             setApplyMessage('申請成功，審核中');
+            closeJoin();
         } catch (err) {
             setApplyMessage(err.response?.data || err.message || '申請失敗，請稍後再試');
         } finally {
@@ -398,7 +403,7 @@ function TripDetail() {
 
         const token = getToken();
         if (!token) {
-            alert('登入狀態失效，請重新登入');
+            toast.error('登入狀態失效，請重新登入');
             return;
         }
 
@@ -413,7 +418,7 @@ function TripDetail() {
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setFavoriteId(null);
-                alert('已從收藏移除');
+                toast.success('已從收藏移除');
                 return;
             }
 
@@ -427,7 +432,7 @@ function TripDetail() {
 
             if (activeRow) {
                 setFavoriteId(activeRow.id);
-                alert('此旅程已在收藏中');
+                toast.error('此旅程已在收藏中');
                 return;
             }
 
@@ -456,14 +461,31 @@ function TripDetail() {
                 setFavoriteId(res.data.id);
             }
 
-            alert('已加入收藏');
+            toast.success('已加入收藏');
         } catch (err) {
-            alert(err.response?.data || err.message || '加入收藏失敗');
+            toast.error(err.response?.data || err.message || '加入收藏失敗');
         }
+    };
+
+
+    const openJoin = (trip) => {
+        setJoinCheck({
+            open: true,
+            tripId: trip.id,
+            text: '',
+        });
+
+    };
+
+    const closeJoin = () => {
+        if (applying) return;
+        setJoinCheck({ open: false, tripId: null, text: '' });
+
     };
 
     return (
         <div className="trip-detail-page">
+            <Toaster richColors position="top-center" />
             <div className="container pt-5">
 
                 {/* Breadcrumb */}
@@ -640,70 +662,85 @@ function TripDetail() {
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {/* Booking Card */}
                                         <div className="sidebar-card booking-card mb-4">
-                                            {/* Price & Countdown */}
-                                            <div className="booking-boxes mb-3">
-                                                <div className="booking-box">
-                                                    <div className="box-label">預估平攤費用：</div>
-                                                    <div className="box-value">
-                                                        <span className="price-symbol">$</span>
-                                                        <span className="price-amount">{t.price.toLocaleString()}</span>
-                                                        <span className="price-unit">/人</span>
-                                                    </div>
-                                                </div>
-                                                <div className="booking-box">
-                                                    <div className="box-label">剩餘時間：</div>
-                                                    <div className="box-value countdown">{t.countdown}</div>
-                                                </div>
-                                            </div>
 
-                                            <p className="booking-note trip-text-s trip-text-gray-400 mb-4">
-                                                以上為預估費用，實際費用以團主公告為準。
-                                            </p>
+                                            {
+                                                !isCtaDisabled && (
+                                                    <>
+                                                        <div className="booking-boxes mb-3">
+                                                            <div className="booking-box">
+                                                                <div className="box-label">預估平攤費用：</div>
+                                                                <div className="box-value">
+                                                                    <span className="price-symbol">$</span>
+                                                                    <span className="price-amount">{t.price.toLocaleString()}</span>
+                                                                    <span className="price-unit">/人</span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="booking-box">
+                                                                <div className="box-label">剩餘時間：</div>
+                                                                <div className="box-value countdown">{t.countdown}</div>
+                                                            </div>
+                                                        </div>
 
-                                            {/* Seats Info */}
-                                            <div className="booking-row mb-3">
-                                                <div className="booking-row-label">
-                                                    <span className="row-icon">👥</span>
-                                                    <span className="trip-text-m trip-text-gray-600 fw-bold">剩餘座位</span>
-                                                </div>
-                                                <div className="booking-row-value">
-                                                    <span className="seats-current">{t.currentPax}</span>
-                                                    <span className="seats-separator">/</span>
-                                                    <span className="seats-max">{t.maxPax}個</span>
-                                                </div>
-                                            </div>
+                                                        <p className="booking-note trip-text-s trip-text-gray-400 mb-4">
+                                                            以上為預估費用，實際費用以團主公告為準。
+                                                        </p>
 
-                                            {/* Pax Selector */}
-                                            <div className="booking-row mb-4">
-                                                <div className="booking-row-label">
-                                                    <span className="row-icon">👤</span>
-                                                    <span className="trip-text-m trip-text-gray-600 fw-bold">我有</span>
-                                                </div>
-                                                <div className="booking-row-value">
-                                                    <div className="pax-stepper">
-                                                        <button
-                                                            className="stepper-btn"
-                                                            type="button"
-                                                            onClick={() => setPax(Math.max(1, pax - 1))}
-                                                        >−</button>
-                                                        <span className="stepper-value">{pax}</span>
-                                                        <button
-                                                            className="stepper-btn"
-                                                            type="button"
-                                                            onClick={() => setPax(Math.min(t.maxPax - t.currentPax, pax + 1))}
-                                                        >+</button>
-                                                    </div>
-                                                    <span className="trip-text-m trip-text-gray-600">人</span>
-                                                </div>
-                                            </div>
+                                                        {/* Seats Info */}
+                                                        <div className="booking-row mb-3">
+                                                            <div className="booking-row-label">
+                                                                <span className="row-icon">👥</span>
+                                                                <span className="trip-text-m trip-text-gray-600 fw-bold">剩餘座位</span>
+                                                            </div>
+                                                            <div className="booking-row-value">
+                                                                <span className="seats-current">{t.currentPax}</span>
+                                                                <span className="seats-separator">/</span>
+                                                                <span className="seats-max">{t.maxPax}個</span>
+                                                            </div>
+                                                        </div>
 
-                                            {/* CTA Button */}
-                                            <button className="trip-btn-primary trip-btn-l cta-button">
-                                                申請加入旅程
+                                                        {/* Pax Selector */}
+                                                        <div className="booking-row mb-4">
+                                                            <div className="booking-row-label">
+                                                                <span className="row-icon">👤</span>
+                                                                <span className="trip-text-m trip-text-gray-600 fw-bold">我有</span>
+                                                            </div>
+                                                            <div className="booking-row-value">
+                                                                <div className="pax-stepper">
+                                                                    <button
+                                                                        className="stepper-btn"
+                                                                        type="button"
+                                                                        onClick={() => setPax(Math.max(1, pax - 1))}
+                                                                    >−</button>
+                                                                    <span className="stepper-value">{pax}</span>
+                                                                    <button
+                                                                        className="stepper-btn"
+                                                                        type="button"
+                                                                        onClick={() => setPax(Math.min(t.maxPax - t.currentPax, pax + 1))}
+                                                                    >+</button>
+                                                                </div>
+                                                                <span className="trip-text-m trip-text-gray-600">人</span>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )
+                                            }
+
+
+
+
+
+                                            <button className="trip-btn-primary trip-btn-l cta-button" disabled={isCtaDisabled || applying} onClick={() => openJoin(trip)}>
+                                                {applying ? '申請中...' : ctaText}
                                             </button>
+                                            {applyMessage && (
+                                                <p className="trip-text-s trip-text-gray-400 mt-2 mb-0">{applyMessage}</p>
+                                            )}
+
+
+
+
+
                                         </div>
                                     </>) : (<div className="sidebar-card booking-card mb-4 text-center py-4">
                                         <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🔒</div>
@@ -720,87 +757,195 @@ function TripDetail() {
                                     </div>)
                             }
 
-                            {/* CTA Button */}
-                            <button className="trip-btn-primary trip-btn-l cta-button" disabled={isCtaDisabled || applying} onClick={handleApplyJoin}>
-                                {applying ? '申請中...' : ctaText}
-                            </button>
-                            {applyMessage && (
-                                <p className="trip-text-s trip-text-gray-400 mt-2 mb-0">{applyMessage}</p>
-                            )}
-                        </div>
 
-                        {/* Host Card */}
-                        <div className="sidebar-card host-card mb-4">
-                            <div className="host-header mb-3">
-                                <img src={t.host.avatar} alt={t.host.name} className="host-avatar" />
-                                <div className="host-info">
-                                    <div className="host-name-row">
-                                        <span className="host-name">{t.host.name}</span>
-                                        <span className="host-badge">{t.host.badge}</span>
-                                    </div>
-                                    <div className="host-rating trip-text-s trip-text-gray-400">
-                                        <span className="star">★</span> {t.host.rating} ({t.host.reviews} 趟旅程)
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="host-bio trip-text-s trip-text-gray-600 mb-4">{t.host.bio}</p>
 
-                            {/* 過往旅程記憶 */}
-                            <h6 className="subsection-title trip-text-gray-400 mb-3">過往旅程記憶</h6>
-                            <div className="memory-gallery mb-4">
-                                {t.otherTripItems && t.otherTripItems.length > 0 ? (
-                                    // 有資料時顯示圖片
-                                    t.otherTripItems.map(item => (
-                                        <div key={item.id} className="memory-item">
-                                            <Link to={`/trips/${item.id}`}>
-                                                <img src={item.image} alt={item.title || ''} className="memory-image" />
-                                            </Link>
+
+                            {/* Host Card */}
+                            <div className="sidebar-card host-card mb-4">
+                                <div className="host-header mb-3">
+                                    <img src={t.host.avatar} alt={t.host.name} className="host-avatar" />
+                                    <div className="host-info">
+                                        <div className="host-name-row">
+                                            <span className="host-name">{t.host.name}</span>
+                                            <span className="host-badge">{t.host.badge}</span>
                                         </div>
-                                    ))
-                                ) : (
-                                    // 沒資料時顯示 placeholder
-                                    <>
-
-                                    </>
-                                )}
-                            </div>
-
-                            {/* Verified Badge Button */}
-                            {t.host.isVerified ? (
-                                <div className="verified-btn">
-                                    <span className="verified-icon" ><img src={shieldCheck} alt="shieldCheck" /></span> 已認證 真安心團主
-                                </div>
-                            ) : null}
-                        </div>
-
-                        {/* Applicants Card */}
-                        {trip.owner_id === user?.id && <>
-                            <div className="sidebar-card applicants-card">
-                                <h5 className="subsection-title trip-text-gray-600 mb-3">申請加入名單</h5>
-                                <div className="applicants-row">
-                                    <div className="applicants-avatars">
-                                        {tripApplicants.slice(0, 3).map((applicant) => (
-                                            <img
-                                                key={applicant.id}
-                                                src={applicant.avatar}
-                                                alt={applicant.name}
-                                                className="applicant-avatar"
-                                            />
-                                        ))}
-                                        {tripApplicants.length === 0 && <div className="applicant-avatar placeholder-avatar"></div>}
+                                        <div className="host-rating trip-text-s trip-text-gray-400">
+                                            <span className="star">★</span> {t.host.rating} ({t.host.reviews} 趟旅程)
+                                        </div>
                                     </div>
-                                    <span className="applicants-count trip-text-s trip-text-gray-400">
-                                        已有 {tripApplicants.length} 位乘客申請加入
-                                    </span>
-                                    <Link to={`/member/groups?tripId=${trip.id}`} className="manage-btn">管理</Link>
                                 </div>
-                            </div>
-                        </>}
+                                <p className="host-bio trip-text-s trip-text-gray-600 mb-4">{t.host.bio}</p>
 
+                                {/* 過往旅程記憶 */}
+                                <h6 className="subsection-title trip-text-gray-400 mb-3">過往旅程記憶</h6>
+                                <div className="memory-gallery mb-4">
+                                    {t.otherTripItems && t.otherTripItems.length > 0 ? (
+                                        // 有資料時顯示圖片
+                                        t.otherTripItems.map(item => (
+                                            <div key={item.id} className="memory-item">
+                                                <Link to={`/trips/${item.id}`}>
+                                                    <img src={item.image} alt={item.title || ''} className="memory-image" />
+                                                </Link>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        // 沒資料時顯示 placeholder
+                                        <>
+
+                                        </>
+                                    )}
+                                </div>
+
+                                {/* Verified Badge Button */}
+                                {t.host.isVerified ? (
+                                    <div className="verified-btn">
+                                        <span className="verified-icon" ><img src={shieldCheck} alt="shieldCheck" /></span> 已認證 真安心團主
+                                    </div>
+                                ) : null}
+                            </div>
+
+                            {/* Applicants Card */}
+                            {trip.owner_id === user?.id && <>
+                                <div className="sidebar-card applicants-card">
+                                    <h5 className="subsection-title trip-text-gray-600 mb-3">申請加入名單</h5>
+                                    <div className="applicants-row">
+                                        <div className="applicants-avatars">
+                                            {tripApplicants.slice(0, 3).map((applicant) => (
+                                                <img
+                                                    key={applicant.id}
+                                                    src={applicant.avatar}
+                                                    alt={applicant.name}
+                                                    className="applicant-avatar"
+                                                />
+                                            ))}
+                                            {tripApplicants.length === 0 && <div className="applicant-avatar placeholder-avatar"></div>}
+                                        </div>
+                                        <span className="applicants-count trip-text-s trip-text-gray-400">
+                                            已有 {tripApplicants.length} 位乘客申請加入
+                                        </span>
+                                        <Link to={`/member/groups?tripId=${trip.id}`} className="manage-btn">管理</Link>
+                                    </div>
+                                </div>
+                            </>}
+
+                        </div>
                     </div>
                 </div>
             </div>
+
+            {joinCheck.open && (
+                <>
+                    <div className="modal fade show d-block" tabIndex="-1" role="dialog" aria-modal="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content rounded-4 border-0 shadow-lg overflow-hidden">
+
+                                {/* Header */}
+                                <div className="modal-header border-0 pb-0 px-4 pt-4 align-items-start">
+                                    <div>
+                                        <p className="trip-text-s trip-text-gray-400 mb-1">你正在申請加入</p>
+                                        <h5 className="modal-title fw-bold trip-text-gray-800 mb-0">{trip?.title}</h5>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="btn-close ms-auto flex-shrink-0 mt-1"
+                                        onClick={closeJoin}
+                                        disabled={applying}
+                                    ></button>
+                                </div>
+
+                                <div className="modal-body px-4 py-3">
+                                    <hr className="mt-2 mb-4 opacity-10" />
+
+                                    {/* 人數選擇 */}
+                                    <div className="mb-4">
+                                        <label className="trip-text-s fw-bold trip-text-gray-600 mb-3 d-block">
+                                            <i className="bi bi-people me-2 trip-text-primary-800"></i>加入人數
+                                        </label>
+                                        <div className="d-flex align-items-center gap-3">
+                                            <button
+                                                type="button"
+                                                className="btn btn-outline-secondary rounded-circle p-0 d-flex align-items-center justify-content-center flex-shrink-0"
+                                                style={{ width: '38px', height: '38px', fontSize: '1.2rem' }}
+                                                onClick={() => setPax(Math.max(1, pax - 1))}
+                                                disabled={applying || pax <= 1}
+                                            >−</button>
+
+                                            <span
+                                                className="fw-bold trip-text-primary-1000 text-center"
+                                                style={{ fontSize: '2rem', minWidth: '2.5rem', lineHeight: 1 }}
+                                            >{pax}</span>
+
+                                            <button
+                                                type="button"
+                                                className="btn btn-outline-secondary rounded-circle p-0 d-flex align-items-center justify-content-center flex-shrink-0"
+                                                style={{ width: '38px', height: '38px', fontSize: '1.2rem' }}
+                                                onClick={() => setPax(Math.min((trip?.max_people || 0) - (trip?.current_participants || 0), pax + 1))}
+                                                disabled={applying || pax >= (trip?.max_people || 0) - (trip?.current_participants || 0)}
+                                            >＋</button>
+
+                                            <span className="trip-text-s trip-text-gray-400">
+                                                人&ensp;·&ensp;剩餘 <strong className="trip-text-gray-600">{(trip?.max_people || 0) - (trip?.current_participants || 0)}</strong> 個名額
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* 加入宣言 */}
+                                    <div className="mb-3">
+                                        <label className="trip-text-s fw-bold trip-text-gray-600 mb-2 d-block">
+                                            <i className="bi bi-chat-left-text me-2 trip-text-primary-800"></i>
+                                            加入宣言
+                                            <span className="fw-normal trip-text-gray-400 ms-1">（選填）</span>
+                                        </label>
+                                        <textarea
+                                            className="form-control"
+                                            rows={3}
+                                            placeholder="簡單介紹自己，讓團主更認識你..."
+                                            value={joinCheck.text}
+                                            onChange={(e) => setJoinCheck((prev) => ({ ...prev, text: e.target.value }))}
+                                            disabled={applying}
+                                            style={{ resize: 'none' }}
+                                        />
+                                    </div>
+
+                                    {applyMessage && (
+                                        <div className="alert alert-warning py-2 mb-0 trip-text-s">{applyMessage}</div>
+                                    )}
+                                </div>
+
+                                {/* Footer */}
+                                <div className="modal-footer border-0 px-4 pb-4 pt-1 gap-2">
+                                    <button
+                                        type="button"
+                                        className="btn trip-btn-m trip-btn-outline-primary flex-fill"
+                                        onClick={closeJoin}
+                                        disabled={applying}
+                                    >取消</button>
+                                    <button
+                                        type="button"
+                                        className="btn trip-btn-m trip-btn-primary flex-fill"
+                                        onClick={handleApplyJoin}
+                                        disabled={applying}
+                                    >
+                                        {applying
+                                            ? <><span className="spinner-border spinner-border-sm me-2" role="status"></span>送出中...</>
+                                            : '確認加入'
+                                        }
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="modal-backdrop fade show"></div>
+                </>
+            )}
+
+
         </div>
+
+
+
+
 
     );
 }

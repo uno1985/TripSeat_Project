@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,11 +7,27 @@ import avatarImg from '../assets/images/avator09.png';
 
 const API_URL = import.meta.env.VITE_API_BASE;
 
+
+
 const MemberSidebar = () => {
   const location = useLocation();
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false); // 用於手機版下拉選單狀態
-  const [profile, setProfile] = useState(null);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  // 撈未讀私訊數（notifications 表的 recipient_id + messages 表的 receiver_id）
+  useEffect(() => {
+    if (!user?.id) return;
+    Promise.all([
+      axios.get(`${API_URL}/664/notifications?recipient_id=${user.id}`).catch(() => ({ data: [] })),
+      axios.get(`${API_URL}/664/messages?receiver_id=${user.id}`).catch(() => ({ data: [] })),
+    ]).then(([notifRes, msgRes]) => {
+      const notifUnread = (notifRes.data || []).filter(m => !m.deleted_at && !m.is_read && m.sender_id).length;
+      const msgUnread   = (msgRes.data   || []).filter(m => !m.deleted_at && !m.is_read).length;
+      setUnreadCount(notifUnread + msgUnread);
+    });
+  }, [user?.id]);
+
 
   const menuItems = [
     { name: '我的檔案', path: '/member/profile' },
@@ -19,36 +35,22 @@ const MemberSidebar = () => {
     { name: '我的揪團', path: '/member/groups' },
     { name: '我要開團', path: '/member/create-group' },
     { name: '我的收藏', path: '/member/favorites' },
-    { name: '訊息通知', path: '/member/notifications' },
+    { name: '訊息通知', path: '/member/notifications', badge: unreadCount },
   ];
 
   // 根據目前路徑取得選單名稱，若無匹配則顯示「會員中心」
   const currentItem = menuItems.find(item => item.path === location.pathname);
   const currentTitle = currentItem ? currentItem.name : '會員中心';
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      if (!user?.id) return;
-      try {
-        const res = await axios.get(`${API_URL}/664/users/${user.id}`);
-        if (res.data && !res.data.deleted_at) {
-          setProfile(res.data);
-        }
-      } catch (err) {
-        // 失敗時保留 AuthContext 內的 user 顯示，不中斷側欄
-        console.log(err);
-      }
-    };
 
-    fetchUserProfile();
-  }, [user?.id]);
 
-  const displayProfile = profile || user;
-  const displayName = displayProfile?.name || '會員';
-  const displayIntro = displayProfile?.intro || '歡迎來到會員中心';
-  const displayAvatar = displayProfile?.avatar || avatarImg;
-  const displayRating = displayProfile?.rating_average ?? '-';
-  const displayTrips = displayProfile?.trips_completed ?? 0;
+  // 直接用 user，不需要 profile
+  const displayName = user?.name || '會員';
+  const displayIntro = user?.intro || '歡迎來到會員中心';
+  const displayAvatar = user?.avatar || avatarImg;
+  const displayRating = user?.rating_average ?? '-';
+  const displayTrips = user?.trips_completed ?? 0;
+
 
   return (
     <div className="member-sidebar-container">
@@ -70,10 +72,13 @@ const MemberSidebar = () => {
               <li key={index}>
                 <Link
                   to={item.path}
-                  className={`dropdown-item py-2 fs-6 ${location.pathname === item.path ? 'active bg-primary text-white' : ''}`}
+                  className={`dropdown-item py-2 fs-6 d-flex align-items-center justify-content-between ${location.pathname === item.path ? 'active bg-primary text-white' : ''}`}
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  {item.badge > 0 && (
+                    <span className="badge rounded-pill bg-danger ms-2">{item.badge}</span>
+                  )}
                 </Link>
               </li>
             ))}
@@ -109,11 +114,14 @@ const MemberSidebar = () => {
               <li key={index} className="mb-3">
                 <Link
                   to={item.path}
-                  className={`nav-link py-2 fs-5 fw-medium transition-all ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
+                  className={`nav-link py-2 fs-5 fw-medium transition-all d-flex align-items-center justify-content-center gap-2 ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
                     }`}
                   style={{ textDecoration: 'none' }}
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  {item.badge > 0 && (
+                    <span className="badge rounded-pill bg-danger">{item.badge}</span>
+                  )}
                 </Link>
               </li>
             ))}

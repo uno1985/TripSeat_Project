@@ -23,6 +23,11 @@ const MemberGroups = () => {
     const [actionError, setActionError] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [activeFilter, setActiveFilter] = useState('all');
+    const [messageModal, setMessageModal] = useState({ open: false, recipientName: '', recipientId: null, message: '' });
+    const [messageSending, setMessageSending] = useState(false);
+    const [messageError, setMessageError] = useState('');
+    const [messageSent, setMessageSent] = useState(false);
 
     const getToken = () =>
         document.cookie
@@ -62,74 +67,78 @@ const MemberGroups = () => {
         const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
         return diff > 0 ? diff : 0;
     };
-      useEffect(() => {
+    useEffect(() => {
         const fetchMyTrips = async () => {
-        if (!user?.id) {
-            setTrips([]);
-            setLoading(false);
-            return;
-        }
+            if (!user?.id) {
+                setTrips([]);
+                setLoading(false);
+                return;
+            }
 
-        setLoading(true);
-        setError(null);
-        try {
-            const [tripsRes, participantsRes, usersRes] = await Promise.all([
-                axios.get(`${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc`),
-                axios.get(`${API_URL}/664/participants`),
-                axios.get(`${API_URL}/664/users`),
-            ]);
+            setLoading(true);
+            setError(null);
+            try {
+                const [tripsRes, participantsRes, usersRes] = await Promise.all([
+                    axios.get(`${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc`),
+                    axios.get(`${API_URL}/664/participants`),
+                    axios.get(`${API_URL}/664/users`),
+                ]);
 
-            const rows = (tripsRes.data || [])
-            .filter((t) => !t.deleted_at)
-            .map((t) => ({
-                ...t,
-                statusType: getStatusType(t),
-                statusText: statusTextMap[getStatusType(t)],
-            }));
+                const rows = (tripsRes.data || [])
+                    .filter((t) => !t.deleted_at)
+                    .map((t) => ({
+                        ...t,
+                        statusType: getStatusType(t),
+                        statusText: statusTextMap[getStatusType(t)],
+                    }));
 
-            const tripIdSet = new Set(rows.map((t) => t.id));
-            const userMap = new Map((usersRes.data || []).map((u) => [u.id, u]));
-            const nextApplicantsByTrip = {};
-            const nextMembersByTrip = {};
+                const tripIdSet = new Set(rows.map((t) => t.id));
+                const userMap = new Map((usersRes.data || []).map((u) => [u.id, u]));
+                const nextApplicantsByTrip = {};
+                const nextMembersByTrip = {};
 
-            (participantsRes.data || [])
-                .filter((p) => !p.deleted_at && tripIdSet.has(p.trip_id))
-                .forEach((p) => {
-                    const profile = userMap.get(p.user_id) || {};
-                    const item = {
-                        participantId: p.id,
-                        userId: p.user_id,
-                        role: p.role,
-                        name: profile.name || '未命名會員',
-                        avatar: profile.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${p.user_id}`,
-                        detail: `${profile.birthday ? `${new Date().getFullYear() - new Date(profile.birthday).getFullYear()}歲・` : ''}已完成 ${profile.trips_completed || 0} 趟旅程・評分 ${profile.rating_average || 0}`,
-                    };
+                (participantsRes.data || [])
+                    .filter((p) => !p.deleted_at && tripIdSet.has(p.trip_id))
+                    .forEach((p) => {
+                        const profile = userMap.get(p.user_id) || {};
+                        const item = {
+                            participantId: p.id,
+                            userId: p.user_id,
+                            role: p.role,
+                            status: p.application_status || 'pending',
+                            comment: p.comment || '無加入宣言',
+                            joinCount: p.joinCount,
+                            name: profile.name || '未命名會員',
+                            phone: profile.phone || '未提供電話',
+                            avatar: profile.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${p.user_id}`,
+                            detail: `${profile.birthday ? `${new Date().getFullYear() - new Date(profile.birthday).getFullYear()}歲・` : ''}已完成 ${profile.trips_completed || 0} 趟旅程・評分 ${profile.rating_average || 0}`,
+                        };
 
-                    if (!nextMembersByTrip[p.trip_id]) nextMembersByTrip[p.trip_id] = [];
-                    nextMembersByTrip[p.trip_id].push(item);
+                        if (!nextMembersByTrip[p.trip_id]) nextMembersByTrip[p.trip_id] = [];
+                        nextMembersByTrip[p.trip_id].push(item);
 
-                    if (p.role !== 'owner' && (p.application_status || 'pending') === 'pending') {
-                        if (!nextApplicantsByTrip[p.trip_id]) nextApplicantsByTrip[p.trip_id] = [];
-                        nextApplicantsByTrip[p.trip_id].push(item);
-                    }
-                });
+                        if (p.role !== 'owner' && (p.application_status || 'pending') === 'pending') {
+                            if (!nextApplicantsByTrip[p.trip_id]) nextApplicantsByTrip[p.trip_id] = [];
+                            nextApplicantsByTrip[p.trip_id].push(item);
+                        }
+                    });
 
-            setTrips(rows);
-            setApplicantsByTrip(nextApplicantsByTrip);
-            setMembersByTrip(nextMembersByTrip);
-            setApprovedIds([]);
-            setActionError('');
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
+                setTrips(rows);
+                setApplicantsByTrip(nextApplicantsByTrip);
+                setMembersByTrip(nextMembersByTrip);
+                setApprovedIds([]);
+                setActionError('');
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchMyTrips();
     }, [user?.id]);
 
-      const stats = useMemo(() => ({
+    const stats = useMemo(() => ({
         all: trips.length,
         open: trips.filter((t) => t.statusType === 'open').length,
         confirmed: trips.filter((t) => t.statusType === 'confirmed').length,
@@ -160,6 +169,51 @@ const MemberGroups = () => {
         return membersByTrip[openTrip.id] || [];
     }, [membersByTrip, openTrip]);
 
+    const openMessageModal = (member) => {
+        setMessageModal({ open: true, recipientName: member.name, recipientId: member.userId, message: '' });
+        setMessageError('');
+        setMessageSent(false);
+    };
+
+    const closeMessageModal = () => {
+        if (messageSending) return;
+        setMessageModal({ open: false, recipientName: '', recipientId: null, message: '' });
+        setMessageError('');
+        setMessageSent(false);
+    };
+
+    const handleSendMessage = async () => {
+        const content = messageModal.message.trim();
+        if (!content) { setMessageError('訊息內容不能為空白'); return; }
+        const token = getToken();
+        if (!token || !user?.id) { setMessageError('登入狀態失效，請重新登入'); return; }
+        setMessageSending(true);
+        setMessageError('');
+        try {
+            await axios.post(
+                `${API_URL}/664/notifications`,
+                {
+                    recipient_id: messageModal.recipientId,
+                    recipient_name: messageModal.recipientName,
+                    sender_id: user.id,
+                    sender_name: user.name || '',
+                    sender_avatar: user.avatar || '',
+                    message: content,
+                    content,
+                    is_read: false,
+                    created_at: new Date().toISOString(),
+                    deleted_at: null,
+                },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setMessageSent(true);
+        } catch (err) {
+            setMessageError(err.response?.data || err.message || '傳送失敗，請稍後再試');
+        } finally {
+            setMessageSending(false);
+        }
+    };
+
     const toggleMembersByTrip = (tripId) => {
         setExpandedMembersByTrip((prev) => ({
             ...prev,
@@ -186,6 +240,14 @@ const MemberGroups = () => {
                         role: 'member',
                         application_status: 'approved',
                         updated_at: now
+                    },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                ),
+                axios.patch(
+                    `${API_URL}/664/trips/${openTrip.id}`,
+                    {
+                        current_participants: Math.max((openTrip.current_participants || 1) + applicant.joinCount, 0),
+                        updated_at: now,
                     },
                     { headers: { Authorization: `Bearer ${token}` } }
                 ),
@@ -239,14 +301,7 @@ const MemberGroups = () => {
                     },
                     { headers: { Authorization: `Bearer ${token}` } }
                 ),
-                axios.patch(
-                    `${API_URL}/664/trips/${openTrip.id}`,
-                    {
-                        current_participants: Math.max((openTrip.current_participants || 1) - 1, 0),
-                        updated_at: now,
-                    },
-                    { headers: { Authorization: `Bearer ${token}` } }
-                ),
+
                 axios.post(
                     `${API_URL}/664/notifications`,
                     {
@@ -345,17 +400,25 @@ const MemberGroups = () => {
 
             {/* ===== 篩選列 ===== */}
             <div className="my-groups-filter-bar mb-4">
-                <button className="my-groups-filter-btn active">全部</button>
-                <button className="my-groups-filter-btn">招募中</button>
-                <button className="my-groups-filter-btn">已成團</button>
-                <button className="my-groups-filter-btn">已結束</button>
+                {[
+                    { key: 'all', label: '全部' },
+                    { key: 'open', label: '招募中' },
+                    { key: 'confirmed', label: '已成團' },
+                    { key: 'ended', label: '已結束' },
+                ].map(f => (
+                    <button
+                        key={f.key}
+                        className={`my-groups-filter-btn ${activeFilter === f.key ? 'active' : ''}`}
+                        onClick={() => setActiveFilter(f.key)}
+                    >{f.label}</button>
+                ))}
             </div>
 
             {/* ===== 揪團卡片列表 ===== */}
-            
+
 
             {/* --- 卡片 1：招募中 (有待審核) --- */}
-            {openTrip && <div className="my-groups-card mb-3">
+            {openTrip && (activeFilter === 'all' || activeFilter === 'open') && <div className="my-groups-card mb-3">
                 <div className="row g-0">
                     {/* 封面圖 */}
                     <div className="col-md-3">
@@ -428,8 +491,9 @@ const MemberGroups = () => {
                                                 className="my-groups-applicant-avatar"
                                             />
                                             <div className="my-groups-applicant-info">
-                                                <span className="my-groups-applicant-name">{applicant.name}</span>
+                                                <span className="my-groups-applicant-name">{applicant.name} (共{applicant.joinCount}人)</span>
                                                 <span className="my-groups-applicant-detail">{applicant.detail}</span>
+                                                <span className="my-groups-applicant-comment">{applicant.comment}</span>
                                             </div>
                                             <div className="my-groups-applicant-actions">
                                                 <button
@@ -458,19 +522,31 @@ const MemberGroups = () => {
                             <div className="my-groups-members-section">
                                 <button className="btn btn-sm my-groups-btn-toggle-members" type="button" onClick={() => setExpandedMembers((prev) => !prev)}>
                                     <i className="bi bi-people-fill me-1"></i>
-                                    查看目前團員 ({members.length})
+                                    查看目前團員 ({members.length - pendingApplicants.length})
                                     <i className={`bi ms-1 ${expandedMembers ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
                                 </button>
 
                                 {expandedMembers && (
                                     <div className="my-groups-members-list">
-                                        {members.map((member) => (
-                                            <div key={member.participantId} className="my-groups-member">
-                                                <img src={member.avatar} alt={`${member.name} 頭像`} className="my-groups-member-avatar" />
-                                                <span>{member.name}</span>
-                                                {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
-                                            </div>
-                                        ))}
+                                        {members
+                                            .filter((member) => member.role === 'owner' || member.status === 'approved')
+                                            .map((member) => (
+                                                <div key={member.participantId} className="my-groups-member">
+                                                    <img src={member.avatar} alt={`${member.name} 頭像`} className="my-groups-member-avatar" />
+                                                    <span>{member.name}</span>
+                                                    {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
+                                                    {member.role === 'member' && <span className="my-groups-member-badge">{member.phone}</span>}
+                                                    {member.userId !== user?.id && (
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-sm my-groups-btn-message ms-auto"
+                                                            onClick={() => openMessageModal(member)}
+                                                        >
+                                                            <i className="bi bi-chat-dots me-1"></i>發送訊息
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            ))}
                                     </div>
                                 )}
                             </div>
@@ -553,84 +629,154 @@ const MemberGroups = () => {
             </div> */}
 
             {/* --- 卡片 3：已結束 --- */}
-            {otherTrips.map((trip) => (
-                (() => {
-                    const tripMembers = membersByTrip[trip.id] || [];
-                    const isExpanded = Boolean(expandedMembersByTrip[trip.id]);
+            {otherTrips
+                .filter(trip => activeFilter === 'all' || trip.statusType === activeFilter)
+                .map((trip) => (
+                    (() => {
+                        const tripMembers = membersByTrip[trip.id] || [];
+                        const isExpanded = Boolean(expandedMembersByTrip[trip.id]);
 
-                    return (
-                        <div
-                            key={trip.id}
-                            className={`my-groups-card mb-3 ${trip.statusType === 'ended' ? 'my-groups-card-ended' : ''}`}
-                        >
-                            <div className="row g-0">
-                                <div className="col-md-3">
-                                    <div className="my-groups-card-img-wrapper">
-                                        <img
-                                            src={trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80'}
-                                            alt={trip.title}
-                                            className="my-groups-card-img"
-                                        />
-                                        <span className={`my-groups-status-badge my-groups-status-${trip.statusType}`}>
-                                            {trip.statusText}
-                                        </span>
+                        return (
+                            <div
+                                key={trip.id}
+                                className={`my-groups-card mb-3 ${trip.statusType === 'ended' ? 'my-groups-card-ended' : ''}`}
+                            >
+                                <div className="row g-0">
+                                    <div className="col-md-3">
+                                        <div className="my-groups-card-img-wrapper">
+                                            <img
+                                                src={trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80'}
+                                                alt={trip.title}
+                                                className="my-groups-card-img"
+                                            />
+                                            <span className={`my-groups-status-badge my-groups-status-${trip.statusType}`}>
+                                                {trip.statusText}
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-md-9">
-                                    <div className="my-groups-card-body">
-                                        <div className="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h5 className="my-groups-card-title trip-text-gray-400">{trip.title}</h5>
-                                                <div className="my-groups-card-tags">
-                                                    {(trip.tags || []).slice(0, 3).map((tag) => (
-                                                        <span key={tag} className="my-groups-tag">{tag}</span>
-                                                    ))}
+                                    <div className="col-md-9">
+                                        <div className="my-groups-card-body">
+                                            <div className="d-flex justify-content-between align-items-start mb-2">
+                                                <div>
+                                                    <h5 className="my-groups-card-title trip-text-gray-400">{trip.title}</h5>
+                                                    <div className="my-groups-card-tags">
+                                                        {(trip.tags || []).slice(0, 3).map((tag) => (
+                                                            <span key={tag} className="my-groups-tag">{tag}</span>
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div className="my-groups-card-info">
-                                            <span><i className="bi bi-calendar3 me-1"></i>{formatDateRange(trip.start_date, trip.end_date)}</span>
-                                            <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
-                                            <span><i className="bi bi-people me-1"></i>{trip.current_participants || 0} / {trip.max_people || 0} 人</span>
-                                        </div>
+                                            <div className="my-groups-card-info">
+                                                <span><i className="bi bi-calendar3 me-1"></i>{formatDateRange(trip.start_date, trip.end_date)}</span>
+                                                <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
+                                                <span><i className="bi bi-people me-1"></i>{trip.current_participants || 0} / {trip.max_people || 0} 人</span>
+                                            </div>
 
-                                        <div className="my-groups-members-section">
-                                            <button
-                                                className="btn btn-sm my-groups-btn-toggle-members"
-                                                type="button"
-                                                onClick={() => toggleMembersByTrip(trip.id)}
-                                            >
-                                                <i className="bi bi-people-fill me-1"></i>
-                                                查看目前團員 ({tripMembers.length})
-                                                <i className={`bi ms-1 ${isExpanded ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
-                                            </button>
+                                            <div className="my-groups-members-section">
+                                                <button
+                                                    className="btn btn-sm my-groups-btn-toggle-members"
+                                                    type="button"
+                                                    onClick={() => toggleMembersByTrip(trip.id)}
+                                                >
+                                                    <i className="bi bi-people-fill me-1"></i>
+                                                    查看目前團員 ({tripMembers.length})
+                                                    <i className={`bi ms-1 ${isExpanded ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
+                                                </button>
 
-                                            {isExpanded && (
-                                                <div className="my-groups-members-list">
-                                                    {tripMembers.map((member) => (
-                                                        <div key={member.participantId} className="my-groups-member">
-                                                            <img src={member.avatar} alt={`${member.name} 頭像`} className="my-groups-member-avatar" />
-                                                            <span>{member.name}</span>
-                                                            {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
+                                                {isExpanded && (
+                                                    <div className="my-groups-members-list">
+                                                        {tripMembers.map((member) => (
+                                                            <div key={member.participantId} className="my-groups-member">
+                                                                <img src={member.avatar} alt={`${member.name} 頭像`} className="my-groups-member-avatar" />
+                                                                <span>{member.name}</span>
+                                                                {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
+                                                                {member.role === 'member' && <span className="my-groups-member-badge">{member.phone}</span>}
+                                                                {member.userId !== user?.id && (
+                                                                    <button
+                                                                        type="button"
+                                                                        className="btn btn-sm my-groups-btn-message ms-auto"
+                                                                        onClick={() => openMessageModal(member)}
+                                                                    >
+                                                                        <i className="bi bi-chat-dots me-1"></i>發送訊息
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
 
-                                        <div className="my-groups-card-footer">
-                                            <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
-                                                <i className="bi bi-eye me-1"></i>查看旅程頁面
-                                            </Link>
+                                            <div className="my-groups-card-footer">
+                                                <Link to={`/trips/${trip.id}`} className="btn btn-sm my-groups-btn-view">
+                                                    <i className="bi bi-eye me-1"></i>查看旅程頁面
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        );
+                    })()
+                ))}
+
+            {/* ===== 發送訊息 Modal ===== */}
+            {messageModal.open && (
+                <>
+                    <div className="modal fade show d-block" tabIndex="-1" role="dialog" aria-modal="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title"><i className="bi bi-chat-dots me-2"></i>發送訊息</h5>
+                                    <button type="button" className="btn-close" onClick={closeMessageModal} disabled={messageSending}></button>
+                                </div>
+                                <div className="modal-body">
+                                    {messageError && <div className="alert alert-warning py-2">{messageError}</div>}
+                                    {messageSent ? (
+                                        <div className="alert alert-success text-center py-3">
+                                            <i className="bi bi-check-circle me-2"></i>訊息已成功發送！
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="mb-3">
+                                                <label className="form-label fw-semibold">收件人</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={messageModal.recipientName}
+                                                    readOnly
+                                                />
+                                            </div>
+                                            <div className="mb-1">
+                                                <label className="form-label fw-semibold">訊息內容</label>
+                                                <textarea
+                                                    className="form-control"
+                                                    rows={5}
+                                                    placeholder="輸入你想傳送的訊息..."
+                                                    value={messageModal.message}
+                                                    onChange={(e) => setMessageModal((prev) => ({ ...prev, message: e.target.value }))}
+                                                    disabled={messageSending}
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-outline-secondary" onClick={closeMessageModal} disabled={messageSending}>
+                                        {messageSent ? '關閉' : '取消'}
+                                    </button>
+                                    {!messageSent && (
+                                        <button type="button" className="btn btn-primary" onClick={handleSendMessage} disabled={messageSending}>
+                                            {messageSending ? '傳送中...' : <><i className="bi bi-send me-1"></i>傳送</>}
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                    );
-                })()
-            ))}
+                    </div>
+                    <div className="modal-backdrop fade show"></div>
+                </>
+            )}
 
             {/* ===== 空狀態（當沒有揪團時顯示） ===== */}
             {/*

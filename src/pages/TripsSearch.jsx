@@ -96,7 +96,7 @@ function TripsSearch() {
 }
 
 function SideBar() {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [_SEARCH_PARAMS, setSearchParams] = useSearchParams();
     const [filters, setFilters] = useState({
         q: '',
         start_date_gte: '',
@@ -172,7 +172,7 @@ function SideBar() {
     }
 
     function onDateChange(e) {
-        const { startDate, endDate, key } = e.selection;
+        const { startDate, endDate } = e.selection;
         setFilters((prev) => {
             return {
                 ...prev,

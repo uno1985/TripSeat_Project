@@ -44,7 +44,7 @@
   .trip-dropdown-item:focus,
   .trip-dropdown-item:active {
     background-color: var(
-      --trip-color-gray-100
+      --trip-color-primary-200
     ) !important; /* 改為極淺灰色，或用 transparent */
     color: var(--trip-color-gray-800) !important; /* 確保文字不會變白 */
     outline: none;
