@@ -6,6 +6,7 @@ import '../assets/css/memberSidebar.css';
 import avatarImg from '../assets/images/avator09.png';
 
 const API_URL = import.meta.env.VITE_API_BASE;
+const MEMBER_UNREAD_EVENT = 'tripseat:member-unread-changed';
 
 
 
@@ -15,9 +16,12 @@ const MemberSidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // 用於手機版下拉選單狀態
   const [unreadCount, setUnreadCount] = useState(0);
 
-  // 撈未讀私訊數（notifications 表的 recipient_id + messages 表的 receiver_id）
-  useEffect(() => {
-    if (!user?.id) return;
+  const fetchUnreadCount = async () => {
+    if (!user?.id) {
+      setUnreadCount(0);
+      return;
+    }
+
     Promise.all([
       axios.get(`${API_URL}/664/notifications?recipient_id=${user.id}`).catch(() => ({ data: [] })),
       axios.get(`${API_URL}/664/messages?receiver_id=${user.id}`).catch(() => ({ data: [] })),
@@ -26,7 +30,29 @@ const MemberSidebar = () => {
       const msgUnread   = (msgRes.data   || []).filter(m => !m.deleted_at && !m.is_read).length;
       setUnreadCount(notifUnread + msgUnread);
     });
+  };
+
+  // [AI修改開始 2026-03-11] 側邊欄監聽通知頁內的未讀變化，不用重整即可更新 badge
+  useEffect(() => {
+    if (!user?.id) return;
+
+    const handleUnreadChange = (event) => {
+      const nextCount = event?.detail?.total;
+      if (typeof nextCount === 'number') {
+        setUnreadCount(nextCount);
+        return;
+      }
+      fetchUnreadCount();
+    };
+
+    fetchUnreadCount();
+    window.addEventListener(MEMBER_UNREAD_EVENT, handleUnreadChange);
+
+    return () => {
+      window.removeEventListener(MEMBER_UNREAD_EVENT, handleUnreadChange);
+    };
   }, [user?.id]);
+  // [AI修改結束 2026-03-11]
 
 
   const menuItems = [

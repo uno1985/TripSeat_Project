@@ -1950,8 +1950,8 @@
       "owner_is_verified_host": 1,
       "views": 0,
       "is_featured": false,
-      "created_at": "2026-03-10T15:48:59.482Z",
-      "updated_at": "2026-03-10T15:48:59.482Z",
+      "created_at": "2026-03-10T16:23:08.214Z",
+      "updated_at": "2026-03-10T16:23:08.214Z",
       "deleted_at": null
     }
   ],
@@ -3609,7 +3609,7 @@
       "deleted_at": null
     },
     {
-      "id": "89c50be9-a06e-4355-aa67-0e709601d52e",
+      "id": "5ff0e122-924d-40a2-bc81-ba2569a376a1",
       "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
       "day": 1,
@@ -3618,11 +3618,11 @@
       "icon": "📍",
       "title": "馬公機場集合",
       "note": "大家自己坐飛機",
-      "updated_at": "2026-03-10T15:48:59.569Z",
+      "updated_at": "2026-03-10T16:23:08.325Z",
       "deleted_at": null
     },
     {
-      "id": "aeefd0fc-2098-454e-908a-15d698383fb2",
+      "id": "dc7294df-6aaa-45e0-96dc-9516ba4c2a10",
       "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
       "day": 2,
@@ -3631,11 +3631,11 @@
       "icon": "📍",
       "title": "要坐船跳島所以要很早",
       "note": "",
-      "updated_at": "2026-03-10T15:48:59.569Z",
+      "updated_at": "2026-03-10T16:23:08.325Z",
       "deleted_at": null
     },
     {
-      "id": "32a7fd7c-21d4-4e5f-bae8-cb7bb567feb0",
+      "id": "4781922e-995a-4ecb-8da2-0ae83ed7a928",
       "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
       "day": 3,
@@ -3644,7 +3644,7 @@
       "icon": "📍",
       "title": "最後一班飛回台灣的飛機",
       "note": "有緣再相會",
-      "updated_at": "2026-03-10T15:48:59.570Z",
+      "updated_at": "2026-03-10T16:23:08.326Z",
       "deleted_at": null
     }
   ],
@@ -5183,6 +5183,19 @@
       "created_at": "2026-03-10T05:52:18.591Z",
       "updated_at": "2026-03-10T07:57:13.308Z",
       "deleted_at": null
+    },
+    {
+      "id": "7023b8cf-b27b-4565-932a-3986bb128a1f",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1,
+      "created_at": "2026-03-10T16:23:06.402Z",
+      "updated_at": "2026-03-10T16:23:06.402Z",
+      "deleted_at": null
     }
   ],
   "reviews": [
@@ -5612,8 +5625,22 @@
       "receiver_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "receiver_name": "文青小雨傘壓",
       "content": "還可以啦!!!",
-      "is_read": false,
+      "is_read": true,
       "created_at": "2026-03-10T15:47:18.761Z",
+      "deleted_at": null
+    },
+    {
+      "id": "1f3d36e0-1f51-4825-b1c7-66e60bbe4385",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "trip_title": "神農街宵夜散策",
+      "sender_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "sender_name": "文青小雨傘壓",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "receiver_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "receiver_name": "露營女孩艾琳",
+      "content": "讚啦",
+      "is_read": false,
+      "created_at": "2026-03-10T16:28:26.656Z",
       "deleted_at": null
     }
   ],
@@ -5680,7 +5707,7 @@
       "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
       "message": "感謝您的提醒，我會準時到的！",
       "content": "感謝您的提醒，我會準時到的！",
-      "is_read": false,
+      "is_read": true,
       "created_at": "2026-03-10T07:44:27.975Z",
       "deleted_at": null,
       "id": 5
