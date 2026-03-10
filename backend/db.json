@@ -1205,7 +1205,7 @@
       "end_date": "2026-05-02",
       "deadline": "2026-04-25",
       "price": 800,
-      "current_participants": 5,
+      "current_participants": 4,
       "max_people": 12,
       "category": "登山",
       "tags": [
@@ -1240,7 +1240,7 @@
       "cancellation_policy": "如需取消請提前 3 天通知",
       "is_featured": false,
       "blocked_reason": null,
-      "updated_at": "2025-12-15T10:00:00Z",
+      "updated_at": "2026-03-10T07:56:20.971Z",
       "deleted_at": null
     },
     {
@@ -1822,7 +1822,7 @@
       "end_date": "2026-04-17",
       "deadline": "2026-04-01",
       "price": 3000,
-      "current_participants": 2,
+      "current_participants": 1,
       "max_people": 6,
       "category": "登山",
       "tags": [
@@ -1857,7 +1857,7 @@
       "cancellation_policy": "如需取消請提前 3 天通知",
       "is_featured": false,
       "blocked_reason": null,
-      "updated_at": "2025-12-31T11:15:00Z",
+      "updated_at": "2026-03-10T07:56:44.610Z",
       "deleted_at": null
     },
     {
@@ -5169,7 +5169,19 @@
       "joinCount": 1,
       "application_status": "pending",
       "created_at": "2026-03-04T12:57:52.854Z",
-      "updated_at": "2026-03-04T12:57:52.854Z",
+      "updated_at": "2026-03-10T07:56:44.609Z",
+      "deleted_at": "2026-03-10T07:56:44.609Z"
+    },
+    {
+      "id": "a3d7f7ba-d116-4187-b077-829face06f09",
+      "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "comment": null,
+      "joinCount": 1,
+      "application_status": "pending",
+      "created_at": "2026-03-10T05:52:18.591Z",
+      "updated_at": "2026-03-10T07:57:13.308Z",
       "deleted_at": null
     }
   ],
@@ -5586,7 +5598,7 @@
       "receiver_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
       "receiver_name": "小明愛旅行",
       "content": "期待那天能看到你喔!!",
-      "is_read": false,
+      "is_read": true,
       "created_at": "2026-02-27T20:05:49.406Z",
       "deleted_at": null
     },
@@ -5621,6 +5633,57 @@
       "updated_at": "2026-02-25T10:17:19.784Z",
       "deleted_at": null,
       "id": 1
+    },
+    {
+      "recipient_name": "阿龍司機",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "sender_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "sender_name": "文青小雨傘壓",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "message": "我可以帶朋友嗎？",
+      "is_read": true,
+      "created_at": "2026-03-10T07:17:53.548Z",
+      "deleted_at": null,
+      "id": 2
+    },
+    {
+      "recipient_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "recipient_name": "文青小雨傘壓",
+      "sender_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "sender_name": "阿龍司機",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=dragon",
+      "message": "可以",
+      "content": "可以",
+      "is_read": true,
+      "created_at": "2026-03-10T07:18:37.534Z",
+      "deleted_at": null,
+      "id": 3
+    },
+    {
+      "recipient_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "recipient_name": "小明愛旅行",
+      "sender_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "sender_name": "文青小雨傘壓",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "message": "期待與您相見，不要忘記時間唷！",
+      "content": "期待與您相見，不要忘記時間唷！",
+      "is_read": true,
+      "created_at": "2026-03-10T07:42:51.468Z",
+      "deleted_at": null,
+      "id": 4
+    },
+    {
+      "recipient_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "recipient_name": "文青小雨傘壓",
+      "sender_id": "a1b2c3d4-e5f6-4a5b-bcde-f1e2d3c4b5a6",
+      "sender_name": "小明愛旅行",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ming",
+      "message": "感謝您的提醒，我會準時到的！",
+      "content": "感謝您的提醒，我會準時到的！",
+      "is_read": false,
+      "created_at": "2026-03-10T07:44:27.975Z",
+      "deleted_at": null,
+      "id": 5
     }
   ],
   "reports": [],

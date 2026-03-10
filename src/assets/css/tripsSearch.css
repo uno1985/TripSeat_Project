@@ -186,7 +186,42 @@
         row-gap: 24px;
     }
 
-    .grid > .g-col-4 {
+    .grid > .g-col-md-4 {
         grid-column: auto / span 4 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .tripsSearch .tripsSreach-sideBar {
+        width: 100%;
+    }
+    
+    .tripsSearch .filter-group .input,
+    .tripsSearch .tripsSreach-sideBar .selector {
+        width: 100%;
+    }
+
+    .tripsSearch .updateBtn-container {
+        margin-top: 40px;
+    }
+
+    .tripsSearch .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 40px;
+        gap: 10px;
+    }
+
+    .tripsSearch .filter-container .selector {
+        width: 100%;
+    }
+
+    .tripsSearch .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tripsSearch .tripsSreach-sideBar .trigger-btn,
+    .tripsSearch .tripsSreach-sideBar .datePicker-input {
+        width: 100%;
     }
 }

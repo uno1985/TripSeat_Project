@@ -58,7 +58,7 @@ function TripsSearch() {
                             <li className="breadcrumb-item active trip-text-m fw-bold" aria-current="page">探索旅程</li>
                         </ol>
                     </nav>
-                    <div className="d-flex align-items-start gap-24 mt-4">
+                    <div className="d-md-flex align-items-center align-items-md-start gap-24 mt-4">
                         <SideBar />
                         <div className="flex-grow-1">
                             <div className="filter-container d-flex">
@@ -313,7 +313,7 @@ function TripCard({data: trip}) {
 
     return (
         <>
-        <div className="g-col-4 tripCard position-relative">
+        <div className="g-col-12 g-col-md-4 tripCard position-relative">
         <Link to={`/trips/${trip.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             {handleDisplayCertifiedHost(trip.owner_is_verified_host)}
             <div className="imgBox">

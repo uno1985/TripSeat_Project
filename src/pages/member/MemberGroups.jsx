@@ -24,6 +24,10 @@ const MemberGroups = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [activeFilter, setActiveFilter] = useState('all');
+    const [messageModal, setMessageModal] = useState({ open: false, recipientName: '', recipientId: null, message: '' });
+    const [messageSending, setMessageSending] = useState(false);
+    const [messageError, setMessageError] = useState('');
+    const [messageSent, setMessageSent] = useState(false);
 
     const getToken = () =>
         document.cookie
@@ -222,6 +226,48 @@ const MemberGroups = () => {
             setActionError(err.response?.data || err.message || '刪除旅程失敗');
         } finally {
             setProcessingIds((prev) => prev.filter((id) => id !== trip.id));
+    const openMessageModal = (member) => {
+        setMessageModal({ open: true, recipientName: member.name, recipientId: member.userId, message: '' });
+        setMessageError('');
+        setMessageSent(false);
+    };
+
+    const closeMessageModal = () => {
+        if (messageSending) return;
+        setMessageModal({ open: false, recipientName: '', recipientId: null, message: '' });
+        setMessageError('');
+        setMessageSent(false);
+    };
+
+    const handleSendMessage = async () => {
+        const content = messageModal.message.trim();
+        if (!content) { setMessageError('訊息內容不能為空白'); return; }
+        const token = getToken();
+        if (!token || !user?.id) { setMessageError('登入狀態失效，請重新登入'); return; }
+        setMessageSending(true);
+        setMessageError('');
+        try {
+            await axios.post(
+                `${API_URL}/664/notifications`,
+                {
+                    recipient_id: messageModal.recipientId,
+                    recipient_name: messageModal.recipientName,
+                    sender_id: user.id,
+                    sender_name: user.name || '',
+                    sender_avatar: user.avatar || '',
+                    message: content,
+                    content,
+                    is_read: false,
+                    created_at: new Date().toISOString(),
+                    deleted_at: null,
+                },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setMessageSent(true);
+        } catch (err) {
+            setMessageError(err.response?.data || err.message || '傳送失敗，請稍後再試');
+        } finally {
+            setMessageSending(false);
         }
     };
 
@@ -586,6 +632,15 @@ const MemberGroups = () => {
                                                     <span>{member.name}</span>
                                                     {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
                                                     {member.role === 'member' && <span className="my-groups-member-badge">{member.phone}</span>}
+                                                    {member.userId !== user?.id && (
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-sm my-groups-btn-message ms-auto"
+                                                            onClick={() => openMessageModal(member)}
+                                                        >
+                                                            <i className="bi bi-chat-dots me-1"></i>發送訊息
+                                                        </button>
+                                                    )}
                                                 </div>
                                             ))}
                                     </div>
@@ -735,6 +790,15 @@ const MemberGroups = () => {
                                                                 <span>{member.name}</span>
                                                                 {member.role === 'owner' && <span className="my-groups-member-badge">團主</span>}
                                                                 {member.role === 'member' && <span className="my-groups-member-badge">{member.phone}</span>}
+                                                                {member.userId !== user?.id && (
+                                                                    <button
+                                                                        type="button"
+                                                                        className="btn btn-sm my-groups-btn-message ms-auto"
+                                                                        onClick={() => openMessageModal(member)}
+                                                                    >
+                                                                        <i className="bi bi-chat-dots me-1"></i>發送訊息
+                                                                    </button>
+                                                                )}
                                                             </div>
                                                         ))}
                                                     </div>
@@ -776,6 +840,64 @@ const MemberGroups = () => {
                         );
                     })()
                 ))}
+
+            {/* ===== 發送訊息 Modal ===== */}
+            {messageModal.open && (
+                <>
+                    <div className="modal fade show d-block" tabIndex="-1" role="dialog" aria-modal="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title"><i className="bi bi-chat-dots me-2"></i>發送訊息</h5>
+                                    <button type="button" className="btn-close" onClick={closeMessageModal} disabled={messageSending}></button>
+                                </div>
+                                <div className="modal-body">
+                                    {messageError && <div className="alert alert-warning py-2">{messageError}</div>}
+                                    {messageSent ? (
+                                        <div className="alert alert-success text-center py-3">
+                                            <i className="bi bi-check-circle me-2"></i>訊息已成功發送！
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="mb-3">
+                                                <label className="form-label fw-semibold">收件人</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={messageModal.recipientName}
+                                                    readOnly
+                                                />
+                                            </div>
+                                            <div className="mb-1">
+                                                <label className="form-label fw-semibold">訊息內容</label>
+                                                <textarea
+                                                    className="form-control"
+                                                    rows={5}
+                                                    placeholder="輸入你想傳送的訊息..."
+                                                    value={messageModal.message}
+                                                    onChange={(e) => setMessageModal((prev) => ({ ...prev, message: e.target.value }))}
+                                                    disabled={messageSending}
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-outline-secondary" onClick={closeMessageModal} disabled={messageSending}>
+                                        {messageSent ? '關閉' : '取消'}
+                                    </button>
+                                    {!messageSent && (
+                                        <button type="button" className="btn btn-primary" onClick={handleSendMessage} disabled={messageSending}>
+                                            {messageSending ? '傳送中...' : <><i className="bi bi-send me-1"></i>傳送</>}
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="modal-backdrop fade show"></div>
+                </>
+            )}
 
             {/* ===== 空狀態（當沒有揪團時顯示） ===== */}
             {/*
