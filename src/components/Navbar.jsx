@@ -114,9 +114,9 @@ function Navbar() {
                                         <Link className="nav-link trip-text-l" to="/member" onClick={() => closeNavbar()}>我的會員中心</Link>
                                     </li>
                                     <li className="d-lg-none">
-                                        <Link className="nav-link trip-text-l" to="/inbox" onClick={() => closeNavbar()}>
+                                        <Link className="nav-link trip-text-l" to="/member/notifications" onClick={() => closeNavbar()}>
                                             <span className="link-text">
-                                                站內收件匣 <span className="inbox-badge">999</span>
+                                                站內收件匣
                                             </span>
                                         </Link>
                                     </li >

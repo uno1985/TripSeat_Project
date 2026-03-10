@@ -21,9 +21,11 @@ function TripsSearch() {
         const getTrips = async () => {
             setPage(currentPage || Number(searchParams.get('page')) || 1);
             setLimit(limit || Number(searchParams.get('limit')) || 9);
-            const url = searchParams
-                        ? `${API_URL}/trips?${searchParams}`
-                        : `${API_URL}/trips`;
+            // [AI修改開始 2026-03-10] 只顯示正式公開旅程，排除草稿
+            const nextSearchParams = new URLSearchParams(searchParams);
+            nextSearchParams.set('status', 'open');
+            const url = `${API_URL}/trips?${nextSearchParams.toString()}`;
+            // [AI修改結束 2026-03-10]
             const response = await axios.get(url, {
                 params: {
                     _page: currentPage,
