@@ -79,7 +79,7 @@ const MemberTrips = () => {
 
       try {
         const [participantsRes, reviewsRes, tripsRes, usersRes] = await Promise.all([
-          axios.get(`${API_URL}/664/participants?user_id=${user.id}&role=member`),
+          axios.get(`${API_URL}/664/participants?user_id=${user.id}`),
           axios.get(`${API_URL}/664/reviews?user_id=${user.id}&_sort=created_at&_order=desc`),
           axios.get(`${API_URL}/664/trips`),
           axios.get(`${API_URL}/664/users`),
@@ -262,7 +262,9 @@ const MemberTrips = () => {
     setCancelError('');
 
     try {
-      await Promise.all([
+      // pending 申請尚未被核准，current_participants 從未被加過，不需要扣回
+      const shouldDecrease = targetTrip.applicationStatus === 'approved';
+      const patchRequests = [
         axios.patch(
           `${API_URL}/664/participants/${targetTrip.participantId}`,
           {
@@ -271,15 +273,20 @@ const MemberTrips = () => {
           },
           { headers: { Authorization: `Bearer ${token}` } }
         ),
-        axios.patch(
-          `${API_URL}/664/trips/${targetTrip.id}`,
-          {
-            current_participants: Math.max((targetTrip.participants || 1) - (targetTrip.joinCount || 1), 0),
-            updated_at: new Date().toISOString(),
-          },
-          { headers: { Authorization: `Bearer ${token}` } }
-        ),
-      ]);
+      ];
+      if (shouldDecrease) {
+        patchRequests.push(
+          axios.patch(
+            `${API_URL}/664/trips/${targetTrip.id}`,
+            {
+              current_participants: Math.max((targetTrip.participants || 0) - (targetTrip.joinCount || 1), 0),
+              updated_at: new Date().toISOString(),
+            },
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+        );
+      }
+      await Promise.all(patchRequests);
 
       setTrips((prev) => prev.filter((trip) => trip.id !== targetTrip.id));
       closeCancelDialog();

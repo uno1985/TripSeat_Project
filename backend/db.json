@@ -1205,7 +1205,7 @@
       "end_date": "2026-05-02",
       "deadline": "2026-04-25",
       "price": 800,
-      "current_participants": 4,
+      "current_participants": 2,
       "max_people": 12,
       "category": "登山",
       "tags": [
@@ -1240,7 +1240,7 @@
       "cancellation_policy": "如需取消請提前 3 天通知",
       "is_featured": false,
       "blocked_reason": null,
-      "updated_at": "2026-03-10T07:56:20.971Z",
+      "updated_at": "2026-03-11T00:20:49.362Z",
       "deleted_at": null
     },
     {
@@ -1443,7 +1443,7 @@
       "end_date": "2026-06-28",
       "deadline": "2026-06-15",
       "price": 8000,
-      "current_participants": 4,
+      "current_participants": 3,
       "max_people": 8,
       "category": "潛水",
       "tags": [
@@ -1477,7 +1477,7 @@
       "cancellation_policy": "如需取消請提前 3 天通知",
       "is_featured": false,
       "blocked_reason": null,
-      "updated_at": "2025-12-01T20:00:00Z",
+      "updated_at": "2026-03-11T00:29:11.310Z",
       "deleted_at": null
     },
     {
@@ -5071,8 +5071,8 @@
       "role": "member",
       "application_status": "rejected",
       "created_at": "2026-02-25T09:42:57.399Z",
-      "updated_at": "2026-02-25T09:42:57.399Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-11T00:38:00.322Z",
+      "deleted_at": "2026-03-11T00:38:00.322Z",
       "id": "28ciH1t"
     },
     {
@@ -5096,8 +5096,32 @@
       "joinCount": 1,
       "application_status": "pending",
       "created_at": "2026-03-10T05:52:18.591Z",
-      "updated_at": "2026-03-10T07:57:13.308Z",
-      "deleted_at": null
+      "updated_at": "2026-03-11T00:20:49.361Z",
+      "deleted_at": "2026-03-11T00:20:49.361Z"
+    },
+    {
+      "id": "fefe5772-49e5-41a4-830b-7bfe87ed3a5b",
+      "trip_id": "7ef88ccd-5062-4b23-b704-355db9f70413",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "comment": null,
+      "joinCount": 1,
+      "application_status": "pending",
+      "created_at": "2026-03-11T00:28:19.670Z",
+      "updated_at": "2026-03-11T00:29:11.309Z",
+      "deleted_at": "2026-03-11T00:29:11.309Z"
+    },
+    {
+      "id": "a5e93ea7-e907-47d9-be9e-2987831dab7d",
+      "trip_id": "8d9def7b-47e3-46ee-b7a6-260316f9553b",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "comment": null,
+      "joinCount": 1,
+      "application_status": "pending",
+      "created_at": "2026-03-11T00:44:00.110Z",
+      "updated_at": "2026-03-11T00:46:04.365Z",
+      "deleted_at": "2026-03-11T00:46:04.365Z"
     }
   ],
   "reviews": [
