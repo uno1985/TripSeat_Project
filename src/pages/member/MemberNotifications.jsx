@@ -109,23 +109,23 @@ const MemberNotifications = () => {
   };
 
   // ── 標記私訊已讀（依來源判斷打 messages 或 notifications 表） ──
-  const markMsgRead = async (id) => {
-    const token = getToken();
-    if (!token) return;
-    // 先樂觀更新 state，讓 UI 即時反應（badge 數字馬上消失）
-    setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: true } : m));
-    // 再依來源打對應 API
-    const target = messages.find(m => m.id === id);
-    const table = target?._source === 'notification' ? 'notifications' : 'messages';
-    await axios.patch(
-      `${API_URL}/664/${table}/${id}`,
-      { is_read: true },
-      { headers: { Authorization: `Bearer ${token}` } }
-    ).catch(() => {
-      // API 失敗時回滾 state
-      setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: false } : m));
-    });
-  };
+  // const markMsgRead = async (id) => {
+  //   const token = getToken();
+  //   if (!token) return;
+  //   // 先樂觀更新 state，讓 UI 即時反應（badge 數字馬上消失）
+  //   setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: true } : m));
+  //   // 再依來源打對應 API
+  //   const target = messages.find(m => m.id === id);
+  //   const table = target?._source === 'notification' ? 'notifications' : 'messages';
+  //   await axios.patch(
+  //     `${API_URL}/664/${table}/${id}`,
+  //     { is_read: true },
+  //     { headers: { Authorization: `Bearer ${token}` } }
+  //   ).catch(() => {
+  //     // API 失敗時回滾 state
+  //     setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: false } : m));
+  //   });
+  // };
 
   // ── 將某對象的所有未讀訊息標記已讀（同步更新 state，不等 API） ──
   const markGroupRead = (otherId) => {

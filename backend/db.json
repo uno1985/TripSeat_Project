@@ -5207,6 +5207,18 @@
       "created_at": "2026-03-11T00:44:00.110Z",
       "updated_at": "2026-03-11T00:46:04.365Z",
       "deleted_at": "2026-03-11T00:46:04.365Z"
+    },
+    {
+      "id": "b16cccb4-b2d9-43a1-ba7a-0a92f1384e58",
+      "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "member",
+      "comment": null,
+      "joinCount": 1,
+      "application_status": "pending",
+      "created_at": "2026-03-12T12:36:03.444Z",
+      "updated_at": "2026-03-12T12:36:03.444Z",
+      "deleted_at": null
     }
   ],
   "reviews": [
@@ -5722,6 +5734,19 @@
       "created_at": "2026-03-10T07:44:27.975Z",
       "deleted_at": null,
       "id": 5
+    },
+    {
+      "recipient_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "recipient_name": "文青小雨傘壓",
+      "sender_id": "u8f9a0b1-c2d3-e4f5-a6b7-890123456712",
+      "sender_name": "路跑珊珊",
+      "sender_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=sunny",
+      "message": "歡迎你的參加～",
+      "content": "歡迎你的參加～",
+      "is_read": false,
+      "created_at": "2026-03-12T13:17:44.858Z",
+      "deleted_at": null,
+      "id": 6
     }
   ],
   "reports": [],
