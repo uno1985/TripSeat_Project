@@ -290,6 +290,19 @@ function TripCard({data: trip}) {
     }
 
     const handleDisplayVacancy = ({max_people, current_participants}) => {
+        //先確認截止日期
+        const today = new Date(new Date().toLocaleDateString());
+        const deadline = new Date(trip.deadline);
+
+        if (today > deadline) {
+            return (
+                <div className="status-box status-over d-flex align-items-center">
+                    <span className="text-title-m">已截止</span>
+                </div>
+            );
+        }
+
+
         const vacancy = max_people - current_participants;
 
         if (vacancy <= 0) {
