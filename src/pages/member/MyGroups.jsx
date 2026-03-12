@@ -48,53 +48,55 @@ const formatDateTime = (startDate, meetingTime) => {
 
 const MyGroups = () => {
   const { user } = useAuth();
+  const userId = user?.id;
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
-  const fetchMyGroups = async () => {
-    if (!user?.id) {
-      setGroups([]);
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
-    setError(null);
-
-    try {
-      const res = await axios.get(
-        `${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc&_limit=3`
-      );
-
-      const rows = (res.data || [])
-        .filter((item) => !item.deleted_at)
-        .map((trip) => {
-          const statusMeta = getStatusMeta(trip);
-          const remaining = Math.max((trip.max_people || 0) - (trip.current_participants || 0), 0);
-
-          return {
-            id: trip.id,
-            title: trip.title,
-            image: trip.image_url,
-            time: formatDateTime(trip.start_date, trip.meeting_time),
-            status: statusMeta.text,
-            statusClass: statusMeta.className,
-            participants: trip.current_participants || 0,
-            remaining,
-          };
-        });
-
-      setGroups(rows);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
   useEffect(() => {
-    fetchMyGroups();
-  }, [user?.id]);
+    const fetchMyGroups = async () => {
+      if (!userId) {
+        setGroups([]);
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      setError(null);
+
+      try {
+        const res = await axios.get(
+          `${API_URL}/664/trips?owner_id=${userId}&_sort=created_at&_order=desc&_limit=3`
+        );
+
+        const rows = (res.data || [])
+          .filter((item) => !item.deleted_at)
+          .map((trip) => {
+            const statusMeta = getStatusMeta(trip);
+            const remaining = Math.max((trip.max_people || 0) - (trip.current_participants || 0), 0);
+
+            return {
+              id: trip.id,
+              title: trip.title,
+              image: trip.image_url,
+              time: formatDateTime(trip.start_date, trip.meeting_time),
+              status: statusMeta.text,
+              statusClass: statusMeta.className,
+              participants: trip.current_participants || 0,
+              remaining,
+            };
+          });
+
+        setGroups(rows);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchMyGroups();
+  }, [userId]);
 
   if (loading) return <div className="py-4">載入中...</div>;
   if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;

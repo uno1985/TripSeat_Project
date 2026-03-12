@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
@@ -13,28 +13,31 @@ const MEMBER_UNREAD_EVENT = 'tripseat:member-unread-changed';
 const MemberSidebar = () => {
   const location = useLocation();
   const { user } = useAuth();
+  const userId = user?.id;
   const [isOpen, setIsOpen] = useState(false); // 用於手機版下拉選單狀態
   const [unreadCount, setUnreadCount] = useState(0);
 
-  const fetchUnreadCount = async () => {
-    if (!user?.id) {
-      setUnreadCount(0);
-      return;
-    }
-
-    Promise.all([
-      axios.get(`${API_URL}/664/notifications?recipient_id=${user.id}`).catch(() => ({ data: [] })),
-      axios.get(`${API_URL}/664/messages?receiver_id=${user.id}`).catch(() => ({ data: [] })),
-    ]).then(([notifRes, msgRes]) => {
-      const notifUnread = (notifRes.data || []).filter(m => !m.deleted_at && !m.is_read && m.sender_id).length;
-      const msgUnread   = (msgRes.data   || []).filter(m => !m.deleted_at && !m.is_read).length;
-      setUnreadCount(notifUnread + msgUnread);
-    });
-  };
 
   // [AI修改開始 2026-03-11] 側邊欄監聽通知頁內的未讀變化，不用重整即可更新 badge
   useEffect(() => {
-    if (!user?.id) return;
+    if (!userId) {
+      return undefined;
+    }
+
+    let ignore = false;
+
+    const fetchUnreadCount = async () => {
+      const [notifRes, msgRes] = await Promise.all([
+        axios.get(`${API_URL}/664/notifications?recipient_id=${userId}`).catch(() => ({ data: [] })),
+        axios.get(`${API_URL}/664/messages?receiver_id=${userId}`).catch(() => ({ data: [] })),
+      ]);
+
+      if (ignore) return;
+
+      const notifUnread = (notifRes.data || []).filter(m => !m.deleted_at && !m.is_read && m.sender_id).length;
+      const msgUnread = (msgRes.data || []).filter(m => !m.deleted_at && !m.is_read).length;
+      setUnreadCount(notifUnread + msgUnread);
+    };
 
     const handleUnreadChange = (event) => {
       const nextCount = event?.detail?.total;
@@ -42,16 +45,17 @@ const MemberSidebar = () => {
         setUnreadCount(nextCount);
         return;
       }
-      fetchUnreadCount();
+      void fetchUnreadCount();
     };
 
-    fetchUnreadCount();
+    void fetchUnreadCount();
     window.addEventListener(MEMBER_UNREAD_EVENT, handleUnreadChange);
 
     return () => {
+      ignore = true;
       window.removeEventListener(MEMBER_UNREAD_EVENT, handleUnreadChange);
     };
-  }, [user?.id]);
+  }, [userId]);
   // [AI修改結束 2026-03-11]
 
 
@@ -94,8 +98,8 @@ const MemberSidebar = () => {
 
           <ul className={`dropdown-menu w-100 shadow-sm border-0 mt-1 ${isOpen ? 'show' : ''}`}
             style={{ display: isOpen ? 'block' : 'none' }}>
-            {menuItems.map((item, index) => (
-              <li key={index}>
+            {menuItems.map((item) => (
+              <li key={item.path}>
                 <Link
                   to={item.path}
                   className={`dropdown-item py-2 fs-6 d-flex align-items-center justify-content-between ${location.pathname === item.path ? 'active bg-primary text-white' : ''}`}
@@ -136,8 +140,8 @@ const MemberSidebar = () => {
 
         <nav className="member-nav">
           <ul className="list-unstyled mb-0">
-            {menuItems.map((item, index) => (
-              <li key={index} className="mb-3">
+            {menuItems.map((item) => (
+              <li key={item.path} className="mb-3">
                 <Link
                   to={item.path}
                   className={`nav-link py-2 fs-5 fw-medium transition-all d-flex align-items-center justify-content-center gap-2 ${location.pathname === item.path ? 'trip-text-primary-1000 trip-bg-primary-200' : 'text-dark'
