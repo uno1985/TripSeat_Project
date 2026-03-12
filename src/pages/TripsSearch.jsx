@@ -196,6 +196,18 @@ function SideBar() {
         }
     }
 
+    function handleCategorySelect(selected) {
+        debugger
+        setFilters((prev) => {
+            return {
+                ...prev,
+                tags_like: (filters['tags_like'] ?? []).includes(selected)
+                    ? prev.tags_like.filter(x => x !== selected)
+                    : [...prev.tags_like, selected]
+            }
+        });
+    }
+
     return (
         <>
         <div className="tripsSreach-sideBar">
@@ -216,17 +228,14 @@ function SideBar() {
                 <Radix.RegionSelector
                     className={"trip-text-m trip-text-gray-600"}
                     regions={filters.location_like || []}
-                    onSelect={handleRegionSelect}
-                    />
+                    onSelect={handleRegionSelect} />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">類別</label>
-                <Selector
-                    data={Categories}
-                    name={"tags_like"}
-                    placeholder={filters.tags_like.join(',') || "請選擇"}
-                    onChange={(e) => handleFilterChange(e)}
-                    className="selector trip-text-m trip-text-gray-600" />
+                <Radix.MultiSelector
+                    options={Categories}
+                    selecteds={filters.tags_like || []}
+                    onSelect={handleCategorySelect} />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">旅程天數</label>
