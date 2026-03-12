@@ -7,7 +7,7 @@ import { Radix } from '../components/radix/Radix.jsx'
 import Icon_Location from '../assets/images/icon-location.svg'
 import Icon_Time from '../assets/images/icon-time.svg'
 import Icon_Certified from '../assets/images/icon-certified.svg'
-import { Categories, Transports } from '../data/constants.js'
+import { Categories, SortType } from '../data/constants.js'
 
 const API_URL = import.meta.env.VITE_API_BASE;
 
@@ -17,6 +17,20 @@ function TripsSearch() {
     const [currentPage, setPage] = useState();
     const [limit, setLimit] = useState();
     const [searchParams] = useSearchParams();
+    const [_SEARCH_PARAMS, setSearchParams] = useSearchParams();
+    const [filters, setFilters] = useState({
+        q: '',
+        start_date_gte: '',
+        end_date_lte: '',
+        location_like: [],
+        tags_like: [],
+        //days: '',
+        // transportation_like: '',
+        owner_is_verified_host: null,
+        _sort: 'views',
+        _order: 'desc'
+    });
+
     useEffect(() => {
         const getTrips = async () => {
             setPage(currentPage || Number(searchParams.get('page')) || 1);
@@ -46,6 +60,43 @@ function TripsSearch() {
         }
         return totalCount > 999 ? '999+' : totalCount;
     }
+
+    function handleSort(e) {
+        const value = e.target?.value;
+        const selected = SortType.find(x => x.value === value);
+
+        if (selected) {
+            const newFilters = {
+                ...filters,
+                _sort: selected.sort,
+                _order: selected.order
+            };
+            setFilters(newFilters);
+            onUpdateFilter(newFilters);
+        }
+    }
+
+    function onUpdateFilter(newFilters) {
+        const params = new URLSearchParams();
+        const targetFilters = newFilters || filters;
+        Object.entries(targetFilters).forEach(([key, value]) => {
+            switch (typeof(value)) {
+                case 'string':
+                case 'boolean':
+                case 'number':
+                    if (value || typeof(value) === 'boolean') {
+                        params.set(key, value);
+                    }
+                    break;
+                case 'object':
+                    if (Array.isArray(value) && value.length > 0) {
+                        value.forEach((item) => params.append(key, item));
+                    }
+                    break;
+            }
+        });
+        setSearchParams(params);
+    }
     
     return (
         <>
@@ -59,7 +110,10 @@ function TripsSearch() {
                         </ol>
                     </nav>
                     <div className="d-md-flex align-items-center align-items-md-start gap-24 mt-4">
-                        <SideBar />
+                        <SideBar 
+                            filters={filters}
+                            setFilters={setFilters}
+                            onUpdateFilter={onUpdateFilter} />
                         <div className="flex-grow-1">
                             <div className="filter-container d-flex">
                                 <div className="flex-grow-1">
@@ -69,9 +123,10 @@ function TripsSearch() {
                                 <div className="d-flex align-items-center">
                                     <span className="trip-text-m flex-shrink-0">排序方式</span>
                                     <Selector
-                                        data={[{text:"依開團時間", value: "依開團時間"}, {text:"最新開團", value:"最新開團"}, {text:"熱門開團", value:"熱門開團"}]}
-                                        defaultValue={"依開團時間"}
-                                        className="selector text-center ms-2" />
+                                        data={SortType}
+                                        defaultValue={"熱門開團"}
+                                        className="selector text-center ms-2"
+                                        onChange={handleSort}/>
                                 </div>
                             </div>
                             <div className="list-container">
@@ -97,18 +152,11 @@ function TripsSearch() {
     );
 }
 
-function SideBar() {
-    const [_SEARCH_PARAMS, setSearchParams] = useSearchParams();
-    const [filters, setFilters] = useState({
-        q: '',
-        start_date_gte: '',
-        end_date_lte: '',
-        location_like: [],
-        tags_like: [],
-        //days: '',
-        transportation_like: '',
-        owner_is_verified_host: null
-    });
+function SideBar({
+    filters = {},
+    setFilters = () => {},
+    onUpdateFilter = () => {}
+}) {
 
     function handleFilterChange(e) {
         const {name:key, value, checked} = e.target;
@@ -144,35 +192,6 @@ function SideBar() {
         });
     }
 
-    function onUpdateFilter() {
-        const params = new URLSearchParams();
-        Object.entries(filters).forEach(([key, value]) => {
-            switch (typeof(value)) {
-                case 'string':
-                case 'boolean':
-                case 'number':
-                    if (value || typeof(value) === 'boolean') {
-                        params.set(key, value);
-                    }
-                    break;
-                case 'object':
-                    if (Array.isArray(value) && value) {
-                        value.forEach((item) => params.append(key, item));
-                    }
-                    break;
-            }
-            // if (Array.isArray(value)) {
-            //     value.forEach((item) => params.append(key, item));
-            // }
-            // else {
-            //     if (value) {
-            //         params.set(key, value)
-            //     }
-            // }
-        });
-        setSearchParams(params);
-    }
-
     function onDateChange(e) {
         const { startDate, endDate } = e.selection;
         setFilters((prev) => {
@@ -198,6 +217,17 @@ function SideBar() {
         }
     }
 
+    function handleCategorySelect(selected) {
+        setFilters((prev) => {
+            return {
+                ...prev,
+                tags_like: (filters['tags_like'] ?? []).includes(selected)
+                    ? prev.tags_like.filter(x => x !== selected)
+                    : [...prev.tags_like, selected]
+            }
+        });
+    }
+
     return (
         <>
         <div className="tripsSreach-sideBar">
@@ -214,40 +244,18 @@ function SideBar() {
                     fontStyle={"trip-text-s trip-text-gray-600 text-start"}/>
             </div>
             <div className="filter-group">
-                <label className="filter-label trip-text-m">出發地</label>
+                <label className="filter-label trip-text-m">目的地</label>
                 <Radix.RegionSelector
                     className={"trip-text-m trip-text-gray-600"}
                     regions={filters.location_like || []}
-                    onSelect={handleRegionSelect}
-                    />
+                    onSelect={handleRegionSelect} />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">類別</label>
-                <Selector
-                    data={Categories}
-                    name={"tags_like"}
-                    placeholder={filters.tags_like.join(',') || "請選擇"}
-                    onChange={(e) => handleFilterChange(e)}
-                    className="selector trip-text-m trip-text-gray-600" />
-            </div>
-            <div className="filter-group">
-                <label className="filter-label trip-text-m">旅程天數</label>
-                <Selector
-                    data={[{text:"單日", value: "單日"}, {text:"多日", value:"多日"}]}
-                    name={"days"}
-                    placeholder={filters.days || "請選擇"}
-                    onChange={(e) => handleFilterChange(e)}
-                    className="selector trip-text-m trip-text-gray-600" />
-            </div>
-            <div className="filter-group">
-                <label className="filter-label trip-text-m">交通方式</label>
-                <Selector
-                    data={Transports}
-                    name={"transport_like"}
-                    placeholder={"請選擇"}
-                    defaultValue={filters.transport_like || "placeholder"}
-                    onChange={(e) => handleFilterChange(e)}
-                    className="selector trip-text-m trip-text-gray-600" />
+                <Radix.MultiSelector
+                    options={Categories}
+                    selecteds={filters.tags_like || []}
+                    onSelect={handleCategorySelect} />
             </div>
             <div className="filter-group">
                 <label className="filter-label trip-text-m">其他</label>
@@ -260,7 +268,7 @@ function SideBar() {
             </div>
             <div className="updateBtn-container">
                 <button className="btn trip-btn-primary trip-btn-l" type="button"
-                    onClick={(e) => onUpdateFilter(e)}>更新搜尋</button>
+                    onClick={() => onUpdateFilter()}>更新搜尋</button>
             </div>
         </div>
         </>
@@ -283,6 +291,19 @@ function TripCard({data: trip}) {
     }
 
     const handleDisplayVacancy = ({max_people, current_participants}) => {
+        //先確認截止日期
+        const today = new Date(new Date().toLocaleDateString());
+        const deadline = new Date(trip.deadline);
+
+        if (today > deadline) {
+            return (
+                <div className="status-box status-over d-flex align-items-center">
+                    <span className="text-title-m">已截止</span>
+                </div>
+            );
+        }
+
+
         const vacancy = max_people - current_participants;
 
         if (vacancy <= 0) {

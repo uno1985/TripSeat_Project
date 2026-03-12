@@ -130,6 +130,11 @@
         border-radius: 8px;
     }
 
+    .status-over {
+        background-color: var(--trip-color-gray-200);
+        color: var(--trip-color-gray-400);
+    }
+
     .status-full {
         background-color: #FFEBEB;
         color: var(--trip-color-status-danger);

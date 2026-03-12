@@ -1,5 +1,6 @@
 @import './css/regionSelector.css';
 @import './css/datePicker.css';
+@import './css/multiSelector.css';
 
 .selector-text {
     white-space: nowrap; 

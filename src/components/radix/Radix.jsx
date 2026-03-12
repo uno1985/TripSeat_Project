@@ -1,12 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState } from 'react';
 import * as Popover from '@radix-ui/react-popover';
+import * as Checkbox from '@radix-ui/react-checkbox';
 import './radix.css';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { Regions } from '../../data/constants';
 import { DateRange } from 'react-date-range';
 import { IoIosArrowDown } from "react-icons/io";
+import { FaCheck } from 'react-icons/fa';
 import { MdOutlineCalendarMonth } from "react-icons/md";
 
 function RegionSelector({
@@ -35,15 +37,15 @@ function RegionSelector({
                 <h4 className="region-title">{regionName}</h4>
                 <div className="city-grid">
                     {cities.map((city) => {
-                        const isSelected = regions.includes(city);
+                        const isSelected = regions.includes(city.value);
                         
                         return (
                             <button
-                                key={city}
+                                key={city.value}
                                 className={`city-btn ${isSelected ? 'selected' : ''}`}
-                                data-value={city}
+                                data-value={city.value}
                                 onClick={(e) => onSelect(e, isSelected)} >
-                                {city}
+                                {city.value}
                             </button>
                         );
                     })}
@@ -127,7 +129,56 @@ function DatePicker({
     );
 }
 
+function MultiSelector({
+    options = [],
+    selecteds = [],
+    onSelect = () => {}, // The user will handle this
+    placeholder = "請選擇",
+    className = ""
+}) {
+    const displayValue = selecteds.length > 0 ? selecteds.join(', ') : placeholder;
+
+    return (
+        <Popover.Root>
+            <Popover.Trigger asChild>
+                <button className={`MultiSelectTrigger ${className}`}>
+                    <span>{displayValue}</span>
+                    <IoIosArrowDown />
+                </button>
+            </Popover.Trigger>
+            <Popover.Portal>
+                <Popover.Content className="MultiSelectContent" sideOffset={5} align="start">
+                    {options.map((option, index) => {
+                        const isSelected = selecteds.includes(option.value);
+                        return (
+                            <div key={index}
+                                className="MultiSelectItem"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    onSelect(option.value);
+                                }}>
+                                <Checkbox.Root
+                                    className="MultiSelectCheckbox"
+                                    checked={isSelected}
+                                    id={`c${index}`} >
+                                    <Checkbox.Indicator className="MultiSelectCheckboxIndicator">
+                                        <FaCheck />
+                                    </Checkbox.Indicator>
+                                </Checkbox.Root>
+                                <label className="MultiSelectLabel" htmlFor={`c${index}`}>
+                                    {option?.text}
+                                </label>
+                            </div>
+                        );
+                    })}
+                </Popover.Content>
+            </Popover.Portal>
+        </Popover.Root>
+    );
+}
+
 export const Radix = {
     RegionSelector: RegionSelector,
     DateRangePicker: DatePicker,
+    MultiSelector: MultiSelector,
 }
