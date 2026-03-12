@@ -14,8 +14,8 @@ const API_URL = import.meta.env.VITE_API_BASE;
 function TripsSearch() {
     const [trips, setTrips] = useState([]);
     const [totalCount, setTotalCount] = useState();
-    const [currentPage, setPage] = useState();
-    const [limit, setLimit] = useState();
+    const [currentPage, setPage] = useState(1);
+    const [limit, setLimit] = useState(9);
     const [searchParams] = useSearchParams();
     const [_SEARCH_PARAMS, setSearchParams] = useSearchParams();
     const [filters, setFilters] = useState({
@@ -33,7 +33,7 @@ function TripsSearch() {
 
     useEffect(() => {
         const getTrips = async () => {
-            const nextPage = Number(searchParams.get('page')) || 1;
+            const nextPage = currentPage || Number(searchParams.get('page'));
             const nextLimit = Number(searchParams.get('limit')) || 9;
             setPage(nextPage);
             setLimit(nextLimit);
@@ -54,7 +54,7 @@ function TripsSearch() {
             }
         }
         void getTrips();
-    }, [searchParams]);
+    }, [searchParams, currentPage]);
 
     function handleTotalCount() {
         if (!totalCount) {
