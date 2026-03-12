@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
@@ -6,9 +6,29 @@ import '../../assets/css/memberGroups.css';
 
 const API_URL = import.meta.env.VITE_API_BASE;
 
+const getStatusType = (trip) => {
+    const now = new Date();
+    const end = trip.end_date ? new Date(trip.end_date) : null;
+    const isEnded = end && end < now;
+    const isFull = (trip.current_participants || 0) >= (trip.max_people || 0);
+
+    if (trip.status === 'draft') return 'draft';
+    if (trip.status === 'ended' || isEnded) return 'ended';
+    if (trip.status === 'confirmed' || isFull) return 'confirmed';
+    return 'open';
+};
+
+const STATUS_TEXT_MAP = {
+    draft: '草稿',
+    open: '招募中',
+    confirmed: '已成團',
+    ended: '已結束',
+};
+
 
 const MemberGroups = () => {
     const { user } = useAuth();
+    const userId = user?.id;
     const [searchParams] = useSearchParams();
     const focusTripId = searchParams.get('tripId');
 
@@ -35,24 +55,15 @@ const MemberGroups = () => {
             .find((row) => row.startsWith('tripToken='))
             ?.split('=')[1];
 
-    const getStatusType = (trip) => {
-        const now = new Date();
-        const end = trip.end_date ? new Date(trip.end_date) : null;
-        const isEnded = end && end < now;
-        const isFull = (trip.current_participants || 0) >= (trip.max_people || 0);
 
-        if (trip.status === 'draft') return 'draft';
-        if (trip.status === 'ended' || isEnded) return 'ended';
-        if (trip.status === 'confirmed' || isFull) return 'confirmed';
-        return 'open';
-    };
-
-    const statusTextMap = {
+    const _statusTextMap = {
         draft: '草稿',
         open: '招募中',
         confirmed: '已成團',
         ended: '已結束',
     };
+
+    const statusTextMap = useMemo(() => STATUS_TEXT_MAP, []);
 
     const formatDateRange = (startDate, endDate) => {
         if (!startDate) return '';
@@ -69,8 +80,8 @@ const MemberGroups = () => {
         const diff = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
         return diff > 0 ? diff : 0;
     };
-    const fetchMyTrips = async () => {
-        if (!user?.id) {
+    const fetchMyTrips = useCallback(async () => {
+        if (!userId) {
             setTrips([]);
             setApplicantsByTrip({});
             setMembersByTrip({});
@@ -82,7 +93,7 @@ const MemberGroups = () => {
         setError(null);
         try {
             const [tripsRes, participantsRes, usersRes] = await Promise.all([
-                axios.get(`${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc`),
+                axios.get(`${API_URL}/664/trips?owner_id=${userId}&_sort=created_at&_order=desc`),
                 axios.get(`${API_URL}/664/participants`),
                 axios.get(`${API_URL}/664/users`),
             ]);
@@ -137,11 +148,11 @@ const MemberGroups = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [statusTextMap, userId]);
 
     useEffect(() => {
-        fetchMyTrips();
-    }, [user?.id]);
+        void fetchMyTrips();
+    }, [fetchMyTrips]);
 
     const stats = useMemo(() => ({
         all: trips.length,

@@ -33,8 +33,10 @@ function TripsSearch() {
 
     useEffect(() => {
         const getTrips = async () => {
-            setPage(currentPage || Number(searchParams.get('page')) || 1);
-            setLimit(limit || Number(searchParams.get('limit')) || 9);
+            const nextPage = Number(searchParams.get('page')) || 1;
+            const nextLimit = Number(searchParams.get('limit')) || 9;
+            setPage(nextPage);
+            setLimit(nextLimit);
             // [AI修改開始 2026-03-10] 只顯示正式公開旅程，排除草稿
             const nextSearchParams = new URLSearchParams(searchParams);
             nextSearchParams.set('status', 'open');
@@ -42,8 +44,8 @@ function TripsSearch() {
             // [AI修改結束 2026-03-10]
             const response = await axios.get(url, {
                 params: {
-                    _page: currentPage,
-                    _limit: limit
+                    _page: nextPage,
+                    _limit: nextLimit
                 }
             });
             if (!!response && !!response.data) {
@@ -51,8 +53,8 @@ function TripsSearch() {
                 setTotalCount(response?.headers['x-total-count'] || 0)
             }
         }
-        getTrips();
-    }, [searchParams, currentPage]);
+        void getTrips();
+    }, [searchParams]);
 
     function handleTotalCount() {
         if (!totalCount) {

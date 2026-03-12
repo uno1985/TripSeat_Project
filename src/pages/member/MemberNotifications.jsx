@@ -8,13 +8,13 @@ const API_URL = import.meta.env.VITE_API_BASE;
 const MEMBER_UNREAD_EVENT = 'tripseat:member-unread-changed';
 
 const TYPE_META = {
-  apply:    { text: '入團申請', icon: 'bi-person-plus-fill',      color: 'warning' },
-  approval: { text: '審核通過', icon: 'bi-check-circle-fill',     color: 'success' },
-  rejected: { text: '審核未通過', icon: 'bi-x-circle-fill',       color: 'danger'  },
-  success:  { text: '成團通知', icon: 'bi-people-fill',            color: 'info'    },
-  cancel:   { text: '棄團通知', icon: 'bi-slash-circle-fill',      color: 'danger'  },
-  review:   { text: '心得通知', icon: 'bi-star-fill',              color: 'primary' },
-  system:   { text: '系統通知', icon: 'bi-megaphone-fill',         color: 'secondary'},
+  apply: { text: '入團申請', icon: 'bi-person-plus-fill', color: 'warning' },
+  approval: { text: '審核通過', icon: 'bi-check-circle-fill', color: 'success' },
+  rejected: { text: '審核未通過', icon: 'bi-x-circle-fill', color: 'danger' },
+  success: { text: '成團通知', icon: 'bi-people-fill', color: 'info' },
+  cancel: { text: '棄團通知', icon: 'bi-slash-circle-fill', color: 'danger' },
+  review: { text: '心得通知', icon: 'bi-star-fill', color: 'primary' },
+  system: { text: '系統通知', icon: 'bi-megaphone-fill', color: 'secondary' },
 };
 
 const formatTime = (t) => {
@@ -24,6 +24,8 @@ const formatTime = (t) => {
 
 const MemberNotifications = () => {
   const { user } = useAuth();
+  const userId = user?.id;
+  const userName = user?.name || '';
   const [tab, setTab] = useState('notif'); // 'notif' | 'message'
 
   // ── 通知 ──
@@ -43,34 +45,34 @@ const MemberNotifications = () => {
 
   // ── 抓通知 ──
   useEffect(() => {
-    if (!user?.id) { setNotifLoading(false); return; }
+    if (!userId) { setNotifLoading(false); return; }
     setNotifLoading(true);
-    axios.get(`${API_URL}/664/notifications?user_id=${user.id}&_sort=created_at&_order=desc`)
+    axios.get(`${API_URL}/664/notifications?user_id=${userId}&_sort=created_at&_order=desc`)
       .then(res => setNotifs(res.data || []))
       .catch(() => setNotifs([]))
       .finally(() => setNotifLoading(false));
-  }, [user?.id]);
+  }, [userId]);
 
   // ── 抓私訊（messages 表 + notifications 表，統一格式） ──
   useEffect(() => {
-    if (!user?.id) { setMsgLoading(false); return; }
+    if (!userId) { setMsgLoading(false); return; }
     setMsgLoading(true);
 
     const fetchMessages = Promise.all([
-      axios.get(`${API_URL}/664/messages?receiver_id=${user.id}&_sort=created_at&_order=desc`),
-      axios.get(`${API_URL}/664/messages?sender_id=${user.id}&_sort=created_at&_order=desc`),
+      axios.get(`${API_URL}/664/messages?receiver_id=${userId}&_sort=created_at&_order=desc`),
+      axios.get(`${API_URL}/664/messages?sender_id=${userId}&_sort=created_at&_order=desc`),
     ]).then(([r, s]) => [...(r.data || []), ...(s.data || [])]).catch(() => []);
 
     // notifications 表（MemberTrips 發送的訊息，欄位為 recipient_id / message）
     const fetchNotifMsgs = Promise.all([
-      axios.get(`${API_URL}/664/notifications?recipient_id=${user.id}&_sort=created_at&_order=desc`),
-      axios.get(`${API_URL}/664/notifications?sender_id=${user.id}&_sort=created_at&_order=desc`),
+      axios.get(`${API_URL}/664/notifications?recipient_id=${userId}&_sort=created_at&_order=desc`),
+      axios.get(`${API_URL}/664/notifications?sender_id=${userId}&_sort=created_at&_order=desc`),
     ]).then(([r, s]) => {
       const normalize = (item, isMeReceiver) => ({
         ...item,
         _source: 'notification',
-        receiver_id: isMeReceiver ? user.id : (item.recipient_id || ''),
-        receiver_name: isMeReceiver ? (user.name || '') : (item.recipient_name || ''),
+        receiver_id: isMeReceiver ? userId : (item.recipient_id || ''),
+        receiver_name: isMeReceiver ? userName : (item.recipient_name || ''),
         receiver_avatar: '',
         content: item.message || item.content || '',
       });
@@ -88,7 +90,7 @@ const MemberNotifications = () => {
         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       setMessages(all);
     }).catch(() => setMessages([])).finally(() => setMsgLoading(false));
-  }, [user?.id]);
+  }, [userId, userName]);
 
   // ── 標記通知已讀 ──
   const markNotifRead = async (id) => {
@@ -108,24 +110,7 @@ const MemberNotifications = () => {
     setNotifs(prev => prev.map(n => ({ ...n, is_read: true })));
   };
 
-  // ── 標記私訊已讀（依來源判斷打 messages 或 notifications 表） ──
-  const markMsgRead = async (id) => {
-    const token = getToken();
-    if (!token) return;
-    // 先樂觀更新 state，讓 UI 即時反應（badge 數字馬上消失）
-    setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: true } : m));
-    // 再依來源打對應 API
-    const target = messages.find(m => m.id === id);
-    const table = target?._source === 'notification' ? 'notifications' : 'messages';
-    await axios.patch(
-      `${API_URL}/664/${table}/${id}`,
-      { is_read: true },
-      { headers: { Authorization: `Bearer ${token}` } }
-    ).catch(() => {
-      // API 失敗時回滾 state
-      setMessages(prev => prev.map(m => m.id === id ? { ...m, is_read: false } : m));
-    });
-  };
+
 
   // ── 將某對象的所有未讀訊息標記已讀（同步更新 state，不等 API） ──
   const markGroupRead = (otherId) => {
@@ -147,7 +132,7 @@ const MemberNotifications = () => {
         `${API_URL}/664/${table}/${id}`,
         { is_read: true },
         { headers: { Authorization: `Bearer ${token}` } }
-      ).catch(() => {});
+      ).catch(() => { });
     });
   };
 
@@ -222,7 +207,7 @@ const MemberNotifications = () => {
   // ── 通知過濾 ──
   const filteredNotifs = useMemo(() => {
     if (notifFilter === 'unread') return notifs.filter(n => !n.is_read);
-    if (notifFilter === 'read')   return notifs.filter(n => n.is_read);
+    if (notifFilter === 'read') return notifs.filter(n => n.is_read);
     return notifs;
   }, [notifs, notifFilter]);
 
@@ -237,7 +222,7 @@ const MemberNotifications = () => {
 
       // otherName / otherAvatar：只從「對方是 sender」的訊息取，確保不因自己回覆後跑掉
       const isFromOther = m.sender_id !== user?.id;
-      const candidateName   = isFromOther ? (m.sender_name || '') : null;
+      const candidateName = isFromOther ? (m.sender_name || '') : null;
       const candidateAvatar = isFromOther ? (m.sender_avatar || '') : null;
 
       if (!existing) {
@@ -247,7 +232,7 @@ const MemberNotifications = () => {
           trip_title: m.trip_title || null,
           otherId,
           // 若這則是自己寄出的，name/avatar 先暫存空，等後續掃到對方的訊息再補
-          otherName:   candidateName   ?? '',
+          otherName: candidateName ?? '',
           otherAvatar: candidateAvatar ?? '',
           latest: m,
           unread: 0,
@@ -259,7 +244,7 @@ const MemberNotifications = () => {
         }
         // 只要掃到對方寄來的訊息就鎖定 name/avatar，不再被自己寄出的覆蓋
         if (isFromOther && !existing.otherName) {
-          existing.otherName   = candidateName   ?? '';
+          existing.otherName = candidateName ?? '';
           existing.otherAvatar = candidateAvatar ?? '';
         }
       }
