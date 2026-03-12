@@ -16,8 +16,8 @@ import '../assets/css/loginModal.css';
 
 //開發中測試用帳號 完成後刪除
 const test = {
-    email: '',
-    password: ''
+    email: 'rain@test.com',
+    password: 'password123'
 }
 
 const API_URL = import.meta.env.VITE_API_BASE;
