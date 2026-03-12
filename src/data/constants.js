@@ -53,3 +53,10 @@ export const Regions = {
         { text: '連江縣', value: '連江縣' }
     ],
 };
+
+export const SortType = [
+    {text: '熱門開團', value: '熱門開團', sort: 'views', order: 'desc'},
+    {text: '依截止時間', value: '依截止時間', sort: 'deadline', order: 'asc'},
+    {text: '依出發時間', value: '依出發時間', sort: 'start_date', order: 'asc'},
+    {text: '團主評價', value: '團主評價', sort: 'host_rating', order: 'desc'},
+];

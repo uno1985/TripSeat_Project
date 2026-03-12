@@ -69,7 +69,8 @@ function SearchBar() {
                 }
 
                 const queryString = params.toString();
-                const url = queryString ? `/trips?${queryString}` : '/trips'
+                const sortString= 'sort=views&_order=desc'
+                const url = `/trips?`+ (queryString ? `${queryString}&` : '') + sortString;
 
                 navigate(url);
             }}>
