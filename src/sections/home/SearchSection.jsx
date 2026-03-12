@@ -1,5 +1,6 @@
 import '../../assets/css/searchSection.css'
 import { useNavigate } from 'react-router-dom';
+import { Regions } from '../../data/constants.js'
 import Selector from '../../components/Selector'
 import Image1157 from '../../assets/images/home-search-1157.svg'
 import Image1156 from '../../assets/images/home-search-1156.svg'
@@ -8,11 +9,7 @@ import Image996 from '../../assets/images/home-search-996.svg'
 import SearchBtn from '../../assets/images/home-search-btn.svg'
 import { useState } from 'react';
 
-const areas = [
-    {text: '台北市', value: '台北市'},
-    {text: '台中市', value: '台中市'},
-    {text: '高雄市', value: '高雄市'},
-]
+const allRegions = Object.values(Regions).flat();
 
 function SearchSection() {
     return (
@@ -37,13 +34,18 @@ function SearchSection() {
 
 function SearchBar() {
     const navigate = useNavigate();
-    const [keyword, setKeyword] = useState();
+    const [keyword, setKeyword] = useState('');
+    const [region, setRegion] = useState('');
     return <div className="searchBar d-flex">
         <div className="selector-box">
             <Selector
-                data={areas}
+                data={allRegions}
                 placeholder={"選擇地區"}
+                defaultValue={region}
                 className="selector h-100 text-center border-0 border-end"
+                onChange={(e) => {
+                    setRegion(e.target.value);
+                }}
             />
         </div>
         <div className="flex-grow-1">
@@ -57,7 +59,18 @@ function SearchBar() {
                 }}/>
         </div>
         <div className="searchBtn-box flex-shrink-0" onClick={() => {
-                const url = keyword ? `/trips?q=${keyword}` : '/trips';
+                const params = new URLSearchParams();
+
+                if (keyword) {
+                    params.set('q', keyword);
+                }
+                if (region) {
+                    params.set('location_like', region);
+                }
+
+                const queryString = params.toString();
+                const url = queryString ? `/trips?${queryString}` : '/trips'
+
                 navigate(url);
             }}>
             <img src={SearchBtn} className="w-100"/>

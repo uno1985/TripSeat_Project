@@ -37,15 +37,15 @@ function RegionSelector({
                 <h4 className="region-title">{regionName}</h4>
                 <div className="city-grid">
                     {cities.map((city) => {
-                        const isSelected = regions.includes(city);
+                        const isSelected = regions.includes(city.value);
                         
                         return (
                             <button
-                                key={city}
+                                key={city.value}
                                 className={`city-btn ${isSelected ? 'selected' : ''}`}
-                                data-value={city}
+                                data-value={city.value}
                                 onClick={(e) => onSelect(e, isSelected)} >
-                                {city}
+                                {city.value}
                             </button>
                         );
                     })}
