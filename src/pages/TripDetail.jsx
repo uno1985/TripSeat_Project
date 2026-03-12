@@ -126,6 +126,12 @@ function TripDetail() {
     useEffect(() => {
         window.scrollTo(0, 0);
         fetchTripData();
+
+        // 使用者從其他頁面（如 MemberTrips 取消參加）切回來時，重新拉最新人數
+        // 用 window focus 而非 visibilitychange，因為 SPA 同一分頁內路由切換不會觸發 visibilitychange
+        const handleFocus = () => fetchTripData();
+        window.addEventListener('focus', handleFocus);
+        return () => window.removeEventListener('focus', handleFocus);
     }, [fetchTripData]);
 
     // 格式化日期顯示
@@ -943,14 +949,7 @@ function TripDetail() {
                     <div className="modal-backdrop fade show"></div>
                 </>
             )}
-
-
         </div>
-
-
-
-
-
     );
 }
 
