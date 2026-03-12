@@ -104,7 +104,7 @@ function SideBar() {
         location_like: [],
         tags_like: [],
         //days: '',
-        transportation_like: '',
+        // transportation_like: '',
         owner_is_verified_host: null
     });
 
@@ -224,7 +224,7 @@ function SideBar() {
                     fontStyle={"trip-text-s trip-text-gray-600 text-start"}/>
             </div>
             <div className="filter-group">
-                <label className="filter-label trip-text-m">出發地</label>
+                <label className="filter-label trip-text-m">目的地</label>
                 <Radix.RegionSelector
                     className={"trip-text-m trip-text-gray-600"}
                     regions={filters.location_like || []}
@@ -237,7 +237,7 @@ function SideBar() {
                     selecteds={filters.tags_like || []}
                     onSelect={handleCategorySelect} />
             </div>
-            <div className="filter-group">
+            {/* <div className="filter-group">
                 <label className="filter-label trip-text-m">旅程天數</label>
                 <Selector
                     data={[{text:"單日", value: "單日"}, {text:"多日", value:"多日"}]}
@@ -255,7 +255,7 @@ function SideBar() {
                     defaultValue={filters.transport_like || "placeholder"}
                     onChange={(e) => handleFilterChange(e)}
                     className="selector trip-text-m trip-text-gray-600" />
-            </div>
+            </div> */}
             <div className="filter-group">
                 <label className="filter-label trip-text-m">其他</label>
                 <div className="form-check">
