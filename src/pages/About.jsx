@@ -150,7 +150,7 @@ const About = () => {
                                 從一個旅人的孤單<br />出發的旅程平台
                             </h2>
                             <p className="about-story-text">
-                                2025 年，創辦人林小明在一次獨自旅行中，在合歡山的山頂上，望著壯觀的雲海，心裡卻有一種說不出的遺憾——<strong>如果這一刻有個人能一起分享，該有多好。</strong>
+                                2025 年，UNO 在一次獨自旅行中，在合歡山的山頂上，望著壯觀的雲海，心裡卻有一種說不出的遺憾——<strong>如果這一刻有個人能一起分享，該有多好。</strong>
                             </p>
                             <p className="about-story-text">
                                 那一刻，TripSeat 的種子悄悄萌芽。我們相信，最美的風景需要有人共同欣賞，最好的旅行需要有旅伴相陪。
@@ -161,7 +161,7 @@ const About = () => {
                             <div className="about-story-quote">
                                 <i className="bi bi-quote"></i>
                                 <blockquote>旅行的意義，不在於去了哪裡，而在於和誰一起去。</blockquote>
-                                <cite>— UNO，TripSeat 創辦人</cite>
+                                <cite>— UNO，TripSeat </cite>
                             </div>
                         </div>
                     </div>

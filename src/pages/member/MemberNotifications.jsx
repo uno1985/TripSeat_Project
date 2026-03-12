@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import '../../assets/css/memberNotifications.css';
 
 const API_URL = import.meta.env.VITE_API_BASE;
+const MEMBER_UNREAD_EVENT = 'tripseat:member-unread-changed';
 
 const TYPE_META = {
   apply:    { text: '入團申請', icon: 'bi-person-plus-fill',      color: 'warning' },
@@ -279,6 +280,15 @@ const MemberNotifications = () => {
   // ── 統計 ──
   const unreadNotifCount = notifs.filter(n => !n.is_read).length;
   const unreadMsgCount = messages.filter(m => m.receiver_id === user?.id && !m.is_read).length;
+
+  // [AI修改開始 2026-03-11] 通知頁內未讀數變化時，同步通知 MemberSidebar 更新紅色 badge
+  useEffect(() => {
+    if (!user?.id) return;
+    window.dispatchEvent(new CustomEvent(MEMBER_UNREAD_EVENT, {
+      detail: { total: unreadNotifCount + unreadMsgCount }
+    }));
+  }, [unreadMsgCount, unreadNotifCount, user?.id]);
+  // [AI修改結束 2026-03-11]
 
   return (
     <div className="member-notifications-v2">
