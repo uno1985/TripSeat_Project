@@ -1,22 +1,3 @@
-// 說明文
-// 引入所有有route的頁面檔案位置，並且設定路由(網址)名稱
-// children下的 path 以下兩種方式皆會呈現相同結果
-// {
-//     path: '/member',
-//         element: <ProtectedRoute><MemberLayout /></ProtectedRoute>,
-//             children: [
-//                 {
-//                     // 我的檔案
-//                     path: 'profile', <這邊
-//                     element: <MemberProfile />,
-//                 },
-//                 {
-//                     // 我的檔案
-//                     path: '/member/profile', <這邊
-//                     element: <MemberProfile />,
-//                 },
-// }
-
 import Layout from "../layout/Layout"
 import MemberLayout from "../layout/MemberLayout"
 import About from "../pages/About"
