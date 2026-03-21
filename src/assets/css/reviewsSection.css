@@ -141,9 +141,14 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 28px;
-  overflow-x: hidden;
+  overflow-x: auto; /* hidden → auto，讓 scrollBy() 可以作用 */
   scroll-behavior: smooth;
   width: 100%;
+  scrollbar-width: none; /* 新增：隱藏 Firefox 捲軸 */
+}
+/* 新增：隱藏 Chrome/Safari 捲軸 */
+.rev-card::-webkit-scrollbar {
+  display: none;
 }
 
 /* color */
@@ -199,6 +204,13 @@
     display: flex;
     z-index: 5;
   }
+  /* 新增：固定每張卡片寬度，讓卡片可以水平捲動而非被壓縮 */
+  .rev-card {
+    grid-template-columns: repeat(5, 260px);
+  }
+  .bCloud {
+    display: none;
+  }
 }
 @media (max-width: 768px) {
   .bCloud {
@@ -210,9 +222,7 @@
     left: -24px;
     max-height: 58px;
   }
-   .sCloud {
-   display: none;
+  .sCloud {
+    display: none;
   }
-
-
 }
