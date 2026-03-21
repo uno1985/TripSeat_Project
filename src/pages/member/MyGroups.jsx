@@ -13,6 +13,14 @@ const getStatusMeta = (trip) => {
   const isEnded = end && end < now;
   const isFull = (trip.current_participants || 0) >= (trip.max_people || 0);
 
+  // [AI修改開始 2026-03-10] 會員中心我的揪團摘要支援顯示草稿狀態
+  if (trip.status === 'draft') {
+    return {
+      text: '草稿',
+      className: 'bg-secondary-subtle text-secondary-emphasis',
+    }
+  }
+  // [AI修改結束 2026-03-10]
   if (trip.status === 'ended' || isEnded) {
     return {
       text: '已結束',
@@ -40,53 +48,55 @@ const formatDateTime = (startDate, meetingTime) => {
 
 const MyGroups = () => {
   const { user } = useAuth();
+  const userId = user?.id;
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
-  const fetchMyGroups = async () => {
-    if (!user?.id) {
-      setGroups([]);
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
-    setError(null);
-
-    try {
-      const res = await axios.get(
-        `${API_URL}/664/trips?owner_id=${user.id}&_sort=created_at&_order=desc&_limit=3`
-      );
-
-      const rows = (res.data || [])
-        .filter((item) => !item.deleted_at)
-        .map((trip) => {
-          const statusMeta = getStatusMeta(trip);
-          const remaining = Math.max((trip.max_people || 0) - (trip.current_participants || 0), 0);
-
-          return {
-            id: trip.id,
-            title: trip.title,
-            image: trip.image_url,
-            time: formatDateTime(trip.start_date, trip.meeting_time),
-            status: statusMeta.text,
-            statusClass: statusMeta.className,
-            participants: trip.current_participants || 0,
-            remaining,
-          };
-        });
-
-      setGroups(rows);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
   useEffect(() => {
-    fetchMyGroups();
-  }, [user?.id]);
+    const fetchMyGroups = async () => {
+      if (!userId) {
+        setGroups([]);
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      setError(null);
+
+      try {
+        const res = await axios.get(
+          `${API_URL}/664/trips?owner_id=${userId}&_sort=created_at&_order=desc&_limit=3`
+        );
+
+        const rows = (res.data || [])
+          .filter((item) => !item.deleted_at)
+          .map((trip) => {
+            const statusMeta = getStatusMeta(trip);
+            const remaining = Math.max((trip.max_people || 0) - (trip.current_participants || 0), 0);
+
+            return {
+              id: trip.id,
+              title: trip.title,
+              image: trip.image_url,
+              time: formatDateTime(trip.start_date, trip.meeting_time),
+              status: statusMeta.text,
+              statusClass: statusMeta.className,
+              participants: trip.current_participants || 0,
+              remaining,
+            };
+          });
+
+        setGroups(rows);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchMyGroups();
+  }, [userId]);
 
   if (loading) return <div className="py-4">載入中...</div>;
   if (error) return <div className="alert alert-warning">載入失敗：{error}</div>;

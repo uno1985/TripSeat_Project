@@ -290,9 +290,9 @@ const MemberProfile = () => {
           </div>
         </div>
 
-        <div className="member-profile-password-hint">
+        {/* <div className="member-profile-password-hint">
           密碼變更（點擊後，系統將送出一封 Email，請至您的信箱確認）
-        </div>
+        </div> */}
       </div>
 
       <div className="member-profile-actions">

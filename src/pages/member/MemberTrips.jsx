@@ -55,6 +55,10 @@ const MemberTrips = () => {
   const [cancelDialog, setCancelDialog] = useState({ open: false, tripId: null });
   const [canceling, setCanceling] = useState(false);
   const [cancelError, setCancelError] = useState('');
+  const [messageModal, setMessageModal] = useState({ open: false, hostName: '', hostId: null, message: '' });
+  const [messageSending, setMessageSending] = useState(false);
+  const [messageError, setMessageError] = useState('');
+  const [messageSent, setMessageSent] = useState(false);
 
   const getToken = () =>
     document.cookie
@@ -75,7 +79,7 @@ const MemberTrips = () => {
 
       try {
         const [participantsRes, reviewsRes, tripsRes, usersRes] = await Promise.all([
-          axios.get(`${API_URL}/664/participants?user_id=${user.id}&role=member`),
+          axios.get(`${API_URL}/664/participants?user_id=${user.id}`),
           axios.get(`${API_URL}/664/reviews?user_id=${user.id}&_sort=created_at&_order=desc`),
           axios.get(`${API_URL}/664/trips`),
           axios.get(`${API_URL}/664/users`),
@@ -116,6 +120,7 @@ const MemberTrips = () => {
               host: trip.owner_name || '團主',
               hostPhone: userMap.get(trip.owner_id)?.phone || '',
               hostAvatar: trip.owner_avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=default',
+              ownerId: trip.owner_id || null,
               participants: trip.current_participants || 0,
               maxPeople: trip.max_people || 0,
               review: review?.content || null,
@@ -257,7 +262,9 @@ const MemberTrips = () => {
     setCancelError('');
 
     try {
-      await Promise.all([
+      // pending 申請尚未被核准，current_participants 從未被加過，不需要扣回
+      const shouldDecrease = targetTrip.applicationStatus === 'approved';
+      const patchRequests = [
         axios.patch(
           `${API_URL}/664/participants/${targetTrip.participantId}`,
           {
@@ -266,15 +273,20 @@ const MemberTrips = () => {
           },
           { headers: { Authorization: `Bearer ${token}` } }
         ),
-        axios.patch(
-          `${API_URL}/664/trips/${targetTrip.id}`,
-          {
-            current_participants: Math.max((targetTrip.participants || 1) - (targetTrip.joinCount || 1), 0),
-            updated_at: new Date().toISOString(),
-          },
-          { headers: { Authorization: `Bearer ${token}` } }
-        ),
-      ]);
+      ];
+      if (shouldDecrease) {
+        patchRequests.push(
+          axios.patch(
+            `${API_URL}/664/trips/${targetTrip.id}`,
+            {
+              current_participants: Math.max((targetTrip.participants || 0) - (targetTrip.joinCount || 1), 0),
+              updated_at: new Date().toISOString(),
+            },
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+        );
+      }
+      await Promise.all(patchRequests);
 
       setTrips((prev) => prev.filter((trip) => trip.id !== targetTrip.id));
       closeCancelDialog();
@@ -282,6 +294,59 @@ const MemberTrips = () => {
       setCancelError(err.response?.data || err.message || '取消參加失敗');
     } finally {
       setCanceling(false);
+    }
+  };
+
+  const openMessageModal = (trip) => {
+    setMessageModal({ open: true, hostName: trip.host, hostId: trip.ownerId || null, message: '' });
+    setMessageError('');
+    setMessageSent(false);
+  };
+
+  const closeMessageModal = () => {
+    if (messageSending) return;
+    setMessageModal({ open: false, hostName: '', hostId: null, message: '' });
+    setMessageError('');
+    setMessageSent(false);
+  };
+
+  const handleSendMessage = async () => {
+    const content = messageModal.message.trim();
+    if (!content) {
+      setMessageError('訊息內容不能為空白');
+      return;
+    }
+
+    const token = getToken();
+    if (!token || !user?.id) {
+      setMessageError('登入狀態失效，請重新登入');
+      return;
+    }
+
+    setMessageSending(true);
+    setMessageError('');
+
+    try {
+      await axios.post(
+        `${API_URL}/664/notifications`,
+        {
+          recipient_name: messageModal.hostName,
+          recipient_id: messageModal.hostId,
+          sender_id: user.id,
+          sender_name: user.name,
+          sender_avatar: user.avatar || '',
+          message: content,
+          is_read: false,
+          created_at: new Date().toISOString(),
+          deleted_at: null,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setMessageSent(true);
+    } catch (err) {
+      setMessageError(err.response?.data || err.message || '傳送失敗，請稍後再試');
+    } finally {
+      setMessageSending(false);
     }
   };
 
@@ -400,6 +465,13 @@ const MemberTrips = () => {
                     <div className="member-trips-host">
                       <img src={trip.hostAvatar} alt={trip.host} className="member-trips-host-avatar" />
                       <span>團主：{trip.host} {trip.applicationStatus === 'approved' && `(${trip.hostPhone})`}</span>
+                      <button
+                        type="button"
+                        className="btn btn-sm member-trips-btn-message ms-2"
+                        onClick={() => openMessageModal(trip)}
+                      >
+                        <i className="bi bi-chat-dots me-1"></i>發送訊息
+                      </button>
                     </div>
 
                     <div className="member-trips-review-section">
@@ -507,6 +579,63 @@ const MemberTrips = () => {
                   <button type="button" className="btn btn-sm member-trips-btn-detail" onClick={handleConfirmCancelJoin} disabled={canceling}>
                     {canceling ? '處理中...' : '確定取消'}
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal-backdrop fade show"></div>
+        </>
+      )}
+
+      {messageModal.open && (
+        <>
+          <div className="modal fade show d-block" tabIndex="-1" role="dialog" aria-modal="true">
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title"><i className="bi bi-chat-dots me-2"></i>發送訊息</h5>
+                  <button type="button" className="btn-close" onClick={closeMessageModal} disabled={messageSending}></button>
+                </div>
+                <div className="modal-body">
+                  {messageError && <div className="alert alert-warning py-2">{messageError}</div>}
+                  {messageSent ? (
+                    <div className="alert alert-success text-center py-3">
+                      <i className="bi bi-check-circle me-2"></i>訊息已成功發送！
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mb-3">
+                        <label className="form-label fw-semibold">收件人</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={messageModal.hostName}
+                          readOnly
+                        />
+                      </div>
+                      <div className="mb-1">
+                        <label className="form-label fw-semibold">訊息內容</label>
+                        <textarea
+                          className="form-control"
+                          rows={5}
+                          placeholder="輸入你想傳送的訊息..."
+                          value={messageModal.message}
+                          onChange={(e) => setMessageModal((prev) => ({ ...prev, message: e.target.value }))}
+                          disabled={messageSending}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-outline-secondary" onClick={closeMessageModal} disabled={messageSending}>
+                    {messageSent ? '關閉' : '取消'}
+                  </button>
+                  {!messageSent && (
+                    <button type="button" className="btn btn-primary" onClick={handleSendMessage} disabled={messageSending}>
+                      {messageSending ? '傳送中...' : <><i className="bi bi-send me-1"></i>傳送</>}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
