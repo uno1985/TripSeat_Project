@@ -1944,14 +1944,59 @@
         "https://i.ibb.co/MDpfFnXL/Screenshot-2026-03-10-223629.png",
         "https://i.ibb.co/1Jh7b9nn/Screenshot-2026-03-10-223616.png"
       ],
+      "status": "draft",
+      "owner_name": "文青小雨傘壓",
+      "owner_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
+      "owner_is_verified_host": 1,
+      "views": 0,
+      "is_featured": false,
+      "created_at": "2026-03-12T14:34:49.822Z",
+      "updated_at": "2026-03-12T14:34:49.822Z",
+      "deleted_at": null
+    },
+    {
+      "id": "bb78398d-636d-43c2-93a7-8807307da459",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "owner_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "title": "澎湖初夏跳島看夕陽三天兩夜",
+      "category": "文化體驗",
+      "tags": [
+        "澎湖",
+        "跳島",
+        "夕陽",
+        "海邊",
+        "美食"
+      ],
+      "description": "12311231231",
+      "vibe_text": "海風、夕陽、拍照、慢節奏，不趕行程但也不拖隊。",
+      "vibe_tags": [
+        "慢旅",
+        "海景",
+        "美食",
+        "拍照"
+      ],
+      "start_date": "2026-03-19",
+      "end_date": "2026-03-26",
+      "deadline": "2026-03-15",
+      "location": "澎湖縣 馬公市",
+      "meeting_point": "馬公機場國內線出口",
+      "meeting_time": "13:33",
+      "transport": "團主開車",
+      "accommodation": "當天來回，無住宿",
+      "price": 200,
+      "max_people": 4,
+      "current_participants": 1,
+      "cancellation_policy": "不退費",
+      "image_url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800",
+      "related_images": [],
       "status": "open",
       "owner_name": "文青小雨傘壓",
       "owner_avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=rain",
       "owner_is_verified_host": 1,
       "views": 0,
       "is_featured": false,
-      "created_at": "2026-03-10T16:23:08.214Z",
-      "updated_at": "2026-03-10T16:23:08.214Z",
+      "created_at": "2026-03-12T14:33:45.757Z",
+      "updated_at": "2026-03-12T14:34:21.781Z",
       "deleted_at": null
     }
   ],
@@ -3609,20 +3654,7 @@
       "deleted_at": null
     },
     {
-      "id": "5ff0e122-924d-40a2-bc81-ba2569a376a1",
-      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
-      "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
-      "day": 1,
-      "time": "09:00",
-      "type": "activity",
-      "icon": "📍",
-      "title": "馬公機場集合",
-      "note": "大家自己坐飛機",
-      "updated_at": "2026-03-10T16:23:08.325Z",
-      "deleted_at": null
-    },
-    {
-      "id": "dc7294df-6aaa-45e0-96dc-9516ba4c2a10",
+      "id": "65c584e2-a447-4939-9790-9949eb6c40a3",
       "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
       "day": 2,
@@ -3631,11 +3663,11 @@
       "icon": "📍",
       "title": "要坐船跳島所以要很早",
       "note": "",
-      "updated_at": "2026-03-10T16:23:08.325Z",
+      "updated_at": "2026-03-12T14:34:49.953Z",
       "deleted_at": null
     },
     {
-      "id": "4781922e-995a-4ecb-8da2-0ae83ed7a928",
+      "id": "cd9593d7-e5cc-46cf-a412-1e7d3395a6f1",
       "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
       "day": 3,
@@ -3644,7 +3676,7 @@
       "icon": "📍",
       "title": "最後一班飛回台灣的飛機",
       "note": "有緣再相會",
-      "updated_at": "2026-03-10T16:23:08.326Z",
+      "updated_at": "2026-03-12T14:34:49.954Z",
       "deleted_at": null
     }
   ],
@@ -5181,8 +5213,8 @@
       "joinCount": 1,
       "application_status": "pending",
       "created_at": "2026-03-10T05:52:18.591Z",
-      "updated_at": "2026-03-11T00:20:49.361Z",
-      "deleted_at": "2026-03-11T00:20:49.361Z"
+      "updated_at": "2026-03-12T14:36:10.532Z",
+      "deleted_at": null
     },
     {
       "id": "fefe5772-49e5-41a4-830b-7bfe87ed3a5b",
@@ -5207,6 +5239,32 @@
       "created_at": "2026-03-11T00:44:00.110Z",
       "updated_at": "2026-03-11T00:46:04.365Z",
       "deleted_at": "2026-03-11T00:46:04.365Z"
+    },
+    {
+      "id": "4c545997-9090-4134-bb7f-2b0517fd2c0b",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "bb78398d-636d-43c2-93a7-8807307da459",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1,
+      "created_at": "2026-03-12T14:33:45.822Z",
+      "updated_at": "2026-03-12T14:33:45.822Z",
+      "deleted_at": null
+    },
+    {
+      "id": "83005419-6055-4362-b944-0b3e747525a9",
+      "userId": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "81f47a50-26f8-487d-957f-ace888c123ab",
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "role": "owner",
+      "application_status": null,
+      "comment": null,
+      "joinCount": 1,
+      "created_at": "2026-03-12T14:34:49.882Z",
+      "updated_at": "2026-03-12T14:34:49.882Z",
+      "deleted_at": null
     }
   ],
   "reviews": [
@@ -5650,7 +5708,7 @@
       "receiver_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
       "receiver_name": "露營女孩艾琳",
       "content": "讚啦",
-      "is_read": false,
+      "is_read": true,
       "created_at": "2026-03-10T16:28:26.656Z",
       "deleted_at": null
     }

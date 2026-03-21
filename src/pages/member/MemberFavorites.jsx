@@ -102,7 +102,7 @@ const MemberFavorites = () => {
         <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
           <div>
             <h2 className="h3 trip-text-gray-800 d-flex align-items-center">
-              <span class="material-symbols-outlined trip-text-primary-800 fs-2 me-2">favorite</span>
+              <span className="material-symbols-outlined trip-text-primary-800 fs-2 me-2">favorite</span>
               我的收藏
             </h2>
             <p className="trip-text-m trip-text-gray-400 mt-1 mb-0">
