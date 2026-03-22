@@ -29,10 +29,18 @@ function Footer() {
           <Link to="/legal#faq" className="mr-8 footerLink">常見問題</Link>
         </div>
         <div className="text-start">
-          <img className="footerContact mr-12" src={fb} alt="facebook" />
-          <img className="footerContact mr-12" src={ig} alt="instagram" />
-          <img className="footerContact mr-12" src={line} alt="line" />
-          <img className="footerContact" src={x} alt="X" />
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <img className="footerContact mr-12" src={fb} alt="facebook" />
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img className="footerContact mr-12" src={ig} alt="instagram" />
+          </a>
+          <a href="https://line.me/" target="_blank" rel="noopener noreferrer">
+            <img className="footerContact mr-12" src={line} alt="line" />
+          </a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+            <img className="footerContact" src={x} alt="X" />
+          </a>
         </div>
       </div>
       <p className="copyright">2025© TripSeat | 共享旅程 All RIGHTS RESERVED.</p>

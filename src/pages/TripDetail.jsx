@@ -126,6 +126,12 @@ function TripDetail() {
     useEffect(() => {
         window.scrollTo(0, 0);
         fetchTripData();
+
+        // 使用者從其他頁面（如 MemberTrips 取消參加）切回來時，重新拉最新人數
+        // 用 window focus 而非 visibilitychange，因為 SPA 同一分頁內路由切換不會觸發 visibilitychange
+        const handleFocus = () => fetchTripData();
+        window.addEventListener('focus', handleFocus);
+        return () => window.removeEventListener('focus', handleFocus);
     }, [fetchTripData]);
 
     // 格式化日期顯示
@@ -507,7 +513,11 @@ function TripDetail() {
                             </div>
                         </div>
                         <div className="d-flex align-items-center gap-2">
-                            {trip.owner_id === user?.id && <a href="#" className="link-m trip-text-gray-600 edit-link">編輯旅程</a>}
+                            {trip.owner_id === user?.id && (
+                                <Link to={`/member/create-group?tripId=${trip.id}`} className="link-m trip-text-gray-600 edit-link">
+                                    編輯旅程
+                                </Link>
+                            )}
                             <button
                                 type="button"
                                 className="trip-favorite-btn"
@@ -540,7 +550,7 @@ function TripDetail() {
                                         <span className="info-value trip-text-s trip-text-gray-800">{t.info.dates}</span>
                                     </div>
                                     <div className="info-item">
-                                        <span className="info-label">出發地區</span>
+                                        <span className="info-label">目的地</span>
                                         <span className="info-value trip-text-s trip-text-gray-800">{t.info.location}</span>
                                     </div>
                                     <div className="info-item">
@@ -690,7 +700,7 @@ function TripDetail() {
                                                         <div className="booking-row mb-3">
                                                             <div className="booking-row-label">
                                                                 <span className="row-icon">👥</span>
-                                                                <span className="trip-text-m trip-text-gray-600 fw-bold">剩餘座位</span>
+                                                                <span className="trip-text-m trip-text-gray-600 fw-bold">已參加</span>
                                                             </div>
                                                             <div className="booking-row-value">
                                                                 <span className="seats-current">{t.currentPax}</span>
@@ -939,14 +949,7 @@ function TripDetail() {
                     <div className="modal-backdrop fade show"></div>
                 </>
             )}
-
-
         </div>
-
-
-
-
-
     );
 }
 

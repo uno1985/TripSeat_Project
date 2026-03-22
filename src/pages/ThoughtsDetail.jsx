@@ -24,26 +24,26 @@ function ThoughtsDetail() {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
     useEffect(() => {
+        const fetchReviewData = async () => {
+            setLoading(true);
+            setError(null);
+
+            try {
+                const response = await axios.get(`${API_URL}/664/reviews/${id}`);
+                const authorRes = await axios.get(`${API_URL}/664/users/${response.data.user_id}`);
+                setAuthor(authorRes.data);
+                setReview(response.data);
+            } catch (err) {
+                setError(err.message);
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         window.scrollTo(0, 0);
-        fetchReviewData();
+        void fetchReviewData();
     }, [id]);
-
-    const fetchReviewData = async () => {
-        setLoading(true);
-        setError(null);
-
-        try {
-            const response = await axios.get(`${API_URL}/664/reviews/${id}`);
-            const authorRes = await axios.get(`${API_URL}/664/users/${response.data.user_id}`);
-            setAuthor(authorRes.data);
-            setReview(response.data);
-        } catch (err) {
-            setError(err.message);
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     // 格式化日期
     const formatDate = (dateString) => {

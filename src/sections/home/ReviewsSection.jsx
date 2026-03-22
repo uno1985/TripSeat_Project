@@ -53,7 +53,7 @@ const scrollRevCard = (direction) => {
   if (!card) return;
 
   // 取得當前卡片寬度 + 間距
-  const gap = 28; 
+  const gap = 28;
   const scrollAmount = card.offsetWidth + gap;
 
   container.scrollBy({
@@ -65,7 +65,7 @@ const scrollRevCard = (direction) => {
 function ReviewsSection() {
   return (
     <div className="reviewsSection text-center relative overflow-hidden">
-      
+
       {/* 背景雲朵 */}
       <img src={group125} alt="Background picture" className="rev-bg-pic z-0" />
       <img src={bCloud} alt="Big Cloud" className="bCloud z-0" />
@@ -97,7 +97,7 @@ function ReviewsSection() {
 
         {/* 右箭頭 */}
         <button className="scroll-btn right" onClick={() => scrollRevCard(1)}>
-          <i class="bi bi-chevron-right"></i>
+          <i className="bi bi-chevron-right"></i>
         </button>
 
         {/* 更多評價按鈕 */}

@@ -120,8 +120,10 @@ function HotTripSection() {
           })
         ])
 
-        setPopularTrips(popularRes.data || [])
-        setLatestTrips(latestRes.data || [])
+        // [AI修改開始 2026-03-10] 首頁熱門/最新開團只顯示未刪除且正式公開的旅程
+        setPopularTrips((popularRes.data || []).filter((trip) => !trip.deleted_at && trip.status === 'open'))
+        setLatestTrips((latestRes.data || []).filter((trip) => !trip.deleted_at && trip.status === 'open'))
+        // [AI修改結束 2026-03-10]
       } catch (error) {
         if (error?.name !== 'CanceledError' && error?.code !== 'ERR_CANCELED') {
           setIsError(true)
