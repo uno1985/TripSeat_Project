@@ -44,11 +44,11 @@ const MemberLayout = () => {
                 <Breadcrumb items={breadcrumbItems} />
                 <div className="row">
                     {/* 左側選單：電腦版佔 3 欄，手機版佔全寬 */}
-                    <div className="col-lg-3 col-12 mb-4">
+                    <div className="col-lg-3 mb-4">
                         <MemberSidebar />
                     </div>
                     {/* 右側內容區 */}
-                    <div className="col-lg-9 col-12">
+                    <div className="col-lg-9">
                         <Outlet />
                     </div>
 

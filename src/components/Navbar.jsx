@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useAuth } from "../contexts/AuthContext";
-
+import { Toaster, toast } from 'sonner'
 //導入圖片
 import logo from '../assets/images/logo.svg';
 import LoginModal from '../components/LoginModal';
@@ -89,10 +89,10 @@ function Navbar() {
                 loginModalRef.current.hide();
                 reset();
             } else {
-                console.log(response.message);
+                toast.error(response.message);
             }
         } catch (error) {
-            console.error("登入過程出錯：", error);
+            toast.error("登入出錯：", error);
         }
     }, [login, reset]);
 
@@ -119,6 +119,7 @@ function Navbar() {
 
     return (
         <div className="trip-navbar">
+            <Toaster richColors position="top-center" />
             <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 border-bottom">
                 <div className="container">
                     <Link to='/' className="navbar-brand d-flex align-items-center" onClick={() => closeNavbar()}>

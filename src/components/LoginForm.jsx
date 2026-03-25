@@ -1,6 +1,7 @@
 //導入套件
 import { useForm } from "react-hook-form";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Toaster, toast } from 'sonner'
 
 //導入元件
 import { useAuth } from "../contexts/AuthContext";
@@ -20,15 +21,16 @@ function LoginForm({ onSuccess }) {
                 const origin = location.state?.from?.pathname || "/trips";
                 navigate(origin);
             } else {
-                console.log(response.message);
+                toast.error(response.message);
             }
         } catch (error) {
-            console.error("登入出錯：", error);
+            toast.error("登入出錯：", error);
         }
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-100">
+            <Toaster richColors position="top-center" />
             <div className="mb-4">
                 <label className="form-label fw-bold text-secondary">電子信箱</label>
                 <input

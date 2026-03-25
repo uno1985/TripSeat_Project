@@ -114,12 +114,12 @@ const MemberFavorites = () => {
 
       <div className="row g-4">
         {favorites.length === 0 ? (
-          <div className="col-12">
+          <div >
             <div className="text-center py-4 text-muted">目前還沒有收藏旅程</div>
           </div>
         ) : (
           favorites.map((item) => (
-            <div key={item.favoriteId} className="col-12 col-md-4">
+            <div key={item.favoriteId} className="col-md-4">
               <div className="card">
                 <div className="position-relative">
                   <img src={item.image} className="card-img-top" alt={item.title} />

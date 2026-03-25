@@ -27,7 +27,7 @@ const getStatusMeta = (trip) => {
       className: 'bg-secondary-subtle text-secondary-emphasis',
     }
   }
-  if (trip.status === 'confirmed' || isFull){
+  if (trip.status === 'confirmed' || isFull) {
     return {
       text: '已成團',
       className: 'bg-success-subtle text-success-emphasis',
@@ -110,63 +110,63 @@ const MyGroups = () => {
 
       <div className="row g-4">
         {groups.length === 0 ? (
-          <div className="col-12">
+          <div >
             <div className="text-center py-4 text-muted">
               目前還沒有你建立的揪團
             </div>
           </div>
         ) : (
-        groups.map((group) => (
-          <div key={group.id} className="col-12 col-md-4">
-            <div className="card">
-              {/* 圖片區域 */}
-              <div className='position-relative'>
-                <img
-                  src={group.image}
-                  className="card-img-top"
-                  alt={group.title}
-                />
-                <span className={`position-absolute top-0 start-0 m-3 badge px-2 py-1 fw-normal ${group.statusClass}`}>
-                  {group.status}
-                </span>
-                {group.remaining && (
-                  <span className="position-absolute bottom-0 end-0 m-2 badge bg-white text-danger border border-danger-subtle rounded-pill px-2 py-1 fw-normal">
-                    剩餘 {group.remaining} 個座位
+          groups.map((group) => (
+            <div key={group.id} className="col-md-4">
+              <div className="card">
+                {/* 圖片區域 */}
+                <div className='position-relative'>
+                  <img
+                    src={group.image}
+                    className="card-img-top"
+                    alt={group.title}
+                  />
+                  <span className={`position-absolute top-0 start-0 m-3 badge px-2 py-1 fw-normal ${group.statusClass}`}>
+                    {group.status}
                   </span>
-                )}
-              </div>
-             {/* 內容區域 */}
-              <div className="card-body p-3">
-                <h5 className="card-title h5 text-truncate-2">
-                  {group.title}
-                </h5>
-                <div className="d-flex align-items-center trip-text-s my-3">
-                  <img src={time} className="me-2 icon-time" alt="時間icon" />
-                  {group.time}
+                  {group.remaining && (
+                    <span className="position-absolute bottom-0 end-0 m-2 badge bg-white text-danger border border-danger-subtle rounded-pill px-2 py-1 fw-normal">
+                      剩餘 {group.remaining} 個座位
+                    </span>
+                  )}
                 </div>
-                <div className="d-flex align-items-center small">
-                  {/* 模擬頭像疊加 */}
-                  <div className="avatar-group d-inline-flex flex-row-reverse align-items-center me-2">
-                    {/* 注意：這裡為了讓後面的蓋住前面的，我們在結構上可以維持順序，但用 CSS 控制重疊 */}
-                    <img src="https://i.pravatar.cc/30?u=3" className="avatar-item" alt="user" />
-                    <img src="https://i.pravatar.cc/30?u=2" className="avatar-item" alt="user" />
-                    <img src="https://i.pravatar.cc/30?u=1" className="avatar-item" alt="user" />
+                {/* 內容區域 */}
+                <div className="card-body p-3">
+                  <h5 className="card-title h5 text-truncate-2">
+                    {group.title}
+                  </h5>
+                  <div className="d-flex align-items-center trip-text-s my-3">
+                    <img src={time} className="me-2 icon-time" alt="時間icon" />
+                    {group.time}
                   </div>
-                  <span className="text-muted">
-                    已有 <span className="fw-bold text-dark">{group.participants}</span> 位乘客加入
-                  </span>
+                  <div className="d-flex align-items-center small">
+                    {/* 模擬頭像疊加 */}
+                    <div className="avatar-group d-inline-flex flex-row-reverse align-items-center me-2">
+                      {/* 注意：這裡為了讓後面的蓋住前面的，我們在結構上可以維持順序，但用 CSS 控制重疊 */}
+                      <img src="https://i.pravatar.cc/30?u=3" className="avatar-item" alt="user" />
+                      <img src="https://i.pravatar.cc/30?u=2" className="avatar-item" alt="user" />
+                      <img src="https://i.pravatar.cc/30?u=1" className="avatar-item" alt="user" />
+                    </div>
+                    <span className="text-muted">
+                      已有 <span className="fw-bold text-dark">{group.participants}</span> 位乘客加入
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* 按鈕區域 */}
-              <div className="card-footer bg-white border-0 p-0">
-                <Link to={`/trips/${group.id}`} className="btn btn-warning w-100 py-2 fw-bold text-white rounded-bottom">
-                管理行程
-              </Link>
+                {/* 按鈕區域 */}
+                <div className="card-footer bg-white border-0 p-0">
+                  <Link to={`/trips/${group.id}`} className="btn btn-warning w-100 py-2 fw-bold text-white rounded-bottom">
+                    管理行程
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))
+          ))
         )}
       </div>
     </div>

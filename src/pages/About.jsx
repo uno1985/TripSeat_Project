@@ -298,7 +298,7 @@ const About = () => {
                             <div className="about-contact-details">
                                 <div className="about-contact-row">
                                     <i className="bi bi-telephone-fill"></i>
-                                    <span>07-1314-1688</span>
+                                    <a href="tel:+886-7-1314-1688">07-1314-1688</a>
                                 </div>
                                 <div className="about-contact-row">
                                     <i className="bi bi-geo-alt-fill"></i>
@@ -306,7 +306,7 @@ const About = () => {
                                 </div>
                                 <div className="about-contact-row">
                                     <i className="bi bi-envelope-fill"></i>
-                                    <span>hello@tripseat.com</span>
+                                    <a href="mailto:hello@tripseat.com">hello@tripseat.com</a>
                                 </div>
                                 <div className="about-contact-row">
                                     <i className="bi bi-clock-fill"></i>

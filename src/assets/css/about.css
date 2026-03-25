@@ -1017,3 +1017,11 @@
     align-items: flex-start;
   }
 }
+
+.about-contact-row a {
+  color: inherit;
+  text-decoration: none;
+}
+.about-contact-row a:hover {
+  text-decoration: underline;
+}

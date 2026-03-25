@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-
+import { Toaster, toast } from 'sonner'
 //導入元件
 import Breadcrumb from '../components/Breadcrumb';
 
@@ -35,7 +35,7 @@ function ThoughtsDetail() {
                 setReview(response.data);
             } catch (err) {
                 setError(err.message);
-                console.error(err);
+                toast.error(err);
             } finally {
                 setLoading(false);
             }
@@ -123,7 +123,7 @@ function ThoughtsDetail() {
     return (
         <div className="thoughts-detail-page">
             <div className="container pt-5">
-
+                <Toaster richColors position="top-center" />
                 {/* Breadcrumb */}
                 <Breadcrumb items={[
                     { label: '首頁', path: '/' },

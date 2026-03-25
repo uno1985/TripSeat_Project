@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Toaster, toast } from 'sonner'
 
 //導入元件
 import Breadcrumb from '../components/Breadcrumb';
@@ -32,7 +33,7 @@ function Thoughts() {
             setReviews(activeReviews);
         } catch (err) {
             setError(err.message);
-            console.error(err);
+            toast.error(err);
         } finally {
             setLoading(false);
         }
@@ -77,6 +78,7 @@ function Thoughts() {
     if (error) {
         return (
             <div className="thoughts-page">
+                <Toaster richColors position="top-center" />
                 <div className="container py-5 text-center">
                     <div className="alert alert-warning" role="alert">
                         <h4 className="alert-heading">載入失敗</h4>

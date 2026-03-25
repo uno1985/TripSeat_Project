@@ -150,7 +150,7 @@ function HotTripSection() {
       <div className="container-xl">
         <div className="main">
           <div className="row">
-            <div className="col-12 col-md-6 mb-4">
+            <div className="col-md-6 mb-4">
               <HotTripList
                 title="熱門開團"
                 trips={popularTrips}
@@ -159,7 +159,7 @@ function HotTripSection() {
               />
             </div>
 
-            <div className="col-12 col-md-6 mb-4">
+            <div className="col-md-6 mb-4">
               <HotTripList
                 title="最新開團"
                 trips={latestTrips}

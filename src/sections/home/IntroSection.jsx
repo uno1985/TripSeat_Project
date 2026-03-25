@@ -44,12 +44,12 @@ function IntroSection() {
 
     return (
         <div className="introSection position-relative">
-            <img className="position-absolute bigCloud" src={BigCloud}/>
-            <img className="position-absolute smallCloud" src={SmallCloud}/>
+            <img className="position-absolute bigCloud" src={BigCloud} alt="" />
+            <img className="position-absolute smallCloud" src={SmallCloud} alt="" />
             <div className="container">
                 <div className="main row gx-5 align-items-start">
                     {
-                        introData.map((data) => <IntroCard key={data.step} data={data}/>)
+                        introData.map((data) => <IntroCard key={data.step} data={data} />)
                     }
                 </div>
             </div>
@@ -61,9 +61,9 @@ function IntroSection() {
 
 export default IntroSection
 
-function IntroCard({data}) {
+function IntroCard({ data }) {
     return (
-        <div className="introCard col-12 col-md-3 d-flex flex-column justify-content-center align-items-center">
+        <div className="introCard col-md-3 d-flex flex-column justify-content-center align-items-center">
             <div className="stepImg-box"><img src={data.stepImg} className="w-100" alt={`步驟${data.step}`} /></div>
             <div className="mainImg-box"><img src={data.mainImg} className="w-100" alt={data.title} /></div>
             <div className="text-box">

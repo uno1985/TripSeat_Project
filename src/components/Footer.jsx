@@ -14,7 +14,7 @@ function Footer() {
             <img className="pb-12 footerLogo" src={logo} alt="TripSeat Logo" />
             <p className="fz-20">TripSeat | 共享旅程</p>
             <p className="fz-16 fw-400">
-              電話<span className="ps-12">07-1314-1688</span>
+              電話<span className="ps-12"><a href="tel:+886-7-1314-1688">07-1314-1688</a></span>
             </p>
             <p className="fz-16 fw-400">
               地址<span className="ps-12">高雄市六角路168號</span>

@@ -14,20 +14,20 @@ const allRegions = Object.values(Regions).flat();
 function SearchSection() {
     return (
         <>
-        <div className="searchSection position-relative">
-            <div className="container">
-                <div className="main">
-                    <h2 className="h2 text-center"><span>從這裡，</span><span>開始你的旅程</span></h2>
-                    <SearchBar />
-                    <div className="image-box d-flex justify-content-between align-items-end">
-                        <div><img src={Image1157} className="img-fluid" /></div>
-                        <div><img src={Image1156} className="img-fluid" /></div>
-                        <div><img src={Image1775} className="img-fluid" /></div>
-                        <div><img src={Image996} className="img-fluid" /></div>
+            <div className="searchSection position-relative">
+                <div className="container">
+                    <div className="main">
+                        <h2 className="h2 text-center"><span>從這裡，</span><span>開始你的旅程</span></h2>
+                        <SearchBar />
+                        <div className="image-box d-flex justify-content-between align-items-end">
+                            <div><img src={Image1157} className="img-fluid" alt="旅遊風景" /></div>
+                            <div><img src={Image1156} className="img-fluid" alt="旅遊風景" /></div>
+                            <div><img src={Image1775} className="img-fluid" alt="旅遊風景" /></div>
+                            <div><img src={Image996} className="img-fluid" alt="旅遊風景" /></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }
@@ -56,25 +56,25 @@ function SearchBar() {
                 value={keyword}
                 onChange={(e) => {
                     setKeyword(e.target.value);
-                }}/>
+                }} />
         </div>
         <div className="searchBtn-box flex-shrink-0" onClick={() => {
-                const params = new URLSearchParams();
+            const params = new URLSearchParams();
 
-                if (keyword) {
-                    params.set('q', keyword);
-                }
-                if (region) {
-                    params.set('location_like', region);
-                }
+            if (keyword) {
+                params.set('q', keyword);
+            }
+            if (region) {
+                params.set('location_like', region);
+            }
 
-                const queryString = params.toString();
-                const sortString= 'sort=views&_order=desc'
-                const url = `/trips?`+ (queryString ? `${queryString}&` : '') + sortString;
+            const queryString = params.toString();
+            const sortString = 'sort=views&_order=desc'
+            const url = `/trips?` + (queryString ? `${queryString}&` : '') + sortString;
 
-                navigate(url);
-            }}>
-            <img src={SearchBtn} className="w-100"/>
+            navigate(url);
+        }}>
+            <img src={SearchBtn} className="w-100" alt="搜尋按鈕" />
         </div>
     </div>
 }
