@@ -11,104 +11,145 @@ import homeHero04 from '../../assets/images/home-hero-04.PNG';
 import '../../assets/css/heroSection.css';
 
 function HeroSection() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [displayText, setDisplayText] = useState({ t1: "", t2: "" });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [displayText, setDisplayText] = useState({ t1: '', t2: '' });
 
-    // 1. 將靜態資料放在 useMemo 中，避免每次 render 都重新產生新物件
-    const heroData = useMemo(() => [
-        { img: homeHero01, title1: "不知道去哪？", title2: "跟著旅程走就對了", sub: "今天想出門？看看誰正在出發", btn: "探索旅程", to: "/trips" },
-        { img: homeHero02, title1: "每段旅程，", title2: "都值得遇見新的人", sub: "讓陌生變成熟悉，讓旅程變成故事", btn: "加入旅程", to: "/trips" },
-        { img: homeHero04, title1: "把空位留給", title2: "懂得欣賞風景的人", sub: "一個座位，換一段新的回憶", btn: "發起旅程", to: "/member/create-group" }
-    ], []);
+  // 1. 將靜態資料放在 useMemo 中，避免每次 render 都重新產生新物件
+  const heroData = useMemo(
+    () => [
+      {
+        img: homeHero01,
+        title1: '不知道去哪？',
+        title2: '跟著旅程走就對了',
+        sub: '今天想出門？看看誰正在出發',
+        btn: '探索旅程',
+        to: '/trips',
+      },
+      {
+        img: homeHero02,
+        title1: '每段旅程，',
+        title2: '都值得遇見新的人',
+        sub: '讓陌生變成熟悉，讓旅程變成故事',
+        btn: '加入旅程',
+        to: '/trips',
+      },
+      {
+        img: homeHero04,
+        title1: '把空位留給',
+        title2: '懂得欣賞風景的人',
+        sub: '一個座位，換一段新的回憶',
+        btn: '發起旅程',
+        to: '/member/create-group',
+      },
+    ],
+    []
+  );
 
-    // 2. 使用 useCallback 包裹函式，並將它加入 useEffect 的依賴中
-    const flipText = useCallback((target1, target2) => {
-        const chars = "！？，。不知道去哪跟著旅程走就對了每段值得遇見新的人把空位留給欣賞風景";
-        let iteration = 0;
+  // 2. 使用 useCallback 包裹函式，並將它加入 useEffect 的依賴中
+  const flipText = useCallback((target1, target2) => {
+    const chars = '！？，。不知道去哪跟著旅程走就對了每段值得遇見新的人把空位留給欣賞風景';
+    let iteration = 0;
 
-        const interval = setInterval(() => {
-            setDisplayText({
-                t1: target1.split("").map((l, i) => i < iteration ? target1[i] : chars[Math.floor(Math.random() * chars.length)]).join(""),
-                t2: target2.split("").map((l, i) => i < iteration ? target2[i] : chars[Math.floor(Math.random() * chars.length)]).join("")
-            });
+    const interval = setInterval(() => {
+      setDisplayText({
+        t1: target1
+          .split('')
+          .map((l, i) =>
+            i < iteration ? target1[i] : chars[Math.floor(Math.random() * chars.length)]
+          )
+          .join(''),
+        t2: target2
+          .split('')
+          .map((l, i) =>
+            i < iteration ? target2[i] : chars[Math.floor(Math.random() * chars.length)]
+          )
+          .join(''),
+      });
 
-            if (iteration >= Math.max(target1.length, target2.length)) {
-                clearInterval(interval);
-            }
-            iteration += 1 / 2;
-        }, 50);
+      if (iteration >= Math.max(target1.length, target2.length)) {
+        clearInterval(interval);
+      }
+      iteration += 1 / 2;
+    }, 50);
 
-        return interval; // 回傳 interval ID 以便清除
-    }, []);
+    return interval; // 回傳 interval ID 以便清除
+  }, []);
 
-    useEffect(() => {
-        // 觸發翻牌效果
-        const flipInterval = flipText(heroData[currentIndex].title1, heroData[currentIndex].title2);
+  useEffect(() => {
+    // 觸發翻牌效果
+    const flipInterval = flipText(heroData[currentIndex].title1, heroData[currentIndex].title2);
 
-        // 自動輪播計時器
-        const autoPlayTimer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % heroData.length);
-        }, 8000);
+    // 自動輪播計時器
+    const autoPlayTimer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroData.length);
+    }, 8000);
 
-        // 清除所有的 Timer
-        return () => {
-            clearInterval(flipInterval);
-            clearInterval(autoPlayTimer);
-        };
-    }, [currentIndex, flipText, heroData]); // 現在所有的依賴項都已正確處理
+    // 清除所有的 Timer
+    return () => {
+      clearInterval(flipInterval);
+      clearInterval(autoPlayTimer);
+    };
+  }, [currentIndex, flipText, heroData]); // 現在所有的依賴項都已正確處理
 
-    return (
-        <div className="heroSection">
-            <div className="hero-wrapper">
-                <div className="cloud-decorations d-none d-lg-block">
-                    <img src={smailCloud} className="cloud cloud-a" alt="" />
-                    <img src={bigCloud} className="cloud cloud-b" alt="" />
-                    <img src={smailCloud} className="cloud cloud-c" alt="" />
-                    <img src={bigCloud} className="cloud cloud-d" alt="" />
-                </div>
-
-                <div className="container hero-content-box">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6 text-center text-lg-start">
-                            <h1 className="hero-title">
-                                <span className="line-1">{displayText.t1}</span>
-                                <span className="line-2">{displayText.t2}</span>
-                            </h1>
-
-                            <div className="hero-subtitle-container">
-                                <p className="hero-subtitle typewriter-animation trip-text-l" key={`sub-${currentIndex}`}>
-                                    {heroData[currentIndex].sub}
-                                </p>
-                            </div>
-
-                            <Link className="btn trip-btn-primary trip-btn-l btn-fade-animation" key={`btn-${currentIndex}`} to={heroData[currentIndex].to}>
-                                {heroData[currentIndex].btn}
-                            </Link>
-                        </div>
-
-                        <div className="col-lg-6 text-center mt-5 mt-lg-0">
-                            <img
-                                key={`img-${currentIndex}`}
-                                src={heroData[currentIndex].img}
-                                className="img-fluid hero-img-animation"
-                                alt="TripSeat Hero"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="hero-dots text-center">
-                        {heroData.map((_, index) => (
-                            <span
-                                key={index}
-                                className={`dot ${index === currentIndex ? 'active' : ''}`}
-                                onClick={() => setCurrentIndex(index)}
-                            ></span>
-                        ))}
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="heroSection">
+      <div className="hero-wrapper">
+        <div className="cloud-decorations d-none d-lg-block">
+          <img src={smailCloud} className="cloud cloud-a" alt="" />
+          <img src={bigCloud} className="cloud cloud-b" alt="" />
+          <img src={smailCloud} className="cloud cloud-c" alt="" />
+          <img src={bigCloud} className="cloud cloud-d" alt="" />
         </div>
-    );
+
+        <div className="container hero-content-box">
+          <div className="row align-items-center">
+            <div className="col-lg-6 text-center text-lg-start">
+              <h1 className="hero-title">
+                <span className="line-1">{displayText.t1}</span>
+                <span className="line-2">{displayText.t2}</span>
+              </h1>
+
+              <div className="hero-subtitle-container">
+                <p
+                  className="hero-subtitle typewriter-animation trip-text-l"
+                  key={`sub-${currentIndex}`}
+                >
+                  {heroData[currentIndex].sub}
+                </p>
+              </div>
+
+              <Link
+                className="btn trip-btn-primary trip-btn-l btn-fade-animation"
+                key={`btn-${currentIndex}`}
+                to={heroData[currentIndex].to}
+              >
+                {heroData[currentIndex].btn}
+              </Link>
+            </div>
+
+            <div className="col-lg-6 text-center mt-5 mt-lg-0">
+              <img
+                key={`img-${currentIndex}`}
+                src={heroData[currentIndex].img}
+                className="img-fluid hero-img-animation"
+                alt="TripSeat Hero"
+              />
+            </div>
+          </div>
+
+          <div className="hero-dots text-center">
+            {heroData.map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${index === currentIndex ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+              ></span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default HeroSection;

@@ -123,7 +123,9 @@ export default function MyJoinedTripsV7() {
             const review = reviewMap.get(trip.id);
             const statusType = getTripStatus(trip);
             const story = review?.content || null;
-            const hook = trip.vibe_text || (trip.description ? trip.description.split('\n')[0] : '期待你的旅程故事。');
+            const hook =
+              trip.vibe_text ||
+              (trip.description ? trip.description.split('\n')[0] : '期待你的旅程故事。');
 
             return {
               id: trip.id,
@@ -137,13 +139,17 @@ export default function MyJoinedTripsV7() {
               host: trip.owner_name || '團主',
               participants: trip.current_participants || 0,
               maxPeople: trip.max_people || 0,
-              image: trip.image_url || 'https://images.unsplash.com/photo-1464822759844-d150ad6d1b2f?q=80&w=1200&fit=crop',
+              image:
+                trip.image_url ||
+                'https://images.unsplash.com/photo-1464822759844-d150ad6d1b2f?q=80&w=1200&fit=crop',
               hook,
               tags: trip.tags || [],
               story,
             };
           })
-          .sort((a, b) => String(b.participantCreatedAt).localeCompare(String(a.participantCreatedAt)));
+          .sort((a, b) =>
+            String(b.participantCreatedAt).localeCompare(String(a.participantCreatedAt))
+          );
 
         setTrips(rows);
       } catch (err) {
@@ -265,7 +271,9 @@ export default function MyJoinedTripsV7() {
           <h2 className="mjv7-title">我的參加行程</h2>
           <p className="mjv7-sub">你的旅程節奏與故事。</p>
         </div>
-        <Link to="/member/trips" className="mjv7-head-link">展開完整行程</Link>
+        <Link to="/member/trips" className="mjv7-head-link">
+          展開完整行程
+        </Link>
       </header>
 
       <div className="mjv7-status-row" role="tablist" aria-label="狀態切換">
@@ -290,20 +298,34 @@ export default function MyJoinedTripsV7() {
           <article className="mjv7-focus" style={{ backgroundImage: `url(${focusTrip.image})` }}>
             <div className="mjv7-overlay" />
             <div className="mjv7-focus-content">
-              <span className={`mjv7-badge ${focusTrip.status}`}>{STATUS_META[focusTrip.status]}</span>
+              <span className={`mjv7-badge ${focusTrip.status}`}>
+                {STATUS_META[focusTrip.status]}
+              </span>
               <h3>{focusTrip.title}</h3>
               <p>{focusTrip.hook}</p>
               <div className="mjv7-meta">
-                <span><i className="bi bi-calendar3" /> {focusTrip.date}</span>
-                <span><i className="bi bi-geo-alt" /> {focusTrip.location}</span>
-                <span><i className="bi bi-person" /> 主揪：{focusTrip.host}</span>
+                <span>
+                  <i className="bi bi-calendar3" /> {focusTrip.date}
+                </span>
+                <span>
+                  <i className="bi bi-geo-alt" /> {focusTrip.location}
+                </span>
+                <span>
+                  <i className="bi bi-person" /> 主揪：{focusTrip.host}
+                </span>
               </div>
               <div className="mjv7-tags">
-                {focusTrip.tags.map((tag) => <span key={tag}>#{tag}</span>)}
+                {focusTrip.tags.map((tag) => (
+                  <span key={tag}>#{tag}</span>
+                ))}
               </div>
               <div className="mjv7-focus-actions">
-                <Link to={`/trips/${focusTrip.id}`} className="focus-btn solid">查看細節</Link>
-                <button type="button" className="focus-btn ghost">分享行程</button>
+                <Link to={`/trips/${focusTrip.id}`} className="focus-btn solid">
+                  查看細節
+                </Link>
+                <button type="button" className="focus-btn ghost">
+                  分享行程
+                </button>
               </div>
             </div>
           </article>
@@ -318,16 +340,22 @@ export default function MyJoinedTripsV7() {
                     <button type="button" onClick={() => setFocusId(trip.id)}>
                       <div className="mjv7-rail-top">
                         <strong>{trip.title}</strong>
-                        <span className={`mjv7-apply-badge mjv7-apply-badge-sm ${getApplicationMeta(trip.applicationStatus).className}`}>
+                        <span
+                          className={`mjv7-apply-badge mjv7-apply-badge-sm ${getApplicationMeta(trip.applicationStatus).className}`}
+                        >
                           {getApplicationMeta(trip.applicationStatus).text}
                         </span>
                       </div>
-                      <div className="mjv7-rail-mid">{trip.date} ・ {trip.location}</div>
+                      <div className="mjv7-rail-mid">
+                        {trip.date} ・ {trip.location}
+                      </div>
                       <div className="mjv7-rail-bottom">
                         <div className="mjv7-capacity-track">
                           <span style={{ width: `${ratio(trip.participants, trip.maxPeople)}%` }} />
                         </div>
-                        <small>{trip.participants}/{trip.maxPeople} 人</small>
+                        <small>
+                          {trip.participants}/{trip.maxPeople} 人
+                        </small>
                       </div>
                     </button>
                   </li>
@@ -354,7 +382,9 @@ export default function MyJoinedTripsV7() {
                 <h5>{trip.title}</h5>
                 <p>{trip.story || '這趟還沒有心得，等你補上最真實的感受。'}</p>
                 <div className="wall-meta">
-                  <span><i className="bi bi-geo-alt" /> {trip.location}</span>
+                  <span>
+                    <i className="bi bi-geo-alt" /> {trip.location}
+                  </span>
                   <button type="button" onClick={() => openEditor(trip)}>
                     {trip.story ? '編輯心得' : '新增心得'}
                   </button>
@@ -372,7 +402,12 @@ export default function MyJoinedTripsV7() {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">編輯心得</h5>
-                  <button type="button" className="btn-close" onClick={closeEditor} disabled={saving}></button>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={closeEditor}
+                    disabled={saving}
+                  ></button>
                 </div>
                 <div className="modal-body">
                   {modalError && <div className="alert alert-warning py-2">{modalError}</div>}
@@ -386,10 +421,20 @@ export default function MyJoinedTripsV7() {
                   />
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-outline-secondary" onClick={closeEditor} disabled={saving}>
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    onClick={closeEditor}
+                    disabled={saving}
+                  >
                     取消
                   </button>
-                  <button type="button" className="btn btn-primary" onClick={handleSaveReview} disabled={saving}>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleSaveReview}
+                    disabled={saving}
+                  >
                     {saving ? '儲存中...' : '儲存心得'}
                   </button>
                 </div>
