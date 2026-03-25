@@ -48,7 +48,7 @@
   }
 
   .hero-title {
-    font-family: "Noto Sans TC", sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
     font-weight: 700;
     font-size: 64px; /* */
     line-height: 1.2;
@@ -62,10 +62,7 @@
   .hero-title .line-1 {
     position: relative;
     display: inline-block;
-    background-image: linear-gradient(
-      var(--trip-color-primary-800),
-      var(--trip-color-primary-800)
-    );
+    background-image: linear-gradient(var(--trip-color-primary-800), var(--trip-color-primary-800));
     background-repeat: no-repeat;
     background-size: 100% 15px;
     background-position: 0 85%;

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 :root {
   /* Primary Color */
   --trip-color-primary-100: #fffaf3;
@@ -22,7 +22,7 @@
   --trip-color-status-danger: #ff6b6b;
 
   /* --- Typography (Base Settings) --- */
-  --trip-font-family: "Noto Sans TC", sans-serif;
+  --trip-font-family: 'Noto Sans TC', sans-serif;
   --trip-font-weight-bold: 700;
   --trip-font-weight-regular: 400;
   --trip-line-height-tight: 1.2; /* 120% */

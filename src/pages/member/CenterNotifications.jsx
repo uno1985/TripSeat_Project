@@ -35,7 +35,9 @@ const Notifications = () => {
 
       try {
         const [notifRes, myTripsRes, reviewsRes, participantsRes, usersRes] = await Promise.all([
-          axios.get(`${API_URL}/664/notifications?user_id=${user.id}&_sort=created_at&_order=desc&_limit=3`),
+          axios.get(
+            `${API_URL}/664/notifications?user_id=${user.id}&_sort=created_at&_order=desc&_limit=3`
+          ),
           axios.get(`${API_URL}/664/trips?owner_id=${user.id}`),
           axios.get(`${API_URL}/664/reviews?_sort=created_at&_order=desc`),
           axios.get(`${API_URL}/664/participants?_sort=created_at&_order=desc`),
@@ -67,7 +69,13 @@ const Notifications = () => {
         const userMap = new Map((usersRes.data || []).map((item) => [item.id, item]));
 
         const applyFallback = (participantsRes.data || [])
-          .filter((row) => !row.deleted_at && row.role === 'member' && row.user_id !== user.id && myTripMap.has(row.trip_id))
+          .filter(
+            (row) =>
+              !row.deleted_at &&
+              row.role === 'member' &&
+              row.user_id !== user.id &&
+              myTripMap.has(row.trip_id)
+          )
           .map((row) => {
             const actor = userMap.get(row.user_id);
             const trip = myTripMap.get(row.trip_id);
@@ -86,7 +94,10 @@ const Notifications = () => {
           });
 
         const reviewFallback = (reviewsRes.data || [])
-          .filter((review) => !review.deleted_at && myTripMap.has(review.trip_id) && review.user_id !== user.id)
+          .filter(
+            (review) =>
+              !review.deleted_at && myTripMap.has(review.trip_id) && review.user_id !== user.id
+          )
           .map((review) => ({
             id: `review-${review.id}`,
             typeText: TYPE_META.review.text,
@@ -122,7 +133,9 @@ const Notifications = () => {
     <div className="notifications-section mb-4">
       <div className="d-flex justify-content-between align-items-center mb-4 mx-2">
         <h3 className="h3 mb-0">訊息通知</h3>
-        <Link to="/member/notifications" className="trip-text-m link-m link-underline-gray-600 ">查看更多</Link>
+        <Link to="/member/notifications" className="trip-text-m link-m link-underline-gray-600 ">
+          查看更多
+        </Link>
       </div>
 
       <div className="list-group list-group-flush bg-white shadow-sm rounded-4 p-4">
@@ -142,7 +155,10 @@ const Notifications = () => {
                 <p className="mb-0 trip-text-m">
                   {/* 會員名稱連結 */}
                   {note.user && (
-                    <Link to={`/member/${note.user.id}`} className="fw-bold text-dark text-decoration-none mx-1">
+                    <Link
+                      to={`/member/${note.user.id}`}
+                      className="fw-bold text-dark text-decoration-none mx-1"
+                    >
                       {note.user.name}
                     </Link>
                   )}
@@ -150,10 +166,12 @@ const Notifications = () => {
                   {/* 如果有後段文字 */}
                   {note.content}
 
-
                   {/* 團名連結 */}
                   {note.trip && (
-                    <Link to={`/trips/${note.trip.id}`} className="fw-bold text-dark text-decoration-none mx-1">
+                    <Link
+                      to={`/trips/${note.trip.id}`}
+                      className="fw-bold text-dark text-decoration-none mx-1"
+                    >
                       {note.trip.name}
                     </Link>
                   )}
@@ -163,7 +181,10 @@ const Notifications = () => {
 
                   {/* 審核連結 */}
                   {note.linkText && note.actionLink && (
-                    <Link to={note.actionLink} className="ms-1 fw-bold text-dark text-decoration-underline">
+                    <Link
+                      to={note.actionLink}
+                      className="ms-1 fw-bold text-dark text-decoration-underline"
+                    >
                       {note.linkText}
                     </Link>
                   )}
