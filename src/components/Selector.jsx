@@ -6,33 +6,37 @@
 // className: string
 // onChange: callback
 function Selector({
-    data=[],
-    defaultValue='',
-    placeholder='',
-    className='',
-    onChange=() => {},
-    ...props}) {
-    return (
-        <>
-        <select
-            className={`form-select ${className}`}
-            aria-label=""
-            defaultValue={defaultValue}
-            name={props.name}
-            onChange={onChange}>
-            {
-                placeholder
-                ? <option value={"placeholder"} key={"placeholder"}>{placeholder}</option>
-                : null
-            }
-            {
-                data.map((opt) => <option value={opt.value} key={opt.value}>{opt.text}</option>)
-            }
-        </select>
-        </>
-    );
+  data = [],
+  defaultValue = '',
+  placeholder = '',
+  className = '',
+  onChange = () => {},
+  ...props
+}) {
+  return (
+    <>
+      <select
+        className={`form-select ${className}`}
+        aria-label=""
+        defaultValue={defaultValue}
+        name={props.name}
+        onChange={onChange}
+      >
+        {placeholder ? (
+          <option value={'placeholder'} key={'placeholder'}>
+            {placeholder}
+          </option>
+        ) : null}
+        {data.map((opt) => (
+          <option value={opt.value} key={opt.value}>
+            {opt.text}
+          </option>
+        ))}
+      </select>
+    </>
+  );
 }
-export default Selector
+export default Selector;
 
 // Selector.propTypes = {
 //     data: PropTypes.arrayOf(

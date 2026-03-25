@@ -1,5 +1,9 @@
 ﻿.mjv7 {
-  background: linear-gradient(160deg, var(--trip-color-white) 0%, var(--trip-color-primary-100) 100%);
+  background: linear-gradient(
+    160deg,
+    var(--trip-color-white) 0%,
+    var(--trip-color-primary-100) 100%
+  );
   border: 1px solid var(--trip-color-primary-200);
   border-radius: 26px;
   padding: 24px;
@@ -169,9 +173,18 @@
   backdrop-filter: blur(8px);
 }
 
-.mjv7-badge.upcoming { background: rgba(79, 207, 124, 0.9); color: #0d3b1c; }
-.mjv7-badge.open { background: rgba(255, 183, 76, 0.94); color: #4f2e00; }
-.mjv7-badge.ended { background: rgba(212, 212, 212, 0.92); color: #333; }
+.mjv7-badge.upcoming {
+  background: rgba(79, 207, 124, 0.9);
+  color: #0d3b1c;
+}
+.mjv7-badge.open {
+  background: rgba(255, 183, 76, 0.94);
+  color: #4f2e00;
+}
+.mjv7-badge.ended {
+  background: rgba(212, 212, 212, 0.92);
+  color: #333;
+}
 
 .mjv7-apply-badge {
   align-self: flex-start;

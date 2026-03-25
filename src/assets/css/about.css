@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&fit=crop");
+  background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&fit=crop');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -234,11 +234,7 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--trip-color-primary-600),
-    var(--trip-color-primary-800)
-  );
+  background: linear-gradient(135deg, var(--trip-color-primary-600), var(--trip-color-primary-800));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -322,7 +318,7 @@
 }
 
 .about-stats::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -80px;
   right: -80px;
@@ -333,7 +329,7 @@
 }
 
 .about-stats::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -60px;
   left: -60px;
@@ -638,28 +634,20 @@
 /* ========== 7. 聯絡 + CTA ========== */
 .about-contact {
   padding: 120px 0;
-  background: linear-gradient(
-    160deg,
-    var(--trip-color-gray-1000) 0%,
-    #1a1a2e 100%
-  );
+  background: linear-gradient(160deg, var(--trip-color-gray-1000) 0%, #1a1a2e 100%);
   position: relative;
   overflow: hidden;
 }
 
 .about-contact::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -200px;
   right: -200px;
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 183, 76, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(255, 183, 76, 0.12) 0%, transparent 70%);
 }
 
 .about-contact-grid {
@@ -742,7 +730,7 @@
 }
 
 .about-cta-card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -60px;
   right: -60px;
@@ -756,11 +744,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--trip-color-primary-600),
-    var(--trip-color-primary-800)
-  );
+  background: linear-gradient(135deg, var(--trip-color-primary-600), var(--trip-color-primary-800));
   display: flex;
   align-items: center;
   justify-content: center;

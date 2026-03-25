@@ -1,86 +1,88 @@
 /* In multiSelector.css */
 
 .MultiSelectTrigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    min-height: 48px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #111827;
-    background-color: #fff;
-    border: 1px solid #d1d5db;
-    cursor: pointer;
-    text-align: left;
-    border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #111827;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 4px;
 }
 
 .MultiSelectTrigger:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    border-color: #2563eb;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-color: #2563eb;
 }
 
 .MultiSelectTrigger span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .MultiSelectContent {
-    background-color: white;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    border: 1px solid #E5E7EB;
-    min-width: var(--radix-popover-trigger-width);
-    z-index: 50;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid #e5e7eb;
+  min-width: var(--radix-popover-trigger-width);
+  z-index: 50;
 }
 
 /* Updated for Checkbox */
 .MultiSelectItem {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Space between checkbox and label */
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    outline: none;
-    user-select: none;
-    font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between checkbox and label */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  font-size: 1rem;
 }
 
 .MultiSelectItem:hover {
-    background-color: #f3f4f6;
+  background-color: #f3f4f6;
 }
 
 .MultiSelectCheckbox {
-    all: unset; /* Reset button styles */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    border: 1px solid #9ca3af; /* Gray border */
-    background-color: white;
-    flex-shrink: 0; /* Prevent checkbox from shrinking */
+  all: unset; /* Reset button styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #9ca3af; /* Gray border */
+  background-color: white;
+  flex-shrink: 0; /* Prevent checkbox from shrinking */
 }
 
 .MultiSelectCheckbox[data-state='checked'] {
-    background-color: #E78F0C; /* Orange background when checked */
-    border-color: #E78F0C;
+  background-color: #e78f0c; /* Orange background when checked */
+  border-color: #e78f0c;
 }
 
 .MultiSelectCheckboxIndicator {
-    color: white; /* White checkmark */
+  color: white; /* White checkmark */
 }
 
 .MultiSelectLabel {
-    color: #111827;
-    flex-grow: 1;
-    cursor: pointer; /* So clicking label also works */
-    font-weight: 100;
+  color: #111827;
+  flex-grow: 1;
+  cursor: pointer; /* So clicking label also works */
+  font-weight: 100;
 }

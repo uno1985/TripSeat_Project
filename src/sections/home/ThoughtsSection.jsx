@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-import '../../assets/css/thoughtsSection.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import fallbackAvatar from '../../assets/images/avator01.png'
+import '../../assets/css/thoughtsSection.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import fallbackAvatar from '../../assets/images/avator01.png';
 
-const API_URL = import.meta.env.VITE_API_BASE
-const THOUGHTS_LIMIT = 4
+const API_URL = import.meta.env.VITE_API_BASE;
+const THOUGHTS_LIMIT = 4;
 
 const truncateText = (text, max = 90) => {
-  if (!text) return ''
-  return text.length > max ? `${text.slice(0, max)}...` : text
-}
+  if (!text) return '';
+  return text.length > max ? `${text.slice(0, max)}...` : text;
+};
 
 const ExperienceCard = ({ data }) => (
   <div className="card h-100 border-0 shadow-sm">
@@ -35,26 +35,29 @@ const ExperienceCard = ({ data }) => (
       <p className="trip-text-m mb-2 trip-text-gray-400">{data.trip_location || '地點待補'}</p>
       <p className="card-text trip-text-m mb-3 trip-text-gray-800">{truncateText(data.content)}</p>
       <div className="text-end">
-        <Link to={`/thoughts/${data.id}`} className="btn link-m link-underline trip-text-primary-1000">
+        <Link
+          to={`/thoughts/${data.id}`}
+          className="btn link-m link-underline trip-text-primary-1000"
+        >
           查看更多
         </Link>
       </div>
     </div>
   </div>
-)
+);
 
 function ThoughtsSection() {
-  const [thoughts, setThoughts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
+  const [thoughts, setThoughts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController();
 
     const fetchThoughts = async () => {
       try {
-        setIsLoading(true)
-        setIsError(false)
+        setIsLoading(true);
+        setIsError(false);
 
         const res = await axios.get(`${API_URL}/664/reviews`, {
           signal: controller.signal,
@@ -62,26 +65,26 @@ function ThoughtsSection() {
             is_public: true,
             _sort: 'created_at',
             _order: 'desc',
-            _limit: THOUGHTS_LIMIT
-          }
-        })
+            _limit: THOUGHTS_LIMIT,
+          },
+        });
 
-        const rows = (res.data || []).filter((item) => !item.deleted_at)
-        setThoughts(rows)
+        const rows = (res.data || []).filter((item) => !item.deleted_at);
+        setThoughts(rows);
       } catch (error) {
         if (error?.name !== 'CanceledError' && error?.code !== 'ERR_CANCELED') {
-          setIsError(true)
+          setIsError(true);
         }
       } finally {
         if (!controller.signal.aborted) {
-          setIsLoading(false)
+          setIsLoading(false);
         }
       }
-    }
+    };
 
-    fetchThoughts()
-    return () => controller.abort()
-  }, [])
+    fetchThoughts();
+    return () => controller.abort();
+  }, []);
 
   return (
     <div className="thoughtsSection py-5 trip-color-gray-100">
@@ -113,7 +116,7 @@ function ThoughtsSection() {
                 slidesPerView={1}
                 navigation={{
                   nextEl: '.swiper-button-next-custom',
-                  prevEl: '.swiper-button-prev-custom'
+                  prevEl: '.swiper-button-prev-custom',
                 }}
                 style={{ overflow: 'hidden' }}
               >
@@ -137,7 +140,7 @@ function ThoughtsSection() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default ThoughtsSection
+export default ThoughtsSection;

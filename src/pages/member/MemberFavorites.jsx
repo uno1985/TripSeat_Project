@@ -67,7 +67,10 @@ const MemberFavorites = () => {
           .map((item) => {
             const trip = tripMap.get(item.trip_id);
             const statusMeta = getStatusMeta(trip);
-            const remaining = Math.max((trip.max_people || 0) - (trip.current_participants || 0), 0);
+            const remaining = Math.max(
+              (trip.max_people || 0) - (trip.current_participants || 0),
+              0
+            );
 
             return {
               favoriteId: item.id,
@@ -102,7 +105,9 @@ const MemberFavorites = () => {
         <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
           <div>
             <h2 className="h3 trip-text-gray-800 d-flex align-items-center">
-              <span className="material-symbols-outlined trip-text-primary-800 fs-2 me-2">favorite</span>
+              <span className="material-symbols-outlined trip-text-primary-800 fs-2 me-2">
+                favorite
+              </span>
               我的收藏
             </h2>
             <p className="trip-text-m trip-text-gray-400 mt-1 mb-0">
@@ -114,7 +119,7 @@ const MemberFavorites = () => {
 
       <div className="row g-4">
         {favorites.length === 0 ? (
-          <div >
+          <div>
             <div className="text-center py-4 text-muted">目前還沒有收藏旅程</div>
           </div>
         ) : (
@@ -123,7 +128,9 @@ const MemberFavorites = () => {
               <div className="card">
                 <div className="position-relative">
                   <img src={item.image} className="card-img-top" alt={item.title} />
-                  <span className={`position-absolute top-0 start-0 m-3 badge px-2 py-1 fw-normal ${item.statusClass}`}>
+                  <span
+                    className={`position-absolute top-0 start-0 m-3 badge px-2 py-1 fw-normal ${item.statusClass}`}
+                  >
                     {item.status}
                   </span>
                   {item.remaining > 0 && (
@@ -152,7 +159,10 @@ const MemberFavorites = () => {
                 </div>
 
                 <div className="card-footer bg-white border-0 p-0">
-                  <Link to={`/trips/${item.id}`} className="btn btn-warning w-100 py-2 fw-bold text-white rounded-bottom">
+                  <Link
+                    to={`/trips/${item.id}`}
+                    className="btn btn-warning w-100 py-2 fw-bold text-white rounded-bottom"
+                  >
                     查看細節
                   </Link>
                 </div>
