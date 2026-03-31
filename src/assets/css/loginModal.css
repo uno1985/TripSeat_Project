@@ -84,7 +84,7 @@
 
 .login-modal-divider::before,
 .login-modal-divider::after {
-  content: "";
+  content: '';
   flex: 1;
   height: 1px;
   background-color: var(--trip-color-gray-200);

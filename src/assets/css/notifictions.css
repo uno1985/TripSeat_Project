@@ -1,12 +1,12 @@
 /* Notifictions.jsx */
 .notifications-section {
-  .h3{
+  .h3 {
     color: var(--trip-color-gray-600);
   }
   .dashed-border {
     border-bottom: 1px dashed #dee2e6 !important;
   }
-  
+
   .list-group-item:last-child {
     border-bottom: none !important;
     border-bottom-right-radius: none;

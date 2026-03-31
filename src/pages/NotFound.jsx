@@ -1,8 +1,8 @@
 //導入套件
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 //導入樣式
-import "../assets/css/notFound.css";
+import '../assets/css/notFound.css';
 
 const NotFound = () => {
   return (
@@ -23,9 +23,7 @@ const NotFound = () => {
             </div>
 
             {/* 文字 */}
-            <h2 className="h3 trip-text-gray-800 mt-4">
-              哎呀，這條路走不通！
-            </h2>
+            <h2 className="h3 trip-text-gray-800 mt-4">哎呀，這條路走不通！</h2>
             <p className="trip-text-m trip-text-gray-400 mt-3 mb-4">
               看起來你迷路了，這個頁面不存在。
               <br />

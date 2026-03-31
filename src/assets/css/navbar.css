@@ -43,9 +43,7 @@
   .trip-dropdown-item:hover,
   .trip-dropdown-item:focus,
   .trip-dropdown-item:active {
-    background-color: var(
-      --trip-color-primary-200
-    ) !important; /* 改為極淺灰色，或用 transparent */
+    background-color: var(--trip-color-primary-200) !important; /* 改為極淺灰色，或用 transparent */
     color: var(--trip-color-gray-800) !important; /* 確保文字不會變白 */
     outline: none;
   }
@@ -69,7 +67,7 @@
   /* 移除當下拉選單打開時，按鈕可能出現的樣式 */
   .trip-nav-user .dropdown-toggle:focus,
   .trip-nav-user .dropdown-toggle:active,
-  .trip-nav-user .dropdown-toggle[aria-expanded="true"] {
+  .trip-nav-user .dropdown-toggle[aria-expanded='true'] {
     outline: none !important;
     box-shadow: none !important;
     color: inherit !important; /* 保持原有的文字顏色 */
@@ -94,7 +92,7 @@
       padding: 20px 16px;
     }
     .navbar-brand img {
-      content: url("../images/smail-logo.svg");
+      content: url('../images/smail-logo.svg');
       width: 41px;
     }
     .navbar-btn {
@@ -113,9 +111,7 @@
     .nav-link:hover,
     .nav-link:focus,
     .nav-link:active {
-      background-color: var(
-        --trip-color-gray-100
-      ) !important; /* 改為極淺灰色，或用 transparent */
+      background-color: var(--trip-color-gray-100) !important; /* 改為極淺灰色，或用 transparent */
       color: var(--trip-color-gray-800) !important; /* 確保文字不會變白 */
       outline: none;
     }

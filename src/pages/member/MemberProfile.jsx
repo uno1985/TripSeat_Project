@@ -191,7 +191,9 @@ const MemberProfile = () => {
         </h5>
 
         <div className="mb-3">
-          <label className="form-label create-group-label" htmlFor="name">姓名</label>
+          <label className="form-label create-group-label" htmlFor="name">
+            姓名
+          </label>
           <input
             id="name"
             name="name"
@@ -203,7 +205,9 @@ const MemberProfile = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label create-group-label" htmlFor="nickname">暱稱</label>
+          <label className="form-label create-group-label" htmlFor="nickname">
+            暱稱
+          </label>
           <input
             id="nickname"
             name="nickname"
@@ -215,7 +219,9 @@ const MemberProfile = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label create-group-label" htmlFor="phone">電話</label>
+          <label className="form-label create-group-label" htmlFor="phone">
+            電話
+          </label>
           <input
             id="phone"
             name="phone"
@@ -227,7 +233,9 @@ const MemberProfile = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label create-group-label" htmlFor="email">Email</label>
+          <label className="form-label create-group-label" htmlFor="email">
+            Email
+          </label>
           <input
             id="email"
             name="email"
@@ -239,7 +247,9 @@ const MemberProfile = () => {
         </div>
 
         <div className="mb-4">
-          <label className="form-label create-group-label" htmlFor="intro">自我介紹</label>
+          <label className="form-label create-group-label" htmlFor="intro">
+            自我介紹
+          </label>
           <textarea
             id="intro"
             name="intro"
@@ -284,7 +294,11 @@ const MemberProfile = () => {
                 }
               }}
             />
-            <button type="button" className="btn trip-btn-s trip-btn-outline-primary" onClick={addDeparture}>
+            <button
+              type="button"
+              className="btn trip-btn-s trip-btn-outline-primary"
+              onClick={addDeparture}
+            >
               + 新增常用地點
             </button>
           </div>
@@ -296,10 +310,20 @@ const MemberProfile = () => {
       </div>
 
       <div className="member-profile-actions">
-        <button type="button" className="btn trip-btn-m trip-btn-outline-primary" onClick={handleReset} disabled={saving || !isDirty}>
+        <button
+          type="button"
+          className="btn trip-btn-m trip-btn-outline-primary"
+          onClick={handleReset}
+          disabled={saving || !isDirty}
+        >
           取消變更
         </button>
-        <button type="button" className="btn trip-btn-m trip-btn-primary" onClick={handleSave} disabled={saving || !isDirty}>
+        <button
+          type="button"
+          className="btn trip-btn-m trip-btn-primary"
+          onClick={handleSave}
+          disabled={saving || !isDirty}
+        >
           {saving ? '儲存中...' : '儲存'}
         </button>
       </div>

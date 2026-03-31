@@ -5966,49 +5966,57 @@
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "bf09f840-f39d-442d-a3ab-b78d6b1d05b6",
       "created_at": "2026-02-25T11:06:02.368Z",
-      "updated_at": "2026-02-25T11:06:02.368Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-25T17:30:59.687Z",
+      "deleted_at": "2026-03-25T17:30:59.687Z",
       "id": 2
     },
     {
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "c16f907e-3444-41cd-9a31-72170006fa2d",
       "created_at": "2026-02-25T11:06:22.033Z",
-      "updated_at": "2026-02-25T11:06:22.033Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-25T17:30:56.615Z",
+      "deleted_at": "2026-03-25T17:30:56.615Z",
       "id": 3
     },
     {
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "930f9dda-887a-46b2-99f7-3fce87867e7c",
       "created_at": "2026-02-25T11:54:31.067Z",
-      "updated_at": "2026-02-25T11:54:31.067Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-25T17:30:50.503Z",
+      "deleted_at": "2026-03-25T17:30:50.503Z",
       "id": 4
     },
     {
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "03bc0b0a-e280-4e34-8fd8-91abada7f65f",
       "created_at": "2026-02-25T11:54:49.691Z",
-      "updated_at": "2026-02-25T11:54:49.691Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-25T17:30:53.623Z",
+      "deleted_at": "2026-03-25T17:30:53.623Z",
       "id": 5
     },
     {
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "e9a8b7c6-d5e4-4f3a-b2c1-d0e9a8b7c6d5",
       "created_at": "2026-02-27T14:48:42.792Z",
-      "updated_at": "2026-02-27T14:48:42.792Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-25T17:30:45.911Z",
+      "deleted_at": "2026-03-25T17:30:45.911Z",
       "id": 6
     },
     {
       "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
       "trip_id": "15308631-ce36-4175-9536-2c2060dbf2af",
       "created_at": "2026-02-27T14:54:41.599Z",
-      "updated_at": "2026-02-27T15:05:02.723Z",
-      "deleted_at": null,
+      "updated_at": "2026-03-25T17:30:38.199Z",
+      "deleted_at": "2026-03-25T17:30:38.199Z",
       "id": 7
+    },
+    {
+      "user_id": "u3a4b5c6-d7e8-f9a0-b1c2-3456789012cd",
+      "trip_id": "c4f365b1-eee5-43df-bac5-944f62dfa5f5",
+      "created_at": "2026-03-25T17:16:54.381Z",
+      "updated_at": "2026-03-25T17:16:57.872Z",
+      "deleted_at": "2026-03-25T17:16:57.872Z",
+      "id": 8
     }
   ]
 }

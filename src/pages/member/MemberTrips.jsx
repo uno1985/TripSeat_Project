@@ -34,7 +34,8 @@ const formatDateRange = (startDate, endDate) => {
   if (!startDate) return '';
   const s = new Date(startDate);
   const e = endDate ? new Date(endDate) : null;
-  const fmt = (d) => `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`;
+  const fmt = (d) =>
+    `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`;
   return e && s.toDateString() !== e.toDateString() ? `${fmt(s)} - ${fmt(e)}` : fmt(s);
 };
 
@@ -55,7 +56,12 @@ const MemberTrips = () => {
   const [cancelDialog, setCancelDialog] = useState({ open: false, tripId: null });
   const [canceling, setCanceling] = useState(false);
   const [cancelError, setCancelError] = useState('');
-  const [messageModal, setMessageModal] = useState({ open: false, hostName: '', hostId: null, message: '' });
+  const [messageModal, setMessageModal] = useState({
+    open: false,
+    hostName: '',
+    hostId: null,
+    message: '',
+  });
   const [messageSending, setMessageSending] = useState(false);
   const [messageError, setMessageError] = useState('');
   const [messageSent, setMessageSent] = useState(false);
@@ -116,10 +122,13 @@ const MemberTrips = () => {
               title: trip.title,
               date: formatDateRange(trip.start_date, trip.end_date),
               location: trip.location || '未提供',
-              image: trip.image_url || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80',
+              image:
+                trip.image_url ||
+                'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop&q=80',
               host: trip.owner_name || '團主',
               hostPhone: userMap.get(trip.owner_id)?.phone || '',
-              hostAvatar: trip.owner_avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=default',
+              hostAvatar:
+                trip.owner_avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=default',
               ownerId: trip.owner_id || null,
               participants: trip.current_participants || 0,
               maxPeople: trip.max_people || 0,
@@ -214,10 +223,10 @@ const MemberTrips = () => {
         prev.map((trip) =>
           trip.id === editor.tripId
             ? {
-              ...trip,
-              review: content,
-              reviewId: trip.reviewId || targetTrip.reviewId,
-            }
+                ...trip,
+                review: content,
+                reviewId: trip.reviewId || targetTrip.reviewId,
+              }
             : trip
         )
       );
@@ -279,7 +288,10 @@ const MemberTrips = () => {
           axios.patch(
             `${API_URL}/664/trips/${targetTrip.id}`,
             {
-              current_participants: Math.max((targetTrip.participants || 0) - (targetTrip.joinCount || 1), 0),
+              current_participants: Math.max(
+                (targetTrip.participants || 0) - (targetTrip.joinCount || 1),
+                0
+              ),
               updated_at: new Date().toISOString(),
             },
             { headers: { Authorization: `Bearer ${token}` } }
@@ -377,7 +389,9 @@ const MemberTrips = () => {
               <i className="bi bi-compass me-2 trip-text-primary-800"></i>
               我的旅程
             </h2>
-            <p className="trip-text-m trip-text-gray-400 mt-1 mb-0">查看所有你參加的旅程及心得紀錄</p>
+            <p className="trip-text-m trip-text-gray-400 mt-1 mb-0">
+              查看所有你參加的旅程及心得紀錄
+            </p>
           </div>
         </div>
       </div>
@@ -397,7 +411,12 @@ const MemberTrips = () => {
         </div>
         <div className="col-6 col-md-3">
           <div className="member-trips-stat-card">
-            <div className="member-trips-stat-number" style={{ color: 'var(--trip-color-status-success)' }}>{counts.confirmed}</div>
+            <div
+              className="member-trips-stat-number"
+              style={{ color: 'var(--trip-color-status-success)' }}
+            >
+              {counts.confirmed}
+            </div>
             <div className="member-trips-stat-label">已成團</div>
           </div>
         </div>
@@ -434,12 +453,19 @@ const MemberTrips = () => {
       ) : (
         <div className="member-trips-list">
           {displayTrips.map((trip) => (
-            <div key={trip.id} className={`member-trips-card ${trip.statusType === 'ended' ? 'member-trips-card-ended' : ''}`}>
+            <div
+              key={trip.id}
+              className={`member-trips-card ${trip.statusType === 'ended' ? 'member-trips-card-ended' : ''}`}
+            >
               <div className="row g-0">
                 <div className="col-md-3">
                   <div className="member-trips-card-img-wrapper">
                     <img src={trip.image} alt={trip.title} className="member-trips-card-img" />
-                    <span className={`member-trips-status-badge member-trips-status-${trip.statusType}`}>{trip.status}</span>
+                    <span
+                      className={`member-trips-status-badge member-trips-status-${trip.statusType}`}
+                    >
+                      {trip.status}
+                    </span>
                   </div>
                 </div>
 
@@ -448,23 +474,47 @@ const MemberTrips = () => {
                     <div className="d-flex justify-content-between align-items-start mb-1">
                       <div className="member-trips-title-row">
                         <h5 className="member-trips-card-title">{trip.title}</h5>
-                        <span className={`member-trips-apply-badge ${getApplicationMeta(trip.applicationStatus).className}`}>
+                        <span
+                          className={`member-trips-apply-badge ${getApplicationMeta(trip.applicationStatus).className}`}
+                        >
                           {getApplicationMeta(trip.applicationStatus).text}
                         </span>
                       </div>
-                      <span className={`member-trips-status-pill member-trips-pill-${trip.statusType}`}>{trip.status}</span>
+                      <span
+                        className={`member-trips-status-pill member-trips-pill-${trip.statusType}`}
+                      >
+                        {trip.status}
+                      </span>
                     </div>
 
                     <div className="member-trips-card-info">
-                      <span><i className="bi bi-calendar3 me-1"></i>{trip.date}</span>
-                      <span><i className="bi bi-geo-alt me-1"></i>{trip.location}</span>
-                      <span><i className="bi bi-person-check me-1"></i>報名 {trip.joinCount} 人</span>
-                      <span><i className="bi bi-people me-1"></i>{trip.participants} / {trip.maxPeople} 人</span>
+                      <span>
+                        <i className="bi bi-calendar3 me-1"></i>
+                        {trip.date}
+                      </span>
+                      <span>
+                        <i className="bi bi-geo-alt me-1"></i>
+                        {trip.location}
+                      </span>
+                      <span>
+                        <i className="bi bi-person-check me-1"></i>報名 {trip.joinCount} 人
+                      </span>
+                      <span>
+                        <i className="bi bi-people me-1"></i>
+                        {trip.participants} / {trip.maxPeople} 人
+                      </span>
                     </div>
 
                     <div className="member-trips-host">
-                      <img src={trip.hostAvatar} alt={trip.host} className="member-trips-host-avatar" />
-                      <span>團主：{trip.host} {trip.applicationStatus === 'approved' && `(${trip.hostPhone})`}</span>
+                      <img
+                        src={trip.hostAvatar}
+                        alt={trip.host}
+                        className="member-trips-host-avatar"
+                      />
+                      <span>
+                        團主：{trip.host}{' '}
+                        {trip.applicationStatus === 'approved' && `(${trip.hostPhone})`}
+                      </span>
                       <button
                         type="button"
                         className="btn btn-sm member-trips-btn-message ms-2"
@@ -482,7 +532,11 @@ const MemberTrips = () => {
                       {trip.review ? (
                         <div className="member-trips-review-content">
                           <p className="member-trips-review-text">{trip.review}</p>
-                          <button type="button" className="btn btn-sm member-trips-btn-edit-review" onClick={() => openEditor(trip)}>
+                          <button
+                            type="button"
+                            className="btn btn-sm member-trips-btn-edit-review"
+                            onClick={() => openEditor(trip)}
+                          >
                             <i className="bi bi-pencil me-1"></i>編輯心得
                           </button>
                         </div>
@@ -490,7 +544,8 @@ const MemberTrips = () => {
                         <div className="member-trips-review-empty">
                           {trip.statusType === 'ended' ? (
                             <span className="member-trips-review-placeholder">
-                              <i className="bi bi-journal-text me-1"></i>尚無心得，分享你的旅行回憶吧！
+                              <i className="bi bi-journal-text me-1"></i>
+                              尚無心得，分享你的旅行回憶吧！
                             </span>
                           ) : (
                             <span className="member-trips-review-placeholder">
@@ -506,12 +561,20 @@ const MemberTrips = () => {
                         <i className="bi bi-eye me-1"></i>查看細節
                       </Link>
                       {trip.statusType === 'ended' && !trip.review && (
-                        <button type="button" className="btn btn-sm member-trips-btn-add-review" onClick={() => openEditor(trip)}>
+                        <button
+                          type="button"
+                          className="btn btn-sm member-trips-btn-add-review"
+                          onClick={() => openEditor(trip)}
+                        >
                           <i className="bi bi-plus-lg me-1"></i>新增心得
                         </button>
                       )}
                       {trip.statusType === 'open' && (
-                        <button type="button" className="btn btn-sm member-trips-btn-cancel-join" onClick={() => openCancelDialog(trip)}>
+                        <button
+                          type="button"
+                          className="btn btn-sm member-trips-btn-cancel-join"
+                          onClick={() => openCancelDialog(trip)}
+                        >
                           <i className="bi bi-x-circle me-1"></i>取消參加
                         </button>
                       )}
@@ -531,7 +594,12 @@ const MemberTrips = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">編輯心得</h5>
-                  <button type="button" className="btn-close" onClick={closeEditor} disabled={saving}></button>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={closeEditor}
+                    disabled={saving}
+                  ></button>
                 </div>
                 <div className="modal-body">
                   {modalError && <div className="alert alert-warning py-2">{modalError}</div>}
@@ -545,10 +613,20 @@ const MemberTrips = () => {
                   />
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-outline-secondary" onClick={closeEditor} disabled={saving}>
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    onClick={closeEditor}
+                    disabled={saving}
+                  >
                     取消
                   </button>
-                  <button type="button" className="btn btn-primary" onClick={handleSaveReview} disabled={saving}>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleSaveReview}
+                    disabled={saving}
+                  >
                     {saving ? '儲存中...' : '儲存心得'}
                   </button>
                 </div>
@@ -566,17 +644,34 @@ const MemberTrips = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">確認取消參加</h5>
-                  <button type="button" className="btn-close" onClick={closeCancelDialog} disabled={canceling}></button>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={closeCancelDialog}
+                    disabled={canceling}
+                  ></button>
                 </div>
                 <div className="modal-body">
                   {cancelError && <div className="alert alert-warning py-2">{cancelError}</div>}
-                  <p className="mb-0 px-4 py-5">確定要取消這趟旅程嗎？取消後會從「我的參加行程」中移除。</p>
+                  <p className="mb-0 px-4 py-5">
+                    確定要取消這趟旅程嗎？取消後會從「我的參加行程」中移除。
+                  </p>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn trip-btn-outline-primary trip-btn-s" onClick={closeCancelDialog} disabled={canceling}>
+                  <button
+                    type="button"
+                    className="btn trip-btn-outline-primary trip-btn-s"
+                    onClick={closeCancelDialog}
+                    disabled={canceling}
+                  >
                     先保留
                   </button>
-                  <button type="button" className="btn btn-sm member-trips-btn-detail" onClick={handleConfirmCancelJoin} disabled={canceling}>
+                  <button
+                    type="button"
+                    className="btn btn-sm member-trips-btn-detail"
+                    onClick={handleConfirmCancelJoin}
+                    disabled={canceling}
+                  >
                     {canceling ? '處理中...' : '確定取消'}
                   </button>
                 </div>
@@ -593,8 +688,15 @@ const MemberTrips = () => {
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title"><i className="bi bi-chat-dots me-2"></i>發送訊息</h5>
-                  <button type="button" className="btn-close" onClick={closeMessageModal} disabled={messageSending}></button>
+                  <h5 className="modal-title">
+                    <i className="bi bi-chat-dots me-2"></i>發送訊息
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={closeMessageModal}
+                    disabled={messageSending}
+                  ></button>
                 </div>
                 <div className="modal-body">
                   {messageError && <div className="alert alert-warning py-2">{messageError}</div>}
@@ -620,7 +722,9 @@ const MemberTrips = () => {
                           rows={5}
                           placeholder="輸入你想傳送的訊息..."
                           value={messageModal.message}
-                          onChange={(e) => setMessageModal((prev) => ({ ...prev, message: e.target.value }))}
+                          onChange={(e) =>
+                            setMessageModal((prev) => ({ ...prev, message: e.target.value }))
+                          }
                           disabled={messageSending}
                         />
                       </div>
@@ -628,12 +732,28 @@ const MemberTrips = () => {
                   )}
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-outline-secondary" onClick={closeMessageModal} disabled={messageSending}>
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    onClick={closeMessageModal}
+                    disabled={messageSending}
+                  >
                     {messageSent ? '關閉' : '取消'}
                   </button>
                   {!messageSent && (
-                    <button type="button" className="btn btn-primary" onClick={handleSendMessage} disabled={messageSending}>
-                      {messageSending ? '傳送中...' : <><i className="bi bi-send me-1"></i>傳送</>}
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={handleSendMessage}
+                      disabled={messageSending}
+                    >
+                      {messageSending ? (
+                        '傳送中...'
+                      ) : (
+                        <>
+                          <i className="bi bi-send me-1"></i>傳送
+                        </>
+                      )}
                     </button>
                   )}
                 </div>

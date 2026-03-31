@@ -52,7 +52,9 @@
   border: 1px solid var(--trip-color-gray-200);
   border-radius: 10px;
   padding: 10px 14px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .create-group-input:focus {
@@ -86,7 +88,9 @@
   padding: 40px 20px;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .create-group-upload-area:hover {
@@ -258,7 +262,7 @@
   }
 
   /* 行程規劃手機版 - 改為堆疊 */
-  .create-group-itinerary-item .row > [class*="col-md"] {
+  .create-group-itinerary-item .row > [class*='col-md'] {
     flex: 0 0 100%;
     max-width: 100%;
   }
