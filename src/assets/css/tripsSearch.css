@@ -194,6 +194,10 @@
     .grid > .g-col-md-4 {
         grid-column: auto / span 4 !important;
     }
+    .active>.page-link, .page-link.active{
+        background-color: var(--trip-color-primary-1000);
+        border-color: var(--trip-color-primary-1000);
+    }
 }
 
 @media (max-width: 768px) {

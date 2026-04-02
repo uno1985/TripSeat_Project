@@ -327,7 +327,7 @@ function TripCard({data: trip}) {
         return (
             <div className="position-absolute certified-host">
                 <div className="d-flex align-items-center h-100">
-                    <img src={Icon_Certified} className="icon-certified" />
+                    <img src={Icon_Certified} className="icon-certified" alt="icon-certified" />
                     <span>真安心團主</span>
                 </div>
             </div>
@@ -349,18 +349,18 @@ function TripCard({data: trip}) {
                 <h5 className="h5">{trip.title}</h5>
                 <div className="trip-info-container">
                     <div className="d-flex align-items-center">
-                        <img src={Icon_Location} className="icon"/>
+                        <img src={Icon_Location} className="icon" alt="location-icon"/>
                         <span className="trip-text-s">{trip.location}</span>
                     </div>
                     <div className="d-flex align-items-center">
-                        <img src={Icon_Time} className="icon"/>
+                        <img src={Icon_Time} className="icon" alt="time-icon"/>
                         <span className="trip-text-s">{handleDisplayDate({start_date: trip.start_date, end_date: trip.end_date})}</span>
                     </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
                     <div className="host-info-container d-flex align-items-center flex-grow-1">
                         <div className="host-photo">
-                            <img src={trip.owner_avatar}/>
+                            <img src={trip.owner_avatar} alt="團主大頭貼"/>
                         </div>
                         <div className="host-name text-title-m">{trip.owner_name}</div>
                     </div>
@@ -381,26 +381,30 @@ function Tag({text}) {
 
 function Pagination({currentPage, setPage, totalCount, limit}) {
     const totalPages = Math.ceil(totalCount / limit);
+    const isFirst = currentPage <= 1;
+    const isLast = currentPage >= totalPages;
     return (
         <>
         <div className="pagination-container">
             <nav aria-label="Page navigation example">
                 <ul className="pagination justify-content-center">
-                    <li className="page-item"
+                    {/* Prev 箭頭：第一頁時加上 disabled */}
+                    <li className={`page-item ${isFirst ? 'disabled' : ''}`}
                         onClick={(e) => {
                             e.preventDefault();
-                            if (currentPage > 1) {
+                            if (!isFirst) {
                                 setPage(currentPage - 1);
                             }
                         }}>
-                    <a className="page-link trip-text-primary-1000" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
+                        <a className="page-link trip-text-primary-1000" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
                     </li>
+                    {/* 頁碼列表：當前頁加上 active */}
                     {
                         Array.from({ length: totalPages }, (_, i) => i + 1).map((idx) => {
                             return (
-                                <li className="page-item"
+                                <li className={`page-item ${currentPage === idx ? 'active' : ''}`}
                                     key={`page_${idx}`}
                                     onClick={(e) => {
                                         e.preventDefault();
@@ -410,16 +414,17 @@ function Pagination({currentPage, setPage, totalCount, limit}) {
                             )
                         })
                     }
-                    <li className="page-item"
+                    {/* Next 箭頭：最後一頁時加上 disabled */}
+                    <li className={`page-item ${isLast ? 'disabled' : ''}`}
                         onClick={(e) => {
                                 e.preventDefault();
-                                if (totalPages > currentPage) {
+                                if (!isLast) {
                                     setPage(currentPage + 1);
                                 }
                             }}>
-                    <a className="page-link trip-text-primary-1000" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
+                        <a className="page-link trip-text-primary-1000" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
