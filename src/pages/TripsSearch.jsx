@@ -100,6 +100,12 @@ function TripsSearch() {
         params.set('page', 1); //篩選條件更新時，重置回第一頁
         setSearchParams(params);
     }
+
+    function handlePageChange(page) {
+        const params = new URLSearchParams(searchParams); // 保留現有的篩選條件
+        params.set('page', page);
+        setSearchParams(params);
+    }
     
     return (
         <>
@@ -143,7 +149,7 @@ function TripsSearch() {
                             </div>
                             <Pagination 
                                 currentPage={currentPage}
-                                setPage={setPage}
+                                setPage={handlePageChange}
                                 totalCount={totalCount}
                                 limit={limit} />
                         </div>
