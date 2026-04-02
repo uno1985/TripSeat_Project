@@ -1,6 +1,7 @@
 /* MemberSidebar 客製化樣式 */
 .member-sidebar {
-  min-width: 280px;
+  min-width: 0; /* 改掉固定最小寬度，讓 Bootstrap 欄位自行控制 */
+  width: 100%;  /* 填滿父欄位即可 */
 }
 
 /* 選單 Hover 與 Active 效果 */
