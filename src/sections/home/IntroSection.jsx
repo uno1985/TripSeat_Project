@@ -44,19 +44,20 @@ const introData = [
 ];
 
 function IntroSection() {
-  return (
-    <div className="introSection position-relative">
-      <img className="position-absolute bigCloud" src={BigCloud} alt="" />
-      <img className="position-absolute smallCloud" src={SmallCloud} alt="" />
-      <div className="container">
-        <div className="main row gx-5 align-items-start">
-          {introData.map((data) => (
-            <IntroCard key={data.step} data={data} />
-          ))}
+
+    return (
+        <div className="introSection position-relative">
+            <img className="position-absolute bigCloud" src={BigCloud} alt="BigCloud"/>
+            <img className="position-absolute smallCloud" src={SmallCloud} alt="SmallCloud"/>
+            <div className="container">
+                <div className="main row gx-5 align-items-start">
+                    {
+                        introData.map((data) => <IntroCard key={data.step} data={data}/>)
+                    }
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    )
 }
 
 export default IntroSection;
