@@ -20,10 +20,10 @@ function SearchSection() {
                     <h2 className="h2 text-center"><span>從這裡，</span><span>開始你的旅程</span></h2>
                     <SearchBar />
                     <div className="image-box d-flex justify-content-between align-items-end">
-                        <div><img src={Image1157} className="img-fluid" /></div>
-                        <div><img src={Image1156} className="img-fluid" /></div>
-                        <div><img src={Image1775} className="img-fluid" /></div>
-                        <div><img src={Image996} className="img-fluid" /></div>
+                        <div><img src={Image1157} className="img-fluid" alt="搜尋旅程底圖" /></div>
+                        <div><img src={Image1156} className="img-fluid" alt="搜尋旅程底圖" /></div>
+                        <div><img src={Image1775} className="img-fluid" alt="搜尋旅程底圖" /></div>
+                        <div><img src={Image996} className="img-fluid" alt="搜尋旅程底圖" /></div>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ function SearchBar() {
 
                 navigate(url);
             }}>
-            <img src={SearchBtn} className="w-100"/>
+            <img src={SearchBtn} className="w-100" alt="搜尋icon"/>
         </div>
     </div>
 }

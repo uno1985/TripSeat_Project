@@ -61,10 +61,10 @@ function HeroSection() {
         <div className="heroSection">
             <div className="hero-wrapper">
                 <div className="cloud-decorations d-none d-lg-block">
-                    <img src={smailCloud} className="cloud cloud-a" alt="" />
-                    <img src={bigCloud} className="cloud cloud-b" alt="" />
-                    <img src={smailCloud} className="cloud cloud-c" alt="" />
-                    <img src={bigCloud} className="cloud cloud-d" alt="" />
+                    <img src={smailCloud} className="cloud cloud-a" alt="smailCloud" />
+                    <img src={bigCloud} className="cloud cloud-b" alt="bigCloud" />
+                    <img src={smailCloud} className="cloud cloud-c" alt="smailCloud" />
+                    <img src={bigCloud} className="cloud cloud-d" alt="bigCloud" />
                 </div>
 
                 <div className="container hero-content-box">

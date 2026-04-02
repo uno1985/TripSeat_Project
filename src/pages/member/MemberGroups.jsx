@@ -683,63 +683,6 @@ const MemberGroups = () => {
                 </div>
             </div>}
 
-            {/* --- 卡片 2：已成團 --- */}
-            {/* <div className="my-groups-card mb-3">
-                <div className="row g-0">
-                    <div className="col-md-3">
-                        <div className="my-groups-card-img-wrapper">
-                            <img
-                                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop&q=80"
-                                alt="旅程封面"
-                                className="my-groups-card-img"
-                            />
-                            <span className="my-groups-status-badge my-groups-status-confirmed">
-                                已成團
-                            </span>
-                        </div>
-                    </div>
-                    <div className="col-md-9">
-                        <div className="my-groups-card-body">
-                            <div className="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h5 className="my-groups-card-title">綠島石朗潛水團</h5>
-                                    <div className="my-groups-card-tags">
-                                        <span className="my-groups-tag">潛水</span>
-                                        <span className="my-groups-tag">綠島</span>
-                                        <span className="my-groups-tag">海洋</span>
-                                    </div>
-                                </div>
-                                <div className="my-groups-card-actions">
-                                    <Link to="/member/create-group" className="btn btn-sm my-groups-btn-edit" title="編輯">
-                                        <i className="bi bi-pencil-square"></i>
-                                    </Link>
-                                </div>
-                            </div>
-
-                            <div className="my-groups-card-info">
-                                <span><i className="bi bi-calendar3 me-1"></i>2026/01/15 - 01/17</span>
-                                <span><i className="bi bi-geo-alt me-1"></i>台東縣 綠島鄉</span>
-                                <span><i className="bi bi-people me-1"></i>4 / 4 人（已滿）</span>
-                            </div>
-
-                            <div className="my-groups-members-section">
-                                <button className="btn btn-sm my-groups-btn-toggle-members">
-                                    <i className="bi bi-people-fill me-1"></i>
-                                    查看目前團員 (4)
-                                    <i className="bi bi-chevron-down ms-1"></i>
-                                </button>
-                            </div>
-
-                            <div className="my-groups-card-footer">
-                                <Link to="/trips/2" className="btn btn-sm my-groups-btn-view">
-                                    <i className="bi bi-eye me-1"></i>查看旅程頁面
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
             {/* --- 卡片 3：已結束 --- */}
             {otherTrips
                 .filter(trip => activeFilter === 'all' || trip.statusType === activeFilter)
@@ -912,18 +855,6 @@ const MemberGroups = () => {
                     <div className="modal-backdrop fade show"></div>
                 </>
             )}
-
-            {/* ===== 空狀態（當沒有揪團時顯示） ===== */}
-            {/*
-            <div className="my-groups-empty">
-                <i className="bi bi-flag"></i>
-                <h5>還沒有揪團</h5>
-                <p>建立你的第一個旅程，邀請旅伴一起出發吧！</p>
-                <Link to="/member/create-group" className="btn trip-btn-m trip-btn-primary">
-                    <i className="bi bi-plus-lg me-2"></i>建立揪團
-                </Link>
-            </div>
-            */}
 
         </div>
     );

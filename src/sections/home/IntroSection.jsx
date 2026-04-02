@@ -44,8 +44,8 @@ function IntroSection() {
 
     return (
         <div className="introSection position-relative">
-            <img className="position-absolute bigCloud" src={BigCloud}/>
-            <img className="position-absolute smallCloud" src={SmallCloud}/>
+            <img className="position-absolute bigCloud" src={BigCloud} alt="BigCloud"/>
+            <img className="position-absolute smallCloud" src={SmallCloud} alt="SmallCloud"/>
             <div className="container">
                 <div className="main row gx-5 align-items-start">
                     {
