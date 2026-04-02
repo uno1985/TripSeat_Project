@@ -75,14 +75,9 @@ const routes = [
                         element: <MemberCenter />,
                     },
                     {
-                        // 會員中心主頁面
+                        // 我的檔案
                         path: '/member/profile',
                         element: <MemberProfile />,
-                    },
-                    {
-                        // 我的檔案
-                        path: '/member/trips',
-                        element: <MemberTrips />,
                     },
                     {
                         // 我的旅程
