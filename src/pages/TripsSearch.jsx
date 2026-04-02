@@ -97,6 +97,7 @@ function TripsSearch() {
                     break;
             }
         });
+        params.set('page', 1); //篩選條件更新時，重置回第一頁
         setSearchParams(params);
     }
     
