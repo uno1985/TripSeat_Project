@@ -1,22 +1,20 @@
 // 導入套件
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from 'react-router-dom';
 
 //導入共用元件
-import MemberSidebar from "../components/MemberSidebar";
+import MemberSidebar from '../components/MemberSidebar';
 import Breadcrumb from '../components/Breadcrumb';
-
 
 // 路徑 → 麵包屑對照表設定
 const BREADCRUMB_MAP = {
-    '/member': '會員中心',
-    '/member/profile': '我的檔案',
-    '/member/trips': '我的旅程',
-    '/member/groups': '我的揪團',
-    '/member/create-group': '我要開團',
-    '/member/favorites': '我的收藏',
-    '/member/notifications': '訊息通知',
+  '/member': '會員中心',
+  '/member/profile': '我的檔案',
+  '/member/trips': '我的旅程',
+  '/member/groups': '我的揪團',
+  '/member/create-group': '我要開團',
+  '/member/favorites': '我的收藏',
+  '/member/notifications': '訊息通知',
 };
-
 
 const MemberLayout = () => {
 
@@ -55,6 +53,8 @@ const MemberLayout = () => {
                 </div>
             </div >
         </div>
-    )
-}
-export default MemberLayout
+      </div>
+    </div>
+  );
+};
+export default MemberLayout;

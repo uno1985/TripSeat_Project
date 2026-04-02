@@ -10,7 +10,7 @@
 }
 
 .member-nav .nav-link:hover {
-  color: #E78F0C; /* 你專案中常用的橘色 */
+  color: #e78f0c; /* 你專案中常用的橘色 */
 }
 
 /* 手機版適應：根據圖四，手機版通常會撐滿寬度或作為頁面主體 */
@@ -20,7 +20,7 @@
     box-shadow: none !important; /* 手機版通常背景是灰的，不需要陰影 */
     background-color: transparent !important;
   }
-  
+
   .member-nav .nav-link {
     font-size: 1.5rem; /* 手機版文字較大 */
     margin-bottom: 1rem;

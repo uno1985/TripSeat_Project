@@ -1,19 +1,19 @@
-.card{
+.card {
   border-radius: 16px;
 }
-.card-img-top{
+.card-img-top {
   border-radius: 12px;
   height: 200px;
   object-fit: cover;
 }
-.card-body{
-  img{
+.card-body {
+  img {
     width: 32px;
     height: 32px;
     object-fit: cover;
   }
 }
-.card-text{
+.card-text {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -21,16 +21,17 @@
   -webkit-line-clamp: 4;
   line-clamp: 4;
 }
-.bi{
+.bi {
   font-weight: bold;
 }
-.swiper-button-prev-custom, .swiper-button-next-custom {
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
-  background-color: #FFB74C;
+  background-color: #ffb74c;
   border-radius: 50%;
   color: white;
   display: flex;
@@ -39,5 +40,9 @@
   z-index: 10;
   cursor: pointer;
 }
-.swiper-button-prev-custom { left: -10px; }
-.swiper-button-next-custom { right: -10px; }
+.swiper-button-prev-custom {
+  left: -10px;
+}
+.swiper-button-next-custom {
+  right: -10px;
+}

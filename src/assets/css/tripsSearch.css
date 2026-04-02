@@ -203,37 +203,89 @@
     }
 }
 
-@media (max-width: 768px) {
-    .tripsSearch .tripsSreach-sideBar {
-        width: 100%;
-    }
-    
-    .tripsSearch .filter-group .input,
-    .tripsSearch .tripsSreach-sideBar .selector {
-        width: 100%;
-    }
+/* ===== 卡片自動換行：維持卡片大小，裝不下就往下推 ===== */
+/* 用 auto-fill + minmax 取代固定 12 欄 grid，卡片最小 280px，自動 3→2→1 */
+@media (max-width: 1399px) {
+  .tripsSearch .grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 
-    .tripsSearch .updateBtn-container {
-        margin-top: 40px;
-    }
-
-    .tripsSearch .filter-container {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 40px;
-        gap: 10px;
-    }
-
-    .tripsSearch .filter-container .selector {
-        width: 100%;
-    }
-
-    .tripsSearch .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .tripsSearch .tripsSreach-sideBar .trigger-btn,
-    .tripsSearch .tripsSreach-sideBar .datePicker-input {
-        width: 100%;
-    }
+  .tripsSearch .grid > .g-col-md-4 {
+    grid-column: auto !important; /* 取消 span 4，讓 auto-fill 控制 */
+  }
 }
+
+/* ===== 966px 以下 → Sidebar 移到上方 ===== */
+@media (max-width: 966px) {
+  /* 覆蓋 Bootstrap d-md-flex，讓 sidebar 和卡片區塊垂直排列 */
+  .tripsSearch .main > .d-md-flex {
+    display: block !important;
+  }
+
+  .tripsSearch .tripsSreach-sideBar {
+    width: 100%;
+  }
+
+  .tripsSearch .filter-group .input,
+  .tripsSearch .tripsSreach-sideBar .selector {
+    width: 100%;
+  }
+
+  .tripsSearch .tripsSreach-sideBar .trigger-btn,
+  .tripsSearch .tripsSreach-sideBar .datePicker-input {
+    width: 100%;
+  }
+
+  .tripsSearch .updateBtn-container {
+    margin-top: 40px;
+  }
+
+  .tripsSearch .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 40px;
+    gap: 10px;
+  }
+
+  .tripsSearch .filter-container .selector {
+    width: 100%;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .tripsSearch .tripsSreach-sideBar {
+    width: 100%;
+  }
+
+  .tripsSearch .filter-group .input,
+  .tripsSearch .tripsSreach-sideBar .selector {
+    width: 100%;
+  }
+
+  .tripsSearch .updateBtn-container {
+    margin-top: 40px;
+  }
+
+  .tripsSearch .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 40px;
+    gap: 10px;
+  }
+
+  .tripsSearch .filter-container .selector {
+    width: 100%;
+  }
+
+  .tripsSearch .grid {
+    grid-template-columns: 1fr;
+  }
+  .tripsSearch .grid > .g-col-md-4 {
+    grid-column: 1 / -1 !important;
+  }
+
+  .tripsSearch .tripsSreach-sideBar .trigger-btn,
+  .tripsSearch .tripsSreach-sideBar .datePicker-input {
+    width: 100%;
+  }
+} */

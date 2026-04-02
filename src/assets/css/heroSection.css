@@ -48,7 +48,7 @@
   }
 
   .hero-title {
-    font-family: "Noto Sans TC", sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
     font-weight: 700;
     font-size: 64px; /* */
     line-height: 1.2;
@@ -62,10 +62,7 @@
   .hero-title .line-1 {
     position: relative;
     display: inline-block;
-    background-image: linear-gradient(
-      var(--trip-color-primary-800),
-      var(--trip-color-primary-800)
-    );
+    background-image: linear-gradient(var(--trip-color-primary-800), var(--trip-color-primary-800));
     background-repeat: no-repeat;
     background-size: 100% 15px;
     background-position: 0 85%;
@@ -93,7 +90,6 @@
     .hero-subtitle {
       font-size: 16px;
       margin-bottom: 40px;
-      max-width: 85vw; /* 確保手機版打字機寬度不破版 */
     }
   }
 }
@@ -116,7 +112,7 @@
 /* 打字機效果：2.5s 打完字，游標 1.1s 慢速持續閃爍 (infinite) */
 .typewriter-animation {
   animation:
-    typing 2.5s steps(30) 0.5s forwards,
+    typing 2.5s steps(30) 0.5s both,
     blinkCursor 1.1s step-end infinite;
 }
 
@@ -125,7 +121,7 @@
     max-width: 0;
   }
   to {
-    max-width: 1000px;
+    max-width: min(1000px, 90vw);
   }
 }
 

@@ -1,33 +1,33 @@
-.my-groups-section{
-  .h3{
+.my-groups-section {
+  .h3 {
     color: var(--trip-color-gray-600);
   }
-  .card{
+  .card {
     border: none;
     box-shadow: 0 0 5px #dedede;
   }
-  .card-img-top{
+  .card-img-top {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  .card-footer .btn{
+  .card-footer .btn {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .icon-time{
+  .icon-time {
     width: 13px;
     height: 13px;
   }
-  .h5{
+  .h5 {
     max-width: 95%;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
   }
   /* 會員頭像群組容器 */
   .avatar-group {
     /* 使用 row-reverse 讓 HTML 後方的元素在 z-index 上層 */
-    flex-direction: row; 
+    flex-direction: row;
   }
   .avatar-item {
     width: 24px;
@@ -35,10 +35,10 @@
     border-radius: 50%;
     border: 2px solid #fff; /* 白色外圈 */
     object-fit: cover;
-    
+
     /* 設定負邊距讓圖片重疊，-8px 約為 24px 的 1/3 */
-    margin-left: -8px; 
-    
+    margin-left: -8px;
+
     /* 確保圖片維持比例不被縮小 */
     flex-shrink: 0;
     position: relative;

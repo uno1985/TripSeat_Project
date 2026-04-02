@@ -1,28 +1,76 @@
-import Layout from "../layout/Layout"
-import MemberLayout from "../layout/MemberLayout"
-import About from "../pages/About"
-import Home from "../pages/Home"
-import MemberCenter from "../pages/member/MemberCenter"
-import NotFound from "../pages/NotFound"
-import Thoughts from "../pages/Thoughts"
-import ThoughtsDetail from "../pages/ThoughtsDetail"
-import TripsSearch from "../pages/TripsSearch"
-import TripDetail from "../pages/TripDetail"
-import Login from "../pages/Login"
-import MemberProfile from "../pages/member/MemberProfile"
-import MemberTrips from "../pages/member/MemberTrips"
-import MemberGroups from "../pages/member/MemberGroups"
-import MemberCreateGroups from "../pages/member/MemberCreateGroups"
-import MemberFavorites from "../pages/member/MemberFavorites"
-import MemberNotifications from "../pages/member/MemberNotifications"
-import Legal from "../pages/Legal"
-import ProtectedRoute from "../components/ProtectedRoute"
-
+import Layout from '../layout/Layout';
+import MemberLayout from '../layout/MemberLayout';
+import About from '../pages/About';
+import Home from '../pages/Home';
+import MemberCenter from '../pages/member/MemberCenter';
+import NotFound from '../pages/NotFound';
+import Thoughts from '../pages/Thoughts';
+import ThoughtsDetail from '../pages/ThoughtsDetail';
+import TripsSearch from '../pages/TripsSearch';
+import TripDetail from '../pages/TripDetail';
+import Login from '../pages/Login';
+import MemberProfile from '../pages/member/MemberProfile';
+import MemberTrips from '../pages/member/MemberTrips';
+import MemberGroups from '../pages/member/MemberGroups';
+import MemberCreateGroups from '../pages/member/MemberCreateGroups';
+import MemberFavorites from '../pages/member/MemberFavorites';
+import MemberNotifications from '../pages/member/MemberNotifications';
+import Legal from '../pages/Legal';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 const routes = [
-    {
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        //首頁
         path: '/',
-        element: <Layout />,
+        element: <Home />,
+      },
+      {
+        //探索旅程
+        path: '/trips',
+        element: <TripsSearch />,
+      },
+      {
+        //行程詳細
+        path: '/trips/:id',
+        element: <TripDetail />,
+      },
+      {
+        //回憶旅程
+        path: '/thoughts',
+        element: <Thoughts />,
+      },
+      {
+        //回憶旅程詳細
+        path: '/thoughts/:id',
+        element: <ThoughtsDetail />,
+      },
+      {
+        //關於TripSeat
+        path: '/about',
+        element: <About />,
+      },
+      {
+        //服務條款與幫助
+        path: '/legal',
+        element: <Legal />,
+      },
+      {
+        //登入
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        //會員中心
+        path: '/member',
+        element: (
+          <ProtectedRoute>
+            <MemberLayout />
+          </ProtectedRoute>
+        ),
         children: [
             {
                 //首頁
@@ -120,4 +168,4 @@ const routes = [
 
 ]
 
-export default routes
+export default routes;

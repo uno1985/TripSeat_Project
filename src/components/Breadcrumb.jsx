@@ -28,13 +28,10 @@ import '../assets/css/breadcrumb.css';
  * ]} />
  */
 
-
 function Breadcrumb({ items = [] }) {
   // 預設首頁
   const defaultItems = [{ label: '首頁', path: '/' }];
-  const allItems = items.length > 0 && items[0].path === '/'
-    ? items
-    : [...defaultItems, ...items];
+  const allItems = items.length > 0 && items[0].path === '/' ? items : [...defaultItems, ...items];
 
   return (
     <nav aria-label="breadcrumb">
