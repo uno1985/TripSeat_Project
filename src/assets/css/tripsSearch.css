@@ -198,6 +198,9 @@
         background-color: var(--trip-color-primary-1000);
         border-color: var(--trip-color-primary-1000);
     }
+    .page-link:hover{
+        color: var(--trip-color-primary-800);
+    }
 }
 
 @media (max-width: 768px) {
