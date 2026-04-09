@@ -65,11 +65,11 @@ function HotTripList({ title, trips, desktopMeta, mobileMeta }) {
 
               <div className="mb-1">
                 <p className="trip-text-m mb-1 d-flex align-items-center">
-                  <img src={location} className="me-2 icon-location" alt="" />
+                  <img src={location} className="me-2 icon-location" alt="location-icon" />
                   <span>{trip.meeting_point || trip.location || '地點待定'}</span>
                 </p>
                 <p className="trip-text-m mb-0">
-                  <img src={time} className="me-2" alt="" />
+                  <img src={time} className="me-2" alt="time-icon" />
                   <span>{buildDateText(trip)}</span>
                 </p>
               </div>

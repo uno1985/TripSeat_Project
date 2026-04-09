@@ -72,55 +72,100 @@ const routes = [
           </ProtectedRoute>
         ),
         children: [
-          {
-            // 會員中心主頁面
-            path: '/member',
-            element: <MemberCenter />,
-          },
-          {
-            // 會員中心主頁面
-            path: '/member/profile',
-            element: <MemberProfile />,
-          },
-          {
-            // 我的檔案
-            path: '/member/trips',
-            element: <MemberTrips />,
-          },
-          {
-            // 我的旅程
-            path: '/member/trips',
-            element: <MemberTrips />,
-          },
-          {
-            // 我的揪團
-            path: '/member/groups',
-            element: <MemberGroups />,
-          },
-          {
-            // 我要開團
-            path: '/member/create-group',
-            element: <MemberCreateGroups />,
-          },
-          {
-            // 我的收藏
-            path: '/member/favorites',
-            element: <MemberFavorites />,
-          },
-          {
-            // 訊息通知
-            path: '/member/notifications',
-            element: <MemberNotifications />,
-          },
-        ],
-      },
-      {
-        //找不到頁面
-        path: '*',
-        element: <NotFound />,
-      },
-    ],
-  },
-];
+            {
+                //首頁
+                path: '/',
+                element: <Home />
+            },
+            {
+                //探索旅程
+                path: '/trips',
+                element: <TripsSearch />
+            },
+            {
+                //行程詳細
+                path: '/trips/:id',
+                element: <TripDetail />
+            },
+            {
+                //回憶旅程
+                path: '/thoughts',
+                element: <Thoughts />
+            },
+            {
+                //回憶旅程詳細
+                path: '/thoughts/:id',
+                element: <ThoughtsDetail />
+            },
+            {
+                //關於TripSeat
+                path: '/about',
+                element: <About />
+            },
+            {
+                //服務條款與幫助
+                path: '/legal',
+                element: <Legal />
+            },
+            {
+                //登入
+                path: '/login',
+                element: <Login />
+            },
+            {
+                //會員中心
+                path: '/member',
+                element: <ProtectedRoute><MemberLayout /></ProtectedRoute>,
+                children: [
+                    {
+                        // 會員中心主頁面
+                        path: '/member',
+                        element: <MemberCenter />,
+                    },
+                    {
+                        // 我的檔案
+                        path: '/member/profile',
+                        element: <MemberProfile />,
+                    },
+                    {
+                        // 我的旅程
+                        path: '/member/trips',
+                        element: <MemberTrips />,
+                    },
+                    {
+                        // 我的揪團
+                        path: '/member/groups',
+                        element: <MemberGroups />,
+                    },
+                    {
+                        // 我要開團
+                        path: '/member/create-group',
+                        element: <MemberCreateGroups />,
+                    },
+                    {
+                        // 我的收藏
+                        path: '/member/favorites',
+                        element: <MemberFavorites />,
+                    },
+                    {
+                        // 訊息通知
+                        path: '/member/notifications',
+                        element: <MemberNotifications />,
+                    },
+
+                ]
+
+            },
+            {
+                //找不到頁面
+                path: '*',
+                element: <NotFound />
+
+            },
+
+        ]
+    },
+
+]
 
 export default routes;
